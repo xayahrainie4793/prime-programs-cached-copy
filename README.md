@@ -38,7 +38,7 @@ File "llr402mac64.zip" (for MacIntel / MAC OS X 64bit)
 
 File "Primo309.zip" (for Windows)
 
-File "primo-433-lx64.zip" and "Primo-d22-d30.zip" (for Linux) (since the complete .zip file exceed GitHub's 25MB limit, I saparate it to two .zip files, you need to copy the files "primo.d22" to "primo.d30" in file "Primo-d22-d30.zip" to the folder "primo-433-lx64" in file "primo-433-lx64.zip"
+File "primo-433-lx64.zip" and "Primo-d22-d30.zip" (for Linux) (since the complete .zip file exceed GitHub's 25MB limit, I saparate it to two .zip files, you need to copy the files "primo.d22" to "primo.d30" in file "Primo-d22-d30.zip" to the folder "primo-433-lx64" in file "primo-433-lx64.zip")
 
 5. NewPGen (https://primes.utm.edu/programs/NewPGen/, https://www.rieselprime.de/ziki/NewPGen):
 
