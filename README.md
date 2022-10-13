@@ -36,7 +36,7 @@ File "llr402mac64.zip" (for MacIntel / MAC OS X 64bit)
 
 4. PRIMO (http://www.ellipsa.eu/public/primo/primo.html, https://primes.utm.edu/bios/page.php?id=46, https://www.rieselprime.de/ziki/Primo):
 
-File "Primo309.zip" (for Windows)
+File "Primo309.zip" (for Windows) (a cached copy of the file http://www.rieselprime.de/dl/Primo309.zip)
 
 File "primo-433-lx64.zip" and "Primo-d22-d30.zip" (for Linux) (since the complete .zip file exceed GitHub's 25MB limit, I saparate it to two .zip files, you need to copy the files "primo.d22" to "primo.d30" in file "Primo-d22-d30.zip" to the folder "primo-433-lx64" in file "primo-433-lx64.zip")
 
