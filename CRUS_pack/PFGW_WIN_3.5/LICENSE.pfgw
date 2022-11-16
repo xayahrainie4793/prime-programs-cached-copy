@@ -1,0 +1,118 @@
+The OpenPFGW Public License 
+  updated to PFGW v1.2 Release (January 30, 2005)
+
+Redistribution and use of this software and associated documentation 
+("Software"), with or without modification, are permitted provided 
+that the following conditions are met: 
+
+1. Redistributions of source code must retain copyright statements 
+and notices. 
+
+2. Redistributions in binary form must reproduce applicable copyright 
+statements and notices, this list of conditions, and the following 
+disclaimer in the documentation and/or other materials provided 
+with the distribution. You may redistribute the binary using any suitable
+format or media, but must accompany it with files as listed in the
+accompanying MANIFEST.
+
+3. Redistributions must contain a verbatim copy of this document.
+They must either contain the entire distribution, as you received
+it, OR provide suitable details of how to obtain such a complete
+distribution. 
+
+4. The name "OpenPFGW" must not be used to endorse or promote 
+products derived from this Software without prior written permission 
+of primeform.net. 
+
+5. Products derived from this Software may not be called "OpenPFGW",
+"PFGW", "WinPFGW", "PrimeForm", or "PrimeForm/GW", nor may any of
+those terms appear in their names without prior written permission of
+primeform.net.
+
+6. Due credit should be given to primeform.net
+( http://www.primeform.net/openpfgw ). In particular works
+derived from the project must give credit to primeform.net. The
+definition of "works derived" includes software in whole or in
+part derived from any or all of the OpenPFGW source code or
+binaries. "Works derived" also includes mathematical discovery
+or publication in which the PrimeForm/GW program (or any derivative)
+played a part.
+
+7. The terms and conditions of third-party elements of the OpenPFGW
+Project must be adhered to. primeform.net is in no event liable for
+violations of such terms and conditions. These conditions, as they
+apply to specific components of the OpenPFGW project, are listed below
+under "Third-party Element Licenses".
+
+8. primeform.net may revise this license from time to 
+time.  Each revision is distinguished by a version number.  You 
+may use the Software under terms of this license revision or under 
+the terms of any subsequent revision of the license. 
+
+THIS SOFTWARE IS PROVIDED BY PRIMEFORM.NET AND CONTRIBUTORS 
+``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT 
+NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND 
+FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL 
+PRIMEFORM.NET OR ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES 
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) 
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
+OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+Copyright 2000/2002 primeform.net, Lexington, Kentucky, USA.
+All Rights Reserved.  Permission to copy and distributed verbatim
+copies of this document is granted.
+
+THIRD-PARTY ELEMENT LICENSES
+
+It is emphasized these apply only to the specific named modules. All
+other components of this distribution fall under the Terms and Conditions
+of the OpenPFGW Public License above. The third-party licenses are
+independent of this OpenPFGW Public License.
+
+GMP is used by the OpenPFGW project under Section 6 of the LGPL. It may be
+obtained from http://www.primeform.net/openpfgw or any suitable FSF mirror.
+Under Section 6c of this license (see COPYING.LIB), primeform.net hereby
+offers and guarantees that, up until at least 31 Dec 2005, the source to
+the GMP library as it is used in this product will be available by request
+from primeform.net at no more than the cost of such distribution.
+
+The "home" site for GMP is http://www.swox.com/gmp/  It will have the
+lastest available version.  NOTE OpenPFGW may not always be built with
+the latest version of GMP.
+
+For the Win32 environment, GMP is built using the MinGW libraries, built
+under the CyGWin environment.  Current MinGW can be found at
+http://www.mingw.org and CyGWin can be found at http://www.cygwin.com
+For anyone adventurous enough to rebuild the GMP dll's themselves, a
+good reference for how to do this with MinGW under CyGWin can be found
+in the GMP mailing list (http://swox.com/list-archives/gmp)  The exact
+message is http://www.swox.com/list-archives/gmp/2002-March/000434.html
+
+The prime95 (version 23) libraries are used here with the kind permission
+and assistance of Mr George Woltman. They are available in source code form
+from http://www.mersenne.org/gimps . If you use George Woltman's source code
+to find Mersenne primes, you must agree to adhere to the GIMPS prize rules
+at http://www.mersenne.org/prize.htm. Other than that restriction, you may
+use this code as you see fit.
+
+The modular Erat routines from the GFNSieve program (Erat_mod.cpp and
+Erat_Mod.h) are used with permission of Jim Fougeron.  Also included are
+the bitmap manipluation functions from the file bmap.cxx.  See comments
+contained within these source files for any additional licensing specifics.
+
+CONTACT INFORMATION
+
+For questions regarding this license, contact
+
+primeform.net
+5000 Bryan Station Road #5
+Lexington KY 40516-9505
+UNITED STATES
+
+telephone: +1 (859) 293 6707
+
+e-mail: chris_nash@prodigy.net  or  jfoug@cox.net

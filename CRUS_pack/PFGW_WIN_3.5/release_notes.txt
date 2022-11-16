@@ -1,0 +1,1199 @@
+Released as version 3.3.5   September 7, 2010
+
+Enhancements to: v3.3.5 Release
+   - Added -F option to show the chosen FFT size, but to not perform a test.
+     This option only applies to PRP tests.
+
+
+Enhancements to: v3.3.4 Release
+   - Write string "GFN testing completed" to log when GFN testing 
+     has completed.
+
+
+Enhancements to: v3.3.3 Release
+   - Built with gwnum 25.14, which addresses four issues:
+        Gwnum would lose the /d in some (k*b^n+c)/d cases.  This happened 
+        primarily in cases where the number was between 300 and 350 bits.
+        The final conversion from gwnum to binary could fail in cases
+	where generic reduction was used.  The larger the number the less
+        likely the bug would occur.
+        Zero padded FFTs of length 80 and 112 could fail.
+        More conservative in selecting an FFT length for non-base-2 cases.
+   - Reverted back to rational FFT due to the gwnum improvements.  It is
+     slightly faster than irrational FFT.
+
+
+Enhancements to: v3.3.2 Development release
+   - Rolled back changes from 3.3.1 because they resulted in memory
+     leaks in WinPFGW.  Used a different method to force display
+     of test result when using -q.
+   - Re-enabled Windows code to check memory leaks with debug builds.
+   - Added memory leak logic to WinPFGW.
+   - Fixed all known memory leaks in PFGW.  These memory leaks have
+     existed since 1.x.
+   - Fixed most of the other memory leaks in WinPFGW.  These leaks
+     occur when PFGW is terminated and not during execution of
+     PRP/primality tests.
+   - Changed documentation for -h to match functionality of PFGW.
+     -h now requires an argument.  Previously the argument was
+     optional and would default to pfgw.txt.
+
+
+Enhancements to: v3.3.1 Development release
+   - WinPFGW does not consistently update "Line in File" because it
+     is tied to a timer.  Completed tests no longer use the timer
+     to determine if the test result is to be displayed.  This leads
+     to some additional screen I/O when using input files, but it
+     will have a negligable affect on overall performance.  This
+     change removes the "kluge" that was added in 3.2.0 WRT -q and
+     composite tests.
+
+
+Enhancements to: v3.3.0 Development release
+   - The -a swith no longer supports -1 and -2 as they cause problems
+     with the gwnum library.  It now support 3, 4, and 5.
+   - PFGW will automatically switch to the next larger FFT size for a
+     test if it detects a roundoff or sumout error.  This information
+     will be displayed to the user and written to the pfgw_err.log file.
+     As a difference from previous releases, the roundoff/sumout error
+     will not be written to pfgw.log.
+   - The GFN divisibility logic had to be significantly modified to
+     support the changes for automatically adjusting the FFT size.
+   - The PFGW server (which was Windows only) is no longer built or
+     distributed as no users have expressed any interest in using it.
+
+
+Enhancements to: v3.2.7 Development release
+   - Fixed new PRIMEP script function.
+   - Fixed issue with scripts where strings would not be evaluated.
+
+
+Enhancements to: v3.2.6 Development release
+   - Fixed NewPGen file handling as it was broken by changes to 3.2.5.
+
+
+Enhancements to: v3.2.5 RC 1g
+   - Added new options for PFGW scripts.  It can now do primality
+     tests.  It will also differentiate between numbers that are
+     PRP and numbers that are prime based upon those tests.  Please
+     read scriptfileformat.txt for more information on how to
+     use these new features.  Note that old PFGW scripts might not
+     work correctly with this version of PFGW.
+   - PFGW scripts can now use forms (input as strings) for the PRP
+     test.  Previous releases handled decimal expansions only.  With
+     this release PFGW scripts can take advantage of fast modular
+     reduction.
+
+
+Enhancements to: v3.2.4 Release
+   - Fixed b^n+1 check for using fast modular reduction
+   - Some prime numbers silently fail (i.e. no errors detected)
+     when testing for primality.  To address this, PFGW will tell
+     gwnum to use an irrational FFT for all tests.
+
+
+Enhancements to: v3.2.3 RC 1f
+   - Fix an issue with -t when using an input file, PFGW would not
+     reuse bases, thus re-ordering the file would yield different
+     results.  PFGW would use different bases for each test as it
+     not reuse the same base for different numbers.
+   - Check for sumout errors during primality tests.
+   - Modified output to pfgw_err.log to match the output shown in GUI.
+   - Fixed the GUI to show reason that a test has failed.
+   - Multiply MAXDIFF by 1000 to help avoid SUMOUT errors when
+     for generic forms or when -a1 or -a2 is used.
+   - Updated to gwnum 25.13 library.
+   - Attempt to fix issue that prevents WinPFGW from showing result
+     of the test when in quick mode.
+
+
+Enhancements to: v3.2.2 RC 1e
+   - Fixed k*b^n+1 check for using fast modular reduction
+
+
+Enhancements to: v3.2.1 RC 1d
+	- Built with updated 25.12 gwnum library.
+	- Fixed ROUNDOFF error during primality test by using carefully
+	  routines during first and last 30 iterations.
+	- Verify that values do not exceed limits so that special modular
+	  arithmatic can be used.  For example k must be less than 1e53.
+	- Verify that d (of (k*b^n+c)/d) divides evenly otherwise
+	  special modular arithmatic cannot be used.
+	- Add check for SUMOUT error during primality test.
+	- Fixed a bug intorduced in 3.1 that prevented PFGW from finding
+	  Fermat factors.
+	- Renamed this file to release_notes.txt.  Removed RELNOTES.
+
+
+Enhancements to: v3.2.0 RC 1c
+	- Built with version 25.12 of gwnum.  This version of gwnum addresses
+	  SUMOUT errors that occur on some tests.
+	- Modify tray icon to show current number and its progress.
+	- Generate 64 bit residues instead of 62 bit residues.
+	- Added -N option for command line version.  When used PFGW will
+	  execute with NORMAL priority (1.2 behavior).  Without it, PFGW
+	  will execute in IDLE priority.  WinPFGW will execute in IDLE priority.
+	- Added -V option so that command line version of PFGW can output
+	  diagnostic information.
+	- Only show max round off line if MAXDIFF < 1e10 because a large MAXDIFF
+	  could wrap.
+	- When using -q in WinPFGW, ensure that the results of the test are output
+	  when the number is composite.
+	- Use special modular reduction code when PRP testing (k*b^n+/-c)/d forms.
+	- Call gwset_larger_fftlen_count instead of gwset_safety_margin as it will
+	  guarantee that gwnum will use the next larger FFT size.
+
+
+Enhancements to: v3.1.0 RC 1b
+	- Updated external version to meet intenal version.
+	- Updated to v25.11 of George Woltman's gwnum library.
+	- Use new modular reduction routines in gwnum for k*b^n+/-c forms.
+	  This is about twice as fast as prior releases when k > 1 and almost
+	  6 times as fast when k = 1 and b > 2.  GFNs already use this same
+	  modular reductino code.
+	- Removed special GFN PRP code as it is no longer necessary due to new
+     modular reduction code for k*b^n+/-c forms.
+	- Set default priority class to BELOW_NORMAL (instead of NORMAL) on
+	  Windows.
+	- Set priority to 20 (low) on *nix and MacIntel.
+	- Increased limits for factorials to 1,000,000.
+	- Increased limits for primorials to 20,000,000.
+	- Modified -r switch to act as a boolean.  Using it will force PFGW to
+     do roundoff checking for all iterations of all tests.
+	- Enhanced error checking so that PFGW can conditionally do MAXERR testing
+     on individual tests or specific iterations of tests.  In this release 
+     PFGW will do MAXERR checking on the first and last 50 itererations of
+     each test and every 128th iteration of each test.  It can test all
+     iterations of each test if the -r switch is used or if the number being
+     testing is within 2% of the limit of the chosen FFT size.  This will be
+     much more in-line with how Prime95 does MAXERR testing.
+   - GFN factoring now checks for ROUNDOFF, SUMOUT, and MAXERR conditions so
+     that it can be aborted if a problem is detected.  This means that PFGW
+     will now tell the user that they must use the -a switch when an problem
+     is detected.
+   - Add call to gwset_square_carefully_count() after creating the modulus so
+     that gwnum can use "safe" squaring on the first few iterations of PRP
+     tests or GFN factoring.  This will significantly reduce the likelihood
+     that the -a switch will be needed.
+   - Based upon George's recommendation (due to the improved error checking),
+     MAXERR is now set to 0.45 instead of 0.40.
+	- Call new gwinit2() function so that PFGW can verify that it is linked
+     against the correct version of the gwnum library and so that it can
+     verify that PFGW uses the same compiler switches that were used to build
+     gwnum.
+
+
+Enhancements to: v1.3 Release Candidate 1
+   - Updated to v25.10 of George Woltman's gwnum library
+   - Ported to MacIntel
+   - Addressed inconsistent handling of switches as some
+     require parameters, some require parameters of specific
+     values, and others have optional parameters
+   - Print leading zeros on residues so that they are always
+     16 characters
+   - Added -k for terse output, useful when running multiple
+     files through PFGW in succession
+
+
+Enhancements to: v1.2 RC1d
+   - Very long 'k' values when trying to test for [x]GF factors
+     was failing, due to the very limited parsing in the xGF
+     factor code.  This limitation has been removed, and all 
+     k's now work.
+   - Fixed long standing bug in ABC2 format for the 
+     a: in {}    If there was not a trailing space (after last
+	 item), then an invalid was being returned.
+   - Problems in the testing modes (-tc and -tp).  If a small
+     number (just over 2^31) is tested, and the -f factoring 
+	 switch is not used, then pfgw may the number as prime,
+	 even if it is not.  Within the factoring code, we had to
+	 make sure we were factoring, before claiming the number
+	 was prime by factoring.  Easy to see composites, such as
+	 pfgw -tp -q2229873912 were claimed prime.
+
+Known issues:
+  - Factoring should only be done to 30*2^32 (128.849 billion)
+  - Anything that uses the non-modular primegen should limit 
+    itself to the 30*2^32 level.  Things such as ABC2 files 
+	with the prime clause (a: primes from X to Y) must stay
+	under the 30*2^32 level.  Non-modular factoring must not
+	be pushed over this limit.  If factoring deeper is 
+	required, then two things:  1. pfgw is probably not the
+	right tool to factor deeper, 2, the modular factoring
+	code can be used, using the {2,1} clause.  That will cause
+	the mod factoror to use all primes, but still use the 
+	mod factoror.  The mod factoror is safe up to and beyond
+	60 bits (but is slower than the non-mod factoror).
+  - The non-mod primegenerator will start outputing composite
+    numbers after 2^15^2 (2^30).  For most any use in PFGW,
+	such as factoring, this is not a problem.  However, if
+	primes are "generated" for use (such as the prime claus
+	in an ABC2 file), then numbers over 2^30 are not assured
+	to be prime.
+
+20041129.*_Stable (v1.2 RC1d)  (Patches to 4th public RC)
+  - For "tiny" numbers, if the exponentation base has to change
+    (only happens when the prp base is exactly the same as the
+    number being tested), pfgw correctly outputs this.  Before,
+    there was a wrong "base" output to screen (all internal 
+    processing however, was and is correct).
+
+  - "Proth-like" had a commented out code (testing code), and
+    the size of the c value (k*2^n+-c) was not being taken into
+	account.  The max sized c that works is 41.33 bits.  Now
+	that test is back in, and things do not give bad results.
+	when c is above this, a generic reduction is used (slower,
+	but correct results).
+
+  - Enhanced PFGW to give a better indication when a user
+    tries to process a number that is too large for the
+	FFT. Prior to this change, the program might have 
+	given a message "Warning!! Did not find valid FFT!!! 
+	Please email this number to ....."   and might have
+	possibly crashed.   Now the program will tell the user
+	that "Warning!! This number is TOO large for the current
+	PFGW FFT's to handle" and will abort the test gracefully.
+
+20041020.*_Stable (v1.2 RC1c)  (Patches to third public RC)
+  - Bug found in gmp.h for NON-dll Win32 builds.  This bug
+    would cause mpz_get_ui() to fail.  The only impact this
+	bug has is that it causes the N+1 testing to frequently
+	use the "slower" large-lucas methods, even though the
+	smaller quicker ones would be used.  The results were
+	correct, but just slower.  Even though this appears to
+	be the only place this bug manifests itself, a release
+	is still being done.
+
+20041001.*_Stable (v1.2 RC1b)  (Patches to Second public RC)
+- Fixed 2 bugs in erat.c   The code was wrong on 32 bit PC's.
+  There was 2 32 bit values multiplied and assigned to a 64
+  bit value.  Well, in C, the mult is done at 32 bits (thus
+  overflow), then the assignment. Now we assign one value, then
+  mult by the other.  This showed up in the seek() function.
+  However, due to other issues, seek is ONLY valid up to 
+  2^36.9  (128849018880 max).  At this time, it looks like this
+  may be the max allowable by the primegen (note the modular 
+  erat_mod.cpp is good up to 2^64 and solid up to 2^49).
+- There were some issues caused by the primegen next() function
+  returning a uint32 (i.e. max return for primegen.next() was
+  2^32-5).  Now factoring of all areas (-f -t* -e -s, expressions 
+  using the primegen, ...) now all handle values over 2^32.  
+  Note that the primegen is only "solid" to 2^30, so pusing
+  the primegen "too" high will generate large numbers of
+  composite "candidates", i.e. factor is not too efficient,
+  as many composites will be tested, and the larger the 
+  primegen is pushed, the larger percentage of candidates will
+  be composite, useless values.  Now, there are 2 primegen.next
+  functions.  One returns values up to 2^32, the other returns
+  values up to 2^64.  The correct function will be called, 
+  based upon what "type" of data is being used by the calling
+  function (if uint32, the 32 bit, if uint64 the 64 bit is used)
+  Running this file:
+  ABC2 $a
+  a: primes from 4294967000 to 4294969000
+  really shows the problem.  The old code would put 10 primes
+  into pfgw.log, then start over at 2, and continue forward, 
+  and NEVER finish (i.e. infinite loop). The new code correctly
+  handles the data, and outputs 98 primes, and 13 composites 
+  (remember, that our primegen is only solid to 2^30)
+
+20040816.*_Stable (v1.2 RC1a)  (Patches to First public RC)
+- Fixed bug in the SCRIPT files IF statement. If there was an
+  ELSE clause in the IF statement, the original THEN condition
+  did not have trailing spaces removed.
+- There was a static variable in the testing code that might have 
+  caused round off testing to not be "checked" after a round off
+  error was detected.  Now, the round off testing is "reset" for
+  each number.
+- If a round off error was seen in testing mode, the test was not
+  being exited.  Yes, an error message was listed, but no exit
+  occured.  Now the test aborts (with a message of "unknown" for 
+  the primality, since we do not know).   The abort does not happen
+  until a screen update would take place (every 2500 bits, or 
+  whatever the -u switch specifies).
+- Added functionality to where the Error detection outputs within the 
+  exponentiation loops, are now output to a file, pfgw_err.log.  This
+  file will contain ALL of these errors, and they are pretty easy to 
+  see what happened, and when.
+- Allow the command line entered (using the -- switch) to work with numbers
+  up to 256k digits (before only 32k digits).
+- Bug fix in PFSCRIPT class.  If the factor, if there was a "min prime"
+  it was being written to the max prime within the symbol table 
+  by mistake.  Numerous other bugs in the Factorize function.  Several
+  places where is something went totally wrong (which should NOT 
+  happen), the code blindly continued forward (thus a crash would
+  have happened).
+- Some trivial changes to PFFile::ReadLine() function (trailing WS
+  not being trimmed off, and reduced buffer size)
+
+
+20040728.*_Stable (v1.2 RC1)  (First true public Release Candidate)
+- Made a few small changes to CPUID.cxx for better CPU identification.
+  Code does not impact "normal" runtime, only the -i information.
+- Updated pfgwdoc.txt to list that CHECK files "might" need to be hand
+  edited to remove the very first few junk lines.
+- Signficant testing of SSE2 and non-SSE2.  Over 15000 primes and PRP's
+  were tested (prp tested, and N^2-1 tested).  All tests passed, 100%,
+  on all (SSE2 and x86 systems).  The test databases used were:
+  PFGW's "Test" folder (after cleaning out the true composites).
+  Caldwell's Top 5000 (all stored primes submitted).
+  Henri & Renaud Lifchitz's PRP Top records.
+  Testing this were Ulrich Thiel, Greg Childres and Jim Fougeron.
+- Major update in the Linux configuration building enviroment.  Thanks to
+  Ulrich Thiel for the work.
+- Added new section D.8 in pfgwdoc.txt file, for Save/Resume *.pfr files.
+- Updated to version 23.8 Woltman FFT.  
+- Rewrote "generic" modular reduction code that creates the recip.  Code
+  modeled after PRP code for generic reduction.  NOTE problems are 
+  being seen in the -tc.  Looking again at original method (as it
+  is NOT causing this problem, but is still correctly handling 
+  other items, now that the FFT v23.8 is linked in).  This change will
+  be TAKEN out of the current stable release (and out of v1.2).   We
+  will look at implementing this change, and getting it working correctly
+  in later development versions.
+- Created a new gwtoflat2() function that adds on a multiple of N to 
+  "make sure" the gw is possitive, then does the conversion to a GMP 
+  number, then finally does a GMP modulus.  Most of this work was being
+  done in PFGW code before this change, (with the exception of adding on
+  a "multiple" of N to get a positive gw).  However, it is now all 
+  in one place.
+- The above 4 items were required to "fix" the SSE2 generic reduction
+  problem seen in the 20040708 RC0a release.   The change to the generic
+  recip code, should also fix problems that were VERY intermittant in 
+  the N+1 proving code problems.
+- Changed some crititcal FFT error messages to tell the user to "try" using -a1
+  (or -a2 if -a1 is already being used), when there critical errors abort a test
+  These errors are the SUM(IN)!=SUM(OUT),  Round off error, and ILLEGAL SUMOUT
+- Added MAXDIFF and "seen" diff (SUM(IN)!=SUM(OUT) logic) to the screen output
+  when using round off checking (-r)  This now shows up like this:
+  PRP: 86453#-1 12500/124254 mro=0.09375 sum=52036.93/102.00  
+  The above is decoded as:
+     86453#-1             The expression
+	 12500/124254         12500 out of 124254 squarings shown in output
+	 mro=0.09375          Max round off seen.
+	 sum=52036.93/102.00  Max sum allowed 52036, max "seen" 102.
+  The "Sum" checking, is a very quick check.  It is used to detect true
+  hardware errors.  However, there are some numbers that push this value
+  "high" enough, that it may appear as a problem  If that does happen,
+  then retry the number using -a1 (or -a2 if -a1 was already tried).
+- Round off checking is now FORCED on during testing.  There is no way
+  to turn off round off checking for tests.
+- For SSE2 round off checking is now ON by default.  This reduces the 
+  overall speed in SSE2 (P4) about 5 to 8%.   Using the -r- will turn
+  off this round off checking (in PRP mode only), on the SSE2.   
+- Small changes in pfgw_main to setup signal capture's earlier. Avoids
+  exits failing to call the cleanup function.
+- removed the expression parsing from the NewPGen file.  Now it simply
+  calls the Integer powm and we have also created a quick/dirty primorial
+  as that is all that was required from the expression parser.
+- Bug fix to PFString class.  Now PFString s(NULL)  and PFString s("") 
+  work the same.
+- Change to gmp_dynamic.cpp so that all "failures" jump to the bottom of the
+  function, and clean up there.  Before, each failure point (a hundred or so)
+  had inlined code to do the cleanup and return.  This saves quite a bit of 
+  code.
+- Bug fix:  pfgw -q3 -b3 -f0  would fail (any time base was divisible by 
+  the testing number was failing.  Now PFGW tries with a different base.
+- Changes made to pfgwdoc.txt warning about usage of the -f0 switch.
+- Removed all "Dev" items from pfgwdoc.txt (since they are not in the release
+  version.
+- Bug fix:  -qp(n) fails (i.e. give some composites) for p > (2^15)^2 (due to 
+  the primegen having windowed small factors up to 2^15.  Now usage of p(x)
+  will fail (with expression evaluation failure) if x is > 54400001 (which
+  generates the prime 1073741237.   Thus the p(x) will generate all primes
+  from 2 to 1073741237 inclusive and no others.
+- change the string "screen output" for really long numbers.  Now the first
+  16 char, and the last 16 chars, with 4 ....'s in the middle are shown.
+- Added to the -rm to also test gwsquare functionality.  It appears we have
+  problems in the SSE2 code!!!  This is trying to track down the problem.
+- Changed the save file signature to 1.3 (since we changed the FFT Version).
+  Now all prior save files will not be resumed.  They could have been resumed
+  in error.
+- Reduced screen output on tiny numbers.  Now the first bit line, will be 
+  shown at most once every 5 seconds (there could be 100's of numbers tested
+  within this 5 second period).  This will cut down on a lot of stderr screen
+  output (thus for these tiny numbers, improving overall throughput).
+- Added a new PFGW.ini setting.  If   HideNoFactor=true  is set under the [PFGW]
+  section, then PFGW does not print out "unused" factors from a factor intput
+  file in testing (-t -tp -tm -tc) modes. By default, all non-used factors are
+  output as warings.
+- Changed the -hfactorfile to allow: 
+   -hfactorfile    (read only one time, the first time factoring is called).
+   -Hfactorfile    (re-read each time factoring is called).
+  NOTE for almost all usages, the -h is preferable.  About the only time that
+  the -H is wanted, is if the factor file gets written to (as for instance a 
+  script file might append factors to it).  NOTE that -H will function much
+  slower in factoring, due to lots of memory allocation (and freeing), and
+  the whole file being opened, and expression parsed to get the factors out
+  of it.  Since multiple -h can exist on the command line, ANY usage of -H
+  will force all files to be re-read EACH time a factorization is called.
+
+
+---------------------------------------------------------------------------
+
+RC0_20040704
+A decision was made to cut off developement of this "source tree" for
+  PFGW, and move to it into a Release Mode.   There will be a "new"
+  development tree created.   There are LOTS of pretty large changes
+  coming in the near future, and we need a stable release prior to 
+  this.  Along with that, we have not had a true "stable" release
+  for years, and the existing 1.1 release is not very usable, and 
+  has lots of problems.
+Changed release version (in pfgw_version.h) to "stable"
+Changed all g_bForcePrint to a call to static PFFile::ForceNextLinePrint()
+Fixed some textual strings in pfgw_main.cpp (mostly in the Usage() function).
+Started to re-vamp the documentation.  
+
+dev20040617
+Change made to FFT size selection.  The "new" code added in 20040603
+  was "undone" for selection of FFT's under 1000 bits.  Very small
+  FFT's were getting spread out VERY thinly.  Also, for FFT requests
+  under 1000 bits, PFGW will not default to -a1 mode.
+Some Linux specific problems were fixed.  Nothing that would impact
+  PFGW, but mostly compiler / linker issues.
+Removed MSFlexGrid.ocx from the PFGW_ServerV2.  In it's place, the
+  grid from CodeProject (called MFCGrid) is being used.  This grid
+  is a "native" Win32 CWnd derived (i.e. no OCX needed), and is 
+  MUCH more powerful.  I will be updating PFGW_ServerV2 and PFGW
+  (and WinPFGW) to fix some bugs, and give a server admin a little
+  better control over some of the maintainance issues.
+  LOTS OF WORK still left here.  
+
+dev20040608
+Debugging code in code in gwprothreciprocal (proth-like reduction)
+  was not removed.  Thus, the GW_EMULATEASSEMBLER was being used.
+  That is the C++ FPU reduction code, and not the asm code.  That 
+  was MUCH slower.   Someone benchmarking found this.
+Smoothed out benchmarking, using high res timer, and 50x number
+  of 2-factor tests (to get enough time built up in that test to
+  register).
+
+dev20040603  (Released to OpenPFGW group on May 7, 2004)
+Fixed a bug in -t (and -tc -tm -tp) where using the -f and a 
+  small prime (larger than 2^31) could be "missed".  The number
+  was listed as "factored", but was not placed into pfgw-prime.log
+  as it should.  Now the number is listed as "prime by trial 
+  factoring" (just like it is for numbers under 2^31 which the
+  @_trivial function returns as being trivially proved prime.
+  The screen now lists "prime by trial factoring" and then
+  "1808*3^13-1 is prime!" and puts the number into pfgw-prime.log.
+Fixed a bug in -t (and -tc -tm -tp) where certain small perfect
+  powers were being called prime.  Thus, pfgw was calling numbers
+  such as 4, 9, 16, ... prime.  A number with only 1 factor (but
+  having a higher power than 1) was triggering this bug. Fix by
+  Paul Jobling.
+Found serious problems in the ProthLike (k*2^n+-c for small c and
+  n) reduction.  prothrec.asm was fixed.
+Adding a new checking mode to -r. Added -rm and -rr and -rrm.  The
+  m is for modular checking (and the r is for round off checking).
+  The modular checking is VERY slow.  It will use GMP to check
+  the squared input (mod N), and then check the result (again
+  mod N, as the reduction code does not have to get the "exact"
+  lowest reduced number, but just a number close to this lowest
+  number).  -rm is a debugging tool, and can also be used when
+  a "bad" or problem number is found. 
+There is much work on the modular reduction code, but for the 
+  time, it is put on hold (pending Georges changes to the FFT
+  base library).
+Found and hopefully fixed a long standing bug in the -a1 (or -a2)
+  and Woltman reduction code.  The program would crash under
+  certain "ranges" of numbers.  Now it seems to work.  We were
+  "limiting" how spread out the FFT could get.  Now we calculate
+  the "minimum" bit/limb, and then increase from there IF we can
+  not find the valid pattern.  This is "closer" to how it is done
+  in PRP.c (woltman prp.exe code).  THIS DOES NEED LOTS OF TESTING.
+Opened up the Woltman Proth reduction.  Now Proth reduction works
+  for k up to 2^44 when lg2(k) + bits_per_limb <= 64.  Again,
+  THIS NEEDS LOTS OF TESTING.  When running in -a1 (or -a2) mode,
+  we can not push k as far.  we reduce by 3 bites for -a1 and 6
+  bits for -a2 from the max (which is 40 bits to 44 bits, depending
+  upon the bits per limb of the FFT context)
+Major re-work on the SSE2 code.  We had not properly ported up
+  to v23 code (still using the v22 port).  Things were working 
+  somewhat OK.  However, now, we should be at the v23 level (at
+  least igwcontext.cpp/.inl/.h "should" match gwnum.c/.h much
+  closer.
+The GMP group posted a message stating that the FFT multiplies
+  have incorrect results under certain (unmentioned) conditions.
+  All GMP has been rebuilt to not use FFT's.  Now, GMP 4.1.3
+  corrects this, (and other things).  4.1.3 is now used.  It is
+  static linked in with no alloca (i386 build).  All of the .DLLs
+  available (CPU specific) are build from 4.1.3.
+
+dev20040205
+Found and fixed a long standing memory leak in the testing code.
+  This leak was in the Mihailescu factor tree code.  The tree
+  was not being freed.  The problem was the tree was partly being
+  made from other "owned" objects.  This was done a while back
+  as a bug fix which "reduced" the leak (the leak was we were not
+  deleting the full tree).  When the code to delete the tree
+  was re-added, we now had double deletes.  Once that older "fix"
+  was backed out, then the delete of the tree (in the OnCleanup
+  function) worked correctly and the leak went away.
+Fixed bug in Script file's SETS processing of \xhex values
+Added ability of script files 3 OPEN type functions to work with
+  either a literal string (as currently works), or with a string
+  variable (new functionality).  Now a script can use variable
+  file names to write files verses having to hard code all output
+  (or input) file names.
+Allow multiple factor input files (the -h's)
+In testing mode (-t -tp -tm -tc), any factor in the factor helper
+  file that is NOT used will output as a warning.
+Only load a factor helper file 1 time. In prior code, the file
+  was reran for each factorization (including all of the expression
+  parsing, ...). Now the file is simply read one time, and placed 
+  into an array of Integers.  Then this array is used for the 
+  "helper" factoring (and is cleaned up when done).
+Add a q to the -g syntax.  q will be for "quick" which will NOT
+  perform any additional exponentiation on found factors.
+Fixed memory leak (300 GCD bitmaps out of the 400, were not being deleted)
+When a single value asked for in GF or xGF mode, then do not perform
+  a preliminary test.  Simply exponenate b^2^n-30 and then square
+  from there.
+
+dev20040107
+Modified the Integer class to better compile on nonIntel systems.
+Added errorlevel return codes to pfgw.  Now if the last test done
+  is prime/prp, 0 is returned.  If the last test was composite
+  the return is 1.  If the last test was aborted (^C) then the 
+  result is 2.  If the input file can not be correctly opened, the
+  return is 3. If there was an error parsing the command line
+  the return is 4. If the last test contained some unknown error
+  in processing, then the return is 5.  NOTE options such as
+  "Deep factoring" -d may produce strange results on error
+  code returning.  Things such as pfgw -f -d -q292779498601*2381
+  will have a PRIME return code, due to the cofactor being
+  the last thing tested, and it is PRP.
+
+dev20031230
+A "time" was being output into pfgw-prime.log for certain xGF
+  factors.  This has been fixed, and no longer does this.
+Added all C/C++ printf escapes (\a \b \f \n \r \t \v \ooo \xHH
+  \XHH \' \" \? \\ to the script file's SETS syntax.  Now it
+  should work very much like C's printf.
+
+dev20031222
+Added -gx[o]#,# to allow a single xGF to be tested (similar to
+  -g[o]# allowing a single GF test.
+Removed testing of all perfect squares (4, 9, 16, ...) from being
+  tested for GF factors (only up to 10000).  Also, the xGF are
+  now only tested if gcd(a,b) is 1 AND a and b are both not
+  perfect squares.   These constrainst were put on the expressions
+  being tested for, to remove "trivial" factors.  Note that odd
+  perfects powers (8, 27, ...) are tested for GF divisibility.
+  The exception, is GF(??,8) is not tested for, if the number
+  is found to be a Fermat Factor.
+Added a new appended string to the -g argument.  This string
+  is "_dump_search_patterns".  If this string is appended, 
+  then PFGW will dump out the F/GF/xGF's being tested (along
+  with a count). So -gx{2,23}{2,1000}_dump_search_patterns
+  will list that all 19366 possible valid, non-trivial 
+  xGF/GF/F expressions being tested.
+Updated pfgwdoc.txt with the above information about xGF/GF/F tests.
+Loading of cygwin built GMP DLL is NOT done any more (on Win32 builds).
+  Now, only the MinGW built GMP DLL's are loaded.  Loading the 
+  Cygwin built DLL had problems. Screen output was NOT being
+  performed.  Since PFGW links some MinGW built libs, loading the
+  Cygwin built DLL's was causing some form of low level interface
+  interference, and the result was screen IO was missing.  Now
+  ONLY libgmp-3.dll is loaded.   NOTE that the linked in GMP
+  does NOT use alloca, so checking for and loading of 
+  libgmp-3-na.dll is NOT being performed any more.
+
+dev20031121
+Fixed a long standing memory leak.  Leak caused by multiple
+  prime generators being allocated.  The second was in
+  PFSamplerSymbol.  Now this class simply uses the global
+  prime generator (which is should have done anyway).
+Better "incremental" screen output for GF factorize
+Added new command line switch -u#  This will set the "screen
+  update interval (or shut it off totally).  A command of -u0
+  will eliminate ALL intermediate screen updating.
+Recompiled GMP.  Now the non-alloca i386 build is linked 
+  statically to PFGW.  This will eliminate the probems seen
+  with "too large" numbers in the expression parser, and in
+  the trial factoring sections.
+Fixed bug in scriptfile writing function. The function now
+  flushes the file after every write command.
+Fixed bug in factoring code, where VERY large factoring ranges
+  (especially modular) were showing VERY few steps.  There
+  was trucation problems, taking the number of steps and putting
+  them into a uint32.  Now, that value is placed into a double, 
+  then a modular division is done, then it is converted to 
+  a uint32.  However, the same "bug" will show up if trying
+  to factor a range where there actually is more than 2^32
+  primes.
+Added != to expression parser
+Added && and || to parser syntax.  The AND and OR were already
+  there (case was and is sensitive).  
+The && and || (and AND and OR) were broken.  They had precedence
+  the same as the (  (start of group char).   Then things like
+  (2 && 3)  would have problems since it was partially parsed 
+  as ( 2 && 3 )   and partially parsed as ( 2 ( 3 )   Precedence
+  of ( lowered to -10.  Precedence of ) lowered to -20.  Also, 
+  || and && have different precedence.  || is less than &&, so
+  2 || 3 && 4  gets parsed like 2 || (3 && 4)
+Changed != and == to be lower precedence than >= <= > and <  This
+  follows along with C++ prec rules.
+Fixed memory leak in expr.cpp in factorial and primorial 
+  expression parser.
+Allow multi-factorials to work with LARGE values.  Now things
+  such as (2^137-1)!(2^127-1)-1 will work just fine.
+Better fix for MSDOS problems under Linux.  Now PFSimpleFile::
+  GetNextLine() strips out trailing \r\n chars correctly.  Now
+  all other places in all file methods have had ANY dependencies
+  on lines ending in \r or \n have been removed. 
+  
+
+dev20031031
+Bug found in processing MSDOS input files under Linux.  We
+  put a temp bandaid on the bullet hole for now. We need
+  to re-address this issue, and probably re-work how
+  PFSimpleFile::ReadLine() works  (this bandaid was placed
+  in PFSimpleFile::GetNextLine() which calls ReadLine).  The
+  correct fix will be MUCH more intrucive, and will hit about
+  every file input class.
+The IF statement parsing logic in the script file was too
+  loose.  Things such as IFTHISISPOSSIBLE would have easily
+  been "seen" as IF.  Now, only 'IF' 'iF' 'If' 'if' are valid
+Fixed the timer problems seen under Linux (timings were negative
+  and had other problems).
+
+dev20031027
+Performace bug found (still gave correct results, just ran at
+  about 150% of the time required by older versions).  This 
+  bug affected "generic" reduction in P4 units only.
+Fixed CRASH bug in SSE2 testing code.  Numbers under about
+  500 bits would crash (if testing a file of more than 1).
+  Something in the FFT lib is not allocating all of the 
+  "normal" memory, and thus, when PFGW tried to clean up
+  from the first number, the memory was in a bad state, and
+  crashed.   Now, for ALL testing, numbers under 600 bits
+  get SSE2 turned off.  The PRP code was already done this
+  way a long time ago.  In SSE2, all numbers under 2^800 
+  were done using GMP only (no Woltman FFT code at all). 
+  This was done as a speed improvement, but it looks
+  like it also kept things from crashing.   NOTE there
+  may be other places (the special Phi testing) where SSE2 
+  might need to be disabled.
+Fixed a "restart" bug.  The .ini file was not being updated
+  all the time, and frequently the number just finished
+  was retested (if a HARD abort such as power failure) and
+  tested upon resume.   The fix IS NOT the best fix in the
+  world, but it is there, and working.  It is time that the
+  save/restore/resume for ALL file types and the PFIni class
+  get thier 3000 mile oil change.  However, for now, this
+  fix gets the job done (in PRP stages).  NOTE the fix only
+  is used for numbers over 2^50000, so that small numbers 
+  are not impacted on speed (the .ini saving is not the
+  quickest thing, as the whole file is saved, and it is 
+  read from the internal templatized string lists).
+Resume file (the *.prz) will NOT work from prior versions.
+
+dev20031021
+Fixed some bugs in Scriptfile (Factorize).  Added more 
+  functionality to SETS (escape char \ including \n, %% workging
+  correctly, and simply the entire function rewritten). Also
+  several places where expressions "could" exist, but were 
+  forcing integer variables, now allow expressions or vars.
+  Script parsing of commands is quicker.  A switch on the first
+  char of the command is done, then many fewer strcmp's are
+  needed (usually, and sometimes even no strcmps). Lots of other
+  little fixes in script file processing.
+ABCZ file was not resuming correctly.
+Some trivalily factored primes were not being reported in 
+  the "testing" modes.
+In resume mode, the "crc" of the number is not performed, a 
+  simple string compare is now used.
+
+dev20031017
+Added && and || to syntax. AND and OR were already there (case
+  sensitive).  Also changed "meaning" of AND and OR to be 
+  C/C++ like.  Before these operators ONLY worked correctly if
+  both values were either both 0, both 1 or one 1 and one 0.
+  Now they work based upon val==0 and val!=0 logic, same as in C.
+Script file was outputing to stderr.  This has been changed to
+  stdout (normal output).
+Updated ScriptFileFormat.txt
+Updated to work with Scriptify.pl 0.7
+
+dev20031016
+Fixed "bug" in command line parsing where -e and -s (and any other
+  integer value) would max out at 2^31-1.  Now these are 64 bit
+  values.  NOTE that they are really maxed out at 2^48 within 
+  the f_factor.cpp class.  NOTE I have investigate NO other 
+  issues due to this expansion from atoi() to _atoui() processing.
+  NOTE that -e and -s are able to go higher than 2^31, however
+  there are still problems, The project to do this has been 
+  started, but it is NOT complete. At this time, do not try
+  to use -e or -s larger than 2^31
+Added FAcTORIZE to PFScriptFile.  
+Added POWMOD to PFScriptFile
+Scriptify updated significantly.
+Script files would NOT exit on ^C  Now they do.
+
+dev20031004
+Added Gosub and return [n] to the syntax of PFScriptFile
+Added StrToInt nvar,svar to the syntax of PFScriptFile
+PFScriptFile labels and var names now can be alphanumeric and the '_'
+  char. The first character of labels or vars must not be a number
+  however.
+Phil created a new program "scriptify.0.3.pl" which is a perl script 
+  that "compiles" a kinda-like-c++ source file into a (hopefully) 
+  working script.
+
+dev20030811 (Beta)
+PFGWServerV2 should again work.  There was some "testing" logic that
+  should not have made it to production (yet) which was being included.
+PaulJ fixed a couple of problems in the NewPGen handler (Lucky-1 and
+  consecutive AP's for odd bases)
+Paul also fixed testing code so small (numbers under 2^31) which are
+  trivially factored prime, are added to pfgw-prime.log in the -t[cmp]
+  mode.
+
+dev20030702 (Beta)
+Fixed crash in WinPFGW on multiple runs without exiting.  The PFGW
+  core was not cleaning itself up fully.
+When WinPFGW exits (using the ESC key, or the X button), Network2 
+  is now shut down correctly.
+
+dev20030613 (Beta)  (Sorry, a Friday the 13th release ;)
+Fixed a bug in the {number_primes,$?,#} code.  If there were muliple 
+  expressions being processed, then pfgw would lock up (not crash, but
+  lock in an infinite loop) the first time a prime was found.  Now the
+  "checking" code will only stop the processing of the first candidate
+  per line (which of course stops the whole line from processing).
+
+dev20030604 (Beta)
+Added PrZ file format (highly bit compressed ABCD type file).  This file
+  format allows a MUCH BETTER compression than PKzip/ABC2/RAR/LHA formats
+  (by 10 to 25% better!), and pfgw cap process the compressed file in its
+  native format (vs having to uncompress a file compressed with PkZip or
+  other generic compressors).  This format is still being designed, so this
+  will change before a "final" format release.
+Added ABC comment to stop processing after finding x number of primes (per
+  a given $?).  This can be used to find the first x primes (or composites)
+  for each 2^n+1 10^n+1, ...
+Modified the ABC2 format to allow:
+  a: from 1000 downto -50000000 [step -#]
+  instead of just from 1000 to 500000 type syntax (i.e. walk backwards format).
+
+dev20030425 (Alpha)
+Woltman v22.13 library added (xmult1ax.obj was only change). HOWEVER, this
+  did fix the -tp and -tc testing code using SSE2, so that has been
+  re-enabled in this version.
+PFGW is once again "Open".  It is again buildable under Linux, and soon may
+  be buildable with Cygwin and MinGW32.
+Testing mode "force" to larger FFT was not working quite as I had hoped. Now
+  the "testing" mode defaults to FFT sizes that are the SAME as prp tesing
+  under -a1.  When tesing, if a -a-1 is used, then this "loosening" of the
+  FFT size is not done.
+-a-1 was broken, and now fixed.
+Significant cleanup of ALL code.  Trying to eliminate as many warnings as
+  possible (and the unix port showed MANY more warnings).  Most have been
+  cleaned up.  However, -pendantic and -Weffc++ switches have been removed
+  for now (from unix builds).
+Added -f0 which forces PFGW to do NO factoring, not even trivial division
+  when the number is under 2^31, which PFGW had always done before.
+Reduced screen output for GF factorization.  Improved throughput of smaller
+  GF number testing by several orders of magnitude.
+Changed GMP/Woltman switchover point to depend upon SSE2 code or non-SSE2.
+  Old code simply rolled from GMP to Woltman at 2^800.  The new code switches
+  from GMP to Woltman at 2^650 if non-SSE2 and at 2^800 for SSE2.
+A new "Hi-res" timer class has been built. This allows much more consistant
+  (and accurate) timing work.
+There are now 2 times listed.  The "first" time is the PRP used time.  The 
+  "second" time shows the "other" time overhead used.
+PFGW_ServerV2 GREATLY improved.  Still more work to be done, but it is running
+  MUCH better now.  Also greatly improved the NETWORK2 file format processing
+  in PFGW (WinPFGW).
+Fixed memory leaks in ABCD "concatenated" file processing code.  It worked 
+  before, but memory leaked terribly.
+Allow 200 & and | expressions in ABC type files (up from only 20).  Also,
+  PFGW used to abort with a cryptic message if there were too many expressions
+  in an ABC* file.  Now it tells you there are too many.
+Fixed several bugs in the PFIini class (multi-thread related)
+Sped up primorial building (and to a small extent sped up multi-primorial 
+  building)
+
+WinPFGW Version 1.28   (based on dev_20030425)
+Tray Icon (and system memu icon) changes color depending up what WinPFGW is
+  doing (idle, working, done working).
+When WinPFGW completes working, it will FLASH the icon between yellow and
+  red, alerting the user that the program is idle.  This is NOT done on 
+  NETWORK2 mode when the server has no work.  In that case WinPFGW is 
+  "still" working, it is simply sleeping a while before re-contacting 
+  the server for more work.
+
+
+dev20030202 (Alpha)
+Enhancements to tcpip code for NETWORK2 file type, and improvements made to
+        the PFGW_ServerV2 project code.
+Changed the SCRIPT file's SHELL command to not use "system()" call, but to
+        use CreateProcess().  This allows apps to be started "hidden", if
+        they are a GUI app without a Window (i.e. the GUI build of ECM-4C
+        is this way, designed to be used as a "robot" application).
+
+dev20030115 (Alpha)
+Added a -f0 switch that turns off ALL factoring (including trivial division)
+Reverted back to NOT using SSE2 logic for -tp or -tc, since it FAILS miserably.
+        SSE2 is used for -t or -tm
+
+dev20030108 (Alpha)
+Fixed Trial factoring benchmarks.
+Modifyed the SUMINP!=SUMOUT logic (as per GeorgeW suggestion).  The logic
+        has been relaxed, and is not as strict.  The code was designed for
+        large Mersenne squaring only, and PFGW performs much more math
+        logic, and hence we were getting some spurious SUMINP!=SUMOUT
+        errors from time to time that were NOT hardware errors. It is now
+        only 1/4'th as "strict" as it was.  This should still miss very
+        very few true hardware errors, but will now not false alarm like
+        it has been doing from time to time.
+Fixed the factoring estimated max counter (i.e the Y of x/Y on the screen).
+Fixed (well it's beter) factoring estimate max counter for modular factoring.
+Adjusted depth of factoring when factoring beyond 2^31.  The factoring code
+        above this level is 6x slower.  The code has been "tuned" to try to
+        get numbers of the same "size" to factor (by default 100% level) for
+        the same amount of seconds, regardless of whether "normal" factoring
+        or modular factoring is used.  What this boils down to is modular
+        factoring with a large mod factor will not push nearly as high
+        by default as before, but the time used has been "normalized"
+
+dev20030107 (Alpha)
+Changed behavior of Unary minus.  Now Unary minus is treated (internally)
+        similar to 0-c (instead of -c).  This fixes problems such as -10^2
+        which was being incorrectly treated as (-10)^2 and now is treated
+        like 0-10^2.  So far, other expressions do seem to handle this
+        logic change correctly, but because of the possible severity of
+        this change, the program has been demoted into an ALPHA release
+        status.
+-tc -tp -t -tm now behave as though in -a1 mode by default.  This was done
+        to provide more stability to the testing code, but it does slow the
+        tests down a little.
+Fixed possible crash in WinPFGW due to buffer overflow on some screen output
+Phi(x,1) should now work.
+
+dev20021217 (Beta)
+Fix in NewPGen for primorials
+WinPFGW was linking in incorrect woltman .obj files
+SSE2 code re-enabled for "testing" numbers (-tc -t -tp -tm)
+
+dev20021116 (Beta)
+Added Phils changes to speed up PFString
+Increased ABC* line length to 60000
+
+dev20021101 (Beta)
+Added a modular +-1 mode (before there was +1 or -1 but not both)
+The Woltman libs look MUCH better, so the release has been upgraded
+      to a Beta and will be posted to the primeform section.
+Added "extended" GFN logic (was done before this release, but not documented)
+Some NewPGen fixes from Paul.
+Fixed a bug in the ABC2 format where primes from 3 to x would generate primes
+       from 2 to x (2 being tossed in extra when it should have not been there)
+
+dev20020822 (Alpha)
+There were problems in the initial 2 implementations of 
+      the Woltman libs with SSE2 (P4) support.  This version
+	  contains a new version of the lib, which seems to work
+	  much better (Version 22.7 from July 23)
+Faster "restart" processing in the ABCD files.
+
+dev20020515 (Beta)
+Re-enabled save/restore code. NOTE that this code is NOT 
+      functional for numbers smaller than 2^50000. This code
+      is almost identical to the original working save/restore
+      code.
+
+dev20020505 (Beta)
+Problems found in working with HUGE numbers (100's of thousands 
+      of digits) with the default GMP build.  Now there is a 
+      "second" build of the GMP dll's.  This build does not 
+      use alloca.  It is slower, but does not have size 
+      limitations.
+
+dev20020417 (Beta)
+Newer ScriptFile code inadvertenly left out of 20020404 version
+WinPFGW now has a help/contents dialog (simply displays / prints
+      the "core" PFGW help / licensing files.
+NewPGenFile code updated by Paul Jobling.  Added support for
+      non-generalized chains, primo-proths, non-primorial 3 and
+      4-tuples,  SG of the form k.b^n+1, 2k.b^n+3.  Numerous
+      other problems fixed.  Max allowable k, b and n's increased
+      from about 2^53 to about 2^64.
+Code promoted to Beta level.
+
+dev20020404 (Alpha)
+Elimintate SSE2 code for -tp and -tc work.  Something is 
+      not right with that code, and needs fixed. For now,
+      simply run using the slower non-SSE2 code for these
+      two tests.
+Added a new file type.  This type can read a pfgw -l  pfgw.out
+      file.  It is called PFCheckFile and is used to validate
+      compostites (and PRP's).  Used in PRP mode (not testing
+      mode), since test mode does not compute mod 2^62 residues.
+
+dev20020327 (!EXPERIMENTAL ALPHA!)
+Working with Woltman lib version 22.  This includes Pentium4
+      SSE2 code.  This is a MAJOR change.  Probably time for
+      a PFGW 2.0 release (or at least a 1.2).  Note as with
+      any change to the context's or FFT code, this needs a
+      very STRONG testing.  The SSE2 FFT's have different
+      breakpoints than the non-SSE2.   I have built a FFT
+      break point "viewer" app based on the table in mult.asm
+      in the v22 code.  We need to look long and hard to make
+      sure we have the breaks where they need to be.
+Modifications to the -m benchmark test code.
+Modifications to the -z optimization code.
+Tentatively calling this version:
+      "Version (alpha) 1.2 (dev_20020327)" (whadaya think Chris?)
+
+
+dev20020317 (beta)
+The static linked GMP was not connecting to all functions. In
+      testing mode (-t -tp -tc) this was causing PFGW to crash
+      if the libgmp-3.dll file was not being used. These GMP
+      functions were not correctly being attached to:
+      mpz_addmul_ui, mpz_and, mpz_fdiv_r_ui (used by pseudo
+      function mpz_mod_ui), mpz_inp_raw, mpz_ior, mpz_out_raw,
+      mpz_out_str, mpz_cmp (the lack of mpz_cmp was causing the
+      crash in the -t mode), mpz_getlimbn and mpz_size.
+      Also, mpz_com was being linked to even though it is not
+      used by PFGW.  It's linkage was removed.  NOTE that even
+      though there was a large list of missing functions, it
+      is possible that many of these were not being used
+      (dead code in the source).  However, these are all of
+      the mpz_* functions (found with grep) contained in the
+      source and headers of OpenPFGW, so linkage of all of
+      them should resolve all possible "function not available"
+      problems.
+
+dev20020316 (beta)
+ABCD file format.  This is basically the ABC format, but it is
+      compressed by each line only being the DELTA from the
+      previous line.  Also ABCD end of lines should be in
+      the UNIX format of only a \n and not the DOS format of
+      \r\n (not required, but it does cut down on file size)
+      See the ABCFileFormats.txt file for a complete description
+      of this format.  NOTE this format is dependendent upon
+      "sieve" programs outputing to this format.  Currently
+      none do, but APSieve and FermFact soon will.  Also,
+      there will soon be a conversion tool which will convert
+      to and from ABCD from ABC (apsieve and fermfact output)
+      and from some formats of NewPGen.
+ABC file format no longer stop processing if there is a blank
+      line
+Files now process the last line of the file if the last line
+      does not contain a \n character.
+ABCFileFormats.txt and pfgwdoc.txt files updated listing the
+      ABCD format.  LICENSE.pfgw updated to list GMP home web
+      site, MinGW and CyGWin home web site
+
+dev20020311 (alpha) News was out of date.
+Converted all split out projects into a single project .zip file
+      This should easy "source" installing as now everything 
+      gets put into its "proper" location.   
+Size of ABC and ABC2 variables increased from 1k to 16k
+GMP 4.0.1 included in Win32 build. Static link of i386 build
+GMP 4.0.1 dynamic DLL loading if libgmp-3.dll or cyggmp-3.dll
+      file is found.  Now a tuned GMP dll can be run under
+      a Windows environment without having to rebuild PFGW.
+GMP 4.0.1 used to exponentiate (in non-DWT PRP mode) all 
+      numbers less than 2^800.  No longer using the Woltman
+      FFT logic for these little numbers.  A properly tuned
+      GMP dll (tuned to the CPU) will process faster than 
+      the Woltman FFTs on numbers of these size. For the 
+      smaller numbersin this range, GMP is often 10 to 100
+      times faster.
+Custom GMP allocation functions no longer being used. There
+      were too many issues in addressing the switching from
+      the static linked to dynamic linked GMP, so this code
+      was simply dropped.  It was unused anyway (except for
+      debugging to track amount of mallocs being called).
+GMP 4.0.1 now compiled with alloca support (in the static
+      linked version).  This is at least twice as fast as 
+      the non-alloca version.
+New GPL for GMP 4.0.1
+Added a NETWORK2 file format. (See network2file.txt).  This
+      format is still under construction.  This version only
+      available under Win32.
+Added a SCRIPTFILE format. MichaelB should document this.
+Added zLib.dll dynamic loading and usage in NETWORK2 file.
+Removed save/restore code added in 08/28 version. Code is still
+      there, it simply will not be called.  Getting this back
+      into production is high on the TODO list.  When this is
+      re-implemented, there will be no save/restore for values
+      less than 2^50000, it is simply not cost effective to 
+      save/restore and have to check for the save files.
+Factoring now up to 2^48 (increased from 2^31)
+Gapper.exe logic added to PFGW.  Accessed with -gap=#  See 
+      pfgwdoc.txt for details.
+Fixed some "multiple run" memory leaks which could show up
+      when using WinPFGW (since it can run PFGW code multiple
+      times without exiting).
+Fixed some problems in processing NewPGen files (BiTwins), but
+      PaulJ may mess this up by changing his first line logic.
+      Paul has offered to take over maintance of the
+      PFNewPGenFile.cpp/.h, and I will hold him to that ;)
+Added operator ! to the PFGW syntax.  This is most useful in
+      the SCRIPT file (I believe), but it can be used as a
+      prefix operator on most any sub expression.
+Chaned the IF() function logic.  Now IF() returns false if the
+      expression is Zero (0) and returns true for any other 
+      value.  This is more 'C' like.  Before, the function 
+      would return false for expression of 0, true for 
+      expression of 1 and fail for any other expression.
+There is now an "int" symbol type. I am not sure about this.
+      Michael or Chris, can you comment on this.
+WinPFGW, several changes.
+      - Only one instance of WinPFGW can run at a time in a single
+        directory. If already running and another instance is run,
+        then the first instance is simply brought to the forground.
+      - Current working dir is set to whereeve the .exe is running
+        from.  This is need for autostarting under Win95.
+      - The "Hide" function enabled.  Hide simply removes the 
+        tray icon, and when minimize is selected, it hides the
+        window.
+      - Options saved to the .ini file.  Some options were not 
+        being correctly saved.
+      - If in "auto-minimize" mode, the minimization will happen
+        whether WinPFGW is "running" or not.
+
+dev20010828 (alpha)
+Split up pfgw_main.cpp into pfgw_main.cpp, globals.h, bench.cpp, 
+      gf_factorize.cpp, gfn_prp.cpp, gw_prp.cpp, phi_prp.cpp
+Added Save/Restore code to gw_prp, gfn_prp and phi2_prp.
+Fixed There is a factoring bug in -j code.  -f -j2515574 fails to
+      find factor 20124593 even though the modular erat finds it
+      and it is added to the accumulator (or appears to be added).
+      Found and fixed.  We were creating our "little" context 
+      wrong, and the new code which reduced the number of bits 
+      used worked against us. Instead of a (32,23) fft we were
+      getting a (32,21) fft, but then were using it as though
+      it was a (32,23).  Round off bad time.
+Added 64 bit conversions to the Integer class.
+Added a true gwtoflat function to the GFN DWT fft's
+Added correct check for PRP or non-PRP for GFN DWT
+Added correct 62 bit residue for GFN DWT
+Added ^C checking and aborting code to the -j function
+Optimized and simplified the finalReduce functions.
+
+dev20010818 (beta)
+Fixed the -tc -q69^8+8^69 bug reported by GregC.  Context size bug
+Fixed memory leaks in GFN division code, and ABC2 parsing.
+Fixed modular factoring.
+Fixed a bug in the ABC2 a: in {} where there needed to be a space
+      before the closing brace.  Now it works with or without a 
+      space preceeding the brace.
+Fixed default -g from  -g{2,19}{2,250} to -g{2,5}{2,12}
+Added 2 new conditions to modular factoring.  {f,n} will add all
+      factors of n as "exceptions" to be processed first. {p,n}
+      adds ALL primes >= n as exceptions to be handled first.
+Added modular factoring to ABC files also.  (actually the modular
+      code has been moved to the ABC base class).
+Added Expressions to the ABC(2) file modular factoring strings.
+Added len(n[,base]) function to the parser. This is the length of n
+      in base b where base defaults to 10.  So len(12345) is 5 while 
+      len(12345,2) is 14
+Enhanced the r(n) function.  Now instead of just repunit, it can
+      repeat ANY expression pattern.  r(19) is 1111111111111111111
+      as it was before, but so is r(19,1).  r(4,53) is 53535353
+      while r(3,2^8+1) is 257257257
+
+dev20010727 (alpha)
+Changed significant code cleanup in the Integer class.  Using the
+     "machine independent" types instead of long's.
+Added modular factoring accessible through command line, ABC2
+      files and for the -j Phi(b,2) factoring.
+Fixed several small memory leaks.
+Added generalized Lucas sequences and their primitive parts.
+Added linear function
+Added Newman-Shanks-Williams numbers.
+
+dev20010701
+Added Sm(c[,s]) and Smr(c[,s]) Smarandache numbers to the parser
+Changed output iteration count to 2500 and 25000 while factoring
+
+dev20010627
+Changed output iteration count from 10000 to 1000
+Changed method for creation of FFT's to try to create FFT's with fewer
+        bits used per each FFT element.
+Changed -a1 and -a2 logic to choose larger "sized" FFT's.
+Added -a-1 and -a-2 (dangerous code, use with CAUTION)
+Added -j# which will test Phi(#,2) using DWT FFT logic (6x faster)
+Added -r round off checking (and other error detection code)
+
+dev20010611
+Added the true k*2^n+-1 proth reduction code from PRP. (5-15% speedup)
+Added testing mode to the progress indicator
+Added Generalized Fermat factor test
+Fixed bug when finding primes between 2^16 and 2^32
+Experimental Generalized Fermat optimizations
+Fermat factor testing code
+String substitution available in ABC files
+If function added
+
+Version 1.1 - 20010511
+=====================
+Checked for missing linebreak at end of ABC2 file
+Added accelerated digit-reading
+Added Fibonacci and Lucas 'full' functions
+Added the combined testing mode -tc
+Fixed ini file cache bug
+Added network support for Win32
+added progress indication to BLS, fixed memory leaks
+Allow comment in first line of ABC files
+Fix of ABC for multiple primes
+Added support for -a composite verification
+Better restarting fixes on abnormal termination
+Added quick ctrl-C exit
+Added -x extended BLS support
+Fixed continuations over variable a
+Ini files added
+accelerated multifactorial and binomial
+Added new gcd and binomials
+Increased simple factorial speed
+Changed ABC variable character, added loop, select, prime syntaxes
+fixes for newpgen file parsing
+Added new ABC files
+patch of lockup bug
+Added nice flag and unity special case
+Added the new prime generator
+added ctrl-C detection
+file handling improvements
+Added cutoff to trivial factoring
+allow 42 bit c in k.2^n+-c code
+Added -od flag for decimal outout
+factor percentage feature
+factor range bugs fixed
+new output file added
+
+Version 1.0 - 20001129
+=====================
+Auto-choose N-1 base
+Added optimized small multiplies
+more modulo and division functions
+Accelerated repeated factors in all modes
+new file handling code
+Stopped deep factoring when a helper file is in place
+Added Lucas and Fibonacci primitive parts
+Added output of factorizations
+Benchmark code
+N+1 mode
+Added prime logging, trivial factoring
+Updated factoring progress indicator
+k.2^n+-c optimizations
+Added progress indicator
+Added online help for -t and -h
+Added version label and usage information
+Added small integer optimizations
+Windows builds begin
+
+OpenPFGW officially launched - 20001101
+======================================
+N-1 mode
+Added -t flag
+optimized GW changes (prp/pfgw extensions)
+Added base switch
+Added cyclotomic number, repunit, and fibonacci
+switched to prime95 and GMP based libraries
+BeOS and Linux builds begin

@@ -1,0 +1,340 @@
+PrimeForm/GW File format documentation version (alpha) 1.2.dev.1.0
+  updated to PFGW v1.2 Release (January 30, 2005)
+
+Synapsis:
+
+There are 3 file formats listed in this document.  The ABC, the ABCD and the
+ABC2 format.  ABC is a siever output format, ABCD is a "compressed" version
+of the ABC format, and ABC2 is a non-sieved "iterative" format.
+
+****************************************************************************
+
+File References:
+
+Information common to all three file types:
+
+The current maximum line length for an ABC, ABCD or ABC2 file is just under
+16k. That is also the max size for any variable (whether a first line var,
+or a var on the subsequent lines).
+
+A comment is allowed on the first line.  A standard PFGW comment is a set of
+slashes: //
+Those slash characters and everything else to the end of the line is ignored
+by PFGW, with the exception of a modular factoring command. This is entered
+in the comment of an ABC, ABCD or  ABC2 file.  See the -f command syntax in
+pfgwdoc.txt. Note the difference is in an ABC(D)(2) file, the -f syntax can
+also use expressions. Also note, when a ABC(D)(2) file has a -f in the
+comment, then simply use the "plain" old -f switch on the command line.
+The command line version does not need the modular syntax, since modular
+syntax will be generated for each line in the ABC(2) file, with any ABC
+variables ($a $b, ...) filled in.   
+
+A "new" addition to the comment syntax in the ABC/ABC2/ABCD/PrZ format
+specification is:   // {number_primes,$var,#} or // {number_comps,$var,#}
+These will stop processing "matching" $var when $var is a prime.  For example
+ABC $a*2^$b+1 // {number_primes,$b,1}
+3 92
+7 90
+7 92
+9 90
+13 92
+19 90
+21 92
+27 92
+39 90
+
+would process 3*2^92+1, 7*2^90+1, then 7*2^92+1.  At that point, 7*2^92+1
+would be found PRP.  Because of the {number_primes,$b,1} is satisfied (the
+first prime found), ALL remaining $a*2^92+1 would NOT be processed (or any
+value where $b was 92).  Thus $a == 13, 21, 27 would not be tested for 
+$a*2^92+1 (even though 27*2^92+1 is prime).  
+
+
+
+** NOTE The & and | multiple expression syntax is the same for all formats,
+but is only explained in the ABC format.
+
+
+****************************************
+* A standard ABC file has this format: *
+****************************************
+
+ABC expression
+a-value b-value c-value ..
+a-value b-value c-value ..
+a-value b-value c-value ..
+.
+.
+
+The expression is a standard PFGW expression, but at any point you may put
+a $ and then a letter and the value given in the list below will be
+substituted in.  eg.
+
+ABC $a*$b^$c+1
+1 2 5000
+1079 2 4567
+2842 3 3210
+
+you may also specify more than 1 expression to be tested (up to 20
+expressions may be tested simultaneously):
+
+ABC $a*$b^$c+1 | $a*$b^$c-1
+1 2 5000
+1079 2 4567
+2842 3 3210
+612 2 4321
+
+you can also search for an expression only if all the previous expressions
+were prime (again a chain of up to 20 expressions (now 250 expressions) may be tested):
+
+ABC $a*$b^$c+1 & $a*$b^$c-1
+1 2 5000
+1079 2 4567
+2842 3 3210
+612 2 4321
+48207 2 400
+
+It is possible to combine | and &, though behaviour might be slightly
+unpredictable.  For example: $a*2^$b-1 | $a*2^($b+1)+1 & $a*2^$b+1 will
+search for twins or Cunningham Chains.  This will test the first valie.
+IFF the first number is PRP, then BOTH of the others will be tested.
+If the first number is not PRP, then neither of the remaining two are
+tested (as neither a twin nor a CC can be present).
+
+****************************************
+* A standard ABC file has this format: * (only in PFGW after March 16, 2002)
+****************************************
+
+ABCD expression [a0-value b0-value c0-value ...]
+a-value-delta b-value-delta c-value-delta ..
+a-value-delta b-value-delta c-value-delta ..
+a-value-delta b-value-delta c-value-delta ..
+
+
+An ABCD file is very similar to an ABC file, but "Delta's" are used
+
+
+Here is are identical ABC vs ABCD files  (note not a good usage of ABCD)
+
+ABC $a*$b^$c+1
+1 2 5000
+1079 2 4567
+2842 3 3210
+
+ABCD $a*$b^$c+1 [1 2 5000]
+1078 0 -433
+1763 1 -1357
+
+Here is another identical example that shows the benefit of the ABCD format
+
+ABC $a.997#+-1 & $a.997#+1 // APSieveV1 Sieved to: 24641479
+500010
+500011
+500017
+500019
+500024
+500044
+500052
+500055
+500067
+500068
+500072
+500074
+500078
+500082
+500084
+500094
+500095
+500096
+500098
+500102
+
+ABCD $a.997#+-1 & $a.997#+1 [500010] // APSieveV2 Sieved to: 24641479
+1
+6
+2
+5
+20
+8
+3
+12
+1
+4
+2
+4
+4
+2
+10
+1
+1
+2
+4
+
+Within the ABCD format, the difference on the first line is the insertion
+of the [$a $b ...] information from the first line of the ABC file, and
+on subsquent lines, only the delta of the accumulation is written.  In
+the ABCD format, blank lines are ignored, and it is valid to append
+ABCD files togther (or to have a siever output "headers" to switch
+processing).  Here is an example
+
+NewPGen like FermFact output.
+
+274877906951:P:0:2:1
+20755 35460
+20755 35468
+20755 35482
+20755 35486
+20757 35259
+20757 35262
+20757 35274
+20757 35275
+20757 35279
+20757 35303
+20757 35307
+20757 35334
+20757 35339
+20757 35360
+20757 35370
+20757 35372
+20757 35406
+20757 35415
+20757 35419
+20757 35438
+20757 35444
+20757 35448
+20757 35450
+20757 35451
+20757 35474
+20757 35475
+20757 35490
+20757 35499
+20759 35263
+20759 35265
+20759 35269
+
+A First run FermFact using ABCD format
+
+ABCD $a*2^$b+1 [20755 35460]
+0 8
+0 14
+0 4
+2 -227
+0 3
+0 12
+0 1
+0 4
+0 24
+0 4
+0 27
+0 5
+0 21
+0 10
+0 2
+0 34
+0 9
+0 4
+0 19
+0 6
+0 4
+0 2
+0 1
+0 23
+0 1
+0 15
+0 9
+2 -236
+0 2
+0 4
+
+A second method, with "multiple" ABCD signature lines (still identical)
+ABCD 20755*2^$a+1 [35460]
+8
+14
+4
+ABCD 20757*2^$a+1 [35259]
+3
+12
+1
+4
+24
+4
+27
+5
+21
+10
+2
+34
+9
+4
+19
+6
+4
+2
+1
+23
+1
+15
+9
+ABCD 20759*2^$a+1 [35263]
+2
+4
+
+NOTE for ABCD format:  ALL "accumulator" values must always be kept within
+the range of -2^63 to 2^63  If the numbers being tested fall outside of this
+range, then use a different file format.
+
+*********************************
+* An ABC2 file has this format: *
+*********************************
+
+ABC2 expression(s)
+a: {primes} from [min] to [max] {step [step]}
+b: {primes} from [min] to [max] {step [step]}
+c: from [max] downto [min] {step [step]}
+.
+.
+
+eg.
+ABC2 $a*2^$b+1
+a: from 1 to 1000 step 2
+b: from 5000 to 5010
+
+(If step is omitted, 1 is assumed.)
+
+Again, you may & or | expressions together, it works the same as for an ABC
+file.
+
+You may optionally put primes in front of from, this means that only primes
+in the range are tested, eg:
+
+ABC2 $a*$b#+1
+a: from 1 to 1000
+b: primes from 5000 to 5100
+
+If you use "primes" in a line you may not use "step" in the same line.
+
+Another way of specifying the range of values a variable should have is by
+listing them, eg:
+
+ABC2 $a*$b#+16057+$c
+a: from 1 to 1000
+b: primes from 500 to 510
+c: in { 0 4 6 10 12 16 }
+
+The number of numbers in the set is meant to be small, actually the upper
+limit is 1000.  However, large numbers of values should be handled using the
+normal ABC file mode.
+
+An example of modular factoring within an ABC2 file is:
+
+ABC2 Phi($a,$b)  // -f{$a}
+a: from 100 to 200
+b: from 2 to 50
+
+To factor this file (call it a.in) simply type pfgw -f a.in and pfgw will
+use the modular factoring, and the ABC2 file parser will correctly fill in
+the modular string for each candidate being tested.
+
+The downto syntax was added on the dev 20030602 version.  NOTE in downto 
+syntax, the step MUST be negative (i.e. a: 0 to -500 step -2).  If step
+is not added, then step -1 is "assumed".
