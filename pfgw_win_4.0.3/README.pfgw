@@ -1,0 +1,55 @@
+Welcome to OpenPFGW!
+  updated to PFGW v1.2 Release (January 30, 2005)
+
+Before proceeding with this document, please read the LICENSE.pfgw
+document that should have accompanied this distribution. If such a
+license was not present, please contact primeform.net at the
+addresses below.
+
+Legalities over. Welcome to OpenPFGW, the next step in the evolution
+of the PrimeForm primality-testing program. OpenPFGW intends to be
+in the spirit of "open source" - a spirit that should not be
+encumbered by legalities. The spirit of "open source" is often
+lost in the maze of licenses.
+
+This document does not include the project documentation. That document
+(PfgwDoc.txt) should appear elsewhere in the package you have received.
+this document explains what the OpenPFGW Project is all about,
+specifically, what you are allowed to do with the package. In other
+words, this document details what 'restrictions' are enforced by the
+license.
+
+1) If you received a binary distribution of PrimeForm/GW, then you
+may use the program as you wish. Should you discover a large prime,
+then you must credit the program suitably. Should you write an
+article in a mathematical journal, you must cite primeform.net in
+your references. Should your discovery or publication bring any
+financial reward... then that is yours to keep.
+
+2) If you received a source code distribution of PrimeForm/GW, you
+may build or modify it as you wish. Executables built from source,
+modified or otherwise, are subject to the same conditions as in 1).
+You may not call your program "PrimeForm/GW" or any of the other
+names reserved by the project. There are no restrictions regarding
+the use of the PrimeForm/GW code in commercial applications. However,
+be sure to verify such distributions adhere to the terms and
+conditions of the third-party packages.
+
+3) If you wish to modify, improve, or add to the functionality of
+the product, you are free to do so. See the accompanying OPENPFGW
+document for details of such submissions.
+
+4) You may redistribute source or binary versions of the product as you
+received it, freely and without restriction. You may include it within
+other distributions provided the files included in the MANIFEST are
+present and remain unaltered.
+
+Have fun!
+
+Chris Nash
+Lexington KY
+UNITED STATES
+e-mail: chris_nash@prodigy.net
+
+Jim Fougeron
+jfoug@cox.net

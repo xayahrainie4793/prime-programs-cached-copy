@@ -1,0 +1,2632 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Scriptify Documentation</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet VersDone.
+7"></HEAD
+><BODY
+CLASS="article"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="ARTICLE"
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="title"
+><A
+NAME="AEN2"
+>Scriptify Documentation</A
+></H1
+><H3
+CLASS="author"
+><A
+NAME="AEN5"
+>Phil Carmody</A
+></H3
+><DIV
+CLASS="revhistory"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+><TR
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+COLSPAN="3"
+><B
+>Revision History</B
+></TH
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 0.8</TD
+><TD
+ALIGN="LEFT"
+>2004/07/21</TD
+><TD
+ALIGN="LEFT"
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>To 0.95 of the script.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 0.7</TD
+><TD
+ALIGN="LEFT"
+>2004/02/06</TD
+><TD
+ALIGN="LEFT"
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>To 0.92 of the script.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 0.6</TD
+><TD
+ALIGN="LEFT"
+>2003/10/19</TD
+><TD
+ALIGN="LEFT"
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>Reformatted, to make the source less readable, but the output prettier.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 0.5</TD
+><TD
+ALIGN="LEFT"
+>2003/10/19</TD
+><TD
+ALIGN="LEFT"
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>To 0.8 of the script.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 0.4</TD
+><TD
+ALIGN="LEFT"
+>2003/10/13</TD
+><TD
+ALIGN="LEFT"
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>To 0.4 of the script - functions.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 0.3</TD
+><TD
+ALIGN="LEFT"
+>2003/10/11</TD
+><TD
+ALIGN="LEFT"
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>#include added. More xrefs.</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 0.2</TD
+><TD
+ALIGN="LEFT"
+>2003/10/10</TD
+><TD
+ALIGN="LEFT"
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>Initial DocBook version</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+>Revision 0.1</TD
+><TD
+ALIGN="LEFT"
+>2003/10/09</TD
+><TD
+ALIGN="LEFT"
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+COLSPAN="3"
+>Initial text version</TD
+></TR
+></TABLE
+></DIV
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>1. <A
+HREF="#introduction"
+>Introduction</A
+></DT
+><DT
+>2. <A
+HREF="#running-scriptify"
+>Running Scriptify</A
+></DT
+><DT
+>3. <A
+HREF="#syntax"
+>Syntax</A
+></DT
+><DD
+><DL
+><DT
+>3.1. <A
+HREF="#metastatements"
+>Metastatements</A
+></DT
+><DD
+><DL
+><DT
+>3.1.1. <A
+HREF="#comments"
+>Comments</A
+></DT
+><DT
+>3.1.2. <A
+HREF="#file-inclusion"
+>File Inclusion</A
+></DT
+><DT
+>3.1.3. <A
+HREF="#SCRIPT-statement-injection"
+>SCRIPT Statement Injection</A
+></DT
+><DT
+>3.1.4. <A
+HREF="#processing-commentary"
+>Processing Commentary</A
+></DT
+></DL
+></DD
+><DT
+>3.2. <A
+HREF="#variables"
+>Variables</A
+></DT
+><DD
+><DL
+><DT
+>3.2.1. <A
+HREF="#declarations"
+>Declarations</A
+></DT
+><DT
+>3.2.2. <A
+HREF="#declaration-with-assignment"
+>Declaration with Assignment</A
+></DT
+><DT
+>3.2.3. <A
+HREF="#assignment"
+>Assignment</A
+></DT
+><DT
+>3.2.4. <A
+HREF="#modification-operators"
+>Modification Operators</A
+></DT
+><DT
+>3.2.5. <A
+HREF="#string-construction"
+>String Construction</A
+></DT
+><DT
+>3.2.6. <A
+HREF="#pseudovariables"
+>Pseudovariables</A
+></DT
+></DL
+></DD
+><DT
+>3.3. <A
+HREF="#built-in-functions"
+>Built-in Functions</A
+></DT
+><DD
+><DL
+><DT
+>3.3.1. <A
+HREF="#string-evaluation"
+>String Evaluation</A
+></DT
+><DT
+>3.3.2. <A
+HREF="#powmod"
+>powmod</A
+></DT
+><DT
+>3.3.3. <A
+HREF="#factorize"
+>factorize</A
+></DT
+><DT
+>3.3.4. <A
+HREF="#PRP"
+>PRP</A
+></DT
+><DT
+>3.3.5. <A
+HREF="#print"
+>print</A
+></DT
+><DT
+>3.3.6. <A
+HREF="#puts"
+>puts</A
+></DT
+><DT
+>3.3.7. <A
+HREF="#printf"
+>printf</A
+></DT
+><DT
+>3.3.8. <A
+HREF="#fopen"
+>fopen</A
+></DT
+><DT
+>3.3.9. <A
+HREF="#fread"
+>fread</A
+></DT
+><DT
+>3.3.10. <A
+HREF="#write"
+>write</A
+></DT
+><DT
+>3.3.11. <A
+HREF="#fprintf"
+>fprintf</A
+></DT
+><DT
+>3.3.12. <A
+HREF="#system"
+>system</A
+></DT
+></DL
+></DD
+><DT
+>3.4. <A
+HREF="#user-defined-functions"
+>User-defined Functions</A
+></DT
+><DT
+>3.5. <A
+HREF="#flow-control"
+>Flow Control</A
+></DT
+><DD
+><DL
+><DT
+>3.5.1. <A
+HREF="#labels-and-goto-statements"
+>Labels and goto Statements</A
+></DT
+><DT
+>3.5.2. <A
+HREF="#if-statements"
+>if Statements</A
+></DT
+><DT
+>3.5.3. <A
+HREF="#do-while-and-for-loops"
+>do, while, and for Loops</A
+></DT
+><DT
+>3.5.4. <A
+HREF="#terminating-a-script"
+>Terminating a Script</A
+></DT
+><DT
+>3.5.5. <A
+HREF="#return-statements"
+>return Statements</A
+></DT
+></DL
+></DD
+><DT
+>3.6. <A
+HREF="#arithmetic-operations"
+>Arithmetic Operations</A
+></DT
+><DT
+>3.7. <A
+HREF="#alii"
+>Alii</A
+></DT
+></DL
+></DD
+><DT
+>4. <A
+HREF="#transformations"
+>Transformations</A
+></DT
+><DT
+>5. <A
+HREF="#errors-and-warnings"
+>Errors and Warnings</A
+></DT
+><DD
+><DL
+><DT
+>5.1. <A
+HREF="#errors"
+>Errors</A
+></DT
+><DD
+><DL
+><DT
+>5.1.1. <A
+HREF="#processing-errors"
+>Processing Errors</A
+></DT
+><DT
+>5.1.2. <A
+HREF="#name-or-type-errors"
+>Name or Type Errors</A
+></DT
+><DT
+>5.1.3. <A
+HREF="#structural-errors"
+>Structural Errors</A
+></DT
+><DT
+>5.1.4. <A
+HREF="#other-errors"
+>Other Errors</A
+></DT
+></DL
+></DD
+><DT
+>5.2. <A
+HREF="#warnings"
+>Warnings</A
+></DT
+></DL
+></DD
+><DT
+>6. <A
+HREF="#issues"
+>Issues</A
+></DT
+><DT
+>7. <A
+HREF="#future-enhancements"
+>Future Enhancements</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="sect1"
+><H2
+CLASS="sect1"
+><A
+NAME="introduction"
+>1. Introduction</A
+></H2
+><P
+>This is not a script language, it's more like a 'macro' 
+front end to PFGW SCRIPT files.  A bit like the 
+<SAMP
+CLASS="computeroutput"
+>#define BEGIN {</SAMP
+> 
+hacks to make C look more like Pascal.  
+However, it's remarkably deceptive how C-like the scripts can now look!</P
+><P
+>Basically, you write a script in the pseudo-C syntax, and then feed it
+to scriptify.pl which produces a SCRIPT file that performs the same
+job. I.e. there's <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>nothing</I
+></SPAN
+> that these can do that 
+SCRIPT files can't.  It's purely cosmetic.</P
+><P
+>This document is not intended to be normative.  In places it may even
+be wrong.  The definition of the behaviour of the script is the script
+itself.</P
+><P
+>This document applies to version 0.95 of Scriptify.
+0.95 is expected to become the 1.0 release with no substantive changes.</P
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="running-scriptify"
+>2. Running Scriptify</A
+></H2
+><P
+>Scriptify is a perl script, conventionally called scriptify.pl. 
+To convert pseudo-C script test.pcs to SCRIPT file test.scr, from the 
+command line do:
+
+<PRE
+CLASS="programlisting"
+>  $ scriptify.pl &#60; test.pcs &#62; test.scr</PRE
+>
+  
+Warnings and errors will be reported to stderr.</P
+><P
+>Note - as distributed, the script may have a version number in 
+its name, such as <TT
+CLASS="filename"
+>scriptify.0.8.pl</TT
+>. 
+However, the name of the script actually doesn't matter.</P
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="syntax"
+>3. Syntax</A
+></H2
+><P
+>As Scriptify works on a strictly line-by-line basis, the number of
+transformations it can perform is strictly limited.  However, it
+contains all of the functionality of the original SCRIPT format and a
+little syntactic sugar to make it more convenient for C programmers.
+The language is mostly white-space insensitive, except for the fact
+that each command must be on a separate line.</P
+><P
+>The following conventions are assumed in the explanations of the
+syntax:</P
+><P
+></P
+><UL
+><LI
+><P
+>The '&#60;' and '&#62;' characters surround the description of the syntactic element.</P
+></LI
+><LI
+><P
+>Variable, function, and label names are alphanumeric, but may not 
+begin with a digit. '_' is considered alphanumeric. Names prefixed 
+"PC" are reserved for the Scriptify script. All names are 
+<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>case insensitive</I
+></SPAN
+>, but Scriptify will issue a
+warning if a variable is used with two names that don't match
+exactly.</P
+></LI
+><LI
+><P
+>String literals are between double-quotes, and may contain literal quote characters using the escaped sequence '\"' and literal backslashes using the escaped sequence '\\'.</P
+></LI
+><LI
+><P
+>Filenames do not contain semicolons, commas, spaces, quotes, or any
+other character commonly used as a parameter separator.</P
+></LI
+><LI
+><P
+>Arithmetic expressions are expressions containing literal numbers
+and integer variables in well-formed expressions containing
++, -, *, /, ^, round brackets ( and ), and the functions listed
+in the Arithmetic Operations section.</P
+></LI
+></UL
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="metastatements"
+>3.1. Metastatements</A
+></H3
+><P
+>In order to aid comprehension and code reuse, Scriptify supports
+two types of comments and external file inclusion. For forward 
+compatibility, it also provides facilities for injecting arbitary 
+SCRIPT statements into the output.</P
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="comments"
+>3.1.1. Comments</A
+></H4
+><P
+>Scriptify recognises both C <SAMP
+CLASS="computeroutput"
+>/* block comments */</SAMP
+>
+and C++ <SAMP
+CLASS="computeroutput"
+>// end-of-line comments</SAMP
+>.</P
+><P
+>C-style block comments are discarded entirely by the script, and therefore 
+can be used for in-depth annotations, or alternatively for removing large 
+chunks of unwanted code that one might still want to refer to. For example:
+<PRE
+CLASS="programlisting"
+>  /* <VAR
+CLASS="replaceable"
+>&#60;anything&#62;</VAR
+> */</PRE
+>
+e.g.
+<PRE
+CLASS="programlisting"
+>  /* The following variable is used to store the 
+     information on the state of the number 
+     whose state we wish to be aware of in both 
+     an epistemic and numeric sense */
+  int x;
+
+  /* Phil - if we need x's value later, reenable this
+  int old_x=x;
+  */
+
+  /* this */ string /* is */ not /* readable */;</PRE
+></P
+><P
+>A C++-style end-of-line comment is propagated into the output
+SCRIPT file as a comment prefixed with a ':'. The comment will 
+be injected into the SCRIPT file before any other SCRIPT 
+statements created by the line.
+<PRE
+CLASS="programlisting"
+>  // <VAR
+CLASS="replaceable"
+>&#60;anything&#62;</VAR
+></PRE
+>
+e.g.
+<PRE
+CLASS="programlisting"
+>  a+=2;  // increment a by two</PRE
+></P
+><P
+>Note - comment processing takes place before any other parsing of
+the file. This means that it's impossible to insert things that
+look like comments into literal strings. To overcome this, use 
+escape characters so that the comment detecter does not recognise
+the construct as a comment:
+<PRE
+CLASS="programlisting"
+>  string s1="/\* not a comment *\/";
+  string s2="/\/ not a comment ";</PRE
+></P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="file-inclusion"
+>3.1.2. File Inclusion</A
+></H4
+><P
+>Scriptify permits scripts to include external pseudo-C script files:
+<PRE
+CLASS="programlisting"
+>  # include <VAR
+CLASS="replaceable"
+>&#60;filename&#62;</VAR
+>
+
+  where:
+    <VAR
+CLASS="replaceable"
+>&#60;filename&#62;</VAR
+> is a literal string in double quotes.</PRE
+>
+Inclusion may be recursive.</P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="SCRIPT-statement-injection"
+>3.1.3. SCRIPT Statement Injection</A
+></H4
+><P
+>For forward comparability with future versions of the SCRIPT syntax,
+Scriptify supports arbitary SCRIPT statement injection:
+<PRE
+CLASS="programlisting"
+>  # pragma __emit <VAR
+CLASS="replaceable"
+>&#60;anything&#62;</VAR
+></PRE
+>
+e.g.
+<PRE
+CLASS="programlisting"
+>  #pragma __emit DDOS 131.72.156.54,SYNFLOOD</PRE
+>
+Absolutely no processing or checking of the line is performed.</P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="processing-commentary"
+>3.1.4. Processing Commentary</A
+></H4
+><P
+>The scripts are permitted to commentate on their processing, for 
+example if a line in the script is known to flag a usage warning, 
+but the code is known to be correct, then the commentary can be 
+used to reassure the user that the warning is expected.
+<PRE
+CLASS="programlisting"
+>  # pragma warn <VAR
+CLASS="replaceable"
+>&#60;anything&#62;</VAR
+></PRE
+>
+e.g.
+<PRE
+CLASS="programlisting"
+>  #pragma warn Don't worry - file will have been opened in a helper function.
+  x=fread(myfile);</PRE
+>
+The warning is issued to the standard error stream, stderr, in the same way
+as compilation <A
+HREF="#errors-and-warnings"
+>errors and warnings</A
+>, 
+but is marked <SAMP
+CLASS="computeroutput"
+>#Warning</SAMP
+>, to distinguish it 
+from Scriptify-generated warnings.</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="variables"
+>3.2. Variables</A
+></H3
+><P
+>All variables must be declared lexically before they are first used.</P
+><P
+>There are three types of variable: integers, strings, and file handles.
+It is not permitted to declare a variable more than once. Variables
+may not have the same name as either 
+<A
+HREF="#labels-and-goto-statements"
+>labels</A
+> 
+or functions, either <A
+HREF="#built-in-functions"
+>built-in</A
+> 
+or <A
+HREF="#user-defined-functions"
+>user-defined</A
+>.</P
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="declarations"
+>3.2.1. Declarations</A
+></H4
+><P
+>The syntax for a variable declaration is as follows:
+<PRE
+CLASS="programlisting"
+>  <VAR
+CLASS="replaceable"
+>&#60;type&#62;</VAR
+> <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> ;</PRE
+>
+e.g.
+<PRE
+CLASS="programlisting"
+>  integer bignum;
+  string  description;
+  file    logfile;</PRE
+></P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="declaration-with-assignment"
+>3.2.2. Declaration with Assignment</A
+></H4
+><P
+>Variables may be assigned to as part of the declaration:
+<PRE
+CLASS="programlisting"
+>  <VAR
+CLASS="replaceable"
+>&#60;type&#62;</VAR
+> <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> = <VAR
+CLASS="replaceable"
+>&#60;value&#62;</VAR
+> ;</PRE
+>
+e.g.
+<PRE
+CLASS="programlisting"
+>  integer bignum=k*2^n+1;
+  string  description="big \"Proth\" prime";
+  file    logfile=fopen("prothlog.out", "w");</PRE
+></P
+><P
+>The range of expressions for <VAR
+CLASS="replaceable"
+>&#60;value&#62;</VAR
+>
+is limited. The following is an exhaustive list of expression schemata that 
+are permitted:
+<PRE
+CLASS="programlisting"
+>  integer <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> = <VAR
+CLASS="replaceable"
+>&#60;arithmetic-expression&#62;</VAR
+> ;
+  string  <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> = <VAR
+CLASS="replaceable"
+>&#60;string-literal&#62;</VAR
+> ;
+  file    <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> = fopen ( <VAR
+CLASS="replaceable"
+>&#60;filename&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;mode&#62;</VAR
+> ) ;
+
+  where:
+    <VAR
+CLASS="replaceable"
+>&#60;filename&#62;</VAR
+> is a literal string in double quotes or a string variable.
+    <VAR
+CLASS="replaceable"
+>&#60;mode&#62;</VAR
+> is one of "r", "w", "a". See <A
+HREF="#fopen"
+>Section 3.3.8</A
+> below.</PRE
+></P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="assignment"
+>3.2.3. Assignment</A
+></H4
+><P
+>The syntax for assignment is:
+<PRE
+CLASS="programlisting"
+>  <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> = <VAR
+CLASS="replaceable"
+>&#60;value&#62;</VAR
+> ;
+   
+  where:
+    <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> is a previously declared variable name
+    <VAR
+CLASS="replaceable"
+>&#60;value&#62;</VAR
+> is an expression compatible with the variable's type</PRE
+>
+e.g.
+<PRE
+CLASS="programlisting"
+>  bignum=bignum-2;
+  description="Riesel equivalent";
+  infile=fopen("prothcandidates", "r"); 
+  myresult=myfunction(param1,param2);</PRE
+></P
+><P
+>The list of acceptable expressions is a superset of those for the
+simultaneous declaration and assign.  The additional expressions,
+documented in <A
+HREF="#built-in-functions"
+>Section 3.3</A
+> and 
+<A
+HREF="#user-defined-functions"
+>Section 3.4</A
+>, are as follows:
+<PRE
+CLASS="programlisting"
+>  <VAR
+CLASS="replaceable"
+>&#60;integer-variable&#62;</VAR
+> = 
+    atoi( <VAR
+CLASS="replaceable"
+>&#60;string-variable&#62;</VAR
+> ) ;
+    atoi( <VAR
+CLASS="replaceable"
+>&#60;string-literal&#62;</VAR
+> ) ;
+    powmod ( <VAR
+CLASS="replaceable"
+>&#60;base&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;power&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;modulus&#62;</VAR
+> ) ;
+    factorize ( <VAR
+CLASS="replaceable"
+>&#60;value&#62;</VAR
+> ) ;
+    factorize ( <VAR
+CLASS="replaceable"
+>&#60;value&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;fmin&#62;</VAR
+> ) ;
+    factorize ( <VAR
+CLASS="replaceable"
+>&#60;value&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;fmin&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;fmax&#62;</VAR
+> ) ;
+    PRP ( <VAR
+CLASS="replaceable"
+>&#60;value&#62;</VAR
+> ) ;
+    PRP ( <VAR
+CLASS="replaceable"
+>&#60;value&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;string-literal&#62;</VAR
+> ) ;
+    PRP ( <VAR
+CLASS="replaceable"
+>&#60;value&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;string-variable&#62;</VAR
+> ) ;
+    fread ( <VAR
+CLASS="replaceable"
+>&#60;file-handle&#62;</VAR
+> ) ;
+    fread ( <VAR
+CLASS="replaceable"
+>&#60;file-handle&#62;</VAR
+> , &#38; <VAR
+CLASS="replaceable"
+>&#60;string-variable&#62;</VAR
+> ) ;
+    system ( <VAR
+CLASS="replaceable"
+>&#60;string-variable&#62;</VAR
+> ) ;
+
+    <VAR
+CLASS="replaceable"
+>&#60;user-function&#62;</VAR
+> ( <VAR
+CLASS="replaceable"
+>&#60;parameters&#62;</VAR
+> ) ;</PRE
+></P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="modification-operators"
+>3.2.4. Modification Operators</A
+></H4
+><P
+>Integer variables can be modified using the following syntax:
+<PRE
+CLASS="programlisting"
+>  <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> <VAR
+CLASS="replaceable"
+>&#60;op&#62;</VAR
+>= <VAR
+CLASS="replaceable"
+>&#60;value&#62;</VAR
+>
+  
+  where:
+    <VAR
+CLASS="replaceable"
+>&#60;op&#62;</VAR
+> is +, -, *, /, %, &#60;&#60;, or &#62;&#62;.
+    Note - there is no space between the operator and the '='.</PRE
+>
+
+This is exactly equivalent to:
+<PRE
+CLASS="programlisting"
+>  <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> = <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> <VAR
+CLASS="replaceable"
+>&#60;op&#62;</VAR
+> ( <VAR
+CLASS="replaceable"
+>&#60;value&#62;</VAR
+> )</PRE
+>
+except in the case of "&#60;&#60;" and "&#62;&#62;", which are converted to "*2^" and
+"/2^" respectively.</P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="string-construction"
+>3.2.5. String Construction</A
+></H4
+><P
+>As well as a simple assignment from a literal string, it's possible
+to construct a string expression from a format string and other
+variables.
+<PRE
+CLASS="programlisting"
+>  sprintf ( <VAR
+CLASS="replaceable"
+>&#60;string-variable&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;format-string&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;variable-list&#62;</VAR
+> ) ;
+
+  where:
+    <VAR
+CLASS="replaceable"
+>&#60;format-string&#62;</VAR
+> is a literal string containing 
+      no unescaped semicolons or quote characters, and with
+      %d used to interpolate an integer variable, 
+      %s used to interpolate a string variable, and
+      %% to represent a literal quote character.
+    <VAR
+CLASS="replaceable"
+>&#60;variable-list&#62;</VAR
+> is a comma-separated list of integer and string
+      variables.</PRE
+>
+e.g.
+<PRE
+CLASS="programlisting"
+>  sprintf(str, "\"Proth\" prime = %d*2^%d+1, %s", k, n, status);</PRE
+></P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="pseudovariables"
+>3.2.6. Pseudovariables</A
+></H4
+><P
+>There are five integer pseudovariables which are implicitly used to 
+store some <A
+HREF="#built-in-functions"
+>built-in functions</A
+>
+return types.  They must not be declared explicitly.
+These variables are:</P
+><P
+></P
+><DIV
+CLASS="variablelist"
+><P
+><B
+>Pseudovariables</B
+></P
+><DL
+><DT
+>ERRORLEVEL</DT
+><DD
+><P
+>stores the result of the most recent <A
+HREF="#system"
+>system</A
+> call.</P
+></DD
+><DT
+>FACTORFOUND</DT
+><DD
+><P
+>stores the result of the most recent <A
+HREF="#factorize"
+>factorize</A
+> call.</P
+></DD
+><DT
+>ISPRIME</DT
+><DD
+><P
+>stores the result of the most recent <A
+HREF="#PRP"
+>PRP</A
+> call.</P
+></DD
+><DT
+>MAXF, MINF</DT
+><DD
+><P
+>store the factorisation limits used for the most recent <A
+HREF="#factorize"
+>factorize</A
+> call.</P
+></DD
+></DL
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="built-in-functions"
+>3.3. Built-in Functions</A
+></H3
+><P
+>The pseudo-C script language understands the following functions:
+<P
+></P
+><UL
+><LI
+><P
+>atoi: for evaluating a string.</P
+></LI
+><LI
+><P
+>powmod: for performing a modular exponentiation.</P
+></LI
+><LI
+><P
+>factorize, PRP: for trial dividing a number, and performing a PRP test.</P
+></LI
+><LI
+><P
+>puts, print, printf: for writing to the PFGW log file and the screen.</P
+></LI
+><LI
+><P
+>fopen, fclose: for opening and closing files.</P
+></LI
+><LI
+><P
+>fread, write, fprintf: for reading/writing to (open) files.</P
+></LI
+><LI
+><P
+>system: for executing an external command/program.</P
+></LI
+></UL
+></P
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="string-evaluation"
+>3.3.1. String Evaluation</A
+></H4
+><P
+>It is possible to get PFGW to evaluate a string, and return the value 
+as an integer using the atoi function as follows:
+<PRE
+CLASS="programlisting"
+>  <VAR
+CLASS="replaceable"
+>&#60;integer-variable&#62;</VAR
+> = atoi ( <VAR
+CLASS="replaceable"
+>&#60;string-variable&#62;</VAR
+> ) ;  
+  <VAR
+CLASS="replaceable"
+>&#60;integer-variable&#62;</VAR
+> = atoi ( <VAR
+CLASS="replaceable"
+>&#60;literal-string&#62;</VAR
+> ) ;</PRE
+>
+e.g.
+<PRE
+CLASS="programlisting"
+>  int k=17;
+  int n=12345;
+  int p;
+  string expr="k*2^n+1";
+  p=atoi(expr);</PRE
+></P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="powmod"
+>3.3.2. powmod</A
+></H4
+><P
+>powmod is a helper function that quickly evaluates a modular 
+exponentiation:
+<PRE
+CLASS="programlisting"
+><VAR
+CLASS="replaceable"
+>&#60;integer-variable&#62;</VAR
+> = powmod ( <VAR
+CLASS="replaceable"
+>&#60;arithmetic-expression&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;arithmetic-expression&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;arithmetic-expression&#62;</VAR
+> ) ;</PRE
+>
+e.g.
+<PRE
+CLASS="programlisting"
+>  b4096 = powmod(base, 4096, k);</PRE
+>
+  </P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="factorize"
+>3.3.3. factorize</A
+></H4
+><P
+>This function's purpose is to test if a number has small factors, using
+trial division. Optionally, the bounds for the trial division can be
+set by calling the function with two parameters to set the lower bound, 
+or three parameters to set both bounds:
+<PRE
+CLASS="programlisting"
+>  factorize ( <VAR
+CLASS="replaceable"
+>&#60;integer-variable&#62;</VAR
+> ) ;
+  factorize ( <VAR
+CLASS="replaceable"
+>&#60;integer-variable&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;arithmetic-expression&#62;</VAR
+> ) ;
+  factorize ( <VAR
+CLASS="replaceable"
+>&#60;integer-variable&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;arithmetic-expression&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;arithmetic-expression&#62;</VAR
+> ) ;</PRE
+>
+e.g.
+<PRE
+CLASS="programlisting"
+>  factorize(b4096, 4097);</PRE
+>
+If upper or lower bounds are not specified, then whatever was used 
+for the previous factorisation is used again.</P
+><P
+>The FACTORFOUND pseudovariable is always assigned the return value 
+of this function, which is the small factor found, or zero if no
+small factor is found.  However, the return value may optionally 
+be assigned to an ordinary integer variable as well.</P
+><P
+>This function also sets the ISPRIME pseudovariable to zero if a 
+factor is found.</P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="PRP"
+>3.3.4. PRP</A
+></H4
+><P
+>The PRP function can be called two ways:
+<PRE
+CLASS="programlisting"
+>  PRP ( <VAR
+CLASS="replaceable"
+>&#60;arithmetic-expression&#62;</VAR
+> ) ;
+  PRP ( <VAR
+CLASS="replaceable"
+>&#60;arithmetic-expression&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;string-expression&#62;</VAR
+> ) ;</PRE
+></P
+><P
+>The function always sets the ISPRIME psuedovariable, but may
+optionally have the return value assigned to an ordinary integer
+variable.</P
+><P
+>The return value is 0 if the expression evaluates to a composite number, 
+and 1 if it evaluates to a (pseudo-)prime.</P
+><P
+>Note - PFGW honours the -f (and -e, -s, etc.) flags while in script
+mode; therefore the PRP function will also perform trial division
+first if so requested.</P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="print"
+>3.3.5. print</A
+></H4
+><P
+>The print function takes a single integer variable and writes it 
+to both the screen and the PFGW log file, appending a new line.
+<PRE
+CLASS="programlisting"
+>  print ( <VAR
+CLASS="replaceable"
+>&#60;integer-variable&#62;</VAR
+> ) ;</PRE
+>
+e.g.
+<PRE
+CLASS="programlisting"
+>  print(b4096);</PRE
+></P
+><P
+>There is no return value from the print function.</P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="puts"
+>3.3.6. puts</A
+></H4
+><P
+>The puts function takes a single string variable and writes it 
+to both the screen and the PFGW log file, appending a new line.
+<PRE
+CLASS="programlisting"
+>  puts ( <VAR
+CLASS="replaceable"
+>&#60;string-variable&#62;</VAR
+> ) ;</PRE
+>
+e.g.
+<PRE
+CLASS="programlisting"
+>  puts(expr);</PRE
+></P
+><P
+>There is no return value from the puts function.</P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="printf"
+>3.3.7. printf</A
+></H4
+><P
+>The printf function writes a formatted string to both the screen and 
+the PFGW log file, appending a new line.
+<PRE
+CLASS="programlisting"
+>  printf ( <VAR
+CLASS="replaceable"
+>&#60;format-string&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;variable-list&#62;</VAR
+> ) ;</PRE
+>
+The parameters are the same as the corresponding ones in the 
+<A
+HREF="#string-construction"
+>sprintf</A
+> functions.
+E.g.
+<PRE
+CLASS="programlisting"
+>  printf("%s =&#62; %d", expr, b4096);</PRE
+></P
+><P
+>There is no return value from the print function.</P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="fopen"
+>3.3.8. fopen</A
+></H4
+><P
+>The fopen function takes a filename, and a file mode, and returns a
+file handle which can be used to read from, or write to, the file.
+See <A
+HREF="#fread"
+>Section 3.3.9</A
+> and <A
+HREF="#write"
+>Section 3.3.10</A
+>.
+<PRE
+CLASS="programlisting"
+>  <VAR
+CLASS="replaceable"
+>&#60;file-handle&#62;</VAR
+> = fopen ( <VAR
+CLASS="replaceable"
+>&#60;filename&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;mode&#62;</VAR
+> ) ;
+  
+  where:
+    <VAR
+CLASS="replaceable"
+>&#60;filename&#62;</VAR
+> is a literal string in double quotes or a string variable.
+    <VAR
+CLASS="replaceable"
+>&#60;mode&#62;</VAR
+> is "r" for files opened for reading only
+              "w" for files opened for over-writing
+	      "a" for files opened for appending</PRE
+></P
+><P
+>The return value must be assigned to a file variable.</P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="fread"
+>3.3.9. fread</A
+></H4
+><P
+>The fread function takes a file handle for a file that was opened for
+reading (mode "r"), and an optional second parameter which is a 
+reference to a string that is to be set to the literal string read
+from the file.  The function reads a single line from the file, and 
+treats it as a single arithmetic expression.
+<PRE
+CLASS="programlisting"
+>  <VAR
+CLASS="replaceable"
+>&#60;integer-variable&#62;</VAR
+> = fread ( <VAR
+CLASS="replaceable"
+>&#60;file-handle&#62;</VAR
+> ) ;
+  <VAR
+CLASS="replaceable"
+>&#60;integer-variable&#62;</VAR
+> = fread ( <VAR
+CLASS="replaceable"
+>&#60;file-handle&#62;</VAR
+> , &#38; <VAR
+CLASS="replaceable"
+>&#60;string-variable&#62;</VAR
+> ) ;</PRE
+></P
+><P
+>The return value is the integer value of the arithmetic expression
+read.</P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="write"
+>3.3.10. write</A
+></H4
+><P
+>The write function takes a file handle for a file which was opened 
+for either writing or appending (modes "w" and "a").  It also takes
+a single integer or string variable which is to be written to the
+file.  A newline is also written to the file after the variable.
+<PRE
+CLASS="programlisting"
+>  write ( <VAR
+CLASS="replaceable"
+>&#60;file-handle&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;integer-variable&#62;</VAR
+> | <VAR
+CLASS="replaceable"
+>&#60;string-variable&#62;</VAR
+> ) ;</PRE
+></P
+><P
+>There is no return value from the write function.</P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="fprintf"
+>3.3.11. fprintf</A
+></H4
+><P
+>The fprintf function writes a formatted string to the specified 
+file and appends a new line:
+<PRE
+CLASS="programlisting"
+>  fprintf ( <VAR
+CLASS="replaceable"
+>&#60;file-handle&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;format-string&#62;</VAR
+> , <VAR
+CLASS="replaceable"
+>&#60;variable-list&#62;</VAR
+> ) ;</PRE
+>
+e.g.
+<PRE
+CLASS="programlisting"
+>  fprintf(blog, "%s =&#62; %d", expr, b4096);</PRE
+>
+The parameters are the same as the corresponding ones in the 
+<A
+HREF="#string-construction"
+>sprintf</A
+> and <A
+HREF="#printf"
+>printf</A
+>
+function.</P
+><P
+>There is no return value from the fprint function.</P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="system"
+>3.3.12. system</A
+></H4
+><P
+>The system function is used to execute an arbitrary string using the
+underlying command interpreter.  By definition this means that it is
+OS and shell dependent.
+<PRE
+CLASS="programlisting"
+>  system ( <VAR
+CLASS="replaceable"
+>&#60;string-variable&#62;</VAR
+> ) ;</PRE
+>
+e.g.
+<PRE
+CLASS="programlisting"
+>  sprintf(gpstr, "echo 'polyrootsmod(polcyclo(%d)-1,%d)' | gp -q &#62; gplog", nn, pp);
+  system(gpstr);</PRE
+></P
+><P
+>The return value of the command is stored in the pseudovariable
+ERRORLEVEL, and may also optionally be assiged to an integer
+variable.</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="user-defined-functions"
+>3.4. User-defined Functions</A
+></H3
+><P
+>Scriptify supports rudimentary user-defined functions.
+Functions may have their parameter types and return declared in 
+advance of actual definition:
+<PRE
+CLASS="programlisting"
+>  <VAR
+CLASS="replaceable"
+>&#60;type&#62;</VAR
+> <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> ( <VAR
+CLASS="replaceable"
+>&#60;parameter-list&#62;</VAR
+> ) ;
+
+  where:
+    <VAR
+CLASS="replaceable"
+>&#60;parameter-list&#62;</VAR
+> is a comma-separated list of variable declarations.</PRE
+>
+To define the function's implementation, use the following syntax:
+<PRE
+CLASS="programlisting"
+>  <VAR
+CLASS="replaceable"
+>&#60;type&#62;</VAR
+> <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> ( <VAR
+CLASS="replaceable"
+>&#60;parameter-list&#62;</VAR
+> ) {
+     <VAR
+CLASS="replaceable"
+>&#60;other-statements&#62;</VAR
+>
+  }</PRE
+>
+The return type, parameter types, and <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>parameter names</I
+></SPAN
+>
+must be identical in the function's definition and in any forward declarations.</P
+><P
+>Note that the function name must be unique, and not used elsewhere 
+as a label or variable name.  It is advised that parameter names not 
+be the same as any global variables.  However, local variables 
+are scoped, so they may be reused in different functions. Effectively,
+all variables are global variables. There's little shame in using 
+global variables instead of parameters, for reasons of efficiency.</P
+><P
+>Any number of the statements between the bounding curly brackets 
+may be <A
+HREF="#return-statements"
+>return</A
+> statements.
+These permit a value to be passed back to the caller of the function.</P
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="flow-control"
+>3.5. Flow Control</A
+></H3
+><P
+>There are 3 simple flow control techniques.  Firstly, the pseudo-C
+script understands labels and goto statements for unconditional flow
+control.  Secondly, it understands simple conditional execution of
+statements using "if" statements.  Thirdly, it understands simple 
+"while", "do", and "for" loops.  These statements are the most 
+white-space sensitive of the statements in the language; it is vital, for
+example, to ensure that 'K&#38;R' brace style is used.  Sorry.</P
+><P
+>In addition to these, a script can be terminated by calling exit at
+any point.</P
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="labels-and-goto-statements"
+>3.5.1. Labels and goto Statements</A
+></H4
+><P
+>A label is defined by the following syntax:
+<PRE
+CLASS="programlisting"
+>  <VAR
+CLASS="replaceable"
+>&#60;label&#62;</VAR
+> :</PRE
+></P
+><P
+>All labels must be unique, and must also be distinct from any 
+variable names.  Labels beginning 'PC' are reserved for use by the
+script translater.</P
+><P
+>Flow is transferred to a point specified in the script by a label by
+using a goto statement with the following syntax:
+<PRE
+CLASS="programlisting"
+>  goto <VAR
+CLASS="replaceable"
+>&#60;label&#62;</VAR
+> ;</PRE
+></P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="if-statements"
+>3.5.2. if Statements</A
+></H4
+><P
+>Arithmetic expressions can be used as a boolean predicate to alter
+the program flow.  A value of 0 is taken as false, and any other
+value is taken as true.  The syntax of a simple if statement is:
+<PRE
+CLASS="programlisting"
+>  if ( <VAR
+CLASS="replaceable"
+>&#60;arithmetic-expression&#62;</VAR
+> ) {
+     <VAR
+CLASS="replaceable"
+>&#60;other-statements&#62;</VAR
+>
+  }</PRE
+></P
+><P
+>Note - the K&#38;R-style opening brace is mandatory.  The other
+statements are only processed if the predicate is true.</P
+><P
+>An else clause may also be used:
+<PRE
+CLASS="programlisting"
+>  if ( <VAR
+CLASS="replaceable"
+>&#60;arithmetic-expression&#62;</VAR
+> ) {
+     <VAR
+CLASS="replaceable"
+>&#60;other-statements-1&#62;</VAR
+>
+  } else {
+     <VAR
+CLASS="replaceable"
+>&#60;other-statements-2&#62;</VAR
+>
+  }</PRE
+></P
+><P
+>In this instance, the statements <VAR
+CLASS="replaceable"
+>&#60;other-statements-1&#62;</VAR
+> will be processed
+if the predicate is true, and the statements <VAR
+CLASS="replaceable"
+>&#60;other-statements-2&#62;</VAR
+>
+will be processed only if the predicate is false.</P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="do-while-and-for-loops"
+>3.5.3. do, while, and for Loops</A
+></H4
+><P
+>Rudimentary loops can be set up using one of three constructs, each
+of which has the same general semantics as the C equivalent, viz. "do" loops, 
+"while" loops, and "for" loops.
+</P
+><P
+>Explicitly, "do" loops:
+<PRE
+CLASS="programlisting"
+>  do {
+    <VAR
+CLASS="replaceable"
+>&#60;other-statements&#62;</VAR
+>
+  } while ( <VAR
+CLASS="replaceable"
+>&#60;arithmetic-expressions&#62;</VAR
+> ) ;</PRE
+>
+"while" loops:
+<PRE
+CLASS="programlisting"
+>  while ( <VAR
+CLASS="replaceable"
+>&#60;arithmetic-expression&#62;</VAR
+> ) {
+    <VAR
+CLASS="replaceable"
+>&#60;other-statements&#62;</VAR
+>
+  }</PRE
+>
+or "for" loops:
+<PRE
+CLASS="programlisting"
+>  for ( <VAR
+CLASS="replaceable"
+>&#60;assignment-expression&#62;</VAR
+> ; <VAR
+CLASS="replaceable"
+>&#60;arithmetic-expression&#62;</VAR
+> ; <VAR
+CLASS="replaceable"
+>&#60;assignment-expression&#62;</VAR
+> ) {
+    <VAR
+CLASS="replaceable"
+>&#60;other-statements&#62;</VAR
+>
+  }</PRE
+></P
+><P
+>The arithmetic expression is treated as a predicate in the same way
+that it is for if statements.  The constructs have the same semantics
+as they do in C.  Note, however, that the K&#38;R-style brace is
+mandatory.</P
+><P
+>For "for" loops, the assignment expressions are single assignments
+to integer variables with the same syntax as an assignment or modify 
+expression as documented in <A
+HREF="#assignment"
+>Section 3.2.3</A
+> and 
+<A
+HREF="#modification-operators"
+>Section 3.2.4</A
+>. As in C, the first one is
+executed once before the loop begins, and the latter one is executed
+at the end of the loop, just before the condition predicate is 
+evaluated. </P
+><P
+>Loops may be broken out of early using the break statement.  The
+break statements' syntax, unlike that of C, may contain a parameter 
+which indicates how many levels of nested loops out from which it 
+should break.  Its syntax is simply: 
+<PRE
+CLASS="programlisting"
+>  break ;
+  break ( <VAR
+CLASS="replaceable"
+>&#60;constant&#62;</VAR
+> ) ;
+
+  where:
+    <VAR
+CLASS="replaceable"
+>&#60;constant&#62;</VAR
+> is a small decimal integer.</PRE
+></P
+><P
+>Typical use of break might be as in the following:
+<PRE
+CLASS="programlisting"
+>  for(mainloop=100; mainloop&#60;200; mainloop+=4) {
+    while(condition1) {
+      do {
+        // statements elided ...
+        if(condition2) {
+          break(2);
+        }
+      } while(condition3);
+    }
+    // the break would jump here
+  }</PRE
+>
+This particular example shows the break statement breaking out of
+two loops, the do and the while, when condition2 is satisfied.
+The next statements to be executed would be the 
+<SAMP
+CLASS="computeroutput"
+>mainloop+=4</SAMP
+> from the for loop, and then 
+the condition <SAMP
+CLASS="computeroutput"
+>mainloop&#60;200</SAMP
+> would be 
+checked.</P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="terminating-a-script"
+>3.5.4. Terminating a Script</A
+></H4
+><P
+>A script terminates with the exit function, whose syntax is:
+<PRE
+CLASS="programlisting"
+>  exit ( ) ;</PRE
+>
+I.e. it is a funtion which takes no parameters and returns no value.</P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="return-statements"
+>3.5.5. return Statements</A
+></H4
+><P
+>A return statement not within a user-defined function acts identically to
+an exit() statement. Otherwise, it causes the optional returned value 
+to be returned to the caller of the function:
+<PRE
+CLASS="programlisting"
+>  return ;
+  return <VAR
+CLASS="replaceable"
+>&#60;expression&#62;</VAR
+> ;</PRE
+>
+The optional expression must be compatible with the return type of the 
+function. For integers, it must be an integer variable or an arithmetic
+expression, and for strings it must be a string variable or string literal.</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="arithmetic-operations"
+>3.6. Arithmetic Operations</A
+></H3
+><P
+>Arithmetic expressions are compatible with PFGW's expression syntax,
+and, thus, with SCRIPT files' expression syntax.  No attempt is made
+to parse the expressions; they are passed to PFGW uninterpreted.
+Therefore, this documentation may be incomplete.  Please see other
+PFGW documentation for more information on expression syntax.</P
+><P
+>I.e. as well as the usual arithmetic operations, +, -, *, /, %, &#60;, &#60;=, &#62;, &#62;=,
+but <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>not</I
+></SPAN
+> &#60;&#60; or &#62;&#62;, the pseudo-C script 
+language accepts the following functions:
+<PRE
+CLASS="programlisting"
+>  C, F, GCD, IF, L, LEN, LINEAR, LUCASV, LUCASU, P, PHI, PRIMU,
+  PRIMV, R, S, SM, SMR, U, V, W</PRE
+>
+These functions are documented elsewhere in PFGW's documentation.</P
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="alii"
+>3.7. Alii</A
+></H3
+><P
+>The management reserve the right to swap the usage of these alii 
+without notice. Sorry, but we're in sub v1.0 territory, and we
+can't quite work out what's the best name to use yet. Feel free 
+to let the management know which of the alii you prefer.</P
+><P
+>int can be used as an alias for integer, the variable type. </P
+><P
+>eval can be used as an alias for the function atoi. However, don't 
+expect to be able to mail your scripts to other people just in case 
+anti-malware scripts rewrite them ( http://groups.google.com/groups?selm=CMM.0.90.4.987039292.risko%40chiron.csl.sri.com ).</P
+><P
+>factorise can be used as an alias for function factorize.</P
+><P
+>read can be used as an alias for function fread.</P
+></DIV
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="transformations"
+>4. Transformations</A
+></H2
+><P
+>This list is most useful for either finding how the pseudo-C script
+commands are implemented in terms of SCRIPT commands, or finding
+where in this manual one can find a description of the pseudo-C
+alternatives for a given SCRIPT command.</P
+><P
+>Variable declaration (<A
+HREF="#declarations"
+>Section 3.2.1</A
+>, 
+<A
+HREF="#declaration-with-assignment"
+>Section 3.2.2</A
+>)
+<PRE
+CLASS="programlisting"
+>    integer                   &#60;-&#62; DIM
+    string                    &#60;-&#62; DIMS
+    file (just declaration)   &#60;-&#62; nothing 
+    file (with assignment)    &#60;-&#62; OPENFILE(IN|OUT|APP)</PRE
+></P
+><P
+>  Variable assignment (<A
+HREF="#assignment"
+>Section 3.2.3</A
+>, 
+<A
+HREF="#modification-operators"
+>Section 3.2.4</A
+>, 
+<A
+HREF="#string-construction"
+>Section 3.2.5</A
+>)
+<PRE
+CLASS="programlisting"
+>    integer =, <VAR
+CLASS="replaceable"
+>&#60;op&#62;</VAR
+>=          &#60;-&#62; SET
+    string =                  &#60;-&#62; SETS
+    sprintf                   &#60;-&#62; SETS
+    file = fopen()            &#60;-&#62; OPENFILE(IN|OUT|APP)</PRE
+></P
+><P
+>Built-in functions (<A
+HREF="#built-in-functions"
+>Section 3.3</A
+>)
+<PRE
+CLASS="programlisting"
+>    atoi                      &#60;-&#62; STRTOINT
+    powmod                    &#60;-&#62; POWMOD
+    factorize                 &#60;-&#62; FACTORIZE
+    PRP                       &#60;-&#62; PRP
+    print, puts               &#60;-&#62; PRINT
+    fopen                     &#60;-&#62; OPENFILE(IN|OUT|APP)
+    fclose                    &#60;-&#62; CLOSEFILE
+    fread                     &#60;-&#62; GETNEXT
+    write                     &#60;-&#62; WRITE
+    fprintf                   &#60;-&#62; SETS and WRITE
+    system                    &#60;-&#62; SHELL
+    user-defined functions    &#60;-&#62; SET, SETS, and flow control</PRE
+></P
+><P
+>Flow control (<A
+HREF="#flow-control"
+>Section 3.5</A
+>)
+<PRE
+CLASS="programlisting"
+>    labels                    &#60;-&#62; LABEL
+    goto                      &#60;-&#62; GOTO
+    if, else                  &#60;-&#62; IF, ELSE
+    do, while, for, break     &#60;-&#62; a synthesis of the above 4
+    exit, return              &#60;-&#62; END    </PRE
+></P
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="errors-and-warnings"
+>5. Errors and Warnings</A
+></H2
+><P
+>Note - Just because Scriptify translates a pseudo-C script to a
+SCRIPT script does not mean that either the pseudo-C or the SCRIPT
+script is well-formed.  Syntax checking is quite rudimentary.</P
+><P
+>Errors and warnings are reported with the following schema:
+<PRE
+CLASS="programlisting"
+>  <VAR
+CLASS="replaceable"
+>&#60;line-number&#62;</VAR
+> <VAR
+CLASS="replaceable"
+>&#60;type&#62;</VAR
+> <VAR
+CLASS="replaceable"
+>&#60;explanation&#62;</VAR
+>
+ 
+  where:
+    <VAR
+CLASS="replaceable"
+>&#60;type&#62;</VAR
+> is "Error", "Warning", or "#Warning".</PRE
+>
+If an error is detected within a #included file, the line number reported
+is that of the #include line. </P
+><P
+>Errors are fatal; processing cannot continue.  Warnings, however,
+whilst they may indicate real errors in the script, are not fatal
+because the translater cannot know all the run-time properties of the
+script. </P
+><P
+>Warnings that appear with a type of "#Warning" are not errors detected
+by Scriptify, but are ones output at the request of the script itself
+as documented in <A
+HREF="#processing-commentary"
+>Section 3.1.4</A
+>.</P
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="errors"
+>5.1. Errors</A
+></H3
+><DIV
+CLASS="sect3"
+><H4
+CLASS="sect3"
+><A
+NAME="processing-errors"
+>5.1.1. Processing Errors</A
+></H4
+><PRE
+CLASS="programlisting"
+>  Can't include file <VAR
+CLASS="replaceable"
+>&#60;filename&#62;</VAR
+></PRE
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="name-or-type-errors"
+>5.1.2. Name or Type Errors</A
+></H4
+><P
+>All variables must be declared lexically before, i.e. earlier in the
+script file than, any usage of that variable.  Some illegal usage is
+detected, and will result in the following error messages:
+<PRE
+CLASS="programlisting"
+>  Can't <VAR
+CLASS="replaceable"
+>&#60;operation&#62;</VAR
+> undeclared <VAR
+CLASS="replaceable"
+>&#60;type&#62;</VAR
+> <VAR
+CLASS="replaceable"
+>&#60;variable&#62;</VAR
+>.
+  Can't declare <VAR
+CLASS="replaceable"
+>&#60;variable&#62;</VAR
+> as <VAR
+CLASS="replaceable"
+>&#60;type&#62;</VAR
+>, already a <VAR
+CLASS="replaceable"
+>&#60;variable&#62;</VAR
+> declared at <VAR
+CLASS="replaceable"
+>&#60;line-number&#62;</VAR
+>.
+  Trying to <VAR
+CLASS="replaceable"
+>&#60;operation&#62;</VAR
+> <VAR
+CLASS="replaceable"
+>&#60;type&#62;</VAR
+> <VAR
+CLASS="replaceable"
+>&#60;variable&#62;</VAR
+> from line <VAR
+CLASS="replaceable"
+>&#60;line-number&#62;</VAR
+>, should be type <VAR
+CLASS="replaceable"
+>&#60;type&#62;</VAR
+>.
+  Function <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+>'s return type (<VAR
+CLASS="replaceable"
+>&#60;type&#62;</VAR
+>) doesn't match (<VAR
+CLASS="replaceable"
+>&#60;type&#62;</VAR
+>) in forward declaration on line <VAR
+CLASS="replaceable"
+>&#60;line-number&#62;</VAR
+>.
+  Function <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+>'s protoype (<VAR
+CLASS="replaceable"
+>&#60;parameter-list&#62;</VAR
+>) doesn't match (<VAR
+CLASS="replaceable"
+>&#60;parameter-list&#62;</VAR
+>) in forward declaration on line <VAR
+CLASS="replaceable"
+>&#60;line-number&#62;</VAR
+>.</PRE
+></P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="structural-errors"
+>5.1.3. Structural Errors</A
+></H4
+><P
+>The braces for if's, do's, and while's must be in sensibly nested
+pairs.  If they aren't, then the following error messages might be
+seen: 
+<PRE
+CLASS="programlisting"
+>  } with no context.
+  } else { with no context.
+  } while with no context.
+  Can't break requested number of loops.</PRE
+></P
+><P
+><A
+HREF="#user-defined-functions"
+>User-defined functions</A
+>
+may not be nested, and attempts to do so will yield an error:
+<PRE
+CLASS="programlisting"
+>  Cannot nest function <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> within function <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+>.</PRE
+>
+If a function has a forward declaration, but no definition, then the following
+error will be reported:
+  function ``<VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+>'' not found.</P
+><P
+>A goto may precede the label to which it jumps. If such labels were missing, 
+then the follow error will be generated:
+<PRE
+CLASS="programlisting"
+>  goto target ``<VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+>'' not found.</PRE
+></P
+><P
+>If the number of closed braces is in deficit, then the following will
+be seen, which gives some, admittedly cryptic, indication of the
+constructs which have not been terminated correctly:
+<PRE
+CLASS="programlisting"
+>  Context=<VAR
+CLASS="replaceable"
+>&#60;list&#62;</VAR
+>.</PRE
+></P
+><P
+>The follwing errors will hopefully never be seen:
+<PRE
+CLASS="programlisting"
+>  Breakage=<VAR
+CLASS="replaceable"
+>&#60;number&#62;</VAR
+>.</PRE
+></P
+></DIV
+><DIV
+CLASS="sect3"
+><HR><H4
+CLASS="sect3"
+><A
+NAME="other-errors"
+>5.1.4. Other Errors</A
+></H4
+><P
+>Sometimes the translater just has to give up, as it doesn't know what
+is going on.  If that is the case, you'll see the following:
+<PRE
+CLASS="programlisting"
+>  Can't parse line.</PRE
+></P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><HR><H3
+CLASS="sect2"
+><A
+NAME="warnings"
+>5.2. Warnings</A
+></H3
+><P
+>These warnings are indicative that almost certainly something is
+wrong with the script, and should be investigated.</P
+><P
+>Some warnings are simply complaining about the use of non-identical 
+names for the same variable, function, or label, as, to PFGW, 
+names are case-insensitive, but it's considered naughty to be 
+inconsistent.
+<PRE
+CLASS="programlisting"
+>  Treating <VAR
+CLASS="replaceable"
+>&#60;type&#62;</VAR
+> <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> as the same as the <VAR
+CLASS="replaceable"
+>&#60;type&#62;</VAR
+> <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> from line <VAR
+CLASS="replaceable"
+>&#60;line-number&#62;</VAR
+>.</PRE
+>
+Similarly, the use of a function's local variable with the same name as a global variable flags a warning: 
+<PRE
+CLASS="programlisting"
+>  Parameter <VAR
+CLASS="replaceable"
+>&#60;type&#62;</VAR
+> <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> shadows global <VAR
+CLASS="replaceable"
+>&#60;type&#62;</VAR
+> <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+>.</PRE
+>
+Finally in this class is the situation where repeated forward declarations 
+are found.  This isn't really a problem, but having redundant statements in
+scripts is, quite frankly, redundant.
+<PRE
+CLASS="programlisting"
+>  Forward declaration of <VAR
+CLASS="replaceable"
+>&#60;function-name&#62;</VAR
+>, while valid, duplicates that from line <VAR
+CLASS="replaceable"
+>&#60;line-number&#62;</VAR
+>.</PRE
+></P
+><P
+>Another class of warning pertains to the potential use of 
+(correctly declared) files when the script has not detected
+the correct sequence of operations (open before read/write 
+and close):
+<PRE
+CLASS="programlisting"
+>  possible use of already open file <VAR
+CLASS="replaceable"
+>&#60;file-handle&#62;</VAR
+>.
+  possible read of unopened file <VAR
+CLASS="replaceable"
+>&#60;file-handle&#62;</VAR
+>.
+  possible read of write/append file <VAR
+CLASS="replaceable"
+>&#60;file-handle&#62;</VAR
+>.
+  possible write to unopened file <VAR
+CLASS="replaceable"
+>&#60;file-handle&#62;</VAR
+>.
+  possible write/append to file opened for reading <VAR
+CLASS="replaceable"
+>&#60;file-handle&#62;</VAR
+>.
+  possible close of unopened file <VAR
+CLASS="replaceable"
+>&#60;file-handle&#62;</VAR
+>.</PRE
+></P
+><P
+>However, the following indicates that an almost certainly illegal ';'
+character was found in a format string for 
+<A
+HREF="#string-construction"
+>sprintf</A
+>, 
+<A
+HREF="#printf"
+>printf</A
+>, or
+<A
+HREF="#fprintf"
+>fprintf</A
+>:
+<PRE
+CLASS="programlisting"
+>  literal ';' found in format string. Uglifying.</PRE
+>
+The 'uglification' that takes place is the propagation of a '£'
+(Sterling) symbol in place of the errant semicolon(s).</P
+><P
+>Some minimal checking is performed on the arithmetic expressions used in 
+calls to functions that accept such expressions. In particular, calls to 
+user-defined functions will <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>not</I
+></SPAN
+> be understood by 
+the PFGW parser, and therefore these is almost certainly a problem with 
+the script:
+<PRE
+CLASS="programlisting"
+>  Possible use of user-function <VAR
+CLASS="replaceable"
+>&#60;function-name&#62;</VAR
+> in arithmetic expresssion.</PRE
+>
+The work-around for this limitation is simply to assign the return value 
+of the user-defined function to a variable, and then use that variable
+in the expression instead.</P
+><P
+>Finally, the following warning may be seen. If it is, the chances are
+that an actual error will follow anyway, but if the error received is
+"<SAMP
+CLASS="computeroutput"
+>Can't parse line.</SAMP
+>" this warning might 
+indicate the simplest remedy:
+<PRE
+CLASS="programlisting"
+>  Almost certainly an error. Missing :, {, }, or ;</PRE
+>
+At the present time, <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>all</I
+></SPAN
+> valid lines end with one 
+of those four symbols.</P
+></DIV
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="issues"
+>6. Issues</A
+></H2
+><P
+>There are no known 'issues', as in bugs, in the Scriptify script
+itself.  However, there are some issues with the underlying SCRIPT
+syntax.  For example, it appears that labels cannot have digits in
+them, else they get interpreted differently (as line offsets).</P
+></DIV
+><DIV
+CLASS="sect1"
+><HR><H2
+CLASS="sect1"
+><A
+NAME="future-enhancements"
+>7. Future Enhancements</A
+></H2
+><P
+>Simply brainstorming...</P
+><P
+></P
+><UL
+><LI
+><P
+>string concatenation</P
+><P
+><PRE
+CLASS="programlisting"
+>  <VAR
+CLASS="replaceable"
+>&#60;name&#62;</VAR
+> .= <VAR
+CLASS="replaceable"
+>&#60;string-literal&#62;</VAR
+></PRE
+>
+e.g.
+<PRE
+CLASS="programlisting"
+>    string str;
+    integer val;
+    val = read(inp, &#38;str);
+    PRP(val+2);
+    if(ISPRIME) {
+      str .= " and twin"
+    }
+    PRP(val*2-1);
+    if(ISPRIME) {
+      str .= " and CC"
+    }</PRE
+></P
+><P
+>Maybe use C++'s "+=" rather than Perl's ".=" ?</P
+><P
+>Difficulty - easy</P
+></LI
+><LI
+><P
+>Brace style flexibility</P
+><P
+>Purely cosmetic. It requires adding more state to the parser, which
+means more complexity.</P
+><P
+>Difficulty - unknown, let's call it medium</P
+></LI
+><LI
+><P
+>Persuade Noah Webster to ensure that agent nouns end "-er".</P
+></LI
+><LI
+><P
+>Thank Jim, Anna, houseofshred.com, and Saku Olletehas</P
+></LI
+></UL
+></DIV
+></DIV
+></BODY
+></HTML
+>
