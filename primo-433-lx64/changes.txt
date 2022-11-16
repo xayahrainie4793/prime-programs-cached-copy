@@ -1,0 +1,5 @@
+4.3.3
+
+* Candidate size up to 166,016 bits (50,000 decimal digits).
+
+

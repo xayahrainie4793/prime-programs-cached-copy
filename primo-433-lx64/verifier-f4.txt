@@ -1,0 +1,358 @@
+
+VERIFYING PRIMO CERTIFICATES (FORMAT 4)
+=======================================
+February 21, 2018
+
+
+Here are guidelines to write a "verifier" for Primo certificates. 
+Notice that some tests are done, not only to prove primality, but also to 
+ensure that a certificate is a PRIMO certificate (or, more exactly, that it has
+the properties of the certificates produced by PRIMO).
+
+A certificate is a list of strings that looks like
+
+   [section1]
+   key1=value1
+   key2=value2
+   ...
+
+   [section2]
+   key1=value1
+   key2=value2
+   ...
+
+In a certificate, hexadecimal strings (representing numbers expressed to the
+base 16) are always prefixed either with '$' (Pascal convention) or with '0x'
+(C convention).
+
+In the following codes, the "mod" operator always returns a non negative value.
+
+
+////////////////////////////////////////////////////////////////////////////////
+CHECK_CERTIFICATE
+BEGIN
+  IF NOT SectionExists("[PRIMO - Primality Certificate]") THEN
+    error INVALID FILE
+
+  Section := strings of the section "[PRIMO - Primality Certificate]"
+
+  IF NOT KeyExists(Section,"TestCount") THEN
+    error INVALID FILE
+
+  TestCount := value of the key "TestCount" (base-10 small integer)
+
+  IF NOT SectionExists("[Candidate]") THEN
+    error INVALID FILE
+
+  Section := strings of the section "[Candidate]"
+
+  IF NOT KeyExists(Section,"N") THEN
+    error INVALID FILE
+
+  N := value of the key "N" (base-16 big integer)
+
+  FOR i := 1 TO TestCount DO
+  BEGIN
+    IF NOT SectionExists("[i]") THEN
+      error INVALID FILE
+
+    Section := strings of the section "[i]"
+
+    IF NOT KeyExists(Section,"S") THEN
+      error INVALID FILE
+
+    S := value of the key "S" (base-16 big integer)
+
+    IF KeyExists(Section,"W") THEN
+    BEGIN
+      W := value of the key "W" (base-16 big integer)
+
+      IF NOT KeyExists(Section,"T") THEN
+        error INVALID FILE
+
+      T := value of the key "T" (base-16 big integer)
+
+      IF KeyExists(Section,"J") THEN	
+      BEGIN
+        J := value of the key "J" (base-16 big integer)
+            
+        IF NOT EC_TEST_1(N,S,W,J,T) THEN 
+          return FALSE
+      END
+      ELSE IF KeyExists(Section,"A") AND KeyExists(Section,"B") THEN	
+      BEGIN
+        A := value of the key "A" (base-16 big integer)
+        B := value of the key "B" (base-16 big integer)
+
+        IF NOT EC_TEST_2(N,S,W,A,B,T) THEN 
+          return FALSE
+      END
+      ELSE
+      BEGIN
+        error INVALID FILE
+      END
+    END
+    ELSE IF KeyExists(Section,"Q") THEN	
+    BEGIN
+      Q := value of the key "Q" (base-16 big integer)
+
+      IF NOT N_PLUS_1_TEST(N,S,Q) THEN 
+        return FALSE
+    END
+    ELSE IF KeyExists(Section,"B") THEN	
+    BEGIN
+      B := value of the key "B" (base-16 big integer)
+
+      IF NOT N_MINUS_1_TEST(N,S,B) THEN 
+        return FALSE
+    END
+    ELSE
+    BEGIN
+      error INVALID FILE
+    END
+
+    N := R
+  END // FOR loop
+
+  return SMALL_PRIME_TEST(N)
+END
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////
+SMALL_PRIME_TEST(N)
+BEGIN
+  IF (N <= 0) or (N >= 2**64) THEN
+    error INVALID PARAMETER
+
+  IF N < 65536 THEN
+  BEGIN
+    IF N is not in a lookup table containing all primes less than 65536 THEN
+      return FALSE
+  END
+  ELSE
+  BEGIN
+    IF (N is even) OR (N mod 3 = 0) THEN
+      return FALSE
+
+    IF N < 1,373,653 THEN
+    BEGIN
+      IF N does not pass the SPP test to the base 2 THEN // [1]
+        return FALSE
+
+      IF N does not pass the SPP test to the base 3 THEN
+        return FALSE
+    END   
+    ELSE IF N < 4,759,123,141 THEN
+    BEGIN
+      IF N does not pass the SPP test to the base 2 THEN
+        return FALSE
+
+      IF N does not pass the SPP test to the base 7 THEN
+        return FALSE
+
+      IF N does not pass the SPP test to the base 61 THEN
+        return FALSE
+    END
+    ELSE
+    BEGIN
+      IF N does not pass the BPSW test THEN // [2]
+        return FALSE
+    END
+  END
+
+  return TRUE
+END
+
+[1] "SPP" ~ "Strong Pseudo-Primality"
+
+[2] "BPSW" ~ "Baillie-Pomerance-Selfridge-Wagstaff"
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////
+N_MINUS_1_TEST(N,S,B)
+BEGIN
+  IF S is odd THEN
+    return FALSE
+
+  IF S < 2 THEN
+    return FALSE
+
+  IF ((N - 1) mod S) <> 0 THEN
+    return FALSE
+
+  IF B < 2 THEN
+    return FALSE
+
+  IF B >= N THEN
+    return FALSE
+
+  R := (N - 1) div S
+
+  IF R is even THEN
+    return FALSE
+
+  IF R <= S THEN
+    return FALSE
+
+  IF (B**(N-1) mod N) <> 1 THEN
+    return FALSE
+
+  IF gcd(B**S - 1, N) <> 1 THEN
+    return FALSE
+
+  return TRUE   
+END
+////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////
+N_PLUS_1_TEST(N,S,Q)
+BEGIN
+  IF S is odd THEN
+    return FALSE
+
+  IF S < 2 THEN
+    return FALSE
+
+  IF ((N + 1) mod S) <> 0 THEN
+    return FALSE
+
+  IF Q < 1 THEN
+    return FALSE
+
+  IF Q >= N THEN
+    return FALSE
+
+  R := (N + 1) div S
+  P := (Q mod 2) + 1
+
+  IF R is even THEN
+    return FALSE
+
+  IF R <= S THEN
+    return FALSE
+
+  IF JacobiSymbol(Q, N) <> -1 THEN
+    return FALSE
+
+  IF JacobiSymbol(P*P - 4*Q, N) <> -1 THEN
+    return FALSE
+
+  IF (V[(N + 1) div 2] mod N) <> 0 THEN // [1]
+    return FALSE
+
+  IF (V[S div 2] mod N) = 0 THEN
+    return FALSE
+
+  return TRUE
+END
+
+[1] "V[i]" is the i-th term of a V Lucas sequence with (P,Q) parameters
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////
+EC_TEST_1(N,S,W,J,T) and EC_TEST_2(N,S,W,A,B,T)
+BEGIN
+  IF N < 2 THEN
+    return FALSE
+
+  IF gcd(N,6) <> 1 THEN
+    return FALSE
+
+  IF S <= 0 THEN
+    return FALSE
+
+  IF W**2 >= 4*N THEN
+    return FALSE
+
+  IF ((N + 1 - W) mod S) <> 0 THEN
+    return FALSE
+
+  IF T < 0 THEN
+    return FALSE
+
+  IF T >= N THEN
+    return FALSE
+
+  IF EC_TEST_1 THEN
+  BEGIN
+    IF |J| > (N div 2) THEN
+      return FALSE
+
+    IF J = 0 THEN
+      return FALSE
+
+    IF J = 1728 THEN
+      return FALSE
+
+    A := (3*J*(1728 - J)) mod N 
+    B := (2*J*(1728 - J)**2) mod N
+  END
+  ELSE
+  BEGIN
+    IF |A| > (N div 2) THEN // [1]
+      return FALSE
+
+    IF |B| > (N div 2) THEN
+      return FALSE
+
+    IF ((4*A**3 + 27*B**2) mod N) = 0 THEN
+      return FALSE
+  END
+
+  R := (N + 1 - W) div S
+
+  IF R is even THEN
+    return FALSE
+
+  IF R <= floor((N**(1/4) + 1)**2) THEN // [2][3]
+    return FALSE
+
+  L := (T**3 + A*T + B) mod N
+
+  IF L <= 0 THEN
+    return FALSE
+
+  A := (A*L**2) mod N
+  B := (B*L**3) mod N
+  X := (T*L) mod N
+  Y := (L**2) mod N
+  Z := 1
+  (X1,Y1,Z1) := (X,Y,Z)#S // [4]
+
+  IF gcd(Z1,N) <> 1 THEN
+    return FALSE
+
+  (X2,Y2,Z2) := (X1,Y1,Z1)#R
+
+  IF (X2,Y2,Z2) is not the Identity point on the curve E(A,B,N) THEN // [5]
+    return FALSE
+
+  return TRUE
+END
+
+[1] "|U|" is the absolute value of U.
+
+[2] "floor(x)" is a function returning the greatest integer less than or equal 
+    to the real number x.
+
+[3] "N**(1/4)" is the real fourth root of N.
+
+[4] "(X,Y,Z)#K" is the multiplication of the elliptic curve point (X,Y,Z) by 
+    the integer K.
+    !!! When multiplying EC points, it is necessary to check whether 
+    gcd(Z,N) = 1 after any modification of Z (different, of course, from 
+    assignments like Z := 0 or Z := 1). This can be done by maintaining an 
+    accumulator ZA (initialized with 1 and updated with ZA := ZA*Z mod N) and by 
+    checking gcd(ZA,N) only once at the end of the point multiplication.
+
+[5] "E(A,B,N)" is the elliptic curve Y**2 = X**3 + A*X + B (mod N).
+
+////////////////////////////////////////////////////////////////////////////////
+

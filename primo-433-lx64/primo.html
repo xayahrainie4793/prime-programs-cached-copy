@@ -1,0 +1,1358 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="content-language" content="en" />
+  <title>PRIMO - Primality Proving</title>
+  <style type="text/css">
+    html {
+      background-color: #CCCCAA;
+    }
+    body {
+      background-color: #FFFFFF;
+      color: black;
+      font-family: sans;
+      font-size: 11pt;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 16px;
+      width: 850px;
+    }
+    a:link { 
+      color: #283898;
+      text-decoration: none;
+    }
+    a:visited { 
+      color: purple;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #283898;
+      text-decoration: underline;
+    }
+    h1 {
+      font-size: 165%;
+      text-align: center;
+    }
+    h2 {
+      background-color: #DDDDDD;
+      font-size: 125%;
+      text-align: center;
+      /* --- */
+      border-radius: 8px;
+      -moz-border-radius: 8px;
+      -khtml-border-radius: 8px;
+      -webkit-border-radius: 8px;
+    }
+    h3 {
+      text-align: left;
+      font-size: 100%;
+      color: #A83232;
+      border-bottom: solid 1px;
+    }
+    .ctext {
+      text-align: center;
+    }
+    .jtext {
+      text-align: justify;
+    }
+    .pagefoot {
+      font-size: 90%;
+      text-align: center;
+    }
+    .mono {
+      font-family: "Courier New",monospace;
+      font-size: 100%;
+      text-align: left;
+    }
+    .monoblue {
+      font-family: "Courier New",monospace;
+      font-size: 100%;
+      text-align: left;
+      color: NAVY;
+    }
+    .li1 {
+      font-variant: small-caps;
+    }
+    .li2 {
+      font-variant: normal;
+    }
+    table.contents {
+      background-color: #F7F7F7;
+      border: 2px solid #B0B0B0;
+      margin: auto; 
+      padding: 20px; 
+      text-align: left;
+      width: 90%;
+      /* --- */
+      border-radius: 8px;
+      -moz-border-radius: 8px;
+      -khtml-border-radius: 8px;
+      -webkit-border-radius: 8px;
+    }
+    table.contents td {
+      margin-bottom: 6px;
+      padding: 8px;
+      vertical-align: top; 
+    }
+    table.details {
+      background-color: #F4F4F4;
+      margin: auto; 
+      text-align: justify;
+      width: 100%;
+    }
+    table.details td {
+      border-bottom: 1px solid #B0B0B0;
+      padding: 8px;
+      vertical-align: top; 
+    }
+    table.details td.last {
+      border-bottom: 0;
+      padding: 8px;
+      vertical-align: top; 
+    }
+    table.details td.f1 {
+      border: 0px;
+      color: #000099;
+      font-weight: bold;
+      text-align: left;
+      width: 25%;
+    }
+    table.details td.f2 {
+      border: 0px;
+      color: #000099;
+      font-weight: bold;
+      text-align: left;
+      width: 33%;
+    }
+    table.code {
+      background-color: #FFFFF8; 
+      border: 2px solid #B0B0B0;
+      font-family: "Courier New",monospace;
+      font-size: 100%;
+      margin: auto; 
+      padding: 4px; 
+      text-align: left;
+      width: 100%;
+      /* --- */
+      border-radius: 8px;
+      -moz-border-radius: 8px;
+      -khtml-border-radius: 8px;
+      -webkit-border-radius: 8px;
+    }
+    table.pseudocode {
+      /*background-color: #FFFFF8;*/ 
+      border: 2px solid #B0B0B0;
+      font-family: "Courier New",monospace;
+      font-size: 90%;
+      margin: auto; 
+      padding: 4px; 
+      text-align: left;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div><a name="Contents"></a></div>
+<h1>PRIMO - Primality Proving</h1>
+<p><br /></p>
+
+
+
+<h2>Contents</h2>
+<p><br /></p>
+<table class="contents">
+<tr>
+<td>
+<ul>
+<li class="li1">Manual
+<ul>
+<li><a href="#Overview">Overview</a></li>
+    <ul>
+    <li class="li2"><a href="#OverviewWhatisPRIMO">What is PRIMO?</a></li> 
+    <li class="li2"><a href="#OverviewLatestRelease">Latest Release</a></li> 
+    <li class="li2"><a href="#OverviewContact">Contact</a></li> 
+    </ul>
+<li><a href="#GettingStarted">Getting started</a></li>
+    <ul>
+    <li class="li2"><a href="#GettingStartedTextFiles">Text Files</a></li> 
+    <li class="li2"><a href="#GettingStartedGoodPractice">Good Practice</a></li> 
+    <li class="li2"><a href="#GettingStartedFirstSession">First Session</a></li> 
+    </ul>
+<li><a href="#Menu">Menu</a></li>
+    <ul>
+    <li class="li2"><a href="#MenuItems">Items</a></li> 
+    </ul>
+<li><a href="#SetupBox">Setup dialog box</a></li>
+    <ul>
+    <li class="li2"><a href="#SetupBoxComponents">Components</a></li> 
+    </ul>
+<li><a href="#WorkReportPage">Work Report page</a></li>
+    <ul>
+    <li class="li2"><a href="#WorkReportPageReportEditor">Report Editor</a></li> 
+    </ul>
+<li><a href="#CertificationPage">Certification page</a></li>
+    <ul>
+    <li class="li2"><a href="#CertificationPageSetup">Setup</a></li> 
+    <li class="li2"><a href="#CertificationPageStatus">Status</a></li>
+    <li class="li2"><a href="#CertificationPageButtons">Buttons</a></li> 
+    </ul>
+<li><a href="#VerificationPage">Verification page</a></li>
+    <ul>
+    <li class="li2"><a href="#VerificationPageSetup">Setup</a></li> 
+    <li class="li2"><a href="#VerificationPageStatus">Status</a></li> 
+    <li class="li2"><a href="#VerificationPageButtons">Buttons</a></li> 
+    </ul>
+</ul>
+</li>
+</ul>
+</td>
+<td>
+<ul>
+<li class="li1">Files
+<ul>
+<li><a href="#InputFile">Input (Candidate)</a></li>
+    <ul>
+    <li class="li2"><a href="#InputFileExamples">Examples of valid input files</a></li> 
+    </ul>
+<li><a href="#OutputFile">OutPut (Certificate)</a></li>
+    <ul>
+    <li class="li2"><a href="#OutputFileExample">Example of certificate</a></li> 
+    <li class="li2"><a href="#OutputFileDetails">Details</a></li> 
+    </ul>
+<li><a href="#WorkReportFile">Work Report</a></li>
+    <ul>
+    <li class="li2"><a href="#WorkReportFileExample">Example of work report</a></li> 
+    </ul>
+<!--    
+<li><a href="#CertificationReportFile">Certification Report</a></li>
+    <ul>
+    <li class="li2"><a href="#CertificationReportFileExample">Example of certification report</a></li> 
+    <li class="li2"><a href="#CertificationReportFileDetails">Details</a></li> 
+    </ul>
+-->
+</ul>
+</li>
+</ul>
+<ul>
+<li class="li1">Miscellaneous
+<ul>
+<li><a href="#Resuming">How to resume a certification?</a></li>
+<li><a href="#InternalError">Internal Error</a></li>
+<li><a href="#License">End-User License</a></li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+<p><br /></p>
+
+
+
+
+
+
+<div><a name="Overview"></a></div>
+<p><br /></p>
+<h2>Overview</h2>
+<div><a name="OverviewWhatisPRIMO"></a></div>
+<h3>What is PRIMO?</h3>
+<p class="jtext">
+PRIMO is a primality proving program based on the ECPP (Elliptic Curve Primality Proving) 
+algorithm. Given positive odd integers, PRIMO tests whether these integers are prime, and if 
+they are it produces <a href="#OutputFile">primality certificates</a>.<br />
+PRIMO is suitable for the checking of crypto-primes and to prove whether they are actually 
+prime... or not.
+</p>
+<div><a name="OverviewLatestRelease"></a></div>
+<h3>Latest Release</h3>
+<p class="jtext">
+In order to check whether you have the most recent version of PRIMO, please, visit the 
+<a href="http://www.ellipsa.eu/index.html">PRIMO Homepage</a>.
+</p>
+<div><a name="OverviewContact"></a></div>
+<h3>Contact</h3>
+<p class="jtext">
+In order to send any comment, suggestion, bug report, whatever, see the 
+<a href="http://www.ellipsa.eu/public/misc/contact.html">PRIMO contact page</a>.
+</p>
+<p class="pagefoot"><br /><a href="#Contents">Contents</a></p>
+
+
+
+
+
+
+<div><a name="GettingStarted"></a></div>
+<p><br /></p>
+<h2>Getting Started</h2>
+<div><a name="GettingStartedTextFiles"></a></div>
+<h3>Text Files</h3>
+<p class="jtext">
+When running, PRIMO works with the following text files:<br />
+<span class="mono">*.in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a href="#InputFile">Input file</a> (Integer to test)<br />
+<span class="mono">primo-xxxxxxxxxxxxxxx-nnn.out&nbsp;&nbsp;</span>
+<a href="#OutputFile">Output file</a> (Primality certificate)<br />
+<span class="mono">primo-xxxxxxxxxxxxxxx.wr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<a href="#WorkReportFile">Work Report file</a><br />
+<span class="mono">xx..xx</span>
+is a unique hexadecimal number that allows to identify all the files created during batch processing.<br />
+<span class="mono">nnn</span> is an hexadecimal number
+that indicates the index (when batch processing only) of the tested integer.<br />
+</p>
+
+<div><a name="GettingStartedGoodPractice"></a></div>
+<h3>Good Practice</h3>
+<p class="jtext">
+In order to certify a number, always create a directory and copy the input file in this
+directory. Doing so, all the files related to the certification will be located in this
+directory (while certifying, depending on the size of the number, PRIMO can create hundreds, 
+and even thousands, of temporary files).
+</p>
+
+<div><a name="GettingStartedFirstSession"></a></div>
+<h3>First Session</h3>
+<ul>
+<li>Run PRIMO.</li>
+<li>Open the menu.</li>
+<li>Click on the <i>New input file...</i> item.</li>
+<li>Create the <i>new.in</i> file (once created, this file is displayed in a text editor).</li>
+<li>Write "10^55 + 21" (only the number not the quotes) after "N=".</li>
+<li>Save the file and close the text editor.</li>
+<li>Select the <i>Certification</i> tab.</li>
+<li>Select "2000 dd" with the <i>Number size</i> button.</li>
+<li>Select "23 bits" with the <i>Divisor size</i> button.</li>
+<li>Click on the <i>Build prime table</i> button.</li>
+<li>Click on the <i>Load</i> button.</li> 
+<li>Double-click on <i>new.in</i>.</li>
+</ul>
+<p class="jtext">
+When the certification is done, a short report is displayed in the editor of the 
+<a href="#WorkReportPage">Work Report page</a>. To open a results text 
+file, double-click on the relevant item.
+</p>
+<p class="pagefoot"><br /><a href="#Contents">Contents</a></p>
+
+
+
+
+
+
+<div><a name="Menu"></a></div>
+<p><br /></p>
+<h2>Menu</h2>
+<div><a name="MenuItems"></a></div>
+<h3>Items</h3>
+<table class="details">
+<tr>
+<td class="f1">New input file...</td>
+<td>Create a new empty <a href="#InputFile">input file</a>.</td>
+</tr>
+<tr>
+<td class="f1">Open a Primo text file...</td>
+<td>Open a file list box with which you can select PRIMO text files: input,
+<a href="#OutputFile">output</a> and <a href="#WorkReportFile">work report</a>. 
+These files are open with the text editor you associated with their extensions.
+</td>
+</tr>
+<tr>
+<td class="f1">Setup...</td>
+<td>
+Open the <a href="#SetupBox"> Setup dialog box</a>.<br />
+</td>
+</tr>
+<tr>
+<td class="f1">Open the help file...</td>
+<td>Open the documentation.</td>
+</tr>
+<tr>
+<td class="f1">About...</td>
+<td>Open the About dialog box.</td>
+</tr>
+<tr>
+<td class="f1">Quit</td>
+<td class="last">Close PRIMO.</td>
+</tr>
+</table>
+<p class="pagefoot"><br /><a href="#Contents">Contents</a></p>
+
+
+
+
+
+<div><a name="SetupBox"></a></div>
+<p><br /></p>
+<h2>Setup dialog box</h2>
+<div><a name="SetupBoxComponents"></a></div>
+<h3>CPU Info</h3>
+<table class="details">
+<tr>
+</tr>
+<tr>
+<td class="f1">CPU Info</td>
+<td class="last">
+This group box indicates
+<ul>
+<li>the name of the processors (in case there are more than one processor on a 
+motherboard, it is assumed they are all identical);</li><br />
+<li>the number of physical processors on the motherboard, the number of cores per processor,
+and the number of hyperthreads per core.</li>
+</ul>
+</td>
+</tr>
+</table>
+<h3>Common</h3>
+<table class="details">
+<tr>
+</tr>
+<tr>
+<td class="f1">Concurrent tasks...</td>
+<td>
+Max number of concurrent tasks.<br />
+<br />
+The value should be chosen according to the number of processors, the number of 
+cores per processor and the number of hyperthreads per core.<br /> 
+For instance, with one processor, four cores per processor and two hyperthreads
+per core, one could select up to 1*4*2 = 8 tasks.<br />
+</td>
+</tr>
+<tr>
+<td class="f1">Hexadecimal strings...</td>
+<td>
+Generate hexadecimal strings prefixed with '0x' instead of '$'.<br />
+<br />
+If checked the Pascal hexadecimal tag '$' is replaced with '0x' in certificates.
+Primo can work (reading/writing) with text files using both tags.<br />
+<br />
+<i>Default value = Unchecked</i>
+</td>
+</tr>
+<tr>
+<td class="f1">Reset button</td>
+<td class="last">
+This button allows to reset the default value.
+</td>
+</tr>
+</table>
+<h3>Phase 1</h3>
+<table class="details">
+<tr>
+</tr>
+<tr>
+<td class="f1">Min binary gain<br /></td>
+<td>
+This parameter allows to increase or to decrease the minimal gain of a test during the pass #1.<br />
+<br />
+This parameter has no effect during the first test of a certification.<br /> 
+<br />
+<i>Default value = 100%</i>
+</td>
+</tr>
+
+<tr>
+<td class="f1">Elliptic curve tests only<br /></td>
+<td>
+If checked, the produced primality certificates contain no <i>N+/-1</i> tests.<br />
+<br />
+<i>Default value = Unchecked</i>
+</td>
+</tr>
+
+<tr>
+<td class="f1">Backtrack<br />Never before...</td>
+<td>
+Primo does not try to backtrack before having run the discriminant table whose number is
+specified.<br />
+<br />
+This directive has no effect during the first test of a certification.<br /> 
+<br />
+<i>Default value = 2</i>
+</td>
+</tr>
+<tr>
+<td class="f1">Backtrack<br />Always after...</td>
+<td>
+Primo always tries to backtrack after having run the discriminant table whose number is
+specified.<br />
+<br />
+This directive has no effect during the first test of a certification.<br /> 
+<br />
+<i>Default value = 22</i>
+</td>
+</tr>
+<tr>
+<td class="f1">Reset button</td>
+<td class="last">
+This button allows to reset the default values.
+</td>
+</tr>
+</table>
+<h3>Verification</h3>
+<table class="details">
+<tr>
+</tr>
+<tr>
+<td class="f1">Obsolete tests...</td>
+<td>
+Suppress obsolete tests, if any, when updating certificates.<br />
+<br />
+Due to the new final test of format-4 certificates, when updating certificates from format-3 to 
+format-4, the very last test(s) of a format-3 certificate may be suppressed.<br />
+<br />
+If checked, the obsolete tests are suppressed from the updated certificates.<br />
+<br />
+<i>Default value = Checked</i>
+</td>
+</tr>
+<tr>
+<td class="f1">Reset button</td>
+<td class="last">
+This button allows to reset the default value.
+</td>
+</tr>
+</table>
+<p class="pagefoot"><br /><a href="#Contents">Contents</a></p>
+
+
+
+
+
+<div><a name="WorkReportPage"></a></div>
+<p><br /></p>
+<h2>Work Report Page</h2>
+<p class="jtext">
+The Work Report page contains an editor used to display certification and verification reports.
+</p>
+<div><a name="WorkReportPageReportEditor"></a></div>
+<h3>Report Editor</h3>
+<p class="jtext">
+When an entry in the report contains the name of a PRIMO text file, you can open the
+file by double-clicking on the item (alternately, you can select the item with the 
+Arrow keys and hit the Return key to open the file).<br />
+The editor content is automatically saved to a <a href="#WorkReportFile">work 
+report file</a> (text file).
+</p>
+<p class="pagefoot"><br /><a href="#Contents">Contents</a></p>
+
+
+
+
+
+
+<div><a name="CertificationPage"></a></div>
+<p><br /></p>
+<h2>Certification Page</h2>
+<p class="jtext">
+The Certification page allows to perform the certification of 
+integers in PRIMO <a href="#InputFile">input files</a> and also to resume 
+aborted certificates:<br /> 
+- loading <b>.in</b> files starts certifications ;<br />
+- loading <b>.tmp</b> files restarts aborted certifications.<br />
+<br />
+The certificates are always saved to <a href="#OutputFile">output files</a> 
+in the directory that contains the input files.<br />
+While certifying, PRIMO creates and updates temporary files having the <b>.tmp</b> extension.
+Do not modify them. If ever a <b>.tmp</b> file is modified, all the work done could be lost!<br />
+<br />
+During a certification, the work in progress is automatically saved every 10 minutes.<br />
+<br />
+See also: <a href="#OutputFile">Primality certificate</a>
+</p>
+
+<div><a name="CertificationPageSetup"></a></div>
+<h3>Setup</h3>
+<table class="details">
+</tr>
+<tr>
+<td class="f1">Trial division parameters</td>
+<td>
+In order to factor elliptic curve orders, one has to select 2 parameters:
+<ul>
+<li>
+<i>Number Size (NS)</i><br />
+Decimal size of a number to test.<br /><br />
+</li>
+<li>
+<i>Divisor Size (DS)</i><br />
+Maximal binary size of the prime divisors used by Primo.
+</li>
+</ul>
+When certifying,
+<ul>
+<li>if the decimal size of a number to test (a candidate or a N value of a
+certificate test) is greater than or equal to <i>NS</i>, the maximal binary size of 
+the divisors is constant and equal to <i>DS</i> (i.e., Primo makes use of all small
+primes <i>p</i> such that <i>p < 2<sup>DS</sup></i>);<br /><br /></li>
+<li>while the decimal size of a number to test decreases from <i>NS</i> downto 1000,
+the maximal binary size of the divisors linearly decreases from <i>DS</i> downto 
+22;<br /><br /></li>
+<li>if the decimal size of a number to test is less than 1000, Primo makes use of
+internal parameters that cannot be modified.</li>
+</ul>
+To modify the values, use the arrow keys or click on the buttons and select new values in 
+the menus.<br />
+<br />
+When the NS value is modified, the DS value is automatically set to the default value
+associated with the new NS value (like indicated in the following table).
+So, one should always set the <i>NS</i> before setting the <i>DS</i>.<br />
+<br />
+<table border="1" cellspacing="0">
+<tr><th>&nbsp;Number Size&nbsp;</th><th>&nbsp;Divisor Size&nbsp;</th></tr>
+<tr><td align="right">2000 decimal digits&nbsp;</td><td align="center">23 bits</td></tr>
+<tr><td align="right">3000 decimal digits&nbsp;</td><td align="center">24 bits</td></tr>
+<tr><td align="right">4000 decimal digits&nbsp;</td><td align="center">25 bits</td></tr>
+<tr><td align="right">5000 decimal digits&nbsp;</td><td align="center">26 bits</td></tr>
+<tr><td align="right">6000 decimal digits&nbsp;</td><td align="center">27 bits</td></tr>
+<tr><td align="right">7000 decimal digits&nbsp;</td><td align="center">28 bits</td></tr>
+<tr><td align="right">8000 decimal digits&nbsp;</td><td align="center">29 bits</td></tr>
+<tr><td align="right">9000 decimal digits&nbsp;</td><td align="center">30 bits</td></tr>
+<tr><td align="right">10000 decimal digits&nbsp;</td><td align="center">31 bits</td></tr>
+<tr><td align="right">11000 decimal digits&nbsp;</td><td align="center">32 bits</td></tr>
+<tr><td align="right">beyond&nbsp;</td><td align="center">32 bits</td></tr>
+</table>
+<br />
+</td>
+</tr>
+<tr>
+<td class="f1">Build prime table</td>
+<td class="last">
+Create a prime table containing all the primes having a binary size smaller than or equal to
+<i>Divisor Size</i>.<br />
+It might be necessary to increase the Linux <i>kernel.shmmax</i> value. With Ubuntu, one can do 
+it using the following command line (after having replaced <span class="mono"><b>newsize</b></span> 
+with the value indicated in the PRIMO status line):<br />
+<br />
+<span class="mono">sudo sh -c 'echo <b>newsize</b> &gt; /proc/sys/kernel/shmmax'</span><br />
+<br />
+This modification will last until Linux is rebooted.
+</td>
+</tr>
+</table>
+
+<div><a name="CertificationPageStatus"></a></div>
+<h3>Status</h3>
+<table class="details">
+<tr>
+<td class="f1">Elapsed time</td>
+<td>Running time of the certification.</td>
+</tr>
+<tr>
+<td class="f1">Number</td>
+<td>Number (in the input file list) of the integer that is currently tested.</td>
+</tr>
+<tr>
+<td class="f1">Phase</td>
+<td>
+Number of the current phase (1 or 2).<br />
+<br />
+The <i>Phase 1</i> consists in finding a list of primes.<br />
+<br />
+The <i>Phase 2</i> consists in building and factoring class polynomials and in computing
+elliptic curves and points (which ones prove that the list of primes found 
+during the <i>Phase 1</i> is indeed a list of primes).
+</td>
+</tr>
+<tr>
+<td class="f1">Test</td>
+<td>Number of the current test.<br />The value may decrease due to backtracking.</td>
+</tr>
+<tr>
+<td class="f1">Bits</td>
+<td>Indicates the binary size of the integer currently tested.</td>
+</tr>
+<tr>
+<td class="f1">1..48</td>
+<td class="last">Miscellaneous information regarding the current status of a certification (each task has 
+its own status line).</td>
+</tr>
+</table>
+</p>
+
+<div><a name="CertificationPageButtons"></a></div>
+<h3>Buttons</h3>
+<table class="details">
+<tr>
+<td class="f1">Load</td>
+<td>
+Load files (up to 4095 files) and start certifications (and/or restart aborted certifications). The 
+selected files are always processed in alphabetical order.
+</td>
+</tr>
+<tr>
+<td class="f1">Abort</td>
+<td class="last">
+Allow to abort a certification.<br />
+<br />
+When a certification is aborted, data that allow to resume it are saved to a file having 
+the <b>.tmp</b> extension. To restart the certification, just load this file.
+</td>
+</tr>
+</table>
+<p class="pagefoot"><br /><a href="#Contents">Contents</a></p>
+
+
+
+
+
+
+<div><a name="VerificationPage"></a></div>
+<p><br /></p>
+<h2>Verification Page</h2>
+<p class="jtext">
+The Verification page allows to verify and to sign certificates (format-3 and/or format-4).
+Note that the certificates are always verified and signed while certifying.<br />
+<br />
+When signing, the work in progress is automatically saved every 10 minutes.<br />
+<br />
+See also: <a href="#OutputFile">Primality certificate</a>
+</p>
+
+<div><a name="VerificationPageSetup"></a></div>
+<h3>Setup</h3>
+<table class="details">
+<tr>
+<td class="f1">Check signatures only</td>
+<td>
+If checked, PRIMO tries to check the signature only (this allows to quickly reject invalid
+certificates). If there is no signature section then it verifies the certificate and signs it.<br />
+<br />
+If not checked, PRIMO always verifies the certificate and signs it.<br />
+<br />
+<i>Default value = Checked</i>
+</td>
+</tr>
+<tr>
+<td class="f1">Update certificates</td>
+<td class="last">
+If checked, PRIMO tries to update an old format-3 certificate to format-4.<br />
+<br />
+If the format-3 certificate is signed and if the <i>Check signatures only</i> option is checked, the 
+creation of the format-4 certificate is very fast.<br />
+<br />
+If the format-3 certificate is not signed or if the <i>Check signatures only</i> option is not checked, 
+PRIMO performs a full verification before creating the format-4 certificate.<br />
+<br />
+<i>Default value = Unchecked</i>
+</td>
+</tr>
+</table>
+
+<div><a name="VerificationPageStatus"></a></div>
+<h3>Status</h3>
+<table class="details">
+<tr>
+<td class="f1">Elapsed time</td>
+<td>Running time of the verification.</td>
+</tr>
+<tr>
+<td class="f1">Certificate</td>
+<td>
+Number (in the <a href="#OutputFile">output file</a> list) of the certificate that is currently verified.
+</td>
+</tr>
+<tr>
+<td class="f1">Test</td>
+<td>Number of the current test.</td>
+</tr>
+<tr>
+<td class="f1">Bits</td>
+<td>Indicates the binary size of the integer currently checked.</td>
+</tr>
+<tr>
+<td class="f1">1..48</td>
+<td class="last">Miscellaneous information regarding the current status of a verification (each 
+task has its own status line).</td>
+</tr>
+</table>
+
+<div><a name="VerificationPageButtons"></a></div>
+<h3>Buttons</h3>
+<table class="details">
+<tr>
+<td class="f1">Load</td>
+<td>
+Load files (up to 4095 files) and start verifications. The selected files are always processed in 
+alphabetical order.
+</td>
+</tr>
+<tr>
+<td class="f1">Abort</td>
+<td class="last">
+Abort a verification.<br /> 
+<br />
+In order to resume an aborted verification, just reload the <b>.out</b> file.
+</td>
+</tr>
+</table>
+<p class="pagefoot"><br /><a href="#Contents">Contents</a></p>
+
+
+
+
+
+
+<div><a name="Resuming"></a></div>
+<p><br /></p>
+<h2>How to resume a certification?</h2>
+<div class="jtext">
+In the <a href="#CertificationPage">Certification page</a>, click on the <i>Load file(s) 
+and start certification(s)</i> button. Select the <b>.tmp</b> file created when 
+aborting the certification.<br />
+That's all.
+</div>
+<p class="pagefoot"><br /><a href="#Contents">Contents</a></p>
+
+
+
+
+
+
+<div><a name="InputFile"></a></div>
+<p><br /></p>
+<h2>Input File</h2>
+<div class="jtext">
+A PRIMO input file is a text file that should contain an integer to test. This integer should be greater 
+than 1 and less than 2<sup>166016</sup> (i.e. a little more than 50000 decimal digits).<br />
+<br />
+The extension name of an input file must always be <b>.in</b>.<br />
+<br />
+An input file has a syntax examplified by the text within the horizontal bars:<br />
+<span class="monoblue">
+-----------------------------------------<br />
+; any comment you want after a semi-colon<br />
+[Candidate]<br />
+N=<br />
+-----------------------------------------<br />
+</span>
+The file may contain any number of blank lines.<br />
+The number (or the expression) that follows <span class="monoblue">N=</span> must be 
+written on a single line.<br />
+There must be no character (Space, Tab, or else) before the first character of the section
+<span class="monoblue">[Candidate]</span>, before <span class="monoblue">N=</span> or 
+before a semicolon <span class="monoblue">;</span><br />
+Expressions are allowed.<br />
+<br />
+<table border="1" cellspacing="0" cellpadding="4">
+<tr>
+<td><b>Symbol</b>&nbsp;&nbsp;</td><td><b>Meaning</b>&nbsp;&nbsp;</td><td><b>Comment</b></td>
+</tr>
+<tr>
+<td><span class="monoblue">+</span></td>
+<td>Addition</td>
+<td>There is no unary <span class="monoblue">+</span></td>
+</tr>
+<tr>
+<td><span class="monoblue">-</span></td>
+<td>Subtraction</td>
+<td>There is no unary - (but if need be it can be coded as <span class="monoblue">(0-n)</span>)</td>
+</tr>
+<tr>
+<td><span class="monoblue">*</span></td>
+<td>Multiplication</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="monoblue">/</span></td>
+<td>Division</td>
+<td>Integer division<br />
+    Example: <span class="monoblue">8/3</span> is equal to 2 (not to 2.66666...)</td>
+</tr>
+<tr>
+<td><span class="monoblue">^</span><br /><span class="monoblue">**</span></td>
+<td>Exponentiation</td>
+<td>The exponentiation is associative on the left: <span class="monoblue">a^b^c = (a^b)^c</span>&nbsp;</td>
+</tr>
+<tr>
+<td><span class="monoblue">!</span></td>
+<td>Factorial</td>
+<td>Example: <span class="monoblue">7!</span> is equal to 7*6*5*4*3*2<br />
+    Spaces before the symbol <span class="monoblue">!</span> are not allowed</td>
+</tr>
+<tr>
+<td><span class="monoblue">!!</span></td>
+<td>Multi-factorial</td>
+<td>Example: <span class="monoblue">23!!7</span> is equal to 23*16*9*2<br />
+    Spaces before or after the symbols <span class="monoblue">!</span> are not allowed</td>
+</tr>
+<tr>
+<td><span class="monoblue">#</span></td>
+<td>Primorial</td>
+<td><span class="monoblue">n#</span> is the product of all the primes less than or equal to n<br />
+    Spaces before the symbol <span class="monoblue">#</span> are not allowed</td>
+</tr>
+<tr>
+<td><span class="monoblue">$</span><br /><span class="monoblue">0x</span></td>
+<td>Base-16 prefixes</td>
+<td>Example: <span class="monoblue">$2bc</span> or <span class="monoblue">0x2bc</span> are equal to 700<br />
+    Spaces between the prefix and the first digit are not allowed</td>
+</tr>
+<tr>
+<td><span class="monoblue">0..9</span></td>
+<td>Base-10 digits</td>
+<td>Spaces between the digits of a number are not allowed</td>
+</tr>
+<tr>
+<td><span class="monoblue">0..9</span><br /><span class="monoblue">a..f</span><br /><span class="monoblue">A..F</span></td>
+<td>Base-16 digits</td>
+<td>Spaces between the digits of a number are not allowed</td>
+</tr>
+<tr>
+<td><span class="monoblue">(</span></td>
+<td>Opening bracket&nbsp;&nbsp;</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="monoblue">)</span></td>
+<td>Closing bracket</td>
+<td></td>
+</tr>
+</table>
+</div>
+<br />
+In case of error when evaluating an expression, Primo reports either the position of the first invalid 
+symbol or one of the following error codes.<br /> 
+<br />
+<table border="1" cellspacing="0" cellpadding="4">
+<tr><td><b>Code</b>&nbsp;&nbsp;&nbsp;</td><td><b>Meaning</b></td></tr>
+<tr><td>-1</td><td>An exception occurred (user abort, system, ...)</td></tr>
+<tr><td>-2</td><td>Invalid expression</td></tr>
+<tr><td>-3</td><td>The number of closing brackets is not equal to the number of opening ones&nbsp;</td></tr>
+<tr><td>-4</td><td>Invalid factorial operand (op > 65535)</td></tr>
+<tr><td>-5</td><td>Invalid multi-factorial operands ((op1 < op2) or (op1 &ge; 2<sup>64</sup>) or (op2 < 1))</td></tr>
+<tr><td>-6</td><td>Invalid primorial operand ((op < 2) or (op > 65521))</td></tr>
+<tr><td>-7</td><td>Division by 0</td></tr>
+<tr><td>-8</td><td>Overflow: an intermediate result became greater than or equal to 2<sup>531456</sup></td></tr>
+</table>
+</div>
+<p><br /></p>
+
+<div><a name="InputFileExamples"></a></div>
+<h3>Examples of valid input files</h3>
+<p></p>
+<table class="code">
+<tr>
+<td>
+;PRIMO Input File<br />
+<br />
+[Candidate]<br />
+N=1384435372850622112932804334308326689651568940268408537
+</td>
+</tr>
+</table>
+<p></p>
+<table class="code">
+<tr>
+<td>
+;PRIMO Input File<br />
+;Number expressed to the base 16<br />
+<br />
+[Candidate]<br />
+N=$cc8fa1481b11589c04f066367b204e09132082838aef805f207555505e690153
+</td>
+</tr>
+</table>
+<p></p>
+<table class="code">
+<tr>
+<td>
+;PRIMO Input File<br />
+;Expression<br />
+<br />
+[Candidate]<br />
+N=10^700 + 7
+</td>
+</tr>
+</table>
+<p></p>
+<table class="code">
+<tr>
+<td>
+;PRIMO Input File<br />
+;Expression with integers expressed to the base 16 (equivalent to 10^700 + 7)<br />
+<br />
+[Candidate]<br />
+N=$A^$2BC + $7
+</td>
+</tr>
+</table>
+<p class="pagefoot"><br /><a href="#Contents">Contents</a></p>
+
+
+
+
+
+
+<div><a name="OutputFile"></a></div>
+<p><br /></p>
+<h2>Output File (Certificate)</h2>
+<div class="jtext">
+A primality certificate is a sequence of integers that satisfy the requirements of various 
+theorems. With the primality certificate of an integer, an independent verifier can quickly 
+check the primality of this integer (in order to write a verifier, see the <b>verifier-f4.txt</b> file).<br />
+<br />
+Primality certificates are automatically saved to output files (which ones are text files), 
+in the directory that contains the <a href="#InputFile">input file</a>.
+</div>
+
+<div><a name="OutputFileExample"></a></div>
+<h3>Example of certificate</h3>
+<p></p>
+<table class="code">
+<tr>
+<td>
+[PRIMO - Primality Certificate]<br />
+Version=x.x.x - LX64<br />
+WebSite=http://www.ellipsa.eu/<br />
+Format=4<br />
+ID=B346B00DD802B<br />
+Created=???-00-0000 00:00:00 AM<br />
+TestCount=7<br />
+Status=Candidate certified prime<br />
+<br />
+[Comments]<br />
+Put here any comment...<br />
+<br />
+[Running Times (Wall-Clock)]<br />
+1stPhase=0.02s<br />
+2ndPhase=0.01s<br />
+Total=0.03s<br />
+<br />
+[Running Times (Processes)]<br />
+1stPhase=0.03s<br />
+2ndPhase=0.01s<br />
+Total=0.04s<br />
+<br />
+[Candidate]<br />
+File=/home/lx64/work/new.in<br />
+Expression=10^55+21<br />
+N=$6867A5A867F103B2FFFA5A71FBA0E7B680000000000015<br />
+HexadecimalSize=46<br />
+DecimalSize=56<br />
+BinarySize=183<br />
+<br />
+[1]<br />
+S=$2<br />
+W=-$144534B5B2A8FE0395A5EE94<br />
+A=-$3433D2D433F881D97FFD2D38FDD073DB4000000000000A<br />
+B=0<br />
+T=$2<br />
+<br />
+[2]<br />
+S=$8<br />
+W=-$B6EBCBCA04B86F63A8D2612<br />
+A=-$1<br />
+B=0<br />
+T=$2<br />
+<br />
+[3]<br />
+S=$6258F9<br />
+W=-$23F79D321EF79576E0D7D1<br />
+A=-$108<br />
+B=$69E<br />
+T=$1<br />
+<br />
+[4]<br />
+S=$D766<br />
+B=$2<br />
+<br />
+[5]<br />
+S=$166E14C9BA<br />
+W=$777E21A2ED19AA5FD0<br />
+A=$6BAA29FD34D420C1E9A55D6959BD90CF0FE<br />
+B=0<br />
+T=$2<br />
+<br />
+[6]<br />
+S=$F432<br />
+Q=$6<br />
+<br />
+[7]<br />
+S=$155EC18050<br />
+W=$11255F5B55E6<br />
+A=-$108<br />
+B=$69E<br />
+T=$1<br />
+<br />
+[Signature]<br />
+1=$8817CEEE51DDDF518A14AA0DB012940266AA9D0D39323778<br />
+2=$1DD92A5916A0F532586ABCF17F005AC870CAE0F9E4B146A9
+</td>
+</tr>
+</table>
+
+<div><a name="OutputFileDetails"></a></div>
+<h3>Details</h3>
+<table class="details">
+<tr>
+<td class="f2">[PRIMO - Primality Certificate]</td>
+<td><b>Header section</b></td>
+</tr>
+<tr>
+<td class="f2">Version=</td>
+<td>PRIMO version</td>
+</tr>
+<tr>
+<td class="f2">Website=</td>
+<td>Homepage of PRIMO</td>
+</tr>
+<tr>
+<td class="f2">Format=</td>
+<td>Certificate format</td>
+</tr>
+<tr>
+<td class="f2">ID=</td>
+<td>
+Unique identifier that allows to know all files created during a given
+work (associated files always have the same identifier)
+</td>
+</tr>
+<tr>
+<td class="f2">Created=</td>
+<td>Creation date of the certificate</td>
+</tr>
+<tr>
+<td class="f2">TestCount=</td>
+<td>Total number of tests in the certificate</td>
+</tr>
+<tr>
+<td class="f2">Status=</td>
+<td class="last">Status of the certificate</td>
+</tr>
+</table>
+<p></p>
+<table class="details">
+<tr>
+<td class="f2">[Candidate]</td>
+<td><b>Candidate section&nbsp;</b></td>
+</tr>
+<tr>
+<td class="f2">File=</td>
+<td>File name of the candidate</td>
+</tr>
+<tr>
+<td class="f2">Expression=</td>
+<td>Candidate expressed as a formula (if any in the input file)</td>
+</tr> 
+<tr>
+<td class="f2">N=</td>
+<td>Candidate (always expressed to the base 16)</td>
+</tr>
+<tr>
+<td class="f2">HexadecimalSize=</td>
+<td>Hexadecimal size (base 16) of the candidate</td>
+</tr>
+<tr>
+<td class="f2">DecimalSize=</td>
+<td>Decimal size (base 10) of the candidate</td>
+</tr>
+<tr>
+<td class="f2">BinarySize=</td>
+<td class="last">Binary size (base 2) of the candidate</td>
+</tr>
+</table>
+<p></p>
+<table class="details">
+<tr>
+<td class="f2">[n]</td>
+<td>
+<b>Test section&nbsp;</b><br />
+<br />
+n is the number of the test
+</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class="f2">S=</td>
+<td>number expressed to the base 16</td>
+</tr>
+<tr>
+<td class="f2">W=</td>
+<td>number expressed to the base 16</td>
+</tr>
+<tr>
+<td class="f2">A=</td>
+<td>number expressed to the base 16</td>
+</tr>
+<tr>
+<td class="f2">B=</td>
+<td>number expressed to the base 16</td>
+</tr>
+<tr>
+<td class="f2">J=</td>
+<td>number expressed to the base 16</td>
+</tr>
+<tr>
+<td class="f2">T=</td>
+<td>number expressed to the base 16</td>
+</tr>
+<tr>
+<td class="f2">Q=</td>
+<td class="last">number expressed to the base 16</td>
+</tr>
+</table>
+<p></p>
+<table class="details">
+<tr>
+<td class="f2">[Signature]</td>
+<td><b>Signature section&nbsp;</b></td>
+</tr>
+<tr>
+<td class="f2">1=</td>
+<td>1st part of the signature of a certificate (192 bits)</td>
+</tr>
+<tr>
+<td class="f2">2=</td>
+<td class="last">2nd part of the signature of a certificate (192 bits)</td>
+</tr>
+</table>
+<p class="pagefoot"><br /><a href="#Contents">Contents</a></p>
+
+
+
+
+
+
+<div><a name="WorkReportFile"></a></div>
+<p><br /></p>
+<h2>Work Report File</h2>
+<div class="jtext">
+After certifications or verifications, PRIMO opens the <a href="#WorkReportPage">Work
+Report Page</a> and displays miscellaneous information about the work done.<br />
+Work reports are automatically saved to <b>.wr</b> files. These text files are always created 
+in the directory that contains the <a href="#InputFile">input files</a> (certifications)
+or the <a href="#OutputFile">output files</a> (verifications).
+</div>
+
+<div><a name="WorkReportFileExample"></a></div>
+<h3>Example of work report</h3>
+<p></p>
+<table class="code">
+<tr>
+<td>
+[PRIMO - Work Report]<br />
+Version=x.x.x - LX64<br />
+WebSite=http://www.ellipsa.eu/<br />
+Work=Certification<br />
+ID=B346B00DD802B<br />
+Created=???-00-0000 00:00:00 AM<br />
+<br />
+[Common]<br />
+Path=/home/lx64/work/<br />
+Selected=1<br />
+Processed=1<br />
+Certified=1<br />
+Candidate 1=Certified, 0.03s<br />
+<br />
+[Candidate 1]<br />
+Input=new.in<br />
+Output=primo-B346B00DD802B.out<br />
+Status=Candidate certified prime
+</td>
+</tr>
+</table>
+<p class="pagefoot"><br /><a href="#Contents">Contents</a></p>
+
+
+
+
+
+
+<div><a name="InternalError"></a></div>
+<p><br /></p>
+<h2>Internal Error</h2>
+<div class="jtext">
+An internal error may be raised by PRIMO for mainly three reasons: a missing/corrupted file, a PRIMO bug or a 
+hardware failure.<br />
+<br />
+In case such an error occurs, try first to redo what you were doing. If the error still occurs, thanks to report the 
+problem with the most possible details: Linux version, processor type, etc. as well as a 
+description of the problem (to get the current e-mail address, see the 
+<a href="http://www.ellipsa.eu/public/misc/contact.html">PRIMO contact page</a>).<br />
+</div>
+<p class="pagefoot"><br /><a href="#Contents">Contents</a></p>
+
+
+
+
+
+
+<div><a name="License"></a></div>
+<p><br /></p>
+<h2>License</h2>
+<div class="jtext">
+PRIMO - Primality Proving. Copyright &copy; 2001-2020, Marcel Martin. All rights reserved.<br />
+<br />
+By installing and/or using the software PRIMO (the "Software"), you (the "User") (either
+on behalf of yourself as an individual or on behalf of an entity as its authorized 
+representative) agree to all the terms of this end-user license agreement (the 
+"Agreement") regarding your use of the Software and you also agree that this is the entire 
+agreement between the author (the "Author") of the Software and you, which supersedes any 
+prior agreement, whether written or oral, and all other communications between the Author 
+and you relating to the subject matter of this Agreement.<br />
+<br />
+<b>GRANT OF LICENSE</b><br />
+Subject to the terms below, the Author hereby grants the User a non-exclusive, non-transferable
+license to install and to use the Software.<br />
+<br />
+<b>DISCLAIMER OF WARRANTY</b><br />
+The Software and its documentation are provided "as is" without warranty of any kind.<br />
+The Author makes no representations or warranties about the suitability of the Software,
+either express or implied, including but not limited to the implied warranties of 
+merchantability, fitness for a particular purpose, or non-infringement.<br />
+If the User of this Software deems it unsuitable for any particular purpose, the User's
+sole remedy shall be to refrain from using it.<br />
+The Author shall not be liable for any damages suffered by the User as a result of using, 
+modifying or distributing the Software, including direct, indirect, incidental, consequential 
+or other damages, even if the Author has been advised of the possibility of such damages.<br />
+<br />
+<b>INTELLECTUAL PROPERTY</b><br />
+No title to the intellectual property in the Software is transferred to the User. Title, 
+ownership, rights, and intellectual property rights in and to the Software shall remain to the 
+Author.<br />
+<br />
+<b>TERMINATION</b><br />
+This Agreement shall terminate automatically if the User fails to comply with the limitations
+described in this Agreement. No notice shall be required from the Author to effectuate such 
+termination. Upon termination, the User must uninstall and destroy all copies of the Software.<br />
+<br />
+<b>GOVERNING LAWS</b><br />
+This Agreement shall be governed by the laws of France.<br />
+<br />
+<b>PATENTS</b><br />
+If the Author is advised that the Software is infringing a patent, the Author shall forbid
+distribution and use of the Software in all countries where the patent is applicable. In this 
+case, the User's sole remedy shall be to refrain from using the Software in these countries.<br />
+<br />
+<b>SEVERABILITY</b><br />
+In the event of invalidity of any provision of this Agreement, the Author and the User
+agree that such invalidity shall not affect the validity of the remaining portions of this 
+Agreement.<br />
+<br />
+<b>RESERVATION OF RIGHTS</b><br />
+All rights not expressly granted in this Agreement are reserved by the Author.<br />
+<br />
+<i>December 8, 2020</i><br />
+<i>Argenteuil, France</i>
+</div>
+<p class="pagefoot"><br /><a href="#Contents">Contents</a></p>
+
+
+
+
+
+
+<p class="ctext">
+<br />
+<br />
+Copyright &copy; 2020, Marcel Martin<br />
+<a href="http://www.ellipsa.eu/index.html">http://www.ellipsa.eu/index.html</a><br />
+</p>
+
+</body>
+</html>
