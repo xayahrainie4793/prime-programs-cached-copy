@@ -1,0 +1,45 @@
+PrimeForm/GW File format documentation version
+
+Synapsis:
+
+The DECIMAL format is used for handling long decimals values that are substrings
+of a longer string without needing to specify the substring on each line.
+
+****************************************************************************
+
+File References:
+
+This format is fairly limited.  It doesn't support variables like an ABC file.
+In this file, the first line must start with the text "DECIMAL".  The decimal
+value must be a string of digits which is terminated by a space, and end of line,
+a tab, or the "//" characters. 
+
+The subsequent lines of a DECIMAL file are decimal lengths.  PFGW will substring
+the decimal value by that length to extract the number to be PRP tested.  Note that
+PFGW cannot detect if the number is a special form that can be be primality tested,
+so these numbers can only be PRP tested.
+
+The sieving program pixsieve is the only software that creates files in this format.
+
+The current maximum line length for an DECIMAL file is 5,000,100 bytes.
+
+There are two formats for a DECIMAL file.  The first is used for PRP testing.
+
+DECIMAL <some really long decimal value>
+150
+203
+205
+2890
+
+This will test numbers of length 105, 203, 205, and 2890 from the decimal string.
+
+The second format is used for factor verification
+
+DECIMAL <some really long decimal value>
+11 | 151
+41 | 163
+
+The first value is a suspected factor (likely a prime).  The second value provides 
+the length of the decimal value that it divides.  PFGW will do a mod of the decimal
+value by the factor.  If it returns "is Zero", then it has verified that the factor
+is a valid factor of the decimal value.

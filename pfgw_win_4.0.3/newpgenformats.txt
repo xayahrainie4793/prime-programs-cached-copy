@@ -1,0 +1,87 @@
+// Here are the NewPGen format's
+
+<sieve limit>:<mode character>:<chain len>:<base>:<mode bitmap as a decimal>
+
+Mode character:
+    'P' +1
+    'M' -1
+    'T' +-1 (Twin)  (Also 3-tuple and 4-tuples)
+    'S' Sophie Germain
+    'C' Cunningham chain
+    'B' BiTwin
+    'Y' Lucky Prime +1
+    'Z' Lucky Prime -1
+    'J' Twin SG
+    'K' Twin CC
+    'A' Consecutive Numbers.
+    '1' CC Chain (1st kind (len > 2))
+    '2' CC Chain (2nd kind (len > 2))
+    '3' Bitwin (len > 2)
+
+chain len: 
+     0 is just a single length chain
+     3 is a chain of length 3
+     5 is a chain of length 5  (many primorials ALSO set this to 5??? Not sure why)
+     chain len is only valid if mode char is '1' '2' or '3'
+     ...
+
+base:  This is the 'b' value.
+
+BitMap:
+     0x0001   k*2^n+1        k*n#+1
+     0x0002   k*2^n-1        k*n#-1
+     0x0004   k*b^(n+1)+1    2k*n#+1
+     0x0008   k*b^(n+1)-1    2k*n#-1
+     0x0010   k*b^(n-1)+1    .5k*n#+1
+     0x0020   k*b^(n-1)-1    .5k*n#-1
+     0x0040   Primorial
+     0x0080   3-tuple and 4-tuple (PLUS5 - used in the triplet sieve.)
+     0x0100   Mode 'k' sieve (variable k's)
+     0x0200   Consecutive
+     0x0400   Unused  (from Paul:  0x400: NOTGENERALISED - this is not used yet, and )
+                      (will only apply to the non-primorial sieves. Basically it says)
+                      (that if the base is not 2, when we sieve for a SG (say) then  )
+                      (rather than sieving k.3^n-1 and k.3^(n+1)-1, we sieve for     )
+                      (k.3^n-1 and 2.k.3^n-1. So it converts all chains that would be)
+                      (generalised chains when the base is not 2 into real chains.   )
+     0x0800   4-tuple (0x800: PLUS7 - used in the quadruplet sieve.)
+
+99991:P:0:2:1    000000000001   k*2^n+1
+99991:P:0:11:1   000000000001   k*11^n+1
+99991:M:0:2:2    000000000010   k*2^n-1
+99991:M:0:2:2    000000000010   k*11^n-1
+99991:T:0:2:3    000000000011   k*2^n+-1  (twins)
+99991:S:0:11:10  000000001010   k*11^n-1 & k*11^(n+1)-1  (SG) (generalized SG since base is not 2)
+99991:C:0:2:5    000000000101   k*2^n+1 & k*2^(n+1)+1  (CC)
+99991:B:0:2:15   000000001111   k*2^n+-1 & k*2^(n+1)+-1  (BiTwin)
+99991:Y:3:2:29   000000011101   k*2^n+-1 & k*2^(n-1)+1 & k*2^(n+1)+1  (LP)
+99991:Z:3:2:46   000000101110   k*2^n+-1 & k*2^(n-1)-1 & k*2^(n+1)-1  (LM)
+99991:J:3:2:11   000000001011   k*2^n+-1 & k*2^(n+1)-1  (Twin/SG)
+99991:K:3:2:7    000000000111   k*2^n+-1 & k*2^(n+1)+1  (Twin/CC)
+99991:A:5:13:512 001000000000   Consecutive b^13+2k-1
+99991:1:3:2:42   000000101010   CC 1st kind len 3 k*2^(n-1)-1 & k*2^n-1 & k*2^(n+1)-1
+99991:1:5:2:42   000000101010   CC 1st kind len 5 k*2^(n-1)-1 & k*2^n-1 & ... & k*2^(n+3)-1
+99991:2:3:2:21   000000010101   CC 2st kind len 3 k*2^(n-1)+1 & k*2^n+1 & k*2^(n+1)+1
+99991:2:5:2:21   000000010101   CC 2st kind len 5 k*2^(n-1)+1 & k*2^n+1 & ... & k*2^(n+3)+1
+99991:3:3:2:63   000000111111   BiTwin len 3 k*2^(n-1+)-1 & k*2^n+-1 & k*2^(n+1)+-1  
+99991:3:5:2:63   000000111111   BiTwin len 5 k*2^(n-1+)-1 & k*2^n+-1 & ... & k*2^(n+3)+-1
+
+99991:P:5:2:65   000001000001   primorial  k*n#+1
+99991:M:5:2:66   000001000010   primorial  k*n#-1
+99991:T:5:2:67   000001000011   primorial  k*n#+-1 (twin)
+99991:S:5:2:74   000001001010   primorial  k*n#-1  & 2kn#-1  (SG)
+99991:C:5:2:69   000001000101   primorial  k*n#+1  & 2kn#+1  (CC)
+99991:B:5:2:79   000001001111   primorial  k*n#+-1 & 2kn#+-1  (BiTwin)
+99991:Y:3:2:93   000001011101   primorial  k*n#+-1 &.5k*n#+1 & 2kn#+1  (LP)
+99991:Z:3:2:110  000001101110   primorial  k*n#+-1 &.5k*n#-1 & 2kn#-1  (LM)
+99991:J:3:2:75   000001001011   primorial  k*n#+-1 & 2kn#-1  (Twin SG)
+99991:K:3:2:71   000001000111   primorial  k*n#+-1 & 2kn#+1  (Twin CC)
+99991:A:5:2:576  001001000000   Primorial consecutive   n#+2k-1
+99991:1:3:2:106  000001101010   Primorial CC 1st len 3 k*n#-1 & 2kn#-1 & 4kn#-1
+99991:1:5:2:106  000001101010   Primorial CC 1st len 5 k*n#-1 & 2kn#-1 & ... & 16kn#-1
+99991:2:3:2:85   000001010101   Primorial CC 2nd len 3 k*n#+1 & 2kn#+1 & 4kn#+1
+99991:2:5:2:85   000001010101   Primorial CC 2nd len 5 k*n#+1 & 2kn#+1 & ... & 16kn#+1
+99991:3:3:2:127  000001111111   Primorial BiTwin len 3 k*n#+-1 & 2kn#+-1 & 4kn#+-1
+99991:3:5:2:127  000001111111   Primorial BiTwin len 5 k*n#+-1 & 2kn#+-1 & ... & 16kn#+-1
+99991:T:5:2:195  000011000011   Primorial 3-tuple   k*n#/5+-1 & k*n/5+5
+99991:T:5:2:2243 100011000011   Primorial 4-tuple   k*n#/35+-1 +5 +7
