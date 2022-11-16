@@ -1,0 +1,1468 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Ellipsa">
+   <title>Primo Help Contents</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+<font face="Bitstream Vera Serif">
+
+<center>
+<b><font size="+3">PRIMO - Primality Proving</font></b><br>
+</center>
+
+<a NAME="Contents"></a>
+<hr>
+<center>
+<br>
+<br>
+<font size="+2"><b>Contents</b><br></font>
+</center>
+<br>
+<center>
+<table border cellspacing="0" cellpadding="8" cols="2" width="80%" bgcolor="#F7F7F7">
+<tr valign="top">
+<td>
+<ul>
+<font size="+1">
+<li><b>Manual</b></li>
+</font>
+<ul>
+<font size="+1">
+<li><a href="#Overview">Overview</a></li>
+<li><a href="#GettingStarted">Getting started</a></li>
+<li><a href="#ButtonBar">Button bar</a></li>
+<li><a href="#TaskReportPage">Task Report page</a></li>
+<li><a href="#CertificationPage">Certification page</a></li>
+<li><a href="#VerificationPage">Verification page</a></li>
+<li><a href="#Certificate">What is a primality certificate?</a></li>
+<li><a href="#Resuming">How to resume a certification?</a></li>
+<li><a href="#InternalError">Internal Errors</a></li>
+</font>
+</ul>
+</ul>
+</td>
+<td>
+<ul>
+<font size="+1">
+<li><b>Files</b></li>
+</font>
+<ul>
+<font size="+1">
+<li><a href="#InputFile">Input (Candidate)</a></li>
+<li><a href="#OutputFile">OutPut (Certificate)</a></li>
+<li><a href="#TaskReportFile">Task Report</a></li>
+<li><a href="#ReportFile">Certification Report</a></li>
+</font>
+</ul>
+</ul>
+<ul>
+<font size=+1>
+<li><b>Miscellaneous</b></li>
+</font>
+<ul>
+<font size="+1">
+<li><a href="#License">End-User License</a></li>
+</font>
+</ul>
+</ul>
+</td>
+</tr>
+</table>
+</center>
+<br>
+<br>
+<center>
+<table cellspacing="0" cellpadding="0" cols="1" width="80%">
+</table>
+</center>
+<br>
+<br>
+
+
+<a NAME="Overview"></a>
+<hr>
+<center><b><font size="+2">Overview</font></b><br></center>
+<hr>
+<br>
+<blockquote>
+<font size="+1"><b>What is PRIMO ?</b><br></font>
+<hr>
+PRIMO is a primality proving program based on the ECPP algorithm: Elliptic Curve Primality
+Proving. Given positive odd integers, PRIMO tests whether these integers are prime, and if 
+they are it produces <a href="#Certificate">primality certificates</a>.<br>
+PRIMO is suitable for the checking of crypto-primes and to prove whether they are actually 
+prime... or not.<br>
+<hr><br>
+<b><font size="+1">Latest Release</font></b><br>
+<hr>
+To check whether you have the most recent version of PRIMO, please, visit the 
+<a href="http://www.ellipsa.eu/index.html">PRIMO Home page</a><br>
+<hr><br>
+<b><font size="+1">Contact</font></b><br>
+<hr>
+Send any comment, suggestion, bug report, whatever to 
+<a href="mailto:primo@ellipsa.eu">primo@ellipsa.eu</a><br>
+<hr><br>
+<a href="#Contents">Contents</a><br>
+</blockquote>
+<br>
+<br>
+
+
+<a NAME="GettingStarted"></a>
+<hr>
+<center><b><font size="+2">Getting Started</font></b></center>
+<hr>
+<br>
+<blockquote>
+<b><font size="+1">File Associations</font></b><br>
+<hr>
+When running, PRIMO works with the following text files:<br>
+<font face="Bitstream Vera Sans Mono">
+<font color="#000099"><b>Primo-xxxxxxxxxxxxxxx.cr</b></font>........</font>
+<a href="#ReportFile">Certification Report file</a><br>
+<font face="Bitstream Vera Sans Mono">
+<font color="#000099"><b>*.in</b></font>............................</font>
+<a href="#InputFile">Input file</a> (Integer to test)<br>
+<font face="Bitstream Vera Sans Mono">
+<font color="#000099"><b>Primo-xxxxxxxxxxxxxxx-nnn.out</b></font>...</font>
+<a href="#OutputFile">Output file</a> (Primality certificate)<br>
+<font face="Bitstream Vera Sans Mono">
+<font color="#000099"><b>Primo-xxxxxxxxxxxxxxx.tr</b></font>........</font>
+<a href="#TaskReportFile">Task Report file</a><br>
+<font face="Bitstream Vera Sans Mono" color="#000099"><b>xx..xx</b></font>
+is a unique identifier that allows to identify all the files created during
+batch processing.</font><br>
+<font face="Bitstream Vera Sans Mono" color="#000099"><b>nnn</b></font>
+indicates the index (when batch processing) of the tested integer.<br>
+In order to open these files with your favorite text editor, you should create 
+an association <i>File extension - Editor</i> for the extensions <b>.cr</b>, 
+<b>.in</b>, <b>.out</b> and <b>.tr</b>. If you do not create associations, PRIMO 
+will use NotePad by default.<br>
+<hr><br>
+<b><font size="+1">First Session</font></b><br>
+<hr>
+Run PRIMO.<br>
+Click on the <i>Certification</i> button.<br>
+In the <a href="#CertificationPage">Certification page</a>, click on the <i>Load file(s)...</i>
+button. Select the <i>work</i> directory and double-click on <i>first.in</i>.<br>
+When the certification is done, a short report is displayed in the editor of the 
+<a href="#TaskReportPage">Task Report page</a>. To open a results text 
+file, double-click on the relevant item.<br>
+<hr><br>
+<a href="#Contents">Contents</a><br>
+</blockquote>
+<br>
+<br>
+
+
+<a NAME="ButtonBar"></a>
+<hr>
+<center><b><font size="+2">Button Bar</font></b></center>
+<hr>
+<br>
+<blockquote>
+<b><font size="+1">Buttons</font></b><br>
+<hr>
+<table BORDER=0 CELLPADDING=4 WIDTH="100%" BGCOLOR="#F7F7F7" >
+<tr>
+<td WIDTH="20%">
+<b><font color="#000099">Help</font></b>
+</td>
+<td>
+Open the documentation.
+</td>
+</tr>
+<tr>
+<td WIDTH="20%">
+<b><font color="#000099">About Primo</font></b>
+</td>
+<td>
+Open the About dialog box.</td>
+</tr>
+<tr>
+<td>
+<b><font color="#000099">New input file</font></b>
+</td>
+<td>
+Create a new empty <a href="#InputFile">input file</a>.
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<b><font color="#000099">Open a Primo text file</font></b>
+</td>
+<td>
+Open a file list box with which you can select PRIMO text files: input,
+<a href="#OutputFile">output</a>, <a href="#TaskReportFile">task report</a> and
+<a href="#ReportFile">certification report</a>. These files are open with the text editor
+you associated with their extensions (or with NotePad if there is no association).
+</td>
+</tr>
+<tr>
+<td>
+<b><font color="#000099">Quit</font></b>
+</td>
+<td>
+Close PRIMO.
+</td>
+</tr>
+</table>
+<hr><br>
+<b><font size="+1">Check box</font></b><br>
+<hr>
+<table BORDER=0 CELLPADDING=4 WIDTH="100%" BGCOLOR="#F7F7F7" >
+<tr>
+<td WIDTH="20%" VALIGN=TOP>
+<b><font color="#000099">Idle</font></b>
+</td>
+<td>
+When checked, the PRIMO process priority is set to "idle", otherwise it is set to "normal". The
+value can be changed while running a task (certification or verification).<br>
+<i>Default value = Unchecked</i> (Normal priority)
+</td>
+</tr>
+</table>
+<hr><br>
+<a href="#Contents">Contents</a><br>
+</blockquote>
+<br>
+<br>
+
+
+<a NAME="TaskReportPage"></a>
+<hr>
+<center><b><font size="+2">Task Report Page</font></b></center>
+<hr><br>
+<blockquote>
+The Task Report page contains an editor used to display certification and verification reports.<br>
+<br>
+<b><font size="+1">Report Editor</font></b><br>
+<hr>
+When an entry in the report contains the name of a PRIMO text file, you can open the
+file by double-clicking on the item (alternately, you can select the item with the 
+Arrow keys and hit the Return key to open the file).<br>
+The editor content is automatically saved to a <a href="#TaskReportFile">task 
+report file</a> (text file).<br>
+<hr><br>
+<a href="#Contents">Contents</a><br>
+</blockquote>
+<br>
+<br>
+
+
+<a NAME="CertificationPage"></a>
+<hr>
+<center><b><font size="+2">Certification Page</font></b></center>
+<hr><br>
+<blockquote>
+The Certification page is a dialog box that allows to perform the certification of 
+integers in PRIMO <a href="#InputFile">input files</a> (and also to resume 
+aborted certificates). Loading <b>.in</b> files starts certifications. Loading
+<b>.tmp</b> files restarts aborted certifications.<br>
+The certificates are automatically saved to <a href="#OutputFile">output files</a>, 
+in the directory that contains the input files.<br>
+While certifying, PRIMO creates and updates temporary files having the <b>.tmp</b> extension.
+<b>Do not modify them.</b> If you want to edit them (they are text files), make copies
+and edit those copies. If ever a <b>.tmp</b> file is modified (some editors add invisible 
+codes), all the work done may be lost!<br>
+See also: <a href="#Certificate">What is a certificate?</a><br>
+<br>
+<b><font size="+1">Setup</font></b><br>
+<hr>
+<table BORDER=0 CELLPADDING=4 WIDTH="100%" BGCOLOR="#F7F7F7">
+<tr>
+<td VALIGN=TOP WIDTH="27%"><b>
+<font color="#000099">Certification reports</font></b>
+</td>
+<td>
+When checked, PRIMO creates <a href="#ReportFile">certification report</a> files.<br>
+<i>Default value = Checked</i>
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP><b>
+<font color="#000099">Double file management</font></b>
+</td>
+<td>
+When checked, even in case of problem when PRIMO is writing on a disk (OS crash, outage, etc.),
+there should always be at least one valid file on the disk among these three possible 
+ones : <b>.tmpnew</b>, <b>.tmp</b> or <b>.tmpold</b>.<br>
+Of course, in order to restart PRIMO with one of these files, its extension has to 
+be set with <b>.tmp</b> (if need be).<br>
+This option is useful with very big candidates only.<br>
+<i>Default value = Unchecked</i>
+</td>
+</tr>
+</table>
+<hr><br>
+<b><font size="+1">Status</font></b><br>
+<hr>
+<table BORDER=0 CELLPADDING=4 WIDTH="100%" BGCOLOR="#F7F7F7">
+<tr>
+<td WIDTH="25%">
+<b><font color="#000099">Elapsed time</font></b>
+</td>
+<td>Running time of the certification.
+</td>
+</tr>
+<tr>
+<td>
+<b><font color="#000099">Number</font></b>
+</td>
+<td>
+Number (in the input file list) of the integer that is currently being tested.
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<b><font color="#000099">Phase</font></b>
+</td>
+<td>
+Number of the current phase (1 or 2).<br>
+The <i>Phase 1</i> consists in finding a sequence of pseudoprimes.<br>
+The <i>Phase 2</i> consists in building and factoring class polynomials and in computing
+elliptic curves and points (which ones prove that the sequence of pseudoprimes found 
+during <i>Phase 1</i> is in fact a sequence of primes).
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<b><font color="#000099">Test</font></b>
+</td>
+<td>Number of the current test.<br>
+The value may decrease due to backtracking.
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<b><font color="#000099">Run</font></b>
+</td>
+<td>
+Number of the current run (max = 6)<br>
+</td>
+</tr>
+<tr>
+<td>
+<b><font color="#000099">Bits</font></b>
+</td>
+<td>
+Indicates the binary size of the integer currently tested.
+</td>
+</tr>
+<tr>
+<td>
+<b><font color="#000099">Status</font></b>
+</td>
+<td>
+Miscellaneous information regarding the current status of a certification.
+</td>
+</tr>
+</table>
+<hr><br>
+<b><font size="+1">Buttons</font></b><br>
+<hr>
+<table BORDER=0 CELLPADDING=4 WIDTH="100%" BGCOLOR="#F7F7F7">
+<tr>
+<td VALIGN=TOP WIDTH="25%">
+<b><font color="#000099">Load</font></b>
+</td>
+<td>
+Load files and start certifications (and/or restart aborted certifications). The 
+selected files are always processed in alphabetical order.
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<b><font color="#000099">Abort</font></b>
+</td>
+<td>
+Allow to abort a certification.<br>
+When a certification is aborted, a partial certificate is saved to a file having 
+the <b>.tmp</b> extension. To restart the certification, just load this file.
+</td>
+</tr>
+</table>
+<hr><br>
+<a href="#Contents">Contents</a><br>
+</blockquote>
+<br>
+<br>
+
+
+<a NAME="VerificationPage"></a>
+<hr>
+<center><b><font size="+2">Verification Page</font></b></center>
+<hr><br>
+<blockquote>
+The Verification page is a dialog box that allows to verify and to sign certificates. 
+Checking can be aborted and resumed (PRIMO restarts from the last test not yet 
+processed).<br>
+The certificates are always verified and signed while certifying.<br>
+See also: <a href="#Certificate">What is a certificate?</a><br>
+<br>
+<b><font size="+1">Setup</font></b><br>
+<hr>
+<table BORDER=0 CELLPADDING=4 WIDTH="100%" BGCOLOR="#F7F7F7">
+<tr>
+<td VALIGN=TOP WIDTH="27%">
+<b><font color="#000099">Check signatures only</font></b>
+</td>
+<td>
+When not checked, PRIMO always verifies the certificate and signs it. If the certificate 
+is already signed, <b>the existing signature is deleted</b> before starting the verification.<br>
+When checked, PRIMO tries to check the signature only (this allows to quickly reject invalid
+certificates). If there is no signature section then 
+it verifies the certificate and signs it.<br>
+<i>Default value = Checked</i>
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<b><font color="#000099">Double file management</font></b>
+</td>
+<td>
+When checked, even in case of problem when PRIMO is writing on a disk (OS crash, outage, etc.),
+there should always be at least one valid file on the disk among these three possible 
+ones : <b>.outnew</b>, <b>.out</b> or <b>.outold</b>.<br>
+Of course, in order to restart PRIMO with one of these files, its extension has to 
+be set with <b>.out</b> (if need be).<br>
+This option is useful with very big candidates only.<br>
+<i>Default value = Unchecked</i>
+</td>
+</tr>
+</table>
+<hr><br>
+<b><font size="+1">Status</font></b><br>
+<hr>
+<table BORDER=0 CELLPADDING=4 WIDTH="100%" BGCOLOR="#F7F7F7">
+<tr>
+<td WIDTH="27%">
+<b><font color="#000099">Elapsed time</font></b>
+</td>
+<td>
+Running time of the verification.
+</td>
+</tr>
+<tr>
+<td>
+<b><font color="#000099">Certificate</font></b>
+</td>
+<td>
+Number (in the <a href="#OutputFile">output file</a> list) of the certificate 
+that is currently being verified.
+</td>
+</tr>
+<tr>
+<td>
+<b><font color="#000099">Test</font></b>
+</td>
+<td>
+Number of the current test.
+</td>
+</tr>
+<tr>
+<td>
+<b><font color="#000099">Bits</font></b>
+</td>
+<td>
+Indicates the binary size of the integer currently checked.
+</td>
+</tr>
+<tr>
+<td>
+<b><font color="#000099">Status</font></b>
+</td>
+<td>
+Miscellaneous information regarding the current status of a verification.
+</td>
+</tr>
+</table>
+<hr><br>
+<b><font size="+1">Buttons</font></b><br>
+<hr>
+<table BORDER=0 CELLPADDING=4 COLS=2 WIDTH="100%" BGCOLOR="#F7F7F7">
+<tr>
+<td VALIGN=TOP WIDTH="25%">
+<b><font color="#000099">Load</font></b>
+</td>
+<td>
+Load files and start verifications. The selected files are always processed in 
+alphabetical order.
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<b><font color="#000099">Abort</font></b>
+</td>
+<td>
+Allow to abort a verification.
+</td>
+</tr>
+</table>
+<hr><br>
+<a href="#Contents">Contents</a><br>
+</blockquote>
+<br>
+<br>
+
+
+<a NAME="Certificate"></a>
+<hr>
+<center><b><font size="+2">Certificate</font></b></center>
+<hr><br>
+<blockquote>
+A primality certificate produced by PRIMO is a sequence of tests. Each test, except the 
+final one, proves that an integer, called N, is prime assuming a smaller integer, called R, 
+is also prime. Since the R value of a test is used as the N value of the following test, the 
+primality of the last R value of a certificate proves the primality of the candidate.<br>
+PRIMO makes use of up to four different tests.<br>
+<b>Note:</b> In what follows, N is always a positive odd integer greater than 65536.<br>
+<br>
+<b><font size="+1">Strong Pseudoprime Test</font></b><br>
+<hr>
+In a certificate, this test is identified with <b>Type = 0</b>
+<p>
+<i>Assuming N &lt; 34 * 10^13,</i><br>
+<i>if N is a strong pseudoprime to the bases 2, 3, 5, 7, 11, 13 and 17 then N is prime.</i>
+<p>
+The first number which is a strong pseudoprime to these seven bases, but not a prime, is 
+larger than 34 * 10^13.<br>
+<hr><br>
+<b><font size="+1">N-1 Test</font></b><br>
+<hr>
+In a certificate, this test is identified with <b>Type = 1</b>
+<p>
+<i>
+Assuming N = S * R + 1 with R prime and S &lt; R,<br>
+if there exists an integer B > 1 such that<br>
+&nbsp;&nbsp;B^(N-1) = 1 mod N<br>
+&nbsp;&nbsp;gcd(B^S - 1, N) = 1<br>
+then N is prime.<br>
+</i>
+<hr><br>
+<b><font size="+1">N+1 Test</font></b><br>
+<hr>
+In a certificate, this test is identified with <b>Type = 2</b>
+<p>
+<i>
+Assuming N = S * R - 1 with R prime and S &lt; R,<br>
+if there exists a Lucas sequence V[i], with parameters P and Q, such that<br>
+&nbsp;&nbsp;gcd(P, Q) = 1<br>
+&nbsp;&nbsp;Jacobi(P&sup2; - 4Q, N) = -1<br>
+&nbsp;&nbsp;V[(N+1)/2] = 0 mod N<br>
+&nbsp;&nbsp;V[S/2] &lt;> 0 mod N<br>
+then N is prime.
+</i>
+<p>
+The parameter P is not displayed in PRIMO certificates. When Q is even, P = 1 ; when 
+Q is odd, P = 2.<br>
+<hr><br>
+<b><font size="+1">Elliptic Curve Test</font></b><br>
+<hr>
+In a certificate, this test is identified with <b>Type = 3</b> or with <b>Type = 4</b>
+<p>
+<i>
+Assuming M = S * R, with S > 1, R prime, R > (N^(1/4) + 1)^2,<br>
+if there exist a non-singular elliptic curve y^2 = x^3 + ax + b modulo N, with order
+M, and a point P = (x, y) on this curve such that<br>
+&nbsp;&nbsp;P * S &lt;> Identity<br>
+&nbsp;&nbsp;(P * S) * R = Identity<br>
+then N is prime.
+</i>
+<p>
+<u>Type = 3</u><br>
+The 3 parameters A, B and T, reported in PRIMO certificates, allow to quickly compute 
+the required curve and point:<br>
+&nbsp;&nbsp;L := (T^3 + A*T + B) mod N<br>
+&nbsp;&nbsp;a := (A * L^2) mod N<br>
+&nbsp;&nbsp;b := (B * L^3) mod N<br>
+&nbsp;&nbsp;x := (T * L) mod N<br>
+&nbsp;&nbsp;y := (L^2) mod N
+<p>
+<u>Type = 4</u><br>
+The parameter J allows to compute A and B as defined with Type = 3:<br>
+&nbsp;&nbsp;A := 3 * J * (1728 - J)<br>
+&nbsp;&nbsp;B := 2 * J * (1728 - J)^2<br>
+<hr><br>
+<a href="#Contents">Contents</a><br>
+</blockquote>
+<br>
+<br>
+
+
+<a NAME="Resuming"></a>
+<hr>
+<center><b><font size="+2">Resuming</font></b></center>
+<hr><br>
+<blockquote>
+In the <a href="#CertificationPage">Certification page</a>, click on the <i>Load file(s) 
+and start certification(s)</i> button. Select the <b>.tmp</b> file created when 
+aborting the certification.<br>
+That’s all.<br>
+<br>
+<a href="#Contents">Contents</a><br>
+</blockquote>
+<br>
+<br>
+
+
+<a NAME="InternalError"></a>
+<hr>
+<center><b><font size="+2">Internal Error</font></b></center>
+<hr><br>
+<blockquote>
+An internal error may be raised by PRIMO for mainly two reasons: a hardware failure or 
+a PRIMO bug.<br>
+In case such an error occurs, try first to redo what you were doing. If the error still 
+occurs, thanks to report the problem with the most possible details: OS used, processor 
+type, partial certificate obtained, etc. as well as a description of the problem, mail
+to primo (at) ellipsa (dot) eu<br>
+<br>
+<a href="#Contents">Contents</a><br>
+</blockquote>
+<br>
+<br>
+
+
+<a NAME="InputFile"></a>
+<hr>
+<center><b><font size="+2">Input File</font></b></center>
+<hr><br>
+<blockquote>
+A PRIMO input file is a text file (its syntax is similar to the one of Windows <b>ini</b> files)
+that should contain an integer to test. This integer should be greater than 65536 and less than 
+2^131072 (note that the greatest number ever certified with Primo is smaller than 2^28552).<br>
+The extension name of an input file should always be <b>.in</b>.<br>
+<br>
+<b><font size="+1">Syntax</font></b><br>
+<hr>
+An input file has syntax examplified by the text within the horizontal bars:<br>
+-------------------------------------------------------------------------------<br>
+<font color="#000099">
+<b>
+; any comment you want after a semi-colon<br>
+[Candidate]<br>
+N=<br>
+</b>
+</font>
+-------------------------------------------------------------------------------<br>
+The file may contain any number of blank lines.<br>
+<p>
+<b><u>Candidate expressed to the base 10</u></b><br>
+The number (or the expression) that follows <b><font color="#000099">N=</font></b> should be 
+written on a single line.<br>
+There should be no character (Space, Tab, or else) before the first character of the section <b>
+<font color="#000099">[Candidate]</font></b>, before <b><font color="#000099">N=</font></b> or 
+before a semicolon <b><font color="#000099">;</font></b><br>
+Expressions are allowed:<br>
+&nbsp;&nbsp;The alphabet is <b><font color="#000099">+ - * / ^ ! # ( ) 0 1 2 3 4 5 6 7 8 9</font></b><br>
+&nbsp;&nbsp;There should be NO SPACE in a number or before <b><font color="#000099">!</font></b> or 
+<b><font color="#000099">#</font></b><br>
+&nbsp;&nbsp;Factorial(10) should be written <b><font color="#000099">10!</font></b><br>
+&nbsp;&nbsp;Primorial(13) should be written <b><font color="#000099">13#</font></b><br>
+&nbsp;&nbsp;<b><font color="#000099">!</font></b> also stands for Multi-Factorial, 
+i.e., <b><font color="#000099">23!7 = 23*16*9*2</font></b>, in that case there should be NO SPACE 
+before or after <b><font color="#000099">!</font></b><br>
+&nbsp;&nbsp;<b><font color="#000099">^</font></b> is associative on the left, 
+i.e., <b><font color="#000099">a^b^c = (a^b)^c</font></b><br>
+<b><font color="#000099">N=10^999 + 7</font></b>, <b><font color="#000099">N=3229# + 1</font></b> 
+or <b><font color="#000099">N= ((3229#) + 1)</font></b> are valid<br>
+<b><font color="#000099">N=32 29# + 1</font></b> is not valid, there is a space between two digits
+<p>
+<b><u>Candidate expressed to the base 16</u></b><br>
+To work with a number expressed to the base 16, use the key <b><font color="#000099">N$=</font></b> 
+instead of <b><font color="#000099">N=</font></b><br>
+There should be no character (Space, Tab, or else) before the first character of the section 
+<b><font color="#000099">[Candidate]</font></b>, before <b><font color="#000099">N=</font></b> or 
+before a semicolon <b><font color="#000099">;</font></b><br>
+<b>Expressions are not allowed.</b><br>
+<hr><br>
+<br>
+<b><font size="+1">4 examples of valid input files</font></b><br>
+<hr>
+<table BORDER CELLPADDING=2 COLS=1 WIDTH="100%" BGCOLOR="#F7F7F7">
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">
+;PRIMO Input File
+<p>
+[Candidate]<br>
+N=1384435372850622112932804334308326689651568940268408537
+</font>
+</td>
+</tr>
+</table>
+<br>
+<table BORDER CELLPADDING=2 COLS=1 WIDTH="100%" BGCOLOR="#F7F7F7">
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">
+;PRIMO Input File<br>
+;Number expressed to the base 16
+<p>
+[Candidate]<br>
+N$=cc8fa1481b11589c04f066367b204e09132082838aef805f207555505e690153
+</font>
+</td>
+</tr>
+</table>
+<br>
+<table BORDER CELLPADDING=2 COLS=1 WIDTH="100%" BGCOLOR="#F7F7F7">
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">
+;PRIMO Input File<br>
+;This number will be rejected, it is less than 65536
+<p>
+[Candidate]<br>
+N=997
+</td>
+</tr>
+</table>
+<br>
+<table BORDER CELLPADDING=2 COLS=1 WIDTH="100%" BGCOLOR="#F7F7F7">
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">
+;PRIMO Input File<br>
+;Expression
+<p>
+[Candidate]<br>
+N=10^700 + 7
+</td>
+</tr>
+</table>
+<hr><br>
+<a href="#Contents">Contents</a><br>
+</blockquote>
+<br>
+<br>
+
+
+<a NAME="OutputFile"></a>
+<hr>
+<center><b><font size="+2">Output File</font></b></center>
+<hr><br>
+<blockquote>
+A primality certificate is a sequence of integers that satisfy the requirements of various 
+theorems (For more information concerning the tests used, see <a href="#Certificate">What
+is a primality certificate?</a>). With the primality certificate of an integer, an independent 
+verifier can quickly check the primality of this integer.<br>
+Primality certificates are automatically saved to output files (which are text files), in the 
+directory that contains the <a href="#InputFile">input file</a>.<br>
+<p>
+<b><font size="+1">Example of certificate</font></b><br>
+<hr>
+<table BORDER CELLPADDING=2 COLS=1 WIDTH="100%" BGCOLOR="#F7F7F7">
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">
+[PRIMO - Primality Certificate]<br>
+Version=3.0.9<br>
+WebSite=http://www.ellipsa.eu/<br>
+Format=3<br>
+ID=B2D6C052498F2<br>
+Created=12/25/2009 00:00:00 AM<br>
+TestCount=7<br>
+Status=Candidate certified prime
+<p>
+[Candidate]<br>
+File=C:\primo\work\first.in<br>
+N$=E74451F3DD74E0045407CF480C2A5DA72A57427444ED9<br>
+HexadecimalSize=45<br>
+DecimalSize=55<br>
+BinarySize=180
+<p>
+[Running Times]<br>
+Initialization=0.00s<br>
+1stPhase=0.01s<br>
+2ndPhase=0.01s<br>
+Total=0.02s
+<p>
+[1]<br>
+Type=3<br>
+S$=30B73FD7A<br>
+R$=4BF4CBACF02AB9B134C2B4C499CC73301A5E9<br>
+A$=-1C4B8382FDCBBBEA5B211BD307615E17DD905ED42F69D<br>
+B$=0<br>
+T$=1
+<p>
+[2]<br>
+Type=3<br>
+S$=12268EF<br>
+R$=42F4D55D4B18D2894579419DB0DB139<br>
+A$=-108<br>
+B$=69E<br>
+T$=2
+<p>
+[3]<br>
+Type=1<br>
+S$=368E179DF8<br>
+R$=13A317FA2002F1E4803799<br>
+B$=2
+<p>
+[4]<br>
+Type=1<br>
+S$=48<br>
+R$=45D21C5CE398B165561B<br>
+B$=2
+<p>
+[5]<br>
+Type=3<br>
+S$=7D42A6<br>
+R$=8EB21868AEE181<br>
+A$=-1E<br>
+B$=38<br>
+T$=0
+<p>
+[6]<br>
+Type=1<br>
+S$=20580<br>
+R$=4696ED2829<br>
+B$=2
+<p>
+[7]<br>
+Type=0<br>
+<p>
+[Signature]<br>
+1$=67B6BCF0700C92F36BBBD4CC32A1D9BD880323B4<br>
+2$=1D845A7D5B774BCECDB5D70070BA063B991816F8
+</font>
+</td>
+</tr>
+</table>
+Running time obtained with an AMD XP 3200+ processor<br>
+<hr><br>
+<b><font size="+1">Details</font></b><br>
+<hr>
+<table BORDER=0 CELLPADDING=2 WIDTH="100%" BGCOLOR="#F7F7F7">
+<tr>
+<td VALIGN=TOP WIDTH="320">
+<b><font face="Bitstream Vera Sans Mono">[PRIMO - Primality Certificate]</font></b>
+</td>
+<td>
+<b>Header section</b>
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">Version=</font>
+</td>
+<td>
+PRIMO version
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">WebSite=</font>
+</td>
+<td>
+Homepage of PRIMO
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">Format=</font>
+</td>
+<td>
+Certificate format
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">ID=</font>
+</td>
+<td>
+Unique identifier that allows to know all files created during a given
+task (associated files always have the same identifier)
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">Created=</font>
+</td>
+<td>
+Creation date of the certificate
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">TestCount=</font>
+</td>
+<td>
+Total number of tests in the certificate
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">Status=</font>
+</td>
+<td>
+Status of the certificate
+</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>
+<b><font face="Bitstream Vera Sans Mono">[Candidate]</font></b>
+</td>
+<td>
+<b>Candidate section&nbsp;</b>
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">File=</font>
+</td>
+<td>
+File name of the candidate
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">Expression=</font>
+</td>
+<td>
+Candidate expressed as a formula (if any in the input file)
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">N$=</font>
+</td>
+<td>
+Candidate (always expressed to the base 16)
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">HexadecimalSize=</font>
+</td>
+<td>
+Hexadecimal size (base 16) of the candidate
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">DecimalSize=</font>
+</td>
+<td>
+Decimal size (base 10) of the candidate
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">BinarySize=</font>
+</td>
+<td>
+Binary size (base 2) of the candidate
+</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<b><font face="Bitstream Vera Sans Mono">[n]</font></b>
+</td>
+<td>
+<b>Test section&nbsp;</b><br>
+n is the number of the test
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">Type=</font>
+</td>
+<td>
+Type of the test<br>
+0: Strong pseudoprime<br>
+1: N-1<br>
+2: N+1<br>
+3: Elliptic curve<br>
+4: Elliptic curve
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">S$=</font>
+</td>
+<td>
+S (expressed to the base 16)
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">R$=</font>
+</td>
+<td>
+R (expressed to the base 16)
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">A$=</font>
+</td>
+<td>
+A (expressed to the base 16)
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">B$=</font>
+</td>
+<td>
+B (expressed to the base 16)
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">J$=</font>
+</td>
+<td>
+J (expressed to the base 16)
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">T$=</font>
+</td>
+<td>
+T (expressed to the base 16)
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">Q$=</font>
+</td>
+<td>
+Q (expressed to the base 16)
+</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>
+<b><font face="Bitstream Vera Sans Mono">[Signature]</font></b>
+</td>
+<td>
+<b>Signature section&nbsp;</b>
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">1$=</font>
+</td>
+<td>
+1st part of the signature of a certificate (160 bits)
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">2$=</font>
+</td>
+<td>
+2nd part of the signature of a certificate (160 bits)
+</td>
+</tr>
+</table>
+<hr><br>
+<a href="#Contents">Contents</a><br>
+</blockquote>
+<br>
+<br>
+
+
+<a NAME="TaskReportFile"></a>
+<hr>
+<center><b><font size="+2">Task Report File</font></b></center>
+<hr><br>
+<blockquote>
+After certifications or verifications, PRIMO opens the <a href="#TaskReportPage">Task
+Report Page</a> and displays miscellaneous information about the work done.<br>
+Task reports are automatically saved to <b>.tr</b> files. These text files are always created 
+in the directory that contains the <a href="#InputFile">input files</a> (certifications)
+or the <a href="#OutputFile">output files</a> (verifications).<br>
+<p>
+<b><font size="+1">Example of task report file</font></b><br>
+<hr>
+<table BORDER CELLPADDING=2 COLS=1 WIDTH="100%" BGCOLOR="#F7F7F7">
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">
+[PRIMO - Task Report]<br>
+Version=3.0.9<br>
+WebSite=http://www.ellipsa.eu/<br>
+Task=Certification<br>
+ID=B2D6D00030D30<br>
+Created=12/25/2009 00:00:00 AM
+<p>
+[Common]<br>
+Path=C:\primo\bench\1024 bits\<br>
+Selected=3<br>
+Processed=3<br>
+Certified=3<br>
+Candidate #1=Certified, 5.72s<br>
+Candidate #2=Certified, 6.98s<br>
+Candidate #3=Certified, 6.60s
+<p>
+[Candidate #1]<br>
+Input=prime01.in<br>
+Output=Primo-B2D6D00030D30-001.out<br>
+Status=Candidate certified prime
+<p>
+[Candidate #2]<br>
+Input=prime02.in<br>
+Output=Primo-B2D6D00030D30-002.out<br>
+Status=Candidate certified prime
+<p>
+[Candidate #3]<br>
+Input=prime03.in<br>
+Output=Primo-B2D6D00030D30-003.out<br>
+Status=Candidate certified prime
+</font>
+</td>
+</tr>
+</table>
+<hr><br>
+<a href="#Contents">Contents</a><br>
+</blockquote>
+<br>
+<br>
+
+
+<a NAME="ReportFile"></a>
+<hr>
+<center><b><font size="+2">Report File</font></b></center>
+<hr><br>
+<blockquote>
+A certification report contains extra information regarding a certification.<br>
+Certification reports are saved to <b>.cr</b> files (which are text files), in the 
+directory that contains the <a href="#InputFile">input files</a>.<br>
+<p>
+<b><font size="+1">Example of certification report</font></b><br>
+<hr>
+<table BORDER CELLPADDING=2 COLS=1 WIDTH="100%" BGCOLOR="#F7F7F7">
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">
+[PRIMO - Certification Report]<br>
+Version=3.0.9<br>
+ID=B2D6C052498F2<br>
+Created=12/25/2009 00:00:00 AM<br>
+Certificate=C:\primo\work\Primo-B2D6C052498F2-001.out<br>
+TestCount=7<br>
+<p>
+[Backtrack]<br>
+Count=0
+<p>
+[1]<br>
+Type=3<br>
+Run=1<br>
+Gain=33<br>
+D=-4<br>
+H=1<br>
+G=1
+<p>
+[2]<br>
+Type=3<br>
+Run=1<br>
+Gain=24<br>
+D=-11<br>
+H=1<br>
+G=1
+<p>
+[3]<br>
+Type=1<br>
+Run=1<br>
+Gain=38
+<p>
+[4]<br>
+Type=1<br>
+Run=1<br>
+Gain=6
+<p>
+[5]<br>
+Type=3<br>
+Run=1<br>
+Gain=23<br>
+D=-8<br>
+H=1<br>
+G=1
+<p>
+[6]<br>
+Type=1<br>
+Run=1<br>
+Gain=17<br>
+<p>
+[7]<br>
+Type=0<br>
+Run=1<br>
+Gain=39
+</font>
+</td>
+</tr>
+</table>
+<br>
+<b><font size="+1">Details</font></b><br>
+<hr>
+<table BORDER=0 CELLPADDING=4 WIDTH="100%" BGCOLOR="#F7F7F7">
+<tr>
+<td VALIGN=TOP WIDTH="300">
+<b><font face="Bitstream Vera Sans Mono">[PRIMO - Certification Report]</font></b>
+</td>
+<td>
+<b>Header section</b>
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">Version=</font>
+</td>
+<td>
+PRIMO version
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">WebSite=</font>
+</td>
+<td>
+Home page of PRIMO
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">ID=</font>
+</td>
+<td>
+Unique identifier that allows to know all files created during a given
+task (Associated files always have the same identifier)
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">Created=</font>
+</td>
+<td>
+Creation date of the certificate
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">Certificate=</font>
+</td>
+<td>
+Filename of the certificate associated with the report
+</td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono">TestCount=</font>
+</td>
+<td>
+Total number of tests in the certificate
+</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<b><font face="Bitstream Vera Sans Mono">[Backtrack]</font></b>
+</td>
+<td>
+<b>Bactrack section&nbsp;</b><br>
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">Count=</font>
+</td>
+<td>
+Total number of backtracked tests
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">Rejected=</font>
+</td>
+<td>
+List of the backtracked tests
+</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<b><font face="Bitstream Vera Sans Mono">[n] or [n (backtracked:m)]</font></b>
+</td>
+<td>
+<b>Test section&nbsp;</b><br>
+n is the number of the test<br>
+m is the number of times the test n was backtracked
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">Type=</font>
+</td>
+<td>
+Type of the test<br>
+0: Strong pseudoprime<br>
+1: N-1<br>
+2: N+1<br>
+3: Elliptic curve<br>
+4: Elliptic curve
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">Run=</font>
+</td>
+<td>
+Run on which the test was found (during Phase 1)
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">Gain=</font>
+</td>
+<td>
+Gain = BitSize(N) - BitSize(R) except for the last test where Gain = BitSize(N)<br>
+The N value of a test is equal to the R value of the preceding test (or to the 
+candidate for the first test)
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">D=</font>
+</td>
+<td>
+Discriminant used for the test
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">H=</font>
+</td>
+<td>
+Class number associated with the discriminant D
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">G=</font>
+</td>
+<td>
+Genus number associated with the discriminant D<br>
+PRIMO has to factor a polynomial of which the degree is at most H/G
+</td>
+</tr>
+<tr>
+<td VALIGN=TOP>
+<font face="Bitstream Vera Sans Mono">R$=</font>
+</td>
+<td>
+Backtracked tests only<br>
+R (expressed to the base 16) is the value with which PRIMO failed to complete a test
+</td>
+</tr>
+</table>
+<hr><br>
+<a href="#Contents">Contents</a><br>
+</blockquote>
+<br>
+<br>
+
+
+<a NAME="License"></a>
+<hr>
+<center><b><font size="+2">License</font></b></center>
+<hr><br>
+<blockquote>
+PRIMO - Primality Proving. Copyright &copy; 2007, Marcel Martin. All rights reserved.
+<p>
+By installing and/or using the software PRIMO (the "Software"), you (the "User") (either
+on behalf of yourself as an individual or on behalf of an entity as its authorized 
+representative) agree to all of the terms of this end-user license agreement (the 
+"Agreement") regarding your use of the Software and you also agree that this is the entire 
+agreement between the author (the "Author") of the Software and you, which supersedes any 
+prior agreement, whether written or oral, and all other communications between the Author 
+and you relating to the subject matter of this Agreement.
+<p>
+<b>GRANT OF LICENSE</b><br>
+Subject to the terms below, the Author hereby grants the User a non-exclusive, non-transferable
+license to install and to use the Software.
+<p>
+<b>DISCLAIMER OF WARRANTY</b><br>
+The Software and its documentation are provided "as is" without warranty of any kind.<br>
+The Author makes no representations or warranties about the suitability of the Software,
+either express or implied, including but not limited to the implied warranties of 
+merchantability, fitness for a particular purpose, or non-infringement.<br>
+If the User of this Software deems it unsuitable for any particular purpose, the User's
+sole remedy shall be to refrain from using it.<br>
+The Author shall not be liable for any damages suffered by the User as a result of using, 
+modifying or distributing the Software, including direct, indirect, incidental, consequential 
+or other damages, even if the Author has been advised of the possibility of such damages.
+<p>
+<b>INTELLECTUAL PROPERTY</b><br>
+No title to the intellectual property in the Software is transferred to the User. Title, 
+ownership, rights, and intellectual property rights in and to the Software shall remain to the 
+Author.
+<p>
+<b>TERMINATION</b><br>
+This Agreement shall terminate automatically if the User fails to comply with the limitations
+described in this Agreement. No notice shall be required from the Author to effectuate such 
+termination. Upon termination, the User must uninstall and destroy all copies of the Software.
+<p>
+<b>GOVERNING LAWS</b><br>
+This Agreement shall be governed by the laws of France.
+<p>
+<b>PATENTS</b><br>
+If the Author is advised that the Software is infringing a patent, the Author shall forbid
+distribution and use of the Software in all countries where the patent is applicable. In this 
+case, the User's sole remedy shall be to refrain from using the Software in such countries.
+<p>
+<b>SEVERABILITY</b><br>
+In the event of invalidity of any provision of this Agreement, the Author and the User
+agree that such invalidity shall not affect the validity of the remaining portions of this 
+Agreement.
+<p>
+<b>RESERVATION OF RIGHTS</b><br>
+All rights not expressly granted in this Agreement are reserved by the Author.
+<p>
+<i>June 21, 2007</i><br>
+<i>Colombes, France</i><br>
+<br>
+<a href="#Contents">Contents</a><br>
+</blockquote>
+<br>
+<br>
+
+
+<p>
+<hr>
+<center>
+<font size="-1">
+Copyright &copy; 2009, Marcel Martin<br>
+<a href="http://www.ellipsa.eu/index.html">http://www.ellipsa.eu/index.html</a><br>
+</font>
+</center>
+
+</font>
+</body>
+</html>
