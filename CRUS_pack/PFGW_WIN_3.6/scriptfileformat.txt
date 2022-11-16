@@ -1,0 +1,314 @@
+Specifics compatible with PFGW v3.3 Release (December 18, 2009)
+
+NOTE the scriptify project, is a Perl program that converts a "C" like
+language, into PFGW scripts.  Scriptify handle functions, symbol scoping,
+and C conditional structures (for, which, if/else, ...).  See Scriptify.0.95.pl
+which is the source program, and scriptify.0.8.htm which is the documentation.
+
+Script file format:
+SCRIPT
+<list of commands>
+
+Command line format:
+<command> <args>
+
+Note on arguments:
+
+<value> means any PFGW expression which can include any variables you have
+defined.
+
+<varname> means any variable defined by a DIM statement.
+
+<strvarname> means any variable defined by a DIMS statement.
+
+Script commands:
+
+    :  (or totally blank lines)
+Lines that start out with a ':' are "comment" lines.  They are simply ignored.
+Also totally blank lines are ignored.  They (comments and blank lines) can 
+be used to make the script code more readable.
+
+    PRP <value>[, <strvarname>]
+    PRP <strvarname>
+Perform a PRP test on the given value.  Note PRP may not be used in an IF
+statement.  The <strvarname> argument must be a string variable.  It is 
+optional for the first form, but required for the second form.  Note that the
+second form can take advantage of special modular reduction logic for 
+expressions in the form k*b^n+/-c.  If specified then this is output to
+the log file instead of the decimal expansion of <value>.  PRP will set
+the variable ISPRP to true of the value is PRP.  It will set ISPRIME to
+true if the value is trivially prime.
+
+    PRIMEC <strvarname>
+    PRIMEP <strvarname>
+    PRIMEM <strvarname>
+Perform a primality test on the given value.  PRIMEC does a combined test
+(argument -tc).  PRIMEP does a +1 test (argument -tp).  PRIMEM does a
+-1 test (argument -tm).  None of these can be used in an IF statement.  The
+<strvarname> argument must be a string variable and can hold an expression
+rather than a decimal expansion.  The test will set ISPRIME to true if the
+value is prime.  The test will set ISPRP to true if the value is PRP.  This
+can happen on numbers that PFGW cannot prove primality on (Lucas PRPs for 
+example) or if the wrong function is called, such as using PRIMEP for
+k*b^n+1 values.
+
+    FACTORIZE <value>
+Attempts to factorized a number.  FACTORIZE will use the passed in -e -s 
+and -f (depth and modular values) command line switches to PFGW, if they 
+were present on the command line.  However, the script can "temporarily"
+(i.e. for only this call to factorize) override the defaults. Thus, a number
+can be factorized, and then a found factor can be removed, and factorization
+can continue from that prime forward on the residue.  There are some
+script variables which handle this.  There is MINF and MAXF. These translate
+into "override" values for -s and -e (from the command line). **  There is a 
+string variable MODF that will set the modular string. See the PFGWDoc.txt
+file for more information on -e, -s, and the -f{modular} syntax and how
+to use the.  NOTE that MODF must be in the same format as the modular
+syntax is listed within PFGWDoc.txt.  Any factor found will by placed into
+the global variable FACTORFOUND.  If no factor was found, then a 1 will 
+be placed in FACTORFOUND.  i.e. FACTORFOUND is always the result of a
+call to FACTORIZE.   Also, if the factorization "proved" the number prime,
+then the ISPRIME value will be set to 1.  Otherwise, ISPRIME is set to 0.
+Just because ISPRIME is set to 0, DOES NOT mean the number was composite,
+but just that factoring to the level specified DID NOT prove the number
+prime.  If a factor was found (FACTORFOUND > 1), then the ISPRIME == 0
+will of course mean the original number WAS composite.
+
+** Any call to the PRP or PRIME functions WILL use the command line -s -e
+and modular string (if they were provided). If ALL factoring is to be done
+within the script file's FACTORIZE, then using -f0 (for no factoring at all),
+might be  appropriate.  However, if a script file is used to "build" a number
+form, which itself might need factoring, then simply allowing the PRP to perform
+it's normal factoring might be the right thing to do.
+
+    DIM <varname>[, <value>]
+Allocates the variable in <varname> for use, and sets it to the value in
+<value> if specified, otherwise it is set to 0.
+
+    DIMS <strvarname>[,<svalue>]
+Allocates the variable in <strvarname> for use as a string, and sets it to 
+the value in <svalue> if specified, otherwise it is set to "".
+
+    SET <varname>, <value>
+Sets the variable in <varname> to <value>.
+
+    SETS <strvarname>, <string>; ...
+Sets the string variable <strvarname> to <string>.  If the string includes
+"%d" then arguments following the string are evaluated and placed into the
+string replacing %d.  If the string includes "%s" then the corresponding
+string argument replaces %s.  ;'s are used to separate arguments after the
+string.  If you wish to use the % character in the string write %%. SETS
+also does literal escaping.  Using the '\' char (in the format string),
+then the next char char is output literaly. So a \; will output a ';' char
+and NOT be the start of parameter.  \% is the same as %%.  A special escape
+is the \n.  The \n does not output a 'n' char, but outputs a "new line",
+i.e. if this string is output using the PRINT function, then it will cover
+more than 1 line of screen (similar to the \n new line in the C language).
+The valid ESCAPES are:   (these are the same as in C)
+\a	  // Bell
+\b	  // Backspace
+\f	  // Form Feed
+\n	  // New line
+\r	  // Carriage return
+\t	  // tab
+\v	  // Verticle tab
+\"	  // Double Quote
+\'	  // Single Quote
+\\	  // Backslash
+\?	  // Literal Quote
+\xH[H] // Output literal char that is the ASCII hex value of H (or HH HHH ...).
+\O[OO] // Output literal char that is the ASCII octal value of O (or OO OOO ...).
+\      // a \ followed by any char not listed above, will simply output the char.
+       // Thus \y would simply output a 'y' char.
+
+	STRTOINT <varname>,<stringvar>
+Converts a string into a number.  So STRTOINT x,strval would set x to whatever 
+integer value the string strval contained.  strval MUST be a variable.  Literal
+strings are not handled (i.e. STRTOINT x,"12345" is invalid).  Expressions in
+the stringvar are perfectly valid, and the conversion will work.
+DIMS ss,2^512-1
+DIM xx
+STRTOINT xx,ss
+would assign the number 2^512-1 to xx
+
+    LABEL <labelname>
+Adds a label that can be Goto'd or Gosub'd at this line.  Labels cannot share
+names with variables.  Valid characters are:  first character must be Alpha
+letter, or an underscore '_'.  All remaining characters can be alpha, number
+or an underscore.  A digit CAN NOT be the first character, as the GOTO 
+command recognizes a GOTO with a number first char as a "line-count" goto.
+
+    GOTO <label> | <number>
+Goto the given label (defined with the LABEL command), or go forward by
+<number> lines (may be negative to go backwards).
+
+    GOSUB <label>
+Gosub will jump to the given label, and start processing.  When a RETURN
+command is encountered, execution will start on the line just after the 
+"last" GOSUB command.  That being said, there can be multiple GOSUB's being
+entered at the same time.  Currently PFGW limits the GOSUB depth to 65535
+GOSUBS, but due to the fact that the PFScriptFile does not have a call stack,
+using this level of GUSUB's is not practicle (i.e. recursion is very tough 
+to obtain).  If this 2^16 GOSUB depth is breached, then most likely, there 
+is an infinite recursion loop, and the PC would run out of resources anyway.
+
+     RETURN <number>
+Returns back to a statement just past the last GOSUB.  If the optional "number"
+is entered, then the control is returned to the -number level of GOSUB's away.
+Here is an example of the optional number:
+
+  SCRIPT
+  DIM z
+  set z,10
+  GOSUB func_x
+  PRINT z
+  END
+  
+  LABEL func_x
+    GOSUB func_y
+    set z,0
+    return
+    
+  LABEL func_y
+    if z > 5 THEN return 2
+    return
+     
+The above code would print 10, due to the "return 2" statement, returning
+all the way back to just past GOSUB func_x.  
+The special value of "return -1" will return to the top of the GOSUB stack
+(i.e. will return to the oldest GOSUB, and the entire gosub stack will be
+removed.
+If there is no GOSUB stack, or if the GOSUB stack is not deep enough (for
+a return number), then a critical error occurs, and PFGW exits.
+   
+    END
+Stops execution of PFGW.
+
+    PRINT <strvarname>[,c] | <varname>[,c]
+Prints the string variable <strvarname> or the decimal expansion of
+<varname> to the screen (stderr).  There is an optional ,c which if it 
+exists, a newline will NOT be output after the printing of the line (similar
+to the /c switch of Unix's echo command).
+
+    IF <value> THEN <command1> [ELSE <command2>]
+If <value> is not 0 then <command1> is run, else <command2> is run.  Note
+neither <command1> nor <command2> can be PRP, so to get the same effect as
+would be given by:
+IF 1==1 THEN PRP 3
+use:
+IF !(1==1) THEN GOTO 2
+PRP 3
+...
+IF statements may not be nested (although you could acheive the same effect
+as nested if's with goto's).
+The following comparators are available: ==, <, >, =<, =>.
+Note that =< and => are not the usual symbols for less than equal and
+qreater than equal.  ! performs a boolean not.  (Note that while != doesn't
+exist, !(x==y) has the same effect)
+
+    OPENFILEIN <filevarname>, <filename>
+Open the file <filename> for input, any standard PFGW file can be read
+(even another script!).   
+
+    OPENFILEOUT <filevarname>, <filename>
+Open the file <filename> for output (file is overwritten).
+
+    OPENFILEAPP <filevarname>, <filename>
+Open the file <filename> for output (file is appended to).
+
+**New functionality** In the 3 file opening functions, the <filename> can be 
+a literal string, or a string variable.   The script processing first looks
+for a string variable of the name <filename> and if it finds one, it uses that.
+Otherwise, the <filename> is assumed to be a string literal, and the file is
+opened (created) using that string literal.
+
+
+    GETNEXT <varname>, <filevarname>[, <strvarname>]
+Read a data value from the file <filevarname> into <varname>.  If EOF is
+reached, <varname> is set to -1.  If the optional <strvaname> is supplied
+then the short form of the number is placed in <strvarname>.
+
+    WRITE <filevarname>, <strvarname> | <varname>
+Writes the string variable <strvarname> or the decimal expansion of
+<varname> to the specified output file.
+
+    CLOSEFILE <filevarname>
+Close the file and free up the variable name.  Not neccesary to call this,
+but if you are using a lot of files might be wise to close ones you have
+finished with.
+
+    SHELL <strvarname>
+Executes the command given in <strvarname>.  The return value of the command
+is stored in the variable ERRORLEVEL.
+
+
+Other notes:
+
+The variable ISPRP is set to 1 (true) if the last number tested was PRP
+and 0 (false) otherwise.
+
+The variable ISPRIME is set to 1 (true) if the last number tested was prime,
+0 (false) otherwise.
+
+The variable ERRORLEVEL is set to the return value of the last executed
+shell command.
+
+The varialbe FACTORFOUND is set to a 1 if the Factorize function is called
+and no factor is found.  FACTORFOUND will contain the smallest factor if
+Factorize did find a factor.  NOTE the number will NOT be modified, the
+Factorize function simply sets the FACTORFOUND global variable.
+
+The following names are functions and may not be used as variable names:
+C
+CLOSEFILE
+DIM
+DIMS
+END
+F
+FACTORIZE
+GCD
+GETNEXT
+GOSUB
+GOTO
+IF
+L
+LABEL
+LEN
+LINEAR
+LUCASV
+LUCASU
+OPENFILEIN
+OPENFILEOUT
+OPENFILEAPP
+P
+PHI
+PRIMEC
+PRIMEM
+PRIMEP
+PRIMU
+PRIMV
+PRINT
+PRP
+R
+RETURN
+S
+SET
+SETS
+SHELL
+SM
+SMR
+STRTOINT
+U
+V
+W
+WRITE
+
+These variables are PRE defined.  They can not be defined again, but can be 
+used, and certain functions will "set" them:
+ISPRP        (number  Set by PRP, PRIMEC, PRIMEM, PRIMEP and FACTORIZE)
+ISPRIME      (number  Set by PRP, PRIMEC, PRIMEM, PRIMEP and FACTORIZE)
+ERRORLEVEL   (number  Set by call to SHELL command, errorlevel return to shell)
+FACTORFOUND  (number  Set by FACTORIZE)
+MINF         (number  input used by FACTORIZE)
+MAXF         (number  input used by FACTORIZE)
+MODF	       (string  input used by FACTORIZE, modular factoring string)

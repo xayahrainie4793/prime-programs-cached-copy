@@ -1,0 +1,781 @@
+PrimeForm/GW documentation  PFGW v3.2 Release (July 25, 2009)
+
+   ---------
+   - Index -
+   ---------
+A) General Overview
+B) Command-line Options
+C) Expressions
+D) File Formats
+E) Beginners Manual
+F) Other helpful programs
+
+
+A.1. What is PrimeForm/GW?
+
+ PrimeForm/GW (PFGW) is a primality tester.
+ It tests whether or not a number is prime, or at least it tries to.
+ It is able to test any arbitrary number, though some faster then others.
+ About the name: PrimeForm speaks for itself, the GW comes from George
+ Woltman, the person who made the extremely fast modular code available
+ for this project (well he made it for Prime95, but allows us to use it ;)
+ It is a command line (DOS Box) utility. It is an 'Open Source' project,
+ and is ported to Win32, Unix, Linux, BeOS, MacIntel, and possibly other
+ platforms.
+
+ The source code can be obtained at:
+  http://sourceforge.net/projects/openpfgw/
+ The most current development version, and the release version of PFGW 
+ can be obtained at:
+  http://openpfgw.svn.sourceforge.net/viewvc/openpfgw/ 
+ There are two mailing-lists concerned with PFGW:
+  http://groups.yahoo.com/group/primeform/
+   which is the "user's group"
+ and
+  http://groups.yahoo.com/group/openpfgw/
+   which is the "developer's group".
+
+A.2. What is 'being prime'?
+
+ A number is said to be prime when it cannot be divided by any integer
+ other then itself and 1.
+ When PFGW says a number is prime, the number IS prime, no doubt about
+ it. When it says the number is a 'probable prime' (prp) the number is
+ most likely to be prime, but there is a chance (however remote) that the
+ number is composite.
+
+A.3. More details/methods used
+
+ Pfgw can work with numbers from 2 up to almost 2^79700000 (about 24000000
+ digits). It can find probable primes with Fermat's method, with bases
+ from 2 to 256.
+ To be more precise: The largest FFT is 4 million elements long, with 19
+ bits per element. GFN's can be tested upto 24M digits, and generic numbers
+ upto 12M digits.
+ To prove a number prime, other methods need to be used.
+ Only a small percentage of all numbers can be easily proven prime.
+ Name a number N, then you must be able to factor N-1 or N+1 to 33.33% to
+ find a proof using PFGW.
+ If N-1 is factored deep enough, then Pocklington's test can be applied.
+ If N+1 is factored deep enough, then Morrison's test can be applied.
+ If N^2-1 is factored deep enough, a combined method can be used.
+
+A.3.1 Fermat's method
+ Fermat's method is NOT a proof, but more like a quick indicator that a
+ number might be prime.
+ 
+A.3.2 Pocklington's test
+ This test can be used whenever N-1 can be factored to 33.33% of the size
+ of N. (Actually, the factored part must be greater than the cube root of
+ N/1000000). This test is conclusive.
+
+A.3.3 Morrison's test
+ This test can be used whenever N+1 can be factored to 33.33% of the size
+ of N. (Actually, the factored part must be greater than the cube root of
+ N/1000000). This test is conclusive.
+
+A.3.4 F-Strong test
+ This test is used when you use the -t option, and your factors don't reach
+ the magic 33.33%. It is a strong-primality test, and gives more certainty
+ than a Fermat test, but still is NOT a proof!
+
+B) Command-line Options.
+
+B.1. General
+ By just using 'pfgw input.txt' you will start to prp-test all the
+ numbers in the file input.txt
+ Any mention of (DEV) is only to be found in the newest development
+ version of PFGW.
+
+B.2. .INI file
+ The .INI file is used to store where you have stopped the program,
+ so it can start where it left off.
+ You can 'override' this by emptying 'CurLineChecksum' and 'CurLineExpr'.
+ PFGW will then continue the processing at CurLineNum.
+ In summary:
+  DefaultSettings=   Sets default settings.
+                     For example: DefaultSettings=-b139
+                     will make PFGW always use base 139 for testing
+  CPUtype=           Sets your CPU-type.
+                     You can use 5 or lower for Pentium-optimized code,
+                     and 6 or higher for Pentium-II-optimized code.
+                     It can make a few percent difference.
+                     The list:
+                     CPUType=3 is a Cyrix 6x86 (or unknown type)
+                     CPUType=4 is a 486
+                     CPUType=5 is a Pentium
+                     CPUType=6 is a Pentium Pro
+                     CPUType=7 is an AMD K6
+                     CPUType=8 is a Celeron
+                     CPUType=9 is a PentiumII
+                     CPUType=10 is a PentiumIII
+                     CPUType=11 is an AMD Athlon/Duron
+                     CPUType=12 is a Pentium 4.
+                     NOTE the CPUType is obsolete with the v22 Woltman
+                     code. This has MOVED to the [Woltman_FFTs] section
+
+  Verbose=true       Print out FFT element size (and some other information)
+  HideNoFactor=true  Do not print out "unused" factors from a factor intput file
+                     in testing (-t -tp -tm -tc) modes. By default, all non-used
+                factors are output as warings.
+  CurLinNum=         Current Line Number to process
+  CurLineChecksum=   The checksum of the current line number
+  CurLineExpr=       The expression expected at CurLineNum
+  HiResTimer=        Use a higher resolution timer for timing the prp's
+                     and prime tests.  This is most useful for developers 
+                     during the testing/debugging stages.
+
+ There is now a "new" section which can be in any .ini file which PFGW
+ (or the PFGW library code) might use.  This is the section [Woltman_FFTs]
+ This section allows "overriding" the default FFT behavior (in case your
+ PC is not CPU recognized correctly).  Here is the section, and a
+ description of the values:   (Note this section will NOT exist by default)
+  [Woltman_FFTs]
+  CpuOverride=1         ; 1 or 0.  If 1, then CpuType & CpuSpeed are used
+  CPUtype=??            ; see comment above
+  CpuSpeed=400          ; The CPU speed of the PC
+  CpuSupportsRDTSC=1    ; 1 forces usage of RDTSC code, 0 forces not to use
+  CpuSupportsCMOV=1     ; 1 forces usage of CMOV code, 0 forces not to use
+  CpuSupportsPrefetch=1 ; 1 forces usage of Prefetch code, 0 forces not to use
+  CpuSupportsSSE=0      ; 1 forces usage of SSE code, 0 forces not to use
+  CpuSupportsSSE2=0     ; 1 forces usage of SSE2 code, 0 forces not to use
+  CpuSupportsMMX=1      ; 1 forces usage of MMX code, 0 forces not to use
+ Note that you should NOT be changing any of these unless you know what
+ you are doing. These changes can EASILY cause PFGW to abort with illegal
+ instruction exceptions or cause it to run slower.
+
+
+B.3. Network mode (Currently only in Win32 builds)
+ In the network-mode, pfgw will accept numbers from a server, test them,
+ and send back the results.
+ See Networkformat.txt and Network2format.txt for details.
+
+B.4. The options.
+ Remember that these command-line options may need to be entered differently
+ on some systems. For example, systems using a "bash" shell may need to add
+ extra quotes or escape characters to allow certain forms to be input.  Some
+ switch require arguments and some have optional arguments.  When using an
+ argument with a switch, there must be no spaces between the switch and the
+ its argument.  For example, "-q100#+1" is valid, but "-q 100#-1" is not.
+
+ -?   Some help built-in.
+
+ -i   low level [I]nformation
+      Some "Information" about how the program is running. Lists how
+      the Woltman v22 FFT's "see" your PC (type of CPU, speed, and
+      "features").  On a Win32 platform, the GMP linkage (static or
+      DLL) is also listed.
+
+ --   Query mode.
+      Use this mode to let pfgw make a query for the expression.
+
+ -t   Deterministic test.
+      This switch does not require any arguments.  It will default to
+      -tm if not specified, but if specified, must be p, c, or m.
+      This option defaults to a N-1 test.
+      This is NOT a probable test.
+      You will want to use this mode whenever your number is easily
+      factorable when you subtract 1. (for example n!+1)
+      If the factorisation will be less then 33.33%, an F-strong test
+      will be performed.
+
+ -tp  N+1 test.
+      uses the N+1 test to check whether the number is prime.
+      This is NOT a probable test.
+      You will want to use this mode whenever your number is easily
+      factorable when you add 1. (for example n!-1)
+      If the factorisation is less then 33.33%, an F-strong test 
+      will be performed.
+
+ -tc  Combined N+1 and N-1 test.
+      When you are short of factoring N-1, or N+1, and the other
+      has some factors, you can try this mode to achieve a prove.
+      This too is NOT a probable test.
+      If the factored portions are F1 and F2, with F1>F2, and 3*F1+F2 is
+      100% or more, pfgw will be able to complete the proof. If this total
+      is slightly below 100%, it should still be able to force a proof
+      with some square tests using the -x flag.
+ 
+ -tm  Use optimal choices.
+      This option will make pfgw use a minimal of factors for the proof.
+
+ -q   Quick expression.
+      This switch requires an argument.  You can use this when you want
+      to enter an expression on the command-line.
+      (for example: pfgw -qn!+1).
+
+ -f   Trial-Factoring 
+      This switch does not require an argument and will default to
+      -f100 if no argument is specified.
+      
+      -f100 will do 100% of the standard trial-factoring
+      -f1000 will do 1000%, -f10 will do 10% etc.
+
+ -f0  Do not do any trial factoring, including NO trivial division.
+      Note -f0 was added simply to enhance performace of certain
+      tasks in PFGW.  This is best used when the input values have
+      been trial factored or sieved by another program.  Skipping the
+      trivial division step can cause PFGW to output some strange
+      results at times, due to the fact that the trivial division
+      eliminated some exceptional cases (which are not being eliminated
+      due to forced skipping of the trivial division code by using the
+      -f0).  Usage of this function is not recommended for general PFGW
+      usage.
+
+ -F   For PRP tests only, output size of FFT, but do not perform test.
+
+ -f[percent][[{Mod_Expr}][{condition}[{condition}...]]] 
+      Modular factoring:
+      -f{801} uses only primes which are of the form k*801+1
+      -f{632,-1} uses only primes which are of the form k*632-1
+      ** The {801} and the {632,-1} are the optional {Mod_Expr}
+     *** NOTE new code added to do both -1 and +1. the format
+         would be -f{801,+-1}   (the +-1 MUST look just like that)
+      -f{256}{y,8,1) uses only primes which are of the form k*256+1 where
+          the resultant primes are also of the form j*8+1
+      -f{256}{n,8,1) uses only primes which are of the form k*256+1 where
+          the resultant primes are not of the form j*8+1
+      -f500{256}{y,8,1){y,8,7){n,32,1) uses only primes which are of the 
+          form k*256+1 where the resultant primes are also of the form 
+          j*8+-1 but not j*32+1.  There is also a 500% factoring level.
+      -f{8132}{y,8,1){f,8132} uses only primes which are of the 
+          form k*8132+1 where the resultant primes are also of the form 
+          j*8+1. Also, all factors of 8132 (2,19,107) are checked first.
+      -f{8132}{y,8,1){p,8133} uses only primes which are of the 
+          form k*8132+1 where the resultant primes are also of the form 
+          j*8+1. Also, ALL primes <= 8133 are checked first.
+      Note this is also available within the ABC and ABC2 file formats, and
+      within those formats, expressions can also be used.
+
+ -s   minimum factor to trial-factor
+      This value defaults to 0
+
+ -e   maximum factor to trial-factor
+      This value defaults to a value determined by an internal algorithm.
+
+ -d   Deep factoring
+      Don't stop factoring when one factor is found (and thus the number 
+      is found to be composite) but go on and factor until the factorlimit
+      is reached.
+      Example: pfgw -f -d -e1000000000
+ 
+ -b   Change base for prp-testing.
+      This switch requires and argument
+      Some numbers will be prp, even if it isn't a prime. You may want to
+      try several bases.
+      Base should be between 2 and 255
+      Example: pfgw -b7
+
+ -h   Factor Helper file 
+      An argument is required for this switch.
+      Use this option when you are using the n-1 or n+1 test and run short of
+      small factors to get to the 33.33% limit. If you have found larger
+      factors with other programs (ecm, rho, whatever) you can put them in
+      the helper file one on a line.
+      You should ONLY use prime factors in this file, or the result is invalid.
+      The file can also be made up of expressions, and not simply
+      numbers Example: pfgw -tp -hhelper.txt
+      When testing (-t -tp -tm -tc) any factor in this file that is
+      not part of the N-1 or N+1 (either or both depending upon which method
+      of testing), will be printed to screen with a warning listing that 
+      this factor does not "fit".  (Note this behavior can be overridden
+      by using the HideNoFactor=true in the pfgw.ini file)
+      Multiple -h command line switches can be used (for multiple 
+      factor files).  Example pfgw -tc -hplus -hminus input_file
+
+ -o   Only factor mode.
+      This mode will only factor the numbers, and output the cofactor
+      as an expression.
+
+ -od  Will output decimal expansions
+
+ -m   Benchmark
+      This will start to test how fast pfgw works on your computer.
+      It will show you how long a trial-factoring run, or a prp test will
+      take (approximately) with a certain FFT-size.
+
+ -N   Normal mode
+      Use this to force the command line version of PFGW to execute with
+      normal priority.  If not specified, PFGW will execute with idle priority.
+
+ -V   Verbose mode
+      Use this to tell PFGW to output diagnotic information for each test
+      such as the FFT size chosen by gwnum.
+
+ -v   Modular vector mode.
+      This will make pfgw output the number modulo each prime between
+      the -e and -s limits.
+
+ -l   Logging of the pfgw output.
+      An argument is optional for this switch.  If none is specified,
+      it will default to pfgw.out.
+      You can use this switch to log the standard-output to a file
+      Pfgw will use pfgw.out if you don't specify a file. You can of 
+      course still do a redirection like: pfgw input.txt > output.txt
+      Example: pfgw -loutput.txt
+
+ -a   Increase FFT size
+      An argument is required for this switch, taking any value from 1 throught 5.
+      This switch should be used when PFGW encounters an error, such as a round-off
+      error or sumout error.
+      To verify test results from PFGW, run once without -a and once with -a1.
+      If the test results are the same, including the 64-bit residue, then
+      you can be assured the the test results are accurate.
+      Occasionally, PFGW will get a round-off or sumout error.  When that happens
+      it will automatically switch to the next larger FFT size and rerun the
+      test.  When this happens, information about that error will be output to
+      a file called pfgw_err.log.  To verify the test result, you will have to
+      choose the next larger FFT size for the verification.  For example, if PFGW
+      needed to use -a1 to get a good result, then -a2 should be used for a
+      second test to verify the results of the first test.
+      PFGW supports up 5 FFT sizes larger than the default with this switch.
+
+ -x   Additional Square Free Testing
+      This will make PFGW try to prove a prime with a tiny bit less then
+      33.3% factorisation of N-1 or N+1.
+      Default value is -x100
+
+ -c   Certification.
+      This will allow you to make a certificate for a prime to be checked
+      with other programs. *** No code in yet *** the parser just recognises it.
+  
+ -g   Generalized Fermat factor testing
+      The complete syntax is: -g[x][o][s][q]{#,#}{#,#}[_dump_search_patterns]
+      Also allowed is -g[o][q]# and -gx[o][q]#,# to test single GF (or xGF) number
+      This will test the numbers to see if they divide any fermat number.
+      All prp's or primes (N-1 only) which are in the correct form of being
+      a Fermat factor will go through the test.
+   
+      o: The o is needed when you only want to test for Fermat factors, and
+         NOT test the numbers for probable primality. ([O]nly perform GF
+         divisibility).
+
+      q: "Quick" mode.  If a factor is detected, but actual number is not
+         known based upon the initial exponentation, then do NOT try to 
+         re-exponentiate.  Simply outputs something like: 
+         1083*2^101833+1 is a Factor of xGF(101832-?,89,28)!!!!
+         instead of
+         1083*2^101833+1 is a Factor of xGF(101830,89,28)!!!!
+         At a later time, pfgw could be rerun with -gxo89,28 to find the number.
+         The -g (or -go) may be followed by the GF base you wish to check for.
+         if no base is entered, then the default will be -g[o]{2,5}{2,12}
+         So -go2 will ONLY check (no prp) for Fermat divisors of base 2.
+         Ranges of bases can also be entered. The format is:
+ 
+      s: The s is an 'undocumented' feature, which saves the residue of each
+         b^(2^(n-1)) into a file, so that a re-run of the number will be much
+         quicker. (CAUTION here, this function does NOT delete the files, so
+         things can add up quickly).
+
+      x: the x (which must immediately follow the -g) is used for "extended
+         GFN divisibly checking.  This checks for all divisors of the form
+         of a^2^n+b^2^n  (the "common" GFN's are simply where b==1).  This
+         check can be done in roughly the same time as a "normal" GFN check.
+         The output form is xGF(n,a,b) which "maps" to a^2^n+b^2^n
+         Note that checks are ONLY done when gcd(a,b)==1 AND a and b are not
+         both perfect squares.  Either of these 2 conditions and the GF factor
+         is trivial.
+
+ -g{min_prime,max_prime}{min_base,max_base}
+     This needs a little explaining.  PFGW does not compute divisibility
+     for every base requested for, but it simply computes the result of
+     certain values, and then uses a modular communitive property to
+     compute other values, without having to do full exponentiation.
+     To exponentiate all of the bases from 2 to 100 would take as much
+     time as is required to PRP 99 numbers, however, by exponentiating
+     the primes 2,3,5,7,11 (only 5 times longer than a prp), we can
+     determine the value of 54 out of those 99 bases, since there are
+     54 values which are fully divisible (smooth) by those prime numbers.
+     By using  those same primes (2 to 11) we can also obtain 191 of the 
+     first 1000 bases. But if we use a few more primes (primes from 2 to
+     43), we can calculate over 1/2 of that first 1000 bases (507 to be
+     exact). The first pair of numbers is the 'factor range' and the
+     second pair of numbers is the 'try range'.  
+     NOTE that perfect squares are not checked (such as GF4 or GF9).  
+     These are 100% trivial in solution.  However, Odd powers (such as
+     GF8 and GF27) are checked.  These are only trivial if the lower
+     base to the power is GF.
+
+   _dump_search_patterns:  This is a "debugging" or informational switch.
+       If this switch is used, then the first thing PFGW does is to dump
+      out all of the patterns (gcd(a,b)==1) which will be used in the 
+      search. 
+
+ -gap= This runs the "gapper.exe" code within the PFGW context. It
+     uses the Woltman FFT library for its math, while gapper.exe uses GMP
+     math.  The GMP math is MUCH faster for smaller numbers, but when a
+     base 2 + c (2^n+c) reaches about 250 to 400 digits, then the Woltman
+     FFT math takes over in speed.  Syntax for the command is
+     -gap=gap_num[,restart]  So for example, -gap=10000 will gap search for
+     gaps >= 10000, while -gap=10000,213213211 will find gaps >= 10000, but
+     restarts after prp b^n+213213211.  When using the -gap= code, the
+     file being input for PFGW to run MUST be in the CPAPSieve format. PFGW
+     now reads this natively for the gapping work.
+
+ -r  Roundoff error detection
+     This option will tell PFGW to do roundoff checking on all iterations of
+     all tests.  By default PFGW will do roundoff checking on the first 50,
+     the last 50, and every 128th iteration.
+
+ -j  DWT FFT test on Phi(b,2)
+     This option will use the DWT FFT logic to test numbers of the form
+     Phi(b,2) up to 6 times faster than the generic FFT mode.
+     This also contains Fermats and Mersennes as a subset.
+     Example: pfgw -j44497
+     This will test the same number as pfgw -q2^44497-1
+     (Phi(44497,2) = M27 = 2^44497-1), but the -j code should
+     work much faster.
+     Note, if using PFGW to find Mersennes, then be SUER to see the rules
+     for usage on the GIMPS site. 
+
+ -u  set the "Update Interval" to this number.
+     Default update interval is 2500 (2500*50 when factoring). This will change
+     the default value to the value listed.  To turn OFF outputting incremental
+     processing, then use -u0
+
+ -k  Terse Output
+     This is useful for programs running multiple single iterations of PFGW.
+     The PRPNet client uses this switch.
+
+C) Expressions:
+
+C.1. Expression-parts
+ 
+*** Lowest precedence: ***
+
+(Note each "blank" line is a precedence "break", all items in the same "group")
+(based upon line breaks are at the same precendence)
+
+ ||       This "or" that           a||b  if a!=0 or b!=0 then 1, else 0
+ OR       This "or" that           a OR b NOTE cAsE of OR is significant!    || and OR are the "same" operator
+
+ &&       This "and" that          a&&b  if a!=0 and b!=0 then 1, else 0
+ AND      This "and" that          a AND b NOTE cAsE of AND is significant!  && and AND are the "same" operator
+
+ !=       Not equal                a!=b --> 1 if a not same as b or 0 if same value
+ ==       Equivalency              a==1 --> 0 or 1 
+
+ >=       Greater than or equal
+ =>       Greater than or equal
+ <=       Less than or equal
+ =<       Less than or equal
+  >       Greater than
+  <       Less Than                Most of the expression syntax to this point is useful mainly in SCRIPT files.
+ 
+  +       Addition                 2+3 --> 5
+  -       Subtraction              3-2 --> 1
+
+  *       Multiplication           3*2 --> 6
+  .       Multiplication           3.2 --> 6
+  /       Divide                   6/2 --> 3
+  %       Modulus (remainder)      5%2 --> 1
+
+  -       Unary minus              -55  --> -55
+          Unary minus -c is internally handles as 0-c within the code
+          to correct precedence issues.
+  !       logical not              !2+3 --> 3
+
+  ^       Exponentiation           2^3 --> 2*2*2 --> 8
+          NOTE within Window NT type OS's (NT, Win2K, XP, ...) the ^
+          character is "eaten" by the command.com or cmd.exe.  This can
+          be worked around (only affects -q quick expressions on the
+          command line), by using double quotes -q"13*2^131072+1" or
+          by doubling the ^ char  -q13*2^^131072+1  This change in syntax
+          is ONLY needed for WinNT type OS's when entering expressions on
+          the command line.  Expressions in files do NOT require this
+          quoting, and if present, the expressions will fail.
+  #       Primorial                7#  --> 2*3*5*7         (i.e. product of primes)
+  !       Factorial                7!  --> 1*2*3*4*5*6*7  (i.e. product of Numbers)
+  !       MultiFactorial           7!2 --> 7*5*3*1        (i.e. product of arithmetic progression of numbers)
+  
+ ()       Parenthesis / Grouping
+
+ Functions:  (case of function name is not significant)
+  p(x)     The x'th prime number
+  R(x)     Repunit                  r(13) --> 1111111111111
+  R(x,y)   Repeat pattern           r(5,17) --> 1717171717
+  F(x)     Fibonacci number
+  U(x)     Fibonacci primitive part
+  L(x)     Lucas number
+  V(x)     Lucas primitive part
+  Phi(x,y) Cyclotomic number
+  gcd(x,y) Greatest Common Divisor
+  len(x)   Length of x (base 10)     len(12345)   --> 5
+  len(x,y) Length of x (base x)      len(12345,2) --> 14
+  C(x,y)   Binomials
+  Sm(x)    Smarandache               Sm(13)   --> 12345678910111213
+  Sm(x,y)  Smarandache               Sm(13,4) --> 45678910111213123
+  Smr(x)   reverse Smarandache       Smr(12)  --> 121110987654321
+  Smr(x,y) reverse Smarandache       Smr(12,6)--> 654321121110987
+  lucasU(p,q,x) generalized (p,q)-Lucas sequence (U part)
+  lucasV(p,q,x) generalized (p,q)-Lucas sequence (V part)
+  primU(p,q,x)  primitive part of lucasU
+  primV(p,q,x)  primitive part of lucasV
+  Linear(a,b,c,d,n)     The n'th term of a linear recurrence with
+                        initial terms a,b,c,d
+  S(n)                  The n'th NSW number = Linear(1,1,3,7,n)
+  W(n)                  The n'th Williams number = Linear(0,1,2,5,n)
+
+*** Highest precedence ***
+
+
+ Expressions can be grouped together using parenthesis:
+  1234*(567+89)
+ Expressions follow the normal rules for operator precedence, so for instance
+ * is performed before +, unless parenthesis are used.  The precedence order
+ comes from the precedence rules of C and C++.
+
+C.2. Optimised expressions
+ Optimised expressions include:
+  k.2^n+-1  
+  k.2^n+-c  (c to 42 bits)
+  b^n+1     (GFN's)
+  Phi(b,2)  (use the -j command line switch)
+
+C.3. Some expression-parser-quirks
+ C.3.1 Round-off
+   Pfgw will round numbers to the integer part of the number.
+   for example: 8/3 will be rounded off to 2
+   (3/2)^2000 is also Unity (1)
+   This feature can be used to achieve some remarkable things:
+    (n-2*(n/2))        is 1 if n is odd and 0 if n is even
+    (1/(1+(n-k)^2))    is 1 if n=k, and 0 otherwise, 
+                      however, the expression (n==k) is much more optimized.
+
+ C.3.2 Expressions with #
+   The number 105# is equal to the number 103#
+   This is the case because the next prime number after 103 is 107,
+   to 103#, 104#, 105# and 106# all end up being the same number.
+   Workaround: use p(x)#, instead of x#
+   
+ C.3.3 Linear
+   The Linear() function will attempt to find a two-term recurrence
+   relation with constant coefficients to fit the input data. The
+   coefficients it discovers are output to the screen and may be
+   used in lucasU or lucasV. The two Lucas sequences are 'primitive'
+   solutions to the recurrence relation, and it is up to the user
+   to work out what their Linear() function is in terms of them.
+   The 'primitive' solutions have factorization properties, while
+   the general Linear() solution does not.
+   If the Linear() function fails to fit the data, the expression
+   will not evaluate.
+   
+ C.3.4 lucasV
+   The Lucas sequences are defined via a standard recurrence
+   relation:
+   
+   U(0)=0 U(1)=1 U(n) = pU(n-1)-qU(n-2)
+   V(0)=2 V(1)=p V(n) = pV(n-1)-qV(n-2)
+   
+   These definitions allow the functions U and V to possess a
+   standard set of identities, no matter the values of p and q.
+   However, even values of p will produce a V-sequence that is
+   always even - searchers should either remove this factor 2,
+   or use the primitive part.
+   
+ C.3.5 Exponentiation
+   Currently operators are evaluated by precedence, but equal
+   precedence operators are always evaluated left to right. This
+   means that an expression like "2^3^4" will evaluate as
+   (2^3)^4 (2^12) in pfgw, whereas it is conventionally treated as
+   2^(3^4)  (2^81). This may be rectified in the future. However, 
+   for the moment it may be worked around with parentheses. It is
+   advised that parentheses should always be used to avoid any
+   possible ambiguity.
+
+D) File Formats
+ 
+ You can use several file-formats with PFGW. the most easy to use is
+ the free-form file, but you may require more power from the files.
+
+D.1. Free-form File-format
+ If a file cannot be read as one of the special types, it will be treated
+ as a free-form file.
+ The most standard is just having all the numbers listed, one at a line.
+ (As an expression, or as the complete numerical expansion)
+ - You can continue a number at a next line by using \
+   For example: 
+    12345678\
+    9101112
+   contains only the number 123456789101112
+ - You can use comments by using //
+   For example:
+    2607*23^787+1 // Is this one prime?
+
+D.2. ABC - file
+     This is a generic 'siever' format.
+     Anyone can write a siever that will output as this kind of file.
+     See the 'abcfileformats.txt' for more details.
+
+D.2.1 ABCD - file
+     This is a generic 'siever' format, which is more compressed (deltas)
+     than the original ABC format.
+     Anyone can write a siever that will output as this kind of file.
+     See the 'abcfileformats.txt' for more details.
+
+D.2.2 ABCZ - file  (also called PrZ)
+     This is a highly compressed ABCD (or NewPGen) format file.  The file
+     is compressed considerably more with the PrZ format, than it is with
+     PkZip (or RAR/LHA/ACE2/SITX), and it is "processable" by PFGW in the 
+     compressed form.  At this writing, the PrZ format is still a work in 
+     progress, so the code itself will (may) change some.
+
+D.3. ABC2 - file
+     This is a generic 'iteration' format.
+     It will allow you to iterate several variables in your expression,
+     See the 'abcfileformats.txt' for more details.
+
+D.4. NewPGen - file
+     This filetype handles output files from the trial-factoring program 
+     NewPGen (version 2.0 and above). Pfgw will find all 'multi-prime' sets
+     of primes automatically, and will output messages like 'Twin' and
+     'Sophie Germain' accordingly.
+
+D.5. CPAPSieve - file
+     This filetype handles CPAPSieve-outputfiles.
+     (Consecutive Prime Arithmetic Progression).
+     It will check that the numbers within the gaps are composite, and
+     if not, pfgw will report that the AP is not consecutive.
+
+D.6. Check - file
+     PFGW is capable of reading (as input), it's own -l log file.  This
+     will check that all prps are prp and all compostites contain the
+     same "checksum".  NOTE there may be some minor text editing
+     required at the very top of the file.  Simply edit out junk lines
+     prior to a PRP or composite line.  Other "junk" lines do not need
+     to be removed, as PFGW will skip them, but that first line must
+     be "good".
+
+D.7. SCRIPT - file
+     This is a "programming" script file language.  It is "Basic-like".
+     There is a specific document describing this language.  That 
+     document is the ScriptFileFormat.txt file.  
+     ALSO, there is a Perl script called Scriptify.pl (and documentation
+     file, Scriptify.html) which allows a "C-like" language, with
+     functions, while loops, for loops, if stagements, and function
+     scoped variables, to be "converted" into a valid runnable SCRIPT
+     file format file.  This allows programming for PFGW work in a C-like
+     language, however, the Perl program is required to convert that
+     source file into an input file (in the SCRIPT format) for PFGW
+     to operate with.
+
+D.8  Save/Resume files
+     Although not actually a "input" file type, PFGW does save its
+     processing "state" information, from time to time, while doing
+     PRP testing.   The files saved, have "strange" names, and end
+     in the .pfr extension (the pfr stands for PrimeForm Resume file.)
+     .pfr files store the "state" of the FFT number being worked on,
+     along with other information, that allows PFGW to validate that
+     it actually IS the number.   The name of the file is special
+     (do NOT rename it).  PFGW generates this name from the number
+     itself.   Thus, when PFGW prepares to PRP a number, it can
+     quickly determine what the "proper" filename for this number is,
+     and see if that file exists.  If the file does exist, then
+     PFGW, can do a much more intesive check of that file, and if
+     it is the file for the number being processed, pfgw can reload
+     this file, and resume from where this test left off.
+     A few notes:
+     1.  These save files are version dependend.  Thus when PFGW
+         is upgraged (the FFT's), the save files will NOT function.
+     2.  Only the PRP testing is save/resumed.  There are just TOO
+         many things that would need saved for testing save/restore
+         to function properly.
+     3.  The .pfr files will be deleted automatically by PFGW when
+         a number has been fully PRP'd.
+     4.  PRP tests for different bases (PRP-3 vs PRP-131) can not
+         share the same save/resume file.  The PRP base must be 
+         the same (note PFGW will not resume if the base is different)
+     5.  Save/Resume is only looked at for number over 2^50000.  There
+         is some overhead in file name creation, and checking for
+         existance of a file.  Thus for numbers under this size, it
+         is not time efficient to check (or to save).
+     6.  Save/Resume is automatic.  There is no user interaction.
+         For numbers large enough, the save file is written upon
+         early shutdown (^C or in WinPFGW, the stop button).  Also
+            the save files are written every 20 minutes or so.
+
+
+E) Beginners Manual.
+
+You are searching for primes, most likely, and you want to make sure
+the primes you find are really prime.
+
+E.1. Creation of a file.
+     In order to make pfgw test some numbers, the easiest way is to 
+     put those numbers in a file.
+
+     * Use your favorite editor to make the following file 'input.txt'
+       ABC2 $a*2^1432+1
+       a: from 230 to 232
+
+     Note: This is the same as creating a file with the following lines:
+       230*2^1432+1 
+       231*2^1432+1
+       232*2^1432+1
+
+E.2. Checking for probable primes.
+     After you've saved the file, pfgw will need to be told to process
+     the file.
+
+     * run: pfgw input.txt
+       you'll see pfgw working on the numbers (shouldn't take very long)
+       and output whether any one of these is a prp.
+       Voila, 231*2^1432+1 is a prp
+
+E.3. Proving primality of the prp's.
+     When you know what numbers are prp, you of course will want to make 
+     sure that those numbers are really prime.
+     
+     * run pfgw -t -f -q231*2^1432+1
+       You'll see pfgw proving the prp to be a prime.
+       You've put in the -f because you want pfgw to look for small 
+       primes in N-1. (a lot of 2's and a 231). Pfgw uses these to
+       prove the number prime.
+       Now you are confident that 231*2^1432+1 is really a prime!
+
+E.4. Documentation
+     Be sure to browse through the whole of the documentation, so you know
+     what you can expect from the program, and what not to expect!
+
+F) Other helpful programs
+
+Note that most of these programs run only on x86 compatible hardware.  Programs that
+can run on other CPU architectures are marked with an asterisk.
+
+F.1. Primality-proving programs
+F.1.1. LLR              http://jpenne.free.fr/index2.html
+F.1.2. Proth            http://www.utm.edu/research/primes/programs/gallot/
+F.1.3. Primo (ECPP)     http://www.ellipsa.net/
+F.1.4. VFYPR            http://anthony.d.forbes.googlepages.com/vfypr.htm
+F.1.5. ECPP             http://ultralix.polytechnique.fr/~morain/Prgms/ecpp.english.html
+F.1.6  genefer      (*) http://pagesperso-orange.fr/yves.gallot/primes/download.html
+
+F.2. Factorisation programs
+F.2.1. GMP-ECM      (*) http://ecm.gforge.inria.fr/
+F.2.4. GGNFS        (*) http://sourceforge.net/projects/ggnfs/
+F.2.4. msieve       (*) http://www.boo.net/~jasonp/qs.html
+F.2.2. UBASIC's rho     http://www.rkmath.rikkyo.ac.jp/~kida/ubasic.htm
+F.2.3. UBASIC's emcx    http://www.rkmath.rikkyo.ac.jp/~kida/ubasic.htm
+F.2.4. PPMPQS           http://www.asahi-net.or.jp/~KC2H-MSM/cn/
+
+A fairly comprehensive list of available factoring software can be found at Mersenne
+Forum, http://www.mersenneforum.org/showthread.php?t=3255.  Similarly a comprehensive
+list of factoring projects can be found at
+http://www.mersenneforum.org/showthread.php?t=9611
+
+F.3. Sieving programs
+F.3.1. sr<x>sieve   (*) http://www.geocities.com/g_w_reynolds/
+F.3.2. gcwsieve     (*) http://www.geocities.com/g_w_reynolds/
+F.3.3. NewPGen          http://www.utm.edu/research/primes/programs/NewPGen/
+F.3.4. APSieve          http://groups.yahoo.com/group/primeform/files/Sieving+Programs/
+F.3.6. GFNSieve         http://groups.yahoo.com/group/primenumbers/files/
+F.3.7. FermFact         http://groups.yahoo.com/group/FermatNumbers/files/
+F.3.8. MultiSieve       http://home.roadrunner.com/~mrodenkirch/
+
+
+F.3. Others
+F.3.1. PRP              http://www.mersenne.org/gimps/
+F.3.2. UBASIC           http://www.rkmath.rikkyo.ac.jp/~kida/ubasic.htm
+F.3.3. Phrot        (*) http://home.roadrunner.com/~mrodenkirch/
+ 
+ 
