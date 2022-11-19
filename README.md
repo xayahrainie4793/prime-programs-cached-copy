@@ -20,9 +20,9 @@ File "llr403win64" (for Windows 64bit, GUI)
 
 File "cllr403win64" (for Windows 64bit, CONSOLE APPLICATION)
 
-File "llr403" (for Windows 32bit, GUI)
+File "llr403win32" (for Windows 32bit, GUI)
 
-File "cllr403" (for Windows 32bit, CONSOLE APPLICATION)
+File "cllr403win32" (for Windows 32bit, CONSOLE APPLICATION)
 
 File "llr403linux" (for Linux 32bit (dynamic link))
 
