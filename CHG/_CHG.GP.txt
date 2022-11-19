@@ -1,0 +1,549 @@
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\
+\\
+\\  Coppersmith - Howgrave-Graham Primality Prover
+\\  ----------------------------------------------
+\\
+\\
+\\
+\\  Author:  John Renze
+\\     With debugging help from David Broadhurst.
+\\     Based on earlier Mathematica code -- conversion to GP 
+\\     assisted by David Broadhurst and Greg Childers.
+\\
+\\  Version:  0.3  (December 24, 2005)
+\\
+\\  Description:  This GP script completes the search for divisors in
+\\     residue classes required by BLS in cases where n^2-1 is factored
+\\     to more than 25% of n.  It is based on the algorithm of Coppersmith 
+\\     and Howgrave-Graham using lattice basis reduction.  More description
+\\     of the algorithms involved is given in the documentation for the
+\\     various sections of code.
+\\
+\\  Todo List:
+\\    - Faster and better h selection code.  I like the values of h I am
+\\      getting.  It's just that the way I'm producing them is slightly absurd.
+\\    - Interruptiblility.  My idea was to save each interval certificate to
+\\      a temporary file, so that we would never lose more than the interval
+\\      we were working on.
+\\    - Client/Server.  (David has done this independently.)
+\\    - David's KP-based left endpoint modification.
+\\    - Prove some theorems about h and u values.
+\\    - Rewrite this whole thing in NTL/C++ for speed.
+\\    - Understand how to modifiy the basis to reduce LLL times.
+\\
+\\  Usage:  Follow the directions below for the creation of an input file and
+\\    then just run the whole thing.  This script should Just Work for 
+\\    factored portions of more than about 27% on inputs of up to 30,000 
+\\    digits or so and should take no more than a few hours to a couple of 
+\\    days.  If you want to push further than that, particularly with regards 
+\\    to smaller factorization percentages, you will probably have to change some
+\\    parameters.  Even better, you can talk to David and rent the distributed
+\\    version he has on an Opteron cluster.
+\\
+\\    At the end of a proof, the program outputs a certificate that verifies 
+\\    that the proof is valid.  This certificate is then validated with David's
+\\    certificate validation program.  The presence of an independently written 
+\\    validator should prevent the problems we experienced in the past months.
+\\
+\\    This script is known to work with PARI/GP 2.2.10 and known to not work
+\\    with version 2.1.6.
+\\
+\\  History:
+\\    0.1 Initial release
+\\    0.2 Removed spurious testing line
+\\        Added code for multiple subintervals with same polynomial
+\\        Tweaked h choice code
+\\    0.3 Fixed major bugs --- Previous versions should not be used!
+\\        Prints timings for each interval.
+\\        Changed certificate code to work with David's certifier.
+\\        Certifier is called automatically from within code.
+\\        Included observation that only one CHG step is needed if F=1.
+\\
+\\
+\\  Acknowledgements:
+\\    The CHG proof and validation scheme is a cooperative effort of the PrimeForm
+\\    community.  In particular, I would like to acknowledge David Broadhurst,
+\\    Chris Caldwell, Greg Childers, Bouk de Water, Predrag Minovic, and Tom Wu
+\\    for their input and assistance.
+\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+allocatemem(64*1024*1024);   \\ Increase stack to 64mb for now
+			     \\ You may have to bump this up to 128M for really
+			     \\ big values of h (say bigger than 12).
+
+\\  Precision:  There are several places you have to take roots and all the digits
+\\    matter.  Unfortunately, you're going to have to set this yourself.  If it is 
+\\    too high, the h selection code runs too slowly.  If it is too low, you will 
+\\    get precision errors.  Here are some guidelines and observations based on
+\\    past use.
+\\
+\\  \p100 works at 500 digits
+\\  \p200 works at 1000 digits
+\\  \p1500 works for 7800 digits and 30%
+\\  \p4000 works for 10,000 digits and 28%
+\\  \p5000 works for 11,109 digits and 27.8%
+\\  \p6000 works for 13,263 digits and 26.6%
+
+\p4000
+
+\\  PROGRAM INPUT
+\\  -------------
+
+worktodofile="TestSuite\\1.in";
+certificatefile="TestSuite\\1.out";
+
+\\  The input to the CHG program should be stored in a GP-readable file containing
+\\  three definitions:
+\\    - n is the number being factored.
+\\    - F is the factored portion of n-1.
+\\    - G is the factored portion of n+1.
+\\  The factored portions should be given as numbers, not lists of factors.
+\\  There is currently no functionality for queuing multiple jobs in the same
+\\  todo file.
+\\
+\\ Sample input file:
+\\
+\\ n = 14885657073574029118450151585546332863562575066876273874564919279219492620\
+\\ 56238946972039271873205763810089323298099420163474825226464788481;
+\\ F = 43556142965880123323311949751266331066368;
+\\ G = 1;
+\\
+\\ For as yet unknown reasons, leaving unevaluated expressions such as Phi(5281,127)
+\\ in the input file can cause problems.  I don't know enough about PARI's evaluation
+\\ loop to troubleshoot this, but expanding everything out isn't so hard, anyway.
+
+
+\\  ADJUSTIBLE PARAMETERS
+\\  ---------------------
+\\
+\\      Only change these if you are having problems or are really stretching
+\\      the abilities of the program.  the defaults should work fine for a >= 28%
+\\      and candidates of around 30,000 digits or less.
+\\
+\\  Maximum size of matrices to use.  For factored portions of 28% or more, 
+\\  this can be somewhere in the neighborhood of 8-12.  20 is a good value if
+\\  you want to go down to around 26.5%.  Don't be alarmed if the program 
+\\  actually uses a smaller value.
+maxh = 12;
+\\  Minimum h to try.  This is to keep the program from trying silly
+\\  values of h.  You probably won't need to change this, although if you
+\\  keep getting precision errors during the search for h, you can try
+\\  raising it.
+minh = 5;
+\\  Maximum number of intervals to use when choosing h-values.  You can set this to something
+\\  pretty big.  This is just here to keep the code that chooses h from
+\\  spending ridiculous amounts of time on h's that are too small.
+maxintervals = 40;
+\\  Print timings for each interval.
+printtimes = 1;
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\ Code - No user modifiable parameters below this line.
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+\\***********************************************
+\\	Certificates code
+\\***********************************************
+\\
+
+\\ A certificate is a collection of data which allows the factoring for
+\\ a particular subinterval to be (provably) recreated without redoing
+\\ the LLL step.  This is important because it allows primality
+\\ proofs to be independently checked without rerunning the whole
+\\ algorithm with a different implementation.
+\\
+\\ A CHG certificate is a list with 4 parts:
+\\ [name, n, F, G, list1,list2], where each part of list1 is a list of 
+\\ certificates for the subintervals in the search congruent to 1 mod s, 
+\\ and each part of list2 is a list of certificates for the subintervals 
+\\ in the search congruent to n mod s.
+\\
+\\ The certificate for each subinterval is a list containing five 
+\\ elements.  They are
+\\
+\\    1)  The value of h for that interval.
+\\    2)  The value of u for that interval.
+\\    3)  A witness to the irreducibility of the polynomial.
+\\    4)  The right endpoint of the interval.
+\\    5)  Polynomial corresponding to the short vector.
+
+certificateCreateInterval (h, u, q, Y, poly) = 
+{
+
+    local (certificate);
+    
+    certificate = vector(5);
+    
+    certificate[1] = h;
+    certificate[2] = u;
+    certificate[3] = q;
+    certificate[4] = Y;
+    certificate[5] = poly;
+    
+    return (certificate);
+}
+
+certificateSave (certificate) = 
+{
+
+    print ("A certificate has been saved to the file:  ", certificatefile);
+    write (certificatefile, certificate);
+    
+    print ("\nRunning David Broadhurst's verifier on the saved certificate...");
+    read ("chgcertd.gp");
+    CHGcertD(certificate);
+}
+
+\\***********************************************
+\\	CHG code
+\\***********************************************
+
+\\ This formula for the value of u is derived by taking the deriviative
+\\ of the lower limit with respect to u and setting it equal to zero.
+\\ Q: Is it better to round up or down?
+bestu (n, h, Y) =
+{
+    return (max (1, round (sqrt (h*(h-1)*log(Y)/log(n))))); 
+}
+
+besthforu (n, u, Y) = 
+{
+    return (round (sqrt (u*(u+1)*log(n)/log(Y))));
+}
+
+\\ The interval certificate gives only the value of Y used to generate
+\\ the polynomial.  We have to calculate the left hand endpoint
+\\ of the subinterval by hand.
+lowerlimit (certificate, s) =
+{
+    local (h, u, Y, i, poly, shortvector);
+    
+    h = certificate[1];
+    u = certificate[2];
+    Y = certificate[4];
+    poly = certificate[5];
+    
+    shortvector = vector (h, i, polcoeff(poly,i-1)*Y^(i-1));
+
+    return (ceil ((h*norml2(shortvector))^(1/(2*u))/s));
+}
+
+\\  We choose h by running "simulations" of the CHG process.  Essentially, I fix
+\\  h and then iterate the LLL condition until I get a rightendpoint of 1.  I do
+\\  this for every value between minh and maxh.  The chosen value of h is the one 
+\\  that minimizes (number of intervals)*h^4.  Because we are working at such high
+\\  precision, this takes a bit of time, but I think it is worth it because even 
+\\  small reductions in h will result in large time savings.
+\\  Q:  I would prefer to do the h selection at a lower precision than the
+\\      rest of the calculation.  How do I tell PARI that I don't care if I 
+\\      lose a few digits?
+chooseh (n, s, r, leftendpoint, Y) =
+{
+    local (h, u, YY, numintervals, currweight, bestweight, besth, starth);
+    
+    besth = maxh;
+    bestweight = maxintervals*maxh^4;
+       
+    for (h = minh, maxh,
+        YY = Y;
+	numintervals = 0;   
+        while(YY >= leftendpoint,
+	    u = bestu (n, h, YY);
+            numintervals += 1;
+            if (numintervals >= maxintervals,
+                numintervals = 0;
+                break();
+            );
+            YY = floor((h^(1/2)*2^((h - 1)/4)*YY^((h - 1)/2)*n^(u*(u + 1)/(2*h)))^(1/u)/s);
+        );
+        currweight = numintervals * h^4;
+        if (currweight != 0 && bestweight > currweight,
+            bestweight = currweight;
+            besth = h
+        );
+    );
+
+    return (besth);
+}
+
+\\  This is the routine which does all of the heavy lifting.
+\\  Pre:  The values of n, s, r and given.  We also give the parameters h, u, and Y.
+\\        No error checking is done to see if these parameter choices make sense.
+\\  Post: The first factor found is returned.  If no factor is found, a certificate
+\\        attesting to the absence of factors is returned.
+CHG (n, s, r, h, u, Y) = 
+{
+    local(m, X, poly, M, reducedbasis, shortvector, p, newpoly, f, i, j, certificate, newshortvector, YY, q);
+   
+    print ("    Running CHG with h = ", h, ", u = ", u, ". Right endpoint has ", length(Str(Y)), " digits.");   
+
+    \\ Set up matrix for LLL.
+    m=(r*((1/s)%n))%n;
+    \\m=centerlift(Mod(r/s,n));  Does this lead to better timings?
+    M=matrix(h,h);
+    for(i=0,u,
+        poly = n^(u-i)*(x+m)^i;
+        for(j=0,h-1,
+           M[i+1,j+1]=polcoeff(poly,j)*Y^j));
+    for(i=u+1,h-1,
+        poly = x^(i-u)*(x+m)^u;
+        for(j=0,h-1,
+           M[i+1,j+1]=polcoeff(poly,j)*Y^j));
+
+    \\ Perform LLL and assemble resulting polynomial.
+    \\ The floating point algorithm is used.  In the unlikely event that there
+    \\ is an error, it will be detected by the certificate verification code.
+    reducedbasis=(M~*qflll(M~))~;
+    shortvector = vector(h,i,reducedbasis[1,i]);
+    newpoly=0;
+    for(j=0,h-1,newpoly=newpoly + shortvector[j+1]*(x/Y)^j);
+
+    \\ Find a witness to the absence of an integer root.
+    q=0;
+    for (i=1,1000,if(length(polrootsmod(newpoly,prime(i)))==0,q=prime(i);break()));
+
+    \\ Search for integer roots of the resulting polynomial.    
+    \\ We use factor here.  If we by extremely bad luck get a polynomial
+    \\ which is hard to factor, we can use an algorithm which is 
+    \\ provable polynomial time such as Sturm sequences or Newton's method.
+    f=factor(newpoly)[,1]~;
+    for(j=1,length(f),
+        p=f[j];
+        if( poldegree(p)==1 && pollead(p)==1, return(s*(x-p)+r)));
+
+    if(printtimes != 0, print ("        Done!  Time elapsed:  ", gettime(), "ms."));
+
+    \\ Create certificate and return it.
+    \\ Use the actual degree of newpoly, rather than h in the first field.
+    certificate = certificateCreateInterval (poldegree(newpoly, x) + 1, u, q, Y, newpoly);
+    return (certificate);
+}
+
+\\ The main CHG routine.  This is the only function is this section which
+\\ should be called from elsewhere.
+\\ Pre:   It is assumed that s^4 > n.  This is not checked.
+\\ Post:  Returns the first factor of n found of the form s x + r 
+\\        with leftendpoint <= x <= rightendpoint.  After the first factor is
+\\        found, the remaining cofactor qualifies for Lenstra's algorithm,
+\\        so the CHG procedure should be aborted anyway.  Returns a list of 
+\\        subinterval certificates if no factor is found.
+CHGFactor (n, s, r, leftendpoint, rightendpoint) =
+{
+    local(h, u, Y, possiblefactor, certificatelist);
+   
+    possiblefactor = 0;
+    certificatelist = listcreate(2*maxintervals); 
+    \\ Allow some extra space for some low h intervals at the end.
+    Y = rightendpoint;
+
+    \\ There are so many special cases if r divides n,
+    \\ let's just get that one out of the way.
+    if (r > 1 && n % r == 0, return (r));
+    
+    while(Y >= leftendpoint,
+        h = chooseh (n, s, r, leftendpoint, Y);
+        u = bestu (n, h, Y);
+        possiblefactor = CHG(n, s, r, h, u, Y);
+        \\ possiblefactor is either a factor or the new right endpoint.
+        if (type(possiblefactor) == "t_POL",
+            return (possiblefactor));
+        listinsert (certificatelist, possiblefactor, 1);
+        \\ Y = possiblefactor[3] - 1;    
+        Y = lowerlimit (possiblefactor, s) - 1;
+    );
+    
+    return (certificatelist);
+}
+
+\\***********************************************
+\\	Testing code
+\\***********************************************
+
+\\ This tests the CHG code. It produces a number n with d digits,
+\\ a modulus s with log(s)/log(n) = a, and runs the CHG program.
+\\ This function doesn't actually get called when running in
+\\ production mode, but I keep it around because it is convenient
+\\ for debugging the CHG portions.
+tst(a,d) =
+{
+   local(n,r,s,c,f,g);
+   s=137+random(10^(ceil(d*a)));
+   until(gcd(r,s)==1,
+      r=1+random(s-2));
+   until(gcd(n,s)==1,
+       c=137+random(10^random(ceil(d*(1/2-a))));
+       f=c*s+r;
+       g=137+ceil(random(10^d)/f);n=f*g);
+   print("percent="round(100*log(s)/log(n)));
+   print("digits="ceil(log(n)/log(10)));
+   print("factor="f);
+   print("n="n);
+   print("s="s);
+   print("r="r);
+   CHGFactor(n,s,r,1,floor(sqrt(n)/s));
+}
+
+\\***********************************************
+\\	Right endpoint code
+\\***********************************************
+\\
+\\ We know from the BLS test that all factors of n must be congruent to 1
+\\ or n modulo FG.  We want to find upper bounds on
+\\ the size of x in order to reduce the workload for CHG. Which upper
+\\ bound we use will depend on whether F or G is larger.
+\\ 
+\\ Bound #1: x < n^(1/2) / (F*G)
+\\ - Conditions: none
+\\ - Proof: The smaller factor must be smaller than sqrt(n).
+\\ 
+\\ Bound #2: x < (2*n)/(F^3*G^2)
+\\ - Conditions: Suppose
+\\       n = (F*G*y + 1))(F*G*z + (F*r + 1))
+\\ where r = ((n-1)/F) % G.
+\\ Write (n - (F*r + 1))/(F*G) = a*F + b where
+\\ 0 <= b < F. Then (G*b + r)^2 - 4*G*a must not be a perfect square.
+\\ - Proof: By construction, the quantity y + z must be congruent to b
+\\ modulo F. The square test rules out the smallest possible value for
+\\ this quantity.  Let x = min (y, z), w = max (y, z).  We get 2*w >
+\\ y + z > F. Then
+\\ x < n/(F^2*G^2*w) < (2*n)/(F^3*G^2).
+\\ 
+\\ Bound #3: x < (2*n)/(F^2*G^3)
+\\ - Conditions: Suppose
+\\       n = (F*G*y + 1))(F*G*z + (G*r - 1))
+\\ where r = ((n+1)/G) % F.
+\\ Write (n - (G*r - 1))/(F*G) = a*G + b where 0 <= b < G. Let c = G - b.
+\\ Then neither (F*b + r)^2 + 4*F*a nor (F*c - r)^2 + 4*F*(a+1) 
+\\ may be a perfect square.
+\\ - Proof: By construction, the y - z must be congruent to b
+\\ modulo G or z - y must be congruent to c mod G. The squares test rule
+\\ out the smallest possible values for these quantities.  
+\\ Let x = min (y, z), w = max (y, z).  We get 2*w > y + z > G. Then
+\\ x < n/(F^2*G^2*w) < (2*n)/(F^2*G^3).
+\\ Use whichever bound is smallest (of course!) and proceed with CHG.
+
+\\ Square test to use if F >> G
+squaretest1 (n, F, G) = 
+{
+    local(R, a, b, r, S);
+    
+    r = ((n-1)/F) % G;    
+    R = (n - (F*r + 1))/(F*G);
+    a = floor(R/F);
+    b = R - a*F; 
+    S = (G*b + r)^2 - 4*G*a; 
+    
+    return (issquare(S));
+}
+
+\\ Square test to use if G >> F
+squaretest2 (n, F, G) = 
+{
+    local(R, a, b, c, r, S, T);
+    
+    r = ((n+1)/G) % F;    
+    R = (n - (G*r - 1))/(F*G);
+    a = floor(R/G);
+    b = R - a*G; 
+    S = (F*b + r)^2 + 4*F*a; 
+    T = (F*c - r)^2 + 4*F*(a+1);
+    
+    return (issquare(S) || issquare(T));
+}
+
+findrightendpoint (n, F, G) =
+{
+    local (rightendpoint);
+
+    if (4*n < (F^4)*(G^2), 							
+	if (squaretest1 (n, F, G),
+	    print ("Square test failed. n is composite."); quit(),
+	    print ("Square test passed for F >> G.  Using modified right endpoint.");
+            rightendpoint = ceil(2*n / ((F^3)*(G^2))) \\Floor is better but verifier requires ceil.
+    	),
+        if (4*n < (G^4)*(F^2),
+            if (squaretest2 (n, F, G),
+                print ("Square test failed. n is composite."); quit(),
+                print ("Square test passed for G >> F.  Using modified right endpoint.");
+                rightendpoint = ceil(2*n / ((G^3)*(F^2)))),  \\Floor is better but verifier requires ceil.
+            print ("Unmodified right endpoint will be used.");
+            rightendpoint = ceil(sqrt(n)/(F*G))  \\Floor is better but verifier requires ceil.
+	)
+    );
+
+    return (rightendpoint);
+}
+
+\\***********************************************
+\\	Execution starts here
+\\***********************************************
+
+print ("\nWelcome to the CHG primality prover!");
+print ("------------------------------------\n");
+
+print ("Input file is:  ", worktodofile);
+print ("Certificate file is:  ", certificatefile);
+
+\\ Read data in from job file.
+read(worktodofile);
+
+\\ Check if F and G are factors of n-1 and n+1, 
+\\ respectively.  Modify them if not.
+F = gcd (n-1, F);
+G = gcd (n+1, G);
+
+\\ F and G may have a common factor of 2. We need to get rid of it.
+if(gcd(F, G) > 1, if(F%4 == 2,F = F/2,G = G/2));
+
+\\ Set the modulus to F*G.
+s = F * G;
+
+print ("Found values of n, F and G.");
+print ("    Number to be tested has ", length(Str(n)), " digits.");
+print ("    Modulus has ", length(Str(s)), " digits.");
+if ((n-1)%F != 0, \
+    print ("WARNING:  Some factors of F are not factors of n-1.\n    Proceeding with a smaller value of F."));
+if ((n+1)%G != 0, \
+    print ("WARNING:  Some factors of G are not factors of n+1.\n    Proceeding with a smaller value of G."));
+print ("Modulus is ", precision(100*log(s)/log(n), 1), "% of n.\n");
+
+if (s^4 < n, \
+    print ("F and G are not big enough.  Do more factorization.");quit(););
+
+print ("NOTICE: This program assumes that n has passed");
+print ("    a BLS PRP-test with n, F, and G as given.  If");
+print ("    not, then any results will be invalid!\n");
+
+rightendpoint = findrightendpoint (n, F, G);
+leftendpoint = 1; \\ Left endpoint code still unwritten.
+
+\\ It is possible that F and G are large enough that CHG is completely
+\\ unnecessary.  We check for a few of these common cases.
+if (rightendpoint == 0, \
+    print ("CHG not required."); \
+    print ("\nCongratulations! n is prime!"); \
+    quit());
+if (F^10 > n^3 || G^10 > n^3, \
+    print ("\nWARNING:  This number qualifies for the KP test.  CHG may be unnecessary."));
+if (s^3 > n, \
+    print ("\nWARNING:  This number qualifies for Lenstra's algorithm.  CHG may be unnecessary."));
+
+print ("\nSearch for factors congruent to 1.");
+gettime();
+possiblefactor1 = CHGFactor(n, s, 1, leftendpoint, rightendpoint);
+if (type(possiblefactor1) == "t_POL", print ("Factor found:  ", possiblefactor1);print ("n is composite.");quit());
+
+\\ If F=1 or G=1, the second CHG step is unnecessary and we are done.
+\\   A certificate with no fourth element is saved.
+if (F == 1 || G == 1, certificateSave ([worktodofile, n, F, G, possiblefactor1]); print ("\nCongratulations! n is prime!"); quit());
+
+print ("\nSearch for factors congruent to n.");
+possiblefactor2 = CHGFactor(n, s, n%s, leftendpoint, rightendpoint);
+if (type(possiblefactor2) == "t_POL", print ("Factor found:  ", possiblefactor2);print ("n is composite.");quit());
+
+certificateSave ([worktodofile, n, F, G, possiblefactor1, possiblefactor2]);
+print ("\nCongratulations! n is prime!");
+
+quit();
