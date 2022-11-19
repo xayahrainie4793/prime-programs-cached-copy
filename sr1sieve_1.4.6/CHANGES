@@ -1,0 +1,401 @@
+Version 1.4.6:  (Posted January 29, 2019)
+  Added -F switch to support generating output files in ABCD, ABC, or NewPGen formats.
+  Added support for input files in the ABCD or ABC formats.
+
+Version 1.4.5:  (Posted December 25, 2012)
+  Now builds cleanly on both Windows and OS X.
+  
+Version 1.4.4:  (Posted December 23, 2012)
+  Fixed compiler warnings on OS X.
+  
+Version 1.4.3:  (Posted September 12, 2012)
+  Rebuilt Win64 with latest MinGW.  Previous builds could report invalid
+  factors (which are rejected by the code) due to a miscompile by MinGW.
+  
+Version 1.4.2:
+   The seconds per factor are now computed correctly.  The output
+   is now the same as the output from sr2sieve.
+   Modified sources to build with mingw64.
+   The program now starts at low/idle priority.
+
+Version 1.4.1:
+Removed the k < p restriction. (b < p is still required).
+
+Version 1.4.0: (Posted 29 September 2008)
+For terms k*b^n+c, instead of solving b^n = -c/k (mod p), solve the
+ equivalent equation 1/b^n = -k/c (mod p). This avoids the need to compute
+ 1/k (mod p).
+Removed PRE_POWER option in bsgs.c which is incompatible with change above.
+New process priority behaviour is incompatiple with previous versions:
+ Default is not to change process priority (previous default was idle).
+ -zz sets lowest priority (nice 20)
+ -z  sets low priority (nice 10)
+ -Z  sets high priority (nice -10)
+ -ZZ sets highest priority (nice -20)
+Create all archives with ZIP. Put all executables into one archive.
+
+Version 1.3.8: (Posted 29 September 2008)
+Fixed a bug in the reading of the sr1sieve-command-line.txt file that could
+ cause DOS format files to be rejected by UNIX executables.
+In events.c, set the next save/report time in check_process() relative to
+ current time rather than the last save/report time. This works better when
+ the program is paused for long periods of time.
+
+Version 1.3.7: (Posted 1 September 2008, source only)
+In priority.c, use PRIO_MAX=10 if not defined in sys/resource.h
+In mulmod-i386.S, added a non-inline mulmod64_i386() function for use with
+ compilers that have difficulty with the inline version. Remove
+ -DUSE_INLINE_MULMOD from CPPFLAGS to use the new function.
+Added Makefile options ARCH=x86-osx and ARCH=x86-64-osx to simplify building
+ on Intel Macs. Made USE_INLINE_MULMOD=0 the default for ARCH=x86-osx.
+Replaced i386 and x86_64 inline cpuid() and timestamp() functions with
+ external functions in misc-i386.S and misc-x86-64.S to avoid problems with
+ clobbering the PIC register in OS X.
+Thanks to Michael Tughan for the x86-osx and x86-64-osx build options.
+
+Version 1.3.6: (Posted 10 June 2008)
+Fixed a buffer overflow that could occur when printing messages with long
+ file names. Thanks Chuck Lasher for reporting this bug.
+
+Version 1.3.5: (Posted 6 April 2008)
+Fixed calculation of accumulated elapsed time, as reported at the end of a
+ range, which could overflow in versions 1.3.0-1.3.4.
+
+Version 1.3.4: (Posted 1 March 2008)
+Set HAVE_SETAFFINITY=0 for OS X.
+Check the return status of localtime() and strftime() before calling
+ printf() with the results. This prevents a Windows access violation when
+ the ETA date is invalid. Thanks Chuck Lasher for reporting this bug and
+ helping to track down the cause.
+
+Version 1.3.3:
+Use `addc' instead of `adde' instruction in ppc64 mulmod.
+
+Version 1.3.2: (Posted 15 January 2008)
+Improved powmod implementation for x86-64 and x86/sse2: For each bit in the
+ exponent the old implementation used 1 sqrmod + 1/2 mulmod + 1 unpredictable
+ branch; The new implementation uses 1 sqrmod + 1 mulmod + 1 conditional move.
+
+Version 1.3.1:
+Moved child/parent branch into eliminate_term().
+Removed reference to mod64_rnd in factors.c for non-x86 builds.
+
+Version 1.3.0: (Posted 4 January 2008)
+Added simple multithreading using fork() and pipe(). The new switch
+ `-t --threads N' will start N child threads. See README-threads.
+When multithreading, let each use of the `-A --affinity N' switch set
+ affinity for successive child threads.
+Use elapsed time for all statistics. Removed `-e --elapsed-time' switch.
+
+Version 1.2.6: (Posted 27 December 2007)
+Added version number to name used in log entries. Thanks `Cruelty' for this
+ suggestion.
+Added new `-q --quiet' switch to prevent found factors being printed.
+
+Version 1.2.5: (Posted 11 December 2007)
+Just set thread affinity, not process affinity, for Windows.
+Added a new makefile target ARCH=x86-64-gcc430 with compiler optimisation
+ reduced to -O1 for use when compiling with GCC 4.3.0. This version of GCC
+ generates incorrect code at -O2 and higher causing a segfault in the
+ windows-x86-64 executable soon after starting when the x87 FPU code path is
+ used (when sieving p > 2^51 or when the --no-sse2 switch is given). Thanks
+ Bryan O'Shea for finding this bug and Adam Sutton for helping to find a
+ workaround.
+
+Version 1.2.4: (Posted 7 December 2007)
+Replaced some variable length arrays with constant length ones to work
+ around a possible bug in GCC 4.3.0 affecting the x86-64 Windows build.
+Undo the change made in 1.2.3 to allocate extra elements for BJ64[]. The
+ baby-steps overrun can never exceed the minimum size of the array.
+Added `-A --affinity N' switch to set affinity to CPU N.
+
+Version 1.2.3: (Posted 3 December 2007)
+Sign-extend the count argument to the x86-64 gen/6 mulmod method. This bug
+ could cause a segfault during baby-steps when there is only one (or perhaps
+ a very small number) of terms in a sequence. Thanks AES for the bug report.
+Allocate an extra 8 elements for BJ64[] to allow extra baby steps overrun.
+
+Version 1.2.2: (Posted 8 November 2007)
+Allow maximum hashtable density to exceed 1.0 if necessary.
+When p == k*b^n+c just log k*b^n+c as a prime term, don't eliminate k*b^n+c
+ from the sieve or report p as a factor.
+
+Version 1.2.1: (Posted 23 October 2007)
+Fixed p -> b typo in mulmod-ppc64.c
+Save %xmm1-4 across function call in giant-x86-64.S
+
+Version 1.2.0: (Posted 20 October 2007)
+Added REPORT_CPU_USAGE option to alternately report percentage of CPU time
+ used and percentage of range done on the status line.
+Added ELAPSED_TIME_OPT to enable the `-e --elapsed-time' switch which
+ reports the p/sec and sec/factor stats in elapsed instead of CPU time.
+Combined x86-intel and x86-amd targets into one x86 target. Use --amd or
+ --intel switches to override the automatic code path selection.
+New x86-64 target with seperate SSE2/x87 code paths can now sieve to p=2^62.
+Replaced x86-64 and ppc64 inline vector mulmod assembly with external
+ functions (in mulmod-x86-64.S, mulmod-x87-64.S, mulmod-ppc64.c).
+Added gen/6 mulmod methods for x86-64.
+New i386 and x86-64 assembly for main hashtable routines: build_hashtable(),
+ search_hashtable().
+New giant step method for x86-64, performs mulmods and hashtable lookups in
+ the same pass. (Method name new/4).
+Assembly code in this version is current with sr5sieve version 1.6.9.
+
+Version 1.1.12: (Posted 28 September 2007, source and Linux binaries only)
+Don't install handlers for signals whose initial handler is SIG_IGN.
+
+Version 1.1.11: (Posted 27 September 2007)
+Changes to allow building with MinGW64:
+ * Define NEED_UNDERSCORE in config.h
+ * Don't use __mingw_aligned_malloc in util.h
+ * Allow for sizeof(uint_fast32_t)==4 in asm-x86-64-gcc.h
+
+Version 1.1.10:
+Schedule loads a little earlier in x86-64 mulmods, about 1% faster on C2D.
+Handle SIGHUP by writing a checkpoint before calling the default handler.
+Use clock() for benchmarking if gettimeofday() is not available.
+Set FPU to use double extended precision, in case the default has been
+ changed somehow.
+Use stack shadow space instead of red zone on _WIN64.
+
+Version 1.1.9: (Posted 3 August 2007)
+Fixed a bug in the xmemalign() and xfreealign() functions used by systems
+ without a native memalign() function. The usual result was an invalid
+ pointer being passed to free() at the end of a sieving range. Many thanks
+ to Mark Rodenkirch for finding this bug.
+ Affected Windows versions 1.0.25 - 1.1.6, OS X versions 1.0.25 - 1.1.8.
+
+Version 1.1.8: (Posted 1 August 2007)
+Testing reveals that the x86-64 SSE2 mulmod can fail with modulus between
+ 2^51 and 2^52. Reduced limit for this arch to 2^51 to be safe. (Failures
+ were rare below 4*10^15).
+
+Version 1.1.7: (Posted 21 July 2007)
+Use __mingw_aligned_malloc() to allocate aligned memory with mingw32.
+Added VEC8 macros for ppc64.
+New vector mulmod code for x86 machines without SSE2. (mulmod-i386.S).
+
+Version 1.1.6: (Posted 10 July 2007)
+Added VEC8_* macros for x86-64. (Enables gen/8 methods).
+Fixed FPU stack corruption in powmod_k8_fpu().
+Set HAVE_MEMALIGN=0 for OS X in config.h. Don't include <malloc.h> unless
+ needed.
+Removed redundant uses of register r26 in expmod-ppc64.S.
+Updated srtest.c for SSE2 changes since version 1.1.4.
+Made powmod-k8.S and powmod-k8-fpu.S usable by WIN64, and a few other
+ changes to allow for compilation by mingw64 when it arrives.
+New PRE2, VEC2, VEC4 macros for ppc64 from sr5sieve 1.5.11.
+Removed unnecessary "cld" instruction in x86/x86-64 memset_fast32().
+Improved generic memset_fast32(): store 8 uint_fast32_t per loop iteration.
+Report the BSGS range when given the -vv switch.
+Increase baby steps as far as the next multiple of vector length if
+ doing so will reduce the number of giant steps.
+Modified assembler for sse2/8 and sse2/16 methods to reduce the maximum
+ overrun to 4 elements. This is especially beneficial when the number of
+ giant steps is large.
+
+Version 1.1.5: (Posted 22 June 2007)
+Added FPU versions of VEC_* macros for x86-64 when USE_FPU_MULMOD=1.
+Added VEC_* macros for ppc64, defined in terms of PRE2_MULMOD64() macro.
+ Thanks Ed (sheep) for testing.
+Added assembler timestamp() for ppc64. Thanks Mark Rodenkirch for the code.
+Increased the Sieve of Eratosthenes bitmap limit to 2048Kb from 512Kb in
+ version 1.5.6. The user can set a lower limit by use of the -L switch.
+
+Version 1.1.4: (Posted 18 June 2007)
+Improved powmod for x86-64: Use predictable branch instead of CMOV, align
+ main loop on a 16 byte boundary, short-circuit for n=0 or n=1 cases.
+Improved x86/SSE2 code (mulmod-sse2.S, powmod-sse2.S): Replaced movdqa with
+ movq/movhps after fistpll and movlps/movhps before fildll in powmod64(),
+ sse2/2 and sse2/4 methods. Interleave four instead of two multiplies in
+ sse2/4, sse2/8 and sse2/16 methods.
+Small improvement to the linear search in setup64().
+Added -mtune=k8 to PATH2_FLAGS for x86-amd build.
+Call cpuid to serialize before calling rdtsc in timestamp().
+Limit Sieve of Eratosthenes bitmap to lesser of 512Kb or half L2 cache.
+
+Version 1.1.3: (Posted 26 May 2007)
+Improved the x86-64 mulmod based on benchmark for Core2: Use branch instead
+ of conditional move, and schedule floating point instructions earlier.
+If USE_ASM=0 use gettimeofday() instead of rdtsc on x86/x86-64.
+
+Version 1.1.2: (Posted 23 May 2007, source and x86-64 binaries only)
+Cast range_size to uint64_t before shifting (primes.c). Not currently
+ necessary, but may prevent future problems.
+Fixed the x86-64 version of the VEC4_MULMOD64 macro. x86-64 builds for
+ versions 1.1.0-1.1.1 would not have returned correct results when the gen/4
+ method was used for giant steps.
+
+Version 1.1.1: (Posted 18 May 2007)
+The end-of-array marker used in the vector versions of baby_steps() was
+ overwritten by the hashtable empty-slot marker. This could cause a segfault
+ if both the vector mulmod code and the non-constant empty-slot hashtable
+ code were used together. Only affected the x86-64 build for version 1.1.0.
+ Thanks `Cruelty' for finding this bug.
+Run benchmarks twice and take the times from the second run. The first run
+ makes sure everything is in the cache.
+
+Version 1.1.0: (Posted 14 May 2007)
+Choose which mulmod macros to use based on benchmarks taken before sieving
+ starts.
+Added VEC2_* and VEC4_* macros for x86-64.
+Zero arrays allocated for use with VEC*_MULMOD64 macros. This ensures that
+ the overrun area does not contain any junk that could trigger exceptions.
+Update Intel cache size detection code to use extended cpuid function 6 if
+ L2 cache size was not found otherwise.
+Add -Wa,-W to CPPFLAGS to turn off assembler warnings for x86 builds. They
+ are caused by an inline assembler expression such as 4+%1 expanding to
+ 4+(%esi) instead of 4+0(%esi), harmless but AFAIK unavoidable.
+
+Version 1.0.24:
+Fixed *_clock() functions to return CPU times in Windows. Previous versions
+ used clock() when getrusage() was not available, but clock() returns
+ elapsed time instead of CPU time in Windows. (clock.c).
+
+Version 1.0.23: (Posted 6 May 2007)
+Use VEC8_* and VEC16_* macros instead of VEC4_* macros in SSE2 code path.
+
+Version 1.0.22: (Posted 17 April 2007)
+Fixed a bad CPUID parameter in the non-intel cache detection code (cpu.c).
+
+Version 1.0.21: (Posted 16 April 2007)
+Let C16 point to the pre-computed list of candidates that survive the power
+ residue tests rather than duplicating the list (bsgs.c).
+Use VEC4_* macros instead of vec4_* inline functions.
+
+Version 1.0.20: (Posted 7 April 2007)
+New vec4_* functions to fill arrays 4 elements at a time in SSE2 code path.
+
+Version 1.0.19: (Posted 27 March 2007)
+Fixed `-C --cache-file' switch broken in version 1.0.14. Using `-c FILE'
+ would have worked, but not `-C FILE' or `--cache-file FILE'.
+Warn if output file cannot be opened instead of stopping with an error.
+
+Version 1.0.18: (Posted 24 March 2007, source only)
+Added missing definition of CPU_DIR_NAME for ppc64/Linux in cpu.c
+
+Version 1.0.17: (Posted 20 March 2007, source only)
+Fixed a problem with the source: end-of-line Makefile comments were not
+ being stripped. Thanks Ed for finding this bug.
+
+Version 1.0.16: (Posted 18 March 2007)
+Fixed the cpuid cache size detection code on AMD machines. Thanks
+ `Flatlander' for reporting this bug.
+
+Version 1.0.15: (Posted 17 March 2007)
+Replaced some 64-bit variables with 32-bit ones in the Sieve of Eratosthenes
+ main sieving loop. Performance on 32-bit machines is a little better,
+ hopefully not at a cost to 64-bit machines.
+ppc64/Linux cache detection now checks directories in /proc/device-tree/cpus
+ for cache size files and sets the cache size from the first one found.
+Modified the Sieve of Eratosthenes to sieve just for primes p of the form
+ p=1 (mod 2^y) with y chosen during initialisation. This is much more
+ efficient for sieving Generalised Fermat sequences when p is large.
+Fixed a bug that caused the L2 cache size given by the -L switch to be 1024
+ times too large. Thanks `Flatlander' for reporting this.
+
+Version 1.0.14: (Posted 15 March 2007)
+Save output file whenever SIGUSR1 is received.
+Detect L1/L2 data cache size using sysctl on ppc64/MacOS X. Thanks Alex for
+ the code.
+Detect L1/L2 data cache size by reading /proc on ppc64/Linux. Thanks Ed for
+ the code.
+Added SSE2 detection and a seperate SSE2 code path selectable at runtime.
+ `--sse2' or `--no-sse2' can be used to override automatic detection.
+Added Makefile targets x86-intel/x86-amd to create binaries that will run on
+ any Pentium compatible, but with base code path tuned for Pentium2/Athlon
+ and SSE2 code path tuned for Pentium4/Athlon64.
+Changed `-c --cache FILE' switch to `-C --cache-file FILE' for consistency
+ with sr5sieve.
+
+Version 1.0.13: (Posted 9 March 2007)
+Detect L1/L2 data cache size using cpuid instruction on x86/x86_64.
+
+Version 1.0.12: (Posted 7 March 2007)
+If no command line arguments are given, read them from a file called
+ `sr1sieve-command-line.txt' if one exists in the current directory.
+Report and log the number of found factors even if the range is not complete
+ when the program is stopped.
+Set LOG_STATS=1 to write some more detailed stats to the log file at the end
+ of the run. (Also report them to the console when run with `-v --verbose').
+Once a factor has been found, alternate status line between reporting ETA
+ and factor rate.
+Truncate the status line to 80 characters.
+
+Version 1.0.11: (Posted 28 February 2007)
+Replaced the huge switch in setup64() with an if-elif-else construct using a
+ runtime-computed table. This may be slightly slower on some machines, but
+ avoids the need for manually constructing the switch, which was tedious and
+ susceptible to human error. It should now be possible to set a different
+ value for POWER_RESIDUE_LCM without any other changes to the source.
+Extended power residue tests to include 16-th powers (POWER_RESIDUE_LCM=720).
+Added switches `-z --idle' to start at idle priority, the default, and
+ `-Z --no-idle' to not alter the priority level.
+
+Version 1.0.10:
+Pre-compute addition ladders for each subsequence congruence table entry.
+ Faster for most sequences, but slower for some lightweight sequences.
+
+Version 1.0.9:
+Decoupled the power residue test limit from the subsequence base exponent.
+Extended power residue tests to include 9-th powers.
+Replaced the power residue bitmaps with pre-computed tables indexing
+ subsequences by parity and congruence class mod divisors of BASE_MULTIPLE.
+
+Version 1.0.8: (Posted 14 February 2007)
+After writing a new Legendre symbol cache file, immediately reload it (if
+ HAVE_MMAP is set) to allow memory to be shared with other processes.
+Set HAVE_MALLOPT=1 in config.h to reduce the threshold below which malloc()
+ allocates blocks using anonymous mmap(). This reduces heap fragmentation
+ during init and allows more memory to be released before the sieve starts.
+If mmap() fails, warn and fall back to using malloc()/read() instead.
+
+Version 1.0.7: (Posted 11 February 2007)
+The short form `-s' command-line switch was being ignored. (The long form
+ `--save' still worked). Thanks `Flatlander' for reporting this bug.
+Added -l -L -H -Q command line switches.
+Reduced HASH_MIN/MAX_DENSITY from 0.15-0.85 to 0.10-0.60
+If not enough memory can be allocated to build pre-computed Legendre symbol
+ lookup tables, compute the Legendre symbols while sieving instead.
+When `-c FILE' switch is given, load Legendre symbol tables from FILE if it
+ exists, or save the Legendre symbol tables to FILE if not.
+Define HAVE_MMAP in config.h to load the legendre symbol tables from cache
+ using mmap(), allowing multiple processes to share one copy of the tables.
+ Unfortuntely mingw32 does not seem to have mmap().
+
+Version 1.0.6: (Posted 8 February 2007)
+Try to minimise the maximum hashtable density in the range 0.15 to 0.85,
+ depending on L1_CACHE_SHIFT.
+Added progress reporting while building the Legendre symbol lookup tables,
+ as this can take a long time when core(k) is large.
+If core(k)*core(b) is too large, compute the Legendre symbols as needed
+ instead of generating a pre-computed lookup table. This allows any k up to
+ 2^63 to be sieved regardless of the value the squarefree part of k or b.
+Added the -x command line switch to prevent the use of pre-computed lookup
+ tables even when the squarefree part of k is small enough.
+
+Version 1.0.5: (Posted 5 February 2007)
+The sieve limit for ppc64 is 2^63 when using assembler mulmods, not 2^52.
+Added an x86-64 assembler powmod (powmod-k8.S)
+Use an addition ladder to fill the (1/b^d) (mod p) array. May be slower for
+ some sequences. Set USE_SETUP_LADDER=0 in sr1sieve.h to disable.
+Delay filling the 1/b^d (mod p) array until it is known that it is needed.
+ Use the divisor pattern information to fill the array if the divisor is
+ greater than the ladder efficiency.
+
+Version 1.0.4: (Posted 25 January 2007)
+Generalised to work with any NewPGen type 16 or 17 sieve file, i.e. any
+ fixed-k sieve for k*b^n+/-1.
+Added option to save the output sieve file, don't write a checkpoint file.
+Recognise certain sequences of Generalised Fermat numbers.
+Extended range of k to 1 < k < 2^64.
+Renamed from rpssieve to sr1sieve.
+
+Version 1.0.3:
+L2 cache usage in prime_sieve() was double what it should have been. Fixed.
+
+Version 1.0.2: (Posted 20 January 2007)
+Added sieves for sequences 99*2^n-1 and 13*2^n-1.
+
+Version 1.0.1: (Posted 15 January 2007)
+Initial adaptation from 321sieve version 1.0.1 (sr5sieve version 1.4.19).

@@ -1,0 +1,76 @@
+Latest source and some binaries can be found at:
+
+  http://www.geocities.com/g_w_reynolds/sr1sieve/
+
+To report bugs, email me (Geoff): g_w_reynolds at yahoo.co.nz.
+
+
+SR1SIEVE
+========
+
+Sr1sieve is Srsieve specialised for a single sequence k*b^n+/-1.
+
+(Note that when sieving 3 or more sequences over the same range it is
+normally much faster to sieve them together with srsieve or sr2sieve than
+individually with sr1sieve.)
+
+Command line options (-P, -i and at least one of -o or -f are required):
+
+ -p --pmin P0
+ -P --pmax P1          Sieve for factors p in the range P0 <= p <= P1
+ -i --input FILE       Read sieve from NewPGen format file FILE.
+ -o --output FILE      Write sieve to NewPGen format file FILE.
+ -f --factors FILE     Append new factors to file FILE.
+ -C --cache-file FILE  Load (or save) Legendre symbol tables from (or to) FILE.
+ -s --save TIME        Update output file every TIME (default 60) minutes.
+ -l --L1-cache SIZE    Assume L1 data cache is SIZE Kb.
+ -L --L2-cache SIZE    Assume L2 cache is SIZE Kb.
+ -B --baby METHOD      Use METHOD for baby step mulmods.
+ -G --giant METHOD     Use METHOD for giant step mulmods.
+ -H --hashtable SIZE   Force use of a SIZE Kb hashtable.
+ -Q --subseq Q         Force sieving k*b^n+c as subsequences (k*b^d)*(b^Q)^m+c.
+ -x --no-lookup        Don't pre-compute Legendre symbol lookup tables.
+ -z --lower-priority   Run at low priority. (-zz lower).
+ -Z --raise-priority   Run at high priority. (-ZZ higher).
+ -A --affinity N       Set affinity to CPU N.
+ -d --duplicates       Report factors that don't eliminate any composite.
+ -q --quiet            Don't print found factors.
+ -v --verbose          Print some extra messages.
+ -h --help             Print this help.
+
+Some of the following additional options may also be available:
+    --amd              Use CMOV optimisations.
+    --intel            Don't use CMOV optimisations.
+    --sse2             Use SSE2 vector optimisations.
+    --no-sse2          Don't use SSE2 vector optimisations.
+ -t --threads NUM      Start NUM child threads. (Default 0).
+
+
+For a given sequence k*b^n+c and prime factor p, the following limits apply:
+
+  1 < k < 2^63.
+  1 < b < 2^32.
+  0 < n < 2^32.
+  |c| = 1.
+  b < p < 2^52 (or 2^62 for x86/x86-64, 2^63 for ppc64).
+
+Only factors larger than b will be found, so the sieve must be started
+and sieved until p >= b with another program (NewPGen, Srsieve).
+
+If core(k)*core(b) is large, where core(x) is the squarefree part of x, then
+a lot of initialization time and memory may be required. To avoid this the
+-x switch can be used, at some cost to performance. Alternatively, the -C
+switch can be used to write the initialization data to file, which will be
+used to speed up initialization the next time the sieve is started with the
+-C switch.
+
+If sr1sieve is interrupted (e.g. pressing ctrl-c) or terminated nicely
+(e.g. by running: kill `pidof sr1sieve`) then any output files will be
+updated before it finishes. Beware that this doesn't happen in Windows when
+closing the sr1sieve window by clicking the close button, so press ctrl-c.
+
+If no command line arguments are given but `sr1sieve-command-line.txt'
+exists in the current directory, then the command line will be as if the
+first line of this file had been used to invoke sr1sieve. This may be useful
+on some GUI machines where the command shell and batch files have been
+disabled for security reasons.

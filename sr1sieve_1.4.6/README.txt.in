@@ -1,0 +1,4 @@
+This directory contains source code and some binaries for sr1sieve, a
+version of srsieve specialised for sieving a single sequence k*b^n+/-1.
+
+The latest version is VERSION.
