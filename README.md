@@ -52,6 +52,4 @@ File "snewpgenlinux.zip" (for Linux, statically linked)
 
 File "mtsieve_2.3.3.7z" (for Windows)
 
-7. covering (https://sites.google.com/site/robertgerbicz/coveringsets)
-
-
+7. coveringsets (https://sites.google.com/site/robertgerbicz/coveringsets)
