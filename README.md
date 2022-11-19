@@ -51,3 +51,7 @@ File "snewpgenlinux.zip" (for Linux, statically linked)
 6. MTSIEVE (https://sourceforge.net/projects/mtsieve/, https://www.rieselprime.de/ziki/Mtsieve)
 
 File "mtsieve_2.3.3.7z" (for Windows)
+
+7. covering (https://sites.google.com/site/robertgerbicz/coveringsets)
+
+
