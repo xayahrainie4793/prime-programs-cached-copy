@@ -65,3 +65,7 @@ File "ecm704dev-svn2990-win64" (for Windows)
 File "ecm704dev-svn2990-linux64" (for Linux)
 
 11. YAFU (http://sites.google.com/site/bbuhrow/, https://download.mersenne.ca/YAFU)
+
+12. MSIEVE (https://sourceforge.net/projects/msieve)
+
+13. cado-nfs
