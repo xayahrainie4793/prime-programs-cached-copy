@@ -54,6 +54,6 @@ File "mtsieve_2.3.3" (for Windows)
 
 7. coveringsets (https://sites.google.com/site/robertgerbicz/coveringsets)
 
-8. GeneFer (http://www.fermatsearch.org/download.php)
+8. GeneFer (http://www.fermatsearch.org/download.php, https://primes.utm.edu/bios/page.php?id=2740)
 
-9. CHG (https://mersenneforum.org/showpost.php?p=528149&postcount=3)
+9. CHG (https://primes.utm.edu/bios/page.php?id=797, https://mersenneforum.org/showpost.php?p=528149&postcount=3)
