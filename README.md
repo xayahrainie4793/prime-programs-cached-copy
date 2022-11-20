@@ -68,4 +68,6 @@ File "ecm704dev-svn2990-linux64" (for Linux)
 
 12. MSIEVE (https://sourceforge.net/projects/msieve)
 
+File "msieve153_win64" (for Windows)
+
 13. CADO-NFS (http://cado-nfs.gforge.inria.fr/index.html)
