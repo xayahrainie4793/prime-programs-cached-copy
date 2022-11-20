@@ -53,3 +53,7 @@ File "snewpgenlinux" (for Linux, statically linked)
 File "mtsieve_2.3.3" (for Windows)
 
 7. coveringsets (https://sites.google.com/site/robertgerbicz/coveringsets)
+
+8. GeneFer (http://www.fermatsearch.org/download.php)
+
+9. CHG (https://mersenneforum.org/showpost.php?p=528149&postcount=3)
