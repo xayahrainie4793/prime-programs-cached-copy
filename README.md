@@ -63,3 +63,5 @@ File "mtsieve_2.3.3" (for Windows)
 File "ecm704dev-svn2990-win64" (for Windows)
 
 File "ecm704dev-svn2990-linux64" (for Linux)
+
+11. YAFU (https://download.mersenne.ca/YAFU)
