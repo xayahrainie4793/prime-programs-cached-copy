@@ -40,7 +40,7 @@ File "Primo309" (for Windows) (a cached copy of the file http://www.rieselprime.
 
 File "primo-433-lx64" (for Linux)
 
-5. NewPGen (https://primes.utm.edu/programs/NewPGen/, https://www.rieselprime.de/ziki/NewPGen):
+5. NewPGen (https://primes.utm.edu/programs/NewPGen/, https://primes.utm.edu/bios/page.php?id=105, https://www.rieselprime.de/ziki/NewPGen):
 
 File "newpgen" (for Windows)
 
