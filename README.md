@@ -48,7 +48,7 @@ File "newpgenlinux" (for Linux, dynamically linked)
 
 File "snewpgenlinux" (for Linux, statically linked)
 
-6. MTSIEVE (https://sourceforge.net/projects/mtsieve/, https://www.rieselprime.de/ziki/Mtsieve)
+6. MTSIEVE (https://sourceforge.net/projects/mtsieve/, https://primes.utm.edu/bios/page.php?id=449, https://www.rieselprime.de/ziki/Mtsieve)
 
 File "mtsieve_2.3.3" (for Windows)
 
