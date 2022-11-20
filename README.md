@@ -59,3 +59,7 @@ File "mtsieve_2.3.3" (for Windows)
 9. CHG (https://primes.utm.edu/bios/page.php?id=797, https://mersenneforum.org/showpost.php?p=528149&postcount=3)
 
 10. GMP-ECM (http://www.loria.fr/~zimmerma/records/ecmnet.html, http://www.fermatsearch.org/download.php)
+
+File "ecm704dev-svn2990-win64" (for Windows)
+
+File "ecm704dev-svn2990-linux64" (for Linux)
