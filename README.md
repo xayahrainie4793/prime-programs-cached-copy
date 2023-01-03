@@ -52,6 +52,14 @@ File "mtsieve_2.3.3" (for Windows)
 
 7. *coveringsets* (https://sites.google.com/site/robertgerbicz/coveringsets)
 
+Files "covering.c" and "covering.exe" (for small CK (say *k* < 2<sup>32</sup>))
+
+Files "bigcovering.c" and "bigcovering.exe" (for large CK (say *k* > 2<sup>32</sup>))
+
+File "sierpinski.txt" (list of the Sierpinski CK for bases *b* ≤ 1024 with corresponding covering sets)
+
+File "riesel.txt" (list of the Riesel CK for bases *b* ≤ 1024 with corresponding covering sets)
+
 8. *GeneFer* (http://www.fermatsearch.org/download.php, https://primes.utm.edu/bios/page.php?id=2740)
 
 9. *CHG* (https://primes.utm.edu/bios/page.php?id=797, https://mersenneforum.org/showpost.php?p=528149&postcount=3)
