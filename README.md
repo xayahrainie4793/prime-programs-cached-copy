@@ -4,8 +4,6 @@ These are the cached copy version of these prime programs:
 
 Files "srsieve_1.1.4", "sr1sieve_1.4.6", "sr2sieve_2.0.0", "srbsieve"
 
-Note: File "srsieve_1.1.0" is a cached copy of the file https://mersenneforum.org/attachment.php?attachmentid=16377&d=1499103807 in post https://mersenneforum.org/showpost.php?p=462636&postcount=94
-
 Note: File "CRUS_pack" is a cached copy of the file http://www.rieselprime.de/dl/CRUS_pack.zip, which includes LLR, PFGW, srsieve, sr1sieve, sr2sieve, and a PFGW starting bases, see post https://mersenneforum.org/showpost.php?p=120751&postcount=1
 
 Also file "srbsieve and newpgen instructions.pdf", which is a cached copy of the srbsieve Guide file in https://www.bc-team.org/app.php/dlext/?cat=3
