@@ -1,0 +1,4092 @@
+b=2 k=78557
+period=36
+cover=[3,5,7,13,19,37,73]
+
+b=3 k=125050976086
+period=144
+cover=[5,7,13,17,19,37,41,193,757]
+
+b=4 k=66741
+period=12
+cover=[5,7,13,17,241]
+
+b=5 k=159986
+period=12
+cover=[3,7,13,31,601]
+
+b=6 k=174308
+period=12
+cover=[7,13,31,37,97]
+
+b=7 k=1112646039348
+period=24
+cover=[5,13,19,43,73,181,193,1201]
+
+b=8 k=47
+period=4
+cover=[3,5,13]
+
+b=9 k=2344
+period=6
+cover=[5,7,13,73]
+
+b=10 k=9175
+period=6
+cover=[7,11,13,37]
+
+b=11 k=1490
+period=6
+cover=[3,7,19,37]
+
+b=12 k=521
+period=4
+cover=[5,13,29]
+
+b=13 k=132
+period=4
+cover=[5,7,17]
+
+b=14 k=4
+period=2
+cover=[3,5]
+
+b=15 k=91218919470156
+period=24
+cover=[13,17,113,211,241,1489,3877]
+
+b=16 k=66741
+period=6
+cover=[7,13,17,241]
+
+b=17 k=278
+period=4
+cover=[3,5,29]
+
+b=18 k=398
+period=4
+cover=[5,13,19]
+
+b=19 k=765174
+period=12
+cover=[5,7,13,127,769]
+
+b=20 k=8
+period=2
+cover=[3,7]
+
+b=21 k=1002
+period=4
+cover=[11,13,17]
+
+b=22 k=6694
+period=4
+cover=[5,23,97]
+
+b=23 k=182
+period=4
+cover=[3,5,53]
+
+b=24 k=30651
+period=12
+cover=[5,7,13,73,79]
+
+b=25 k=262638
+period=6
+cover=[7,13,31,601]
+
+b=26 k=221
+period=6
+cover=[3,7,19,37]
+
+b=27 k=538
+period=4
+cover=[5,7,73]
+
+b=28 k=4554
+period=4
+cover=[5,29,157]
+
+b=29 k=4
+period=2
+cover=[3,5]
+
+b=30 k=867
+period=6
+cover=[7,13,19,31]
+
+b=31 k=6360528
+period=12
+cover=[7,13,19,37,331]
+
+b=32 k=10
+period=2
+cover=[3,11]
+
+b=33 k=1854
+period=4
+cover=[5,17,109]
+
+b=34 k=6
+period=2
+cover=[5,7]
+
+b=35 k=214018
+period=6
+cover=[3,13,97,397]
+
+b=36 k=1886
+period=6
+cover=[13,31,37,43]
+
+b=37 k=2604
+period=4
+cover=[5,19,137]
+
+b=38 k=14
+period=2
+cover=[3,13]
+
+b=39 k=166134
+period=6
+cover=[5,7,223,1483]
+
+b=40 k=826477
+period=6
+cover=[7,41,223,547]
+
+b=41 k=8
+period=2
+cover=[3,7]
+
+b=42 k=13372
+period=4
+cover=[5,43,353]
+
+b=43 k=2256
+period=4
+cover=[5,11,37]
+
+b=44 k=4
+period=2
+cover=[3,5]
+
+b=45 k=53474
+period=6
+cover=[7,19,23,109]
+
+b=46 k=14992
+period=6
+cover=[7,19,47,103]
+
+b=47 k=8
+period=4
+cover=[3,5,13]
+
+b=48 k=1219
+period=6
+cover=[7,13,61,181]
+
+b=49 k=2944
+period=12
+cover=[5,19,73,181,193]
+
+b=50 k=16
+period=2
+cover=[3,17]
+
+b=51 k=5183582
+period=6
+cover=[7,13,379,2551]
+
+b=52 k=28674
+period=4
+cover=[5,53,541]
+
+b=53 k=1966
+period=4
+cover=[3,5,281]
+
+b=54 k=21
+period=2
+cover=[5,11]
+
+b=55 k=4416
+period=4
+cover=[7,17,89]
+
+b=56 k=20
+period=2
+cover=[3,19]
+
+b=57 k=1188
+period=4
+cover=[5,13,29]
+
+b=58 k=43071
+period=4
+cover=[5,59,673]
+
+b=59 k=4
+period=2
+cover=[3,5]
+
+b=60 k=16957
+period=4
+cover=[13,61,277]
+
+b=61 k=15168
+period=6
+cover=[7,13,97,523]
+
+b=62 k=8
+period=2
+cover=[3,7]
+
+b=63 k=37565868
+period=12
+cover=[5,13,37,109,3907]
+
+b=64 k=51
+period=2
+cover=[5,13]
+
+b=65 k=10
+period=2
+cover=[3,11]
+
+b=66 k=21314443
+period=24
+cover=[7,17,37,67,73,4357]
+
+b=67 k=18342
+period=4
+cover=[5,17,449]
+
+b=68 k=22
+period=2
+cover=[3,23]
+
+b=69 k=6
+period=2
+cover=[5,7]
+
+b=70 k=11077
+period=4
+cover=[13,29,71]
+
+b=71 k=5917678826
+period=18
+cover=[3,19,37,73,1657,5113]
+
+b=72 k=731
+period=4
+cover=[5,61,73]
+
+b=73 k=1444
+period=4
+cover=[5,13,37]
+
+b=74 k=4
+period=2
+cover=[3,5]
+
+b=75 k=4086
+period=6
+cover=[7,13,19,61]
+
+b=76 k=43
+period=2
+cover=[7,11]
+
+b=77 k=14
+period=2
+cover=[3,13]
+
+b=78 k=186123
+period=4
+cover=[5,79,1217]
+
+b=79 k=2212516
+period=6
+cover=[5,7,43,6163]
+
+b=80 k=1039
+period=12
+cover=[3,7,13,43,173]
+
+b=81 k=6068
+period=3
+cover=[7,13,73]
+
+b=82 k=19587
+period=12
+cover=[5,7,13,37,83]
+
+b=83 k=8
+period=2
+cover=[3,7]
+
+b=84 k=16
+period=2
+cover=[5,17]
+
+b=85 k=346334170
+period=6
+cover=[37,43,193,2437]
+
+b=86 k=28
+period=2
+cover=[3,29]
+
+b=87 k=274
+period=6
+cover=[7,11,19,31]
+
+b=88 k=4093
+period=12
+cover=[5,7,31,37,89]
+
+b=89 k=4
+period=2
+cover=[3,5]
+
+b=90 k=27
+period=2
+cover=[7,13]
+
+b=91 k=89586
+period=4
+cover=[23,41,101]
+
+b=92 k=32
+period=2
+cover=[3,31]
+
+b=93 k=24394
+period=4
+cover=[5,47,173]
+
+b=94 k=39
+period=2
+cover=[5,19]
+
+b=95 k=41354
+period=6
+cover=[3,7,13,229]
+
+b=96 k=353081
+period=4
+cover=[13,97,709]
+
+b=97 k=15996
+period=4
+cover=[5,7,941]
+
+b=98 k=10
+period=2
+cover=[3,11]
+
+b=99 k=684
+period=4
+cover=[5,13,29]
+
+b=100 k=2469
+period=3
+cover=[7,13,37]
+
+b=101 k=16
+period=2
+cover=[3,17]
+
+b=102 k=293
+period=3
+cover=[7,19,79]
+
+b=103 k=13794
+period=4
+cover=[5,13,1061]
+
+b=104 k=4
+period=2
+cover=[3,5]
+
+b=105 k=181632
+period=4
+cover=[37,53,149]
+
+b=106 k=495090
+period=4
+cover=[17,107,661]
+
+b=107 k=122
+period=4
+cover=[3,5,229]
+
+b=108 k=26270
+period=6
+cover=[7,13,109,127]
+
+b=109 k=34
+period=2
+cover=[5,11]
+
+b=110 k=38
+period=2
+cover=[3,37]
+
+b=111 k=24340
+period=4
+cover=[7,61,101]
+
+b=112 k=3502
+period=4
+cover=[5,13,113]
+
+b=113 k=94
+period=2
+cover=[3,19]
+
+b=114 k=24
+period=2
+cover=[5,23]
+
+b=115 k=49794
+period=12
+cover=[7,13,17,29,433]
+
+b=116 k=25
+period=2
+cover=[3,13]
+
+b=117 k=2184
+period=4
+cover=[5,37,59]
+
+b=118 k=69
+period=2
+cover=[7,17]
+
+b=119 k=4
+period=2
+cover=[3,5]
+
+b=120 k=374876369
+period=6
+cover=[11,13,1117,14281]
+
+b=121 k=360
+period=3
+cover=[7,19,37]
+
+b=122 k=40
+period=2
+cover=[3,41]
+
+b=123 k=2138
+period=4
+cover=[5,17,31]
+
+b=124 k=173559406
+period=6
+cover=[5,7,2179,5167]
+
+b=125 k=8
+period=2
+cover=[3,7]
+
+b=126 k=766700
+period=6
+cover=[13,19,127,829]
+
+b=127 k=11254645362
+period=24
+cover=[5,13,17,137,1231,5419]
+
+b=128 k=44
+period=2
+cover=[3,43]
+
+b=129 k=14
+period=2
+cover=[5,13]
+
+b=130 k=1021537
+period=6
+cover=[7,31,131,541]
+
+b=131 k=10
+period=2
+cover=[3,11]
+
+b=132 k=13
+period=4
+cover=[5,7,17]
+
+b=133 k=1944
+period=4
+cover=[5,29,67]
+
+b=134 k=4
+period=2
+cover=[3,5]
+
+b=135 k=1112
+period=3
+cover=[7,43,61]
+
+b=136 k=90693
+period=6
+cover=[7,43,61,137]
+
+b=137 k=22
+period=2
+cover=[3,23]
+
+b=138 k=2781
+period=4
+cover=[5,13,139]
+
+b=139 k=6
+period=2
+cover=[5,7]
+
+b=140 k=46
+period=2
+cover=[3,47]
+
+b=141 k=129697332
+period=12
+cover=[13,19,71,1039,4201]
+
+b=142 k=12
+period=2
+cover=[11,13]
+
+b=143 k=7628
+period=4
+cover=[3,5,409]
+
+b=144 k=59
+period=2
+cover=[5,29]
+
+b=145 k=430482
+period=6
+cover=[7,19,73,157]
+
+b=146 k=8
+period=2
+cover=[3,7]
+
+b=147 k=17946
+period=8
+cover=[5,37,97,137]
+
+b=148 k=4471
+period=4
+cover=[5,13,149]
+
+b=149 k=4
+period=2
+cover=[3,5]
+
+b=150 k=49074
+period=6
+cover=[7,31,103,151]
+
+b=151 k=83316
+period=4
+cover=[13,19,877]
+
+b=152 k=16
+period=2
+cover=[3,17]
+
+b=153 k=34
+period=2
+cover=[7,11]
+
+b=154 k=61
+period=2
+cover=[5,31]
+
+b=155 k=14
+period=2
+cover=[3,13]
+
+b=156 k=18406311208
+period=6
+cover=[7,157,3499,24181]
+
+b=157 k=1344
+period=4
+cover=[5,17,79]
+
+b=158 k=52
+period=2
+cover=[3,53]
+
+b=159 k=36
+period=6
+cover=[5,13,37,97]
+
+b=160 k=22
+period=2
+cover=[7,23]
+
+b=161 k=1760
+period=8
+cover=[3,13,17,41]
+
+b=162 k=6193
+period=12
+cover=[5,13,37,61,163]
+
+b=163 k=4192
+period=3
+cover=[7,19,67]
+
+b=164 k=4
+period=2
+cover=[3,5]
+
+b=165 k=2974
+period=3
+cover=[7,13,43]
+
+b=166 k=140947
+period=6
+cover=[7,13,43,167]
+
+b=167 k=8
+period=2
+cover=[3,7]
+
+b=168 k=9244
+period=8
+cover=[5,13,17,73]
+
+b=169 k=16
+period=2
+cover=[5,17]
+
+b=170 k=20
+period=2
+cover=[3,19]
+
+b=171 k=18790
+period=12
+cover=[7,13,37,43,67]
+
+b=172 k=108
+period=3
+cover=[7,13,109]
+
+b=173 k=28
+period=2
+cover=[3,29]
+
+b=174 k=6
+period=2
+cover=[5,7]
+
+b=175 k=606727296
+period=12
+cover=[11,13,37,823,1237]
+
+b=176 k=58
+period=2
+cover=[3,59]
+
+b=177 k=3648
+period=4
+cover=[5,13,89]
+
+b=178 k=1585
+period=3
+cover=[13,19,43]
+
+b=179 k=4
+period=2
+cover=[3,5]
+
+b=180 k=1679679
+period=6
+cover=[7,31,181,1051]
+
+b=181 k=118
+period=2
+cover=[7,13]
+
+b=182 k=23
+period=4
+cover=[3,5,53]
+
+b=183 k=1036
+period=4
+cover=[5,17,23]
+
+b=184 k=36
+period=2
+cover=[5,37]
+
+b=185 k=32
+period=2
+cover=[3,31]
+
+b=186 k=67
+period=2
+cover=[11,17]
+
+b=187 k=798
+period=4
+cover=[5,13,47]
+
+b=188 k=8
+period=2
+cover=[3,7]
+
+b=189 k=56
+period=2
+cover=[5,19]
+
+b=190 k=3146151
+period=4
+cover=[13,191,2777]
+
+b=191 k=302
+period=4
+cover=[3,17,37]
+
+b=192 k=7879
+period=12
+cover=[5,7,13,31,101]
+
+b=193 k=14454
+period=4
+cover=[5,97,149]
+
+b=194 k=4
+period=2
+cover=[3,5]
+
+b=195 k=289401986
+period=30
+cover=[7,11,31,37,41,61,281,1033]
+
+b=196 k=2730222
+period=4
+cover=[41,197,937]
+
+b=197 k=10
+period=2
+cover=[3,11]
+
+b=198 k=4105
+period=6
+cover=[7,13,19,2053]
+
+b=199 k=13224
+period=6
+cover=[5,7,13,433]
+
+b=200 k=47
+period=4
+cover=[3,13,17]
+
+b=201 k=4613782
+period=6
+cover=[7,19,101,2137]
+
+b=202 k=57
+period=2
+cover=[7,29]
+
+b=203 k=16
+period=2
+cover=[3,17]
+
+b=204 k=81
+period=2
+cover=[5,41]
+
+b=205 k=138330
+period=6
+cover=[7,13,103,3217]
+
+b=206 k=22
+period=2
+cover=[3,23]
+
+b=207 k=9426
+period=4
+cover=[5,13,857]
+
+b=208 k=153
+period=2
+cover=[11,19]
+
+b=209 k=4
+period=2
+cover=[3,5]
+
+b=210 k=147840103
+period=12
+cover=[13,73,97,211,607]
+
+b=211 k=20238
+period=3
+cover=[13,31,37]
+
+b=212 k=70
+period=2
+cover=[3,71]
+
+b=213 k=4174
+period=4
+cover=[5,13,107]
+
+b=214 k=171
+period=2
+cover=[5,43]
+
+b=215 k=19924
+period=4
+cover=[3,29,797]
+
+b=216 k=92
+period=2
+cover=[7,31]
+
+b=217 k=1854
+period=4
+cover=[5,17,109]
+
+b=218 k=74
+period=2
+cover=[3,73]
+
+b=219 k=34
+period=2
+cover=[5,11]
+
+b=220 k=103
+period=2
+cover=[13,17]
+
+b=221 k=38
+period=2
+cover=[3,37]
+
+b=222 k=389359
+period=6
+cover=[7,31,43,223]
+
+b=223 k=57814
+period=12
+cover=[5,7,13,31,61]
+
+b=224 k=4
+period=2
+cover=[3,5]
+
+b=225 k=117406
+period=4
+cover=[17,113,1489]
+
+b=226 k=1547460
+period=6
+cover=[7,211,227,241]
+
+b=227 k=20
+period=2
+cover=[3,19]
+
+b=228 k=1146
+period=4
+cover=[5,37,229]
+
+b=229 k=24
+period=2
+cover=[5,23]
+
+b=230 k=8
+period=2
+cover=[3,7]
+
+b=231 k=251748
+period=6
+cover=[13,29,61,67]
+
+b=232 k=447592
+period=4
+cover=[5,233,2153]
+
+b=233 k=14
+period=2
+cover=[3,13]
+
+b=234 k=46
+period=2
+cover=[5,47]
+
+b=235 k=15706
+period=3
+cover=[7,19,139]
+
+b=236 k=80
+period=2
+cover=[3,79]
+
+b=237 k=50
+period=2
+cover=[7,17]
+
+b=238 k=5613633
+period=6
+cover=[13,67,239,283]
+
+b=239 k=4
+period=2
+cover=[3,5]
+
+b=240 k=1722187
+period=12
+cover=[7,13,19,241,397]
+
+b=241 k=636076
+period=4
+cover=[11,113,257]
+
+b=242 k=8
+period=4
+cover=[3,5,13]
+
+b=243 k=40078
+period=6
+cover=[7,13,31,61]
+
+b=244 k=6
+period=2
+cover=[5,7]
+
+b=245 k=40
+period=2
+cover=[3,41]
+
+b=246 k=77
+period=2
+cover=[13,19]
+
+b=247 k=71392
+period=8
+cover=[5,17,31,1009]
+
+b=248 k=82
+period=2
+cover=[3,83]
+
+b=249 k=824
+period=12
+cover=[5,7,13,29,37]
+
+b=250 k=5496397
+period=18
+cover=[7,13,19,37,251,1009]
+
+b=251 k=8
+period=2
+cover=[3,7]
+
+b=252 k=45
+period=2
+cover=[11,23]
+
+b=253 k=25018
+period=4
+cover=[5,37,127]
+
+b=254 k=4
+period=2
+cover=[3,5]
+
+b=255 k=110094
+period=12
+cover=[7,19,41,61,97]
+
+b=256 k=1221
+period=3
+cover=[7,13,241]
+
+b=257 k=44
+period=2
+cover=[3,43]
+
+b=258 k=36
+period=2
+cover=[7,37]
+
+b=259 k=144
+period=2
+cover=[5,13]
+
+b=260 k=28
+period=2
+cover=[3,29]
+
+b=261 k=8837652
+period=6
+cover=[7,79,131,859]
+
+b=262 k=110724
+period=12
+cover=[5,7,13,103,263]
+
+b=263 k=10
+period=2
+cover=[3,11]
+
+b=264 k=54
+period=2
+cover=[5,53]
+
+b=265 k=246
+period=2
+cover=[7,19]
+
+b=266 k=88
+period=2
+cover=[3,89]
+
+b=267 k=1343016
+period=12
+cover=[5,13,37,67,163]
+
+b=268 k=8338
+period=4
+cover=[5,13,269]
+
+b=269 k=4
+period=2
+cover=[3,5]
+
+b=270 k=62060
+period=6
+cover=[7,37,151,271]
+
+b=271 k=168541962
+period=10
+cover=[11,17,31,41,61,251]
+
+b=272 k=8
+period=2
+cover=[3,7]
+
+b=273 k=3974
+period=4
+cover=[5,29,137]
+
+b=274 k=21
+period=2
+cover=[5,11]
+
+b=275 k=22
+period=2
+cover=[3,23]
+
+b=276 k=622697
+period=6
+cover=[7,13,277,1549]
+
+b=277 k=19578
+period=3
+cover=[7,19,193]
+
+b=278 k=8
+period=4
+cover=[3,5,13]
+
+b=279 k=6
+period=2
+cover=[5,7]
+
+b=280 k=82035074042274
+period=12
+cover=[13,281,26227,78121,78401]
+
+b=281 k=46
+period=2
+cover=[3,47]
+
+b=282 k=10807
+period=3
+cover=[7,13,877]
+
+b=283 k=106714
+period=6
+cover=[7,13,71,367]
+
+b=284 k=4
+period=2
+cover=[3,5]
+
+b=285 k=12
+period=2
+cover=[11,13]
+
+b=286 k=370
+period=2
+cover=[7,41]
+
+b=287 k=7142
+period=8
+cover=[3,5,17,457]
+
+b=288 k=2704
+period=4
+cover=[5,17,53]
+
+b=289 k=204
+period=2
+cover=[5,29]
+
+b=290 k=98
+period=2
+cover=[3,97]
+
+b=291 k=33232
+period=3
+cover=[7,61,199]
+
+b=292 k=40393
+period=12
+cover=[5,7,13,19,79]
+
+b=293 k=8
+period=2
+cover=[3,7]
+
+b=294 k=119
+period=2
+cover=[5,59]
+
+b=295 k=394902
+period=4
+cover=[37,53,821]
+
+b=296 k=10
+period=2
+cover=[3,11]
+
+b=297 k=133654
+period=12
+cover=[5,7,13,19,149]
+
+b=298 k=183
+period=2
+cover=[13,23]
+
+b=299 k=4
+period=2
+cover=[3,5]
+
+b=300 k=85
+period=2
+cover=[7,43]
+
+b=301 k=1061982
+period=4
+cover=[89,151,509]
+
+b=302 k=16
+period=4
+cover=[3,5,17]
+
+b=303 k=174742
+period=4
+cover=[5,19,9181]
+
+b=304 k=121
+period=2
+cover=[5,61]
+
+b=305 k=16
+period=2
+cover=[3,17]
+
+b=306 k=431937
+period=6
+cover=[7,37,199,2539]
+
+b=307 k=34
+period=2
+cover=[7,11]
+
+b=308 k=104
+period=2
+cover=[3,103]
+
+b=309 k=94
+period=2
+cover=[5,31]
+
+b=310 k=268392
+period=12
+cover=[7,13,17,37,311]
+
+b=311 k=142
+period=2
+cover=[3,13]
+
+b=312 k=890797
+period=12
+cover=[5,7,19,277,313]
+
+b=313 k=111312
+period=4
+cover=[5,101,157]
+
+b=314 k=4
+period=2
+cover=[3,5]
+
+b=315 k=1642
+period=3
+cover=[13,19,31]
+
+b=316 k=287520
+period=6
+cover=[13,19,31,317]
+
+b=317 k=52
+period=2
+cover=[3,53]
+
+b=318 k=144
+period=2
+cover=[11,29]
+
+b=319 k=684
+period=4
+cover=[5,17,73]
+
+b=320 k=106
+period=2
+cover=[3,107]
+
+b=321 k=22
+period=2
+cover=[7,23]
+
+b=322 k=18
+period=2
+cover=[17,19]
+
+b=323 k=2284
+period=12
+cover=[3,5,13,37,457]
+
+b=324 k=14
+period=2
+cover=[5,13]
+
+b=325 k=82786558
+period=24
+cover=[7,17,41,163,307,1597]
+
+b=326 k=110
+period=2
+cover=[3,109]
+
+b=327 k=1844
+period=12
+cover=[13,37,41,97,379]
+
+b=328 k=48
+period=2
+cover=[7,47]
+
+b=329 k=4
+period=2
+cover=[3,5]
+
+b=330 k=16636723
+period=4
+cover=[13,331,8377]
+
+b=331 k=280458
+period=12
+cover=[7,13,19,29,83]
+
+b=332 k=38
+period=2
+cover=[3,37]
+
+b=333 k=6514
+period=4
+cover=[5,13,167]
+
+b=334 k=66
+period=2
+cover=[5,67]
+
+b=335 k=8
+period=2
+cover=[3,7]
+
+b=336 k=92000
+period=4
+cover=[17,29,337]
+
+b=337 k=534
+period=4
+cover=[5,13,41]
+
+b=338 k=112
+period=2
+cover=[3,113]
+
+b=339 k=16
+period=2
+cover=[5,17]
+
+b=340 k=309
+period=2
+cover=[11,31]
+
+b=341 k=20
+period=2
+cover=[3,19]
+
+b=342 k=552
+period=4
+cover=[5,7,149]
+
+b=343 k=1936
+period=4
+cover=[5,13,43]
+
+b=344 k=4
+period=2
+cover=[3,5]
+
+b=345 k=356851424
+period=12
+cover=[7,13,61,173,17053]
+
+b=346 k=22248598
+period=4
+cover=[13,347,9209]
+
+b=347 k=28
+period=2
+cover=[3,29]
+
+b=348 k=26523
+period=4
+cover=[5,53,349]
+
+b=349 k=6
+period=2
+cover=[5,7]
+
+b=350 k=14
+period=2
+cover=[3,13]
+
+b=351 k=115752
+period=4
+cover=[11,229,269]
+
+b=352 k=7990
+period=3
+cover=[7,61,97]
+
+b=353 k=16
+period=4
+cover=[3,5,17]
+
+b=354 k=141
+period=2
+cover=[5,71]
+
+b=355 k=23586
+period=6
+cover=[7,13,89,103]
+
+b=356 k=8
+period=2
+cover=[3,7]
+
+b=357 k=456628
+period=4
+cover=[5,179,2549]
+
+b=358 k=27478218
+period=4
+cover=[5,359,25633]
+
+b=359 k=4
+period=2
+cover=[3,5]
+
+b=360 k=628
+period=6
+cover=[7,13,19,37]
+
+b=361 k=1671172
+period=12
+cover=[7,13,17,181,4297]
+
+b=362 k=10
+period=2
+cover=[3,11]
+
+b=363 k=64
+period=2
+cover=[7,13]
+
+b=364 k=291
+period=2
+cover=[5,73]
+
+b=365 k=304
+period=2
+cover=[3,61]
+
+b=366 k=79231
+period=3
+cover=[7,31,619]
+
+b=367 k=3462
+period=6
+cover=[7,13,619,3463]
+
+b=368 k=40
+period=2
+cover=[3,41]
+
+b=369 k=36
+period=2
+cover=[5,37]
+
+b=370 k=160
+period=2
+cover=[7,53]
+
+b=371 k=32
+period=2
+cover=[3,31]
+
+b=372 k=9699
+period=4
+cover=[5,13,373]
+
+b=373 k=120
+period=2
+cover=[11,17]
+
+b=374 k=4
+period=2
+cover=[3,5]
+
+b=375 k=7509988
+period=6
+cover=[7,47,139,1009]
+
+b=376 k=610
+period=2
+cover=[13,29]
+
+b=377 k=8
+period=2
+cover=[3,7]
+
+b=378 k=6444
+period=4
+cover=[5,17,379]
+
+b=379 k=246
+period=2
+cover=[5,19]
+
+b=380 k=128
+period=2
+cover=[3,127]
+
+b=381 k=18526
+period=6
+cover=[7,13,43,191]
+
+b=382 k=11491
+period=4
+cover=[5,13,383]
+
+b=383 k=1022
+period=8
+cover=[3,5,17,41]
+
+b=384 k=6
+period=2
+cover=[5,7]
+
+b=385 k=3301264
+period=4
+cover=[13,193,5701]
+
+b=386 k=85
+period=2
+cover=[3,43]
+
+b=387 k=1798
+period=12
+cover=[5,7,13,17,19]
+
+b=388 k=90249
+period=12
+cover=[5,7,13,19,389]
+
+b=389 k=4
+period=2
+cover=[3,5]
+
+b=390 k=137
+period=2
+cover=[17,23]
+
+b=391 k=206662
+period=6
+cover=[7,19,1399,2689]
+
+b=392 k=130
+period=2
+cover=[3,131]
+
+b=393 k=58608
+period=3
+cover=[13,43,277]
+
+b=394 k=159
+period=2
+cover=[5,79]
+
+b=395 k=10
+period=2
+cover=[3,11]
+
+b=396 k=5253
+period=3
+cover=[7,37,607]
+
+b=397 k=10546
+period=6
+cover=[7,31,37,199]
+
+b=398 k=8
+period=2
+cover=[3,7]
+
+b=399 k=2525403854
+period=24
+cover=[5,13,17,37,1153,12277]
+
+b=400 k=12492354
+period=6
+cover=[13,127,401,421]
+
+b=401 k=68
+period=2
+cover=[3,67]
+
+b=402 k=92
+period=2
+cover=[13,31]
+
+b=403 k=11412
+period=4
+cover=[5,101,109]
+
+b=404 k=4
+period=2
+cover=[3,5]
+
+b=405 k=146
+period=2
+cover=[7,29]
+
+b=406 k=186
+period=2
+cover=[11,37]
+
+b=407 k=16
+period=2
+cover=[3,17]
+
+b=408 k=5318
+period=4
+cover=[13,197,409]
+
+b=409 k=124
+period=2
+cover=[5,41]
+
+b=410 k=136
+period=2
+cover=[3,137]
+
+b=411 k=46246
+period=4
+cover=[13,89,103]
+
+b=412 k=132
+period=4
+cover=[5,7,17]
+
+b=413 k=22
+period=2
+cover=[3,23]
+
+b=414 k=84
+period=2
+cover=[5,83]
+
+b=415 k=3088787196
+period=12
+cover=[7,13,37,661,86113]
+
+b=416 k=140
+period=2
+cover=[3,139]
+
+b=417 k=56
+period=2
+cover=[11,19]
+
+b=418 k=8398
+period=12
+cover=[5,7,29,37,79]
+
+b=419 k=4
+period=2
+cover=[3,5]
+
+b=420 k=2288555
+period=6
+cover=[13,151,421,1171]
+
+b=421 k=53806
+period=4
+cover=[13,17,211]
+
+b=422 k=46
+period=2
+cover=[3,47]
+
+b=423 k=9698
+period=4
+cover=[5,29,53]
+
+b=424 k=16
+period=2
+cover=[5,17]
+
+b=425 k=70
+period=2
+cover=[3,71]
+
+b=426 k=62
+period=2
+cover=[7,61]
+
+b=427 k=5852794
+period=4
+cover=[5,107,18233]
+
+b=428 k=10
+period=2
+cover=[3,11]
+
+b=429 k=44
+period=2
+cover=[5,43]
+
+b=430 k=22413
+period=6
+cover=[7,19,379,431]
+
+b=431 k=20138
+period=6
+cover=[3,7,67,379]
+
+b=432 k=46765
+period=6
+cover=[7,13,67,433]
+
+b=433 k=342
+period=2
+cover=[7,31]
+
+b=434 k=4
+period=2
+cover=[3,5]
+
+b=435 k=3699251266
+period=24
+cover=[13,73,97,109,193,617]
+
+b=436 k=208
+period=2
+cover=[19,23]
+
+b=437 k=8
+period=4
+cover=[3,5,13]
+
+b=438 k=2633
+period=4
+cover=[5,37,439]
+
+b=439 k=34
+period=2
+cover=[5,11]
+
+b=440 k=8
+period=2
+cover=[3,7]
+
+b=441 k=118
+period=2
+cover=[13,17]
+
+b=442 k=36768
+period=4
+cover=[5,41,443]
+
+b=443 k=184
+period=2
+cover=[3,37]
+
+b=444 k=179
+period=2
+cover=[5,89]
+
+b=445 k=14986
+period=3
+cover=[7,13,727]
+
+b=446 k=148
+period=2
+cover=[3,149]
+
+b=447 k=204
+period=4
+cover=[5,7,29]
+
+b=448 k=139191
+period=4
+cover=[5,137,449]
+
+b=449 k=4
+period=2
+cover=[3,5]
+
+b=450 k=122
+period=2
+cover=[11,41]
+
+b=451 k=97068
+period=6
+cover=[7,13,79,113]
+
+b=452 k=152
+period=2
+cover=[3,151]
+
+b=453 k=4863476
+period=4
+cover=[5,227,20521]
+
+b=454 k=6
+period=2
+cover=[5,7]
+
+b=455 k=20
+period=2
+cover=[3,19]
+
+b=456 k=14836963
+period=4
+cover=[269,457,773]
+
+b=457 k=84958
+period=8
+cover=[5,17,89,229]
+
+b=458 k=16
+period=2
+cover=[3,17]
+
+b=459 k=24
+period=2
+cover=[5,23]
+
+b=460 k=37803
+period=4
+cover=[13,41,461]
+
+b=461 k=8
+period=2
+cover=[3,7]
+
+b=462 k=6880642
+period=12
+cover=[5,13,73,373,463]
+
+b=463 k=1188
+period=4
+cover=[5,13,29]
+
+b=464 k=4
+period=2
+cover=[3,5]
+
+b=465 k=78056
+period=6
+cover=[7,13,233,337]
+
+b=466 k=6492
+period=3
+cover=[7,43,241]
+
+b=467 k=8
+period=12
+cover=[3,5,7,19,37]
+
+b=468 k=202
+period=2
+cover=[7,67]
+
+b=469 k=46
+period=2
+cover=[5,47]
+
+b=470 k=158
+period=2
+cover=[3,157]
+
+b=471 k=4562
+period=6
+cover=[7,13,31,37]
+
+b=472 k=87
+period=2
+cover=[11,43]
+
+b=473 k=8
+period=4
+cover=[3,5,13]
+
+b=474 k=39
+period=2
+cover=[5,19]
+
+b=475 k=288
+period=2
+cover=[7,17]
+
+b=476 k=52
+period=2
+cover=[3,53]
+
+b=477 k=78152
+period=4
+cover=[5,61,239]
+
+b=478 k=523069
+period=8
+cover=[5,17,41,479]
+
+b=479 k=4
+period=2
+cover=[3,5]
+
+b=480 k=38
+period=2
+cover=[13,37]
+
+b=481 k=11680548
+period=6
+cover=[7,109,241,709]
+
+b=482 k=8
+period=2
+cover=[3,7]
+
+b=483 k=32
+period=4
+cover=[5,11,41]
+
+b=484 k=96
+period=2
+cover=[5,97]
+
+b=485 k=3344
+period=6
+cover=[3,7,13,223]
+
+b=486 k=301941
+period=6
+cover=[7,19,223,487]
+
+b=487 k=6772
+period=12
+cover=[7,13,19,37,61]
+
+b=488 k=164
+period=2
+cover=[3,163]
+
+b=489 k=6
+period=2
+cover=[5,7]
+
+b=490 k=15123
+period=3
+cover=[13,31,199]
+
+b=491 k=40
+period=2
+cover=[3,41]
+
+b=492 k=86
+period=2
+cover=[17,29]
+
+b=493 k=324
+period=2
+cover=[13,19]
+
+b=494 k=4
+period=2
+cover=[3,5]
+
+b=495 k=692446
+period=8
+cover=[17,31,41,101]
+
+b=496 k=141
+period=2
+cover=[7,71]
+
+b=497 k=16
+period=4
+cover=[3,5,17]
+
+b=498 k=7983
+period=4
+cover=[5,257,499]
+
+b=499 k=2124
+period=4
+cover=[5,13,61]
+
+b=500 k=166
+period=2
+cover=[3,167]
+
+b=501 k=278
+period=3
+cover=[7,19,31]
+
+b=502 k=8832
+period=12
+cover=[5,7,13,61,73]
+
+b=503 k=8
+period=2
+cover=[3,7]
+
+b=504 k=201
+period=2
+cover=[5,101]
+
+b=505 k=208
+period=2
+cover=[11,23]
+
+b=506 k=25
+period=2
+cover=[3,13]
+
+b=507 k=1142
+period=4
+cover=[5,97,127]
+
+b=508 k=601128
+period=12
+cover=[5,7,37,73,509]
+
+b=509 k=4
+period=2
+cover=[3,5]
+
+b=510 k=218
+period=2
+cover=[7,73]
+
+b=511 k=3876595974396
+period=20
+cover=[11,31,61,71,101,137,601,953]
+
+b=512 k=18
+period=4
+cover=[5,13,19]
+
+b=513 k=45828
+period=3
+cover=[7,139,271]
+
+b=514 k=411
+period=2
+cover=[5,103]
+
+b=515 k=44
+period=2
+cover=[3,43]
+
+b=516 k=142
+period=2
+cover=[11,47]
+
+b=517 k=36
+period=2
+cover=[7,37]
+
+b=518 k=172
+period=2
+cover=[3,173]
+
+b=519 k=14
+period=2
+cover=[5,13]
+
+b=520 k=1006
+period=3
+cover=[7,19,97]
+
+b=521 k=28
+period=2
+cover=[3,29]
+
+b=522 k=32644
+period=12
+cover=[5,7,13,31,43]
+
+b=523 k=10872
+period=6
+cover=[7,13,43,131]
+
+b=524 k=4
+period=2
+cover=[3,5]
+
+b=525 k=8639814
+period=4
+cover=[13,263,10601]
+
+b=526 k=373
+period=2
+cover=[17,31]
+
+b=527 k=10
+period=2
+cover=[3,11]
+
+b=528 k=116
+period=4
+cover=[5,13,23]
+
+b=529 k=972
+period=3
+cover=[7,13,79]
+
+b=530 k=58
+period=2
+cover=[3,59]
+
+b=531 k=20
+period=2
+cover=[7,19]
+
+b=532 k=40
+period=2
+cover=[13,41]
+
+b=533 k=88
+period=2
+cover=[3,89]
+
+b=534 k=106
+period=2
+cover=[5,107]
+
+b=535 k=4653216
+period=6
+cover=[7,61,67,40813]
+
+b=536 k=178
+period=2
+cover=[3,179]
+
+b=537 k=176734
+period=12
+cover=[5,7,13,109,269]
+
+b=538 k=27
+period=4
+cover=[5,7,73]
+
+b=539 k=4
+period=2
+cover=[3,5]
+
+b=540 k=1091739
+period=4
+cover=[17,541,1009]
+
+b=541 k=15253776
+period=4
+cover=[13,271,11257]
+
+b=542 k=32
+period=4
+cover=[3,5,41]
+
+b=543 k=6478
+period=6
+cover=[7,13,17,19]
+
+b=544 k=64
+period=6
+cover=[5,7,19,37]
+
+b=545 k=8
+period=2
+cover=[3,7]
+
+b=546 k=45119296
+period=8
+cover=[17,89,241,547]
+
+b=547 k=1658658
+period=8
+cover=[5,41,113,137]
+
+b=548 k=16
+period=4
+cover=[3,5,17]
+
+b=549 k=34
+period=2
+cover=[5,11]
+
+b=550 k=115
+period=2
+cover=[19,29]
+
+b=551 k=22
+period=2
+cover=[3,23]
+
+b=552 k=78
+period=2
+cover=[7,79]
+
+b=553 k=1938
+period=4
+cover=[5,53,277]
+
+b=554 k=4
+period=2
+cover=[3,5]
+
+b=555 k=32388
+period=4
+cover=[139,233,661]
+
+b=556 k=3353698
+period=6
+cover=[7,13,557,3391]
+
+b=557 k=16
+period=4
+cover=[3,5,17]
+
+b=558 k=259
+period=2
+cover=[13,43]
+
+b=559 k=6
+period=2
+cover=[5,7]
+
+b=560 k=10
+period=2
+cover=[3,11]
+
+b=561 k=6290186
+period=4
+cover=[37,281,4253]
+
+b=562 k=12
+period=3
+cover=[7,13,19]
+
+b=563 k=12
+period=12
+cover=[5,7,13,19,29]
+
+b=564 k=114
+period=2
+cover=[5,113]
+
+b=565 k=8472
+period=12
+cover=[7,13,37,67,229]
+
+b=566 k=8
+period=2
+cover=[3,7]
+
+b=567 k=924
+period=4
+cover=[5,13,71]
+
+b=568 k=23328
+period=4
+cover=[5,29,569]
+
+b=569 k=4
+period=2
+cover=[3,5]
+
+b=570 k=2972056
+period=12
+cover=[7,13,61,271,571]
+
+b=571 k=12
+period=2
+cover=[11,13]
+
+b=572 k=190
+period=2
+cover=[3,191]
+
+b=573 k=204
+period=2
+cover=[7,41]
+
+b=574 k=24
+period=2
+cover=[5,23]
+
+b=575 k=136582
+period=3
+cover=[13,73,349]
+
+b=576 k=30651
+period=6
+cover=[7,13,73,79]
+
+b=577 k=664
+period=4
+cover=[5,13,17]
+
+b=578 k=68
+period=12
+cover=[3,5,7,19,37]
+
+b=579 k=86
+period=2
+cover=[5,29]
+
+b=580 k=414
+period=2
+cover=[7,83]
+
+b=581 k=98
+period=2
+cover=[3,97]
+
+b=582 k=54
+period=2
+cover=[11,53]
+
+b=583 k=2994
+period=4
+cover=[5,41,73]
+
+b=584 k=4
+period=2
+cover=[3,5]
+
+b=585 k=13929512
+period=4
+cover=[137,293,1249]
+
+b=586 k=21262902
+period=8
+cover=[17,37,89,587]
+
+b=587 k=8
+period=2
+cover=[3,7]
+
+b=588 k=94
+period=2
+cover=[19,31]
+
+b=589 k=414
+period=2
+cover=[5,59]
+
+b=590 k=196
+period=2
+cover=[3,197]
+
+b=591 k=16242
+period=6
+cover=[7,37,109,181]
+
+b=592 k=23721
+period=4
+cover=[5,29,593]
+
+b=593 k=10
+period=2
+cover=[3,11]
+
+b=594 k=6
+period=2
+cover=[5,7]
+
+b=595 k=301128
+period=6
+cover=[13,31,43,149]
+
+b=596 k=200
+period=2
+cover=[3,199]
+
+b=597 k=12
+period=4
+cover=[5,13,29]
+
+b=598 k=18568
+period=4
+cover=[5,37,599]
+
+b=599 k=4
+period=2
+cover=[3,5]
+
+b=600 k=1906972
+period=12
+cover=[7,13,19,37,601]
+
+b=601 k=216
+period=2
+cover=[7,43]
+
+b=602 k=68
+period=2
+cover=[3,67]
+
+b=603 k=1964
+period=4
+cover=[5,13,151]
+
+b=604 k=21
+period=2
+cover=[5,11]
+
+b=605 k=100
+period=2
+cover=[3,101]
+
+b=606 k=50380
+period=4
+cover=[13,41,607]
+
+b=607 k=420034
+period=4
+cover=[5,19,7369]
+
+b=608 k=8
+period=2
+cover=[3,7]
+
+b=609 k=184
+period=2
+cover=[5,61]
+
+b=610 k=142
+period=2
+cover=[13,47]
+
+b=611 k=16
+period=2
+cover=[3,17]
+
+b=612 k=162446
+period=4
+cover=[5,173,613]
+
+b=613 k=1536
+period=4
+cover=[5,53,307]
+
+b=614 k=4
+period=2
+cover=[3,5]
+
+b=615 k=34
+period=2
+cover=[7,11]
+
+b=616 k=53061
+period=4
+cover=[13,17,617]
+
+b=617 k=514
+period=2
+cover=[3,103]
+
+b=618 k=3995
+period=3
+cover=[7,37,211]
+
+b=619 k=94
+period=2
+cover=[5,31]
+
+b=620 k=22
+period=2
+cover=[3,23]
+
+b=621 k=19592
+period=4
+cover=[29,61,311]
+
+b=622 k=90
+period=2
+cover=[7,89]
+
+b=623 k=14
+period=2
+cover=[3,13]
+
+b=624 k=712899
+period=4
+cover=[5,41,9497]
+
+b=625 k=17428
+period=3
+cover=[7,31,601]
+
+b=626 k=10
+period=2
+cover=[3,11]
+
+b=627 k=12354
+period=3
+cover=[7,13,4327]
+
+b=628 k=1072
+period=2
+cover=[17,37]
+
+b=629 k=4
+period=2
+cover=[3,5]
+
+b=630 k=24015859
+period=4
+cover=[73,631,5437]
+
+b=631 k=8243256
+period=6
+cover=[79,307,331,433]
+
+b=632 k=8
+period=4
+cover=[3,5,13]
+
+b=633 k=6022
+period=4
+cover=[5,17,317]
+
+b=634 k=126
+period=2
+cover=[5,127]
+
+b=635 k=52
+period=2
+cover=[3,53]
+
+b=636 k=27
+period=2
+cover=[7,13]
+
+b=637 k=144
+period=2
+cover=[11,29]
+
+b=638 k=70
+period=2
+cover=[3,71]
+
+b=639 k=1664
+period=6
+cover=[5,7,19,37]
+
+b=640 k=11925
+period=6
+cover=[7,13,37,67]
+
+b=641 k=106
+period=2
+cover=[3,107]
+
+b=642 k=10932
+period=4
+cover=[13,17,643]
+
+b=643 k=22
+period=2
+cover=[7,23]
+
+b=644 k=4
+period=2
+cover=[3,5]
+
+b=645 k=18
+period=2
+cover=[17,19]
+
+b=646 k=52701
+period=3
+cover=[7,13,1531]
+
+b=647 k=124
+period=4
+cover=[3,5,41]
+
+b=648 k=296
+period=2
+cover=[11,59]
+
+b=649 k=144
+period=2
+cover=[5,13]
+
+b=650 k=8
+period=2
+cover=[3,7]
+
+b=651 k=4541342
+period=4
+cover=[163,313,677]
+
+b=652 k=2491849
+period=12
+cover=[5,13,37,43,653]
+
+b=653 k=110
+period=2
+cover=[3,109]
+
+b=654 k=261
+period=2
+cover=[5,131]
+
+b=655 k=6930
+period=4
+cover=[13,29,41]
+
+b=656 k=145
+period=2
+cover=[3,73]
+
+b=657 k=48
+period=2
+cover=[7,47]
+
+b=658 k=20428
+period=4
+cover=[5,13,659]
+
+b=659 k=4
+period=2
+cover=[3,5]
+
+b=660 k=74031
+period=4
+cover=[37,193,661]
+
+b=661 k=1185028551412
+period=72
+cover=[7,13,17,19,37,73,331,5897]
+
+b=662 k=14
+period=2
+cover=[3,13]
+
+b=663 k=10042
+period=4
+cover=[5,83,113]
+
+b=664 k=6
+period=2
+cover=[5,7]
+
+b=665 k=38
+period=2
+cover=[3,37]
+
+b=666 k=231
+period=2
+cover=[23,29]
+
+b=667 k=26218
+period=4
+cover=[5,17,167]
+
+b=668 k=8
+period=4
+cover=[3,5,13]
+
+b=669 k=66
+period=2
+cover=[5,67]
+
+b=670 k=243
+period=2
+cover=[11,61]
+
+b=671 k=8
+period=2
+cover=[3,7]
+
+b=672 k=3366
+period=4
+cover=[5,37,673]
+
+b=673 k=687142
+period=12
+cover=[5,13,19,97,337]
+
+b=674 k=4
+period=2
+cover=[3,5]
+
+b=675 k=293812
+period=6
+cover=[7,13,103,181]
+
+b=676 k=825
+period=3
+cover=[7,19,37]
+
+b=677 k=112
+period=2
+cover=[3,113]
+
+b=678 k=195
+period=2
+cover=[7,97]
+
+b=679 k=16
+period=2
+cover=[5,17]
+
+b=680 k=226
+period=2
+cover=[3,227]
+
+b=681 k=32
+period=2
+cover=[11,31]
+
+b=682 k=6831
+period=4
+cover=[5,61,683]
+
+b=683 k=20
+period=2
+cover=[3,19]
+
+b=684 k=86
+period=4
+cover=[5,17,29]
+
+b=685 k=637524
+period=6
+cover=[7,13,61,7681]
+
+b=686 k=230
+period=2
+cover=[3,229]
+
+b=687 k=7956
+period=4
+cover=[5,43,109]
+
+b=688 k=105
+period=2
+cover=[13,53]
+
+b=689 k=4
+period=2
+cover=[3,5]
+
+b=690 k=395800653
+period=6
+cover=[7,199,691,2389]
+
+b=691 k=9449088
+period=12
+cover=[7,13,19,173,193]
+
+b=692 k=8
+period=2
+cover=[3,7]
+
+b=693 k=6592
+period=4
+cover=[5,17,347]
+
+b=694 k=1111
+period=2
+cover=[5,139]
+
+b=695 k=28
+period=2
+cover=[3,29]
+
+b=696 k=288
+period=2
+cover=[17,41]
+
+b=697 k=14308
+period=4
+cover=[5,13,349]
+
+b=698 k=232
+period=2
+cover=[3,233]
+
+b=699 k=6
+period=2
+cover=[5,7]
+
+b=700 k=36945505
+period=12
+cover=[13,61,67,109,701]
+
+b=701 k=92
+period=2
+cover=[3,13]
+
+b=702 k=75
+period=2
+cover=[19,37]
+
+b=703 k=538
+period=4
+cover=[5,11,73]
+
+b=704 k=4
+period=2
+cover=[3,5]
+
+b=705 k=10159692
+period=12
+cover=[7,13,181,229,353]
+
+b=706 k=405
+period=2
+cover=[7,101]
+
+b=707 k=58
+period=2
+cover=[3,59]
+
+b=708 k=28361
+period=4
+cover=[5,29,709]
+
+b=709 k=214
+period=2
+cover=[5,71]
+
+b=710 k=80
+period=2
+cover=[3,79]
+
+b=711 k=49572
+period=12
+cover=[7,19,37,61,89]
+
+b=712 k=528
+period=2
+cover=[23,31]
+
+b=713 k=8
+period=2
+cover=[3,7]
+
+b=714 k=12
+period=2
+cover=[11,13]
+
+b=715 k=21508102
+period=6
+cover=[19,97,179,277]
+
+b=716 k=238
+period=2
+cover=[3,239]
+
+b=717 k=179678
+period=12
+cover=[5,7,13,101,109,509]
+
+b=718 k=243
+period=3
+cover=[7,31,61]
+
+b=719 k=4
+period=2
+cover=[3,5]
+
+b=720 k=104
+period=2
+cover=[7,103]
+
+b=721 k=3446428
+period=4
+cover=[19,61,4261]
+
+b=722 k=8
+period=12
+cover=[3,5,13,73,109]
+
+b=723 k=2354
+period=4
+cover=[5,13,181]
+
+b=724 k=204
+period=2
+cover=[5,29]
+
+b=725 k=10
+period=2
+cover=[3,11]
+
+b=726 k=10923176
+period=12
+cover=[7,13,37,601,727]
+
+b=727 k=64
+period=2
+cover=[7,13]
+
+b=728 k=953974
+period=4
+cover=[3,5,105997]
+
+b=729 k=74
+period=2
+cover=[5,73]
+
+b=730 k=171
+period=2
+cover=[17,43]
+
+b=731 k=62
+period=2
+cover=[3,61]
+
+b=732 k=81364
+period=12
+cover=[5,7,13,37,733]
+
+b=733 k=14314
+period=4
+cover=[5,13,367]
+
+b=734 k=4
+period=2
+cover=[3,5]
+
+b=735 k=174778
+period=4
+cover=[17,23,15889]
+
+b=736 k=133
+period=2
+cover=[11,67]
+
+b=737 k=40
+period=2
+cover=[3,41]
+
+b=738 k=12767
+period=6
+cover=[7,13,31,73]
+
+b=739 k=36
+period=2
+cover=[5,37]
+
+b=740 k=14
+period=2
+cover=[3,13]
+
+b=741 k=160
+period=2
+cover=[7,53]
+
+b=742 k=30462
+period=4
+cover=[5,29,743]
+
+b=743 k=32
+period=2
+cover=[3,31]
+
+b=744 k=299
+period=2
+cover=[5,149]
+
+b=745 k=334816
+period=6
+cover=[7,13,61,3037]
+
+b=746 k=82
+period=2
+cover=[3,83]
+
+b=747 k=32
+period=4
+cover=[5,11,41]
+
+b=748 k=106
+period=2
+cover=[7,107]
+
+b=749 k=4
+period=2
+cover=[3,5]
+
+b=750 k=210779
+period=3
+cover=[13,37,1171]
+
+b=751 k=41032
+period=6
+cover=[7,13,37,47]
+
+b=752 k=16
+period=4
+cover=[3,5,17]
+
+b=753 k=144
+period=2
+cover=[13,29]
+
+b=754 k=301
+period=2
+cover=[5,151]
+
+b=755 k=8
+period=2
+cover=[3,7]
+
+b=756 k=67836285
+period=4
+cover=[521,757,1097]
+
+b=757 k=47376
+period=4
+cover=[5,73,379]
+
+b=758 k=10
+period=2
+cover=[3,11]
+
+b=759 k=56
+period=2
+cover=[5,19]
+
+b=760 k=113906481
+period=6
+cover=[7,397,761,1453]
+
+b=761 k=128
+period=2
+cover=[3,127]
+
+b=762 k=246
+period=4
+cover=[5,7,13]
+
+b=763 k=151462
+period=8
+cover=[5,17,191,193]
+
+b=764 k=4
+period=2
+cover=[3,5]
+
+b=765 k=2699768
+period=4
+cover=[53,383,5521]
+
+b=766 k=235
+period=2
+cover=[13,59]
+
+b=767 k=80
+period=6
+cover=[3,7,43,79]
+
+b=768 k=55367
+period=6
+cover=[7,19,103,769]
+
+b=769 k=6
+period=2
+cover=[5,7]
+
+b=770 k=256
+period=2
+cover=[3,257]
+
+b=771 k=264218
+period=4
+cover=[29,37,193]
+
+b=772 k=23191
+period=4
+cover=[5,13,773]
+
+b=773 k=44
+period=2
+cover=[3,43]
+
+b=774 k=61
+period=2
+cover=[5,31]
+
+b=775 k=862620
+period=4
+cover=[13,97,1777]
+
+b=776 k=8
+period=2
+cover=[3,7]
+
+b=777 k=24088826
+period=4
+cover=[5,389,60373]
+
+b=778 k=208
+period=4
+cover=[5,17,19]
+
+b=779 k=4
+period=2
+cover=[3,5]
+
+b=780 k=243
+period=6
+cover=[7,11,31,61]
+
+b=781 k=528
+period=2
+cover=[17,23]
+
+b=782 k=28
+period=2
+cover=[3,29]
+
+b=783 k=36
+period=4
+cover=[5,7,37]
+
+b=784 k=156
+period=2
+cover=[5,157]
+
+b=785 k=130
+period=2
+cover=[3,131]
+
+b=786 k=210082
+period=3
+cover=[7,19,4651]
+
+b=787 k=7684
+period=12
+cover=[5,7,13,19,197]
+
+b=788 k=40
+period=4
+cover=[3,13,41]
+
+b=789 k=236
+period=2
+cover=[5,79]
+
+b=790 k=225
+period=2
+cover=[7,113]
+
+b=791 k=10
+period=2
+cover=[3,11]
+
+b=792 k=365
+period=2
+cover=[13,61]
+
+b=793 k=4492848
+period=8
+cover=[5,41,73,397]
+
+b=794 k=4
+period=2
+cover=[3,5]
+
+b=795 k=6566
+period=4
+cover=[17,29,199]
+
+b=796 k=137085595
+period=12
+cover=[7,13,109,797,1693]
+
+b=797 k=8
+period=2
+cover=[3,7]
+
+b=798 k=187
+period=4
+cover=[5,13,47]
+
+b=799 k=1864613598304
+period=8
+cover=[5,617,3593,319201]
+
+b=800 k=88
+period=2
+cover=[3,89]
+
+b=801 k=45030296
+period=6
+cover=[7,31,401,2953]
+
+b=802 k=129
+period=3
+cover=[7,13,337]
+
+b=803 k=16
+period=4
+cover=[3,5,17]
+
+b=804 k=6
+period=2
+cover=[5,7]
+
+b=805 k=714
+period=2
+cover=[13,31]
+
+b=806 k=268
+period=2
+cover=[3,269]
+
+b=807 k=53428
+period=4
+cover=[5,101,521]
+
+b=808 k=24271
+period=4
+cover=[5,37,809]
+
+b=809 k=4
+period=2
+cover=[3,5]
+
+b=810 k=30008
+period=6
+cover=[7,13,43,811]
+
+b=811 k=552
+period=2
+cover=[7,29]
+
+b=812 k=16
+period=4
+cover=[3,5,17]
+
+b=813 k=186
+period=2
+cover=[11,37]
+
+b=814 k=651
+period=2
+cover=[5,163]
+
+b=815 k=16
+period=2
+cover=[3,17]
+
+b=816 k=343
+period=2
+cover=[19,43]
+
+b=817 k=2063406
+period=8
+cover=[5,41,409,1009]
+
+b=818 k=8
+period=2
+cover=[3,7]
+
+b=819 k=124
+period=2
+cover=[5,41]
+
+b=820 k=30378
+period=4
+cover=[17,37,821]
+
+b=821 k=136
+period=2
+cover=[3,137]
+
+b=822 k=278173
+period=4
+cover=[5,337,823]
+
+b=823 k=9166
+period=6
+cover=[7,13,43,103]
+
+b=824 k=4
+period=2
+cover=[3,5]
+
+b=825 k=176
+period=2
+cover=[7,59]
+
+b=826 k=19730748315
+period=9
+cover=[19,37,109,2089,20719]
+
+b=827 k=8
+period=4
+cover=[3,5,13]
+
+b=828 k=12
+period=3
+cover=[7,13,19]
+
+b=829 k=84
+period=2
+cover=[5,83]
+
+b=830 k=278
+period=2
+cover=[3,277]
+
+b=831 k=1030522
+period=4
+cover=[13,449,769]
+
+b=832 k=69
+period=2
+cover=[7,17]
+
+b=833 k=140
+period=2
+cover=[3,139]
+
+b=834 k=166
+period=2
+cover=[5,167]
+
+b=835 k=474
+period=2
+cover=[11,19]
+
+b=836 k=32
+period=2
+cover=[3,31]
+
+b=837 k=1032
+period=3
+cover=[7,97,1033]
+
+b=838 k=1447276
+period=12
+cover=[5,7,13,97,839]
+
+b=839 k=4
+period=2
+cover=[3,5]
+
+b=840 k=9076
+period=3
+cover=[37,61,313]
+
+b=841 k=22312
+period=6
+cover=[13,37,61,421]
+
+b=842 k=68
+period=6
+cover=[3,7,31,67]
+
+b=843 k=28486
+period=4
+cover=[5,61,211]
+
+b=844 k=51
+period=2
+cover=[5,13]
+
+b=845 k=46
+period=2
+cover=[3,47]
+
+b=846 k=43
+period=2
+cover=[7,11]
+
+b=847 k=150678
+period=8
+cover=[5,41,53,401]
+
+b=848 k=284
+period=2
+cover=[3,283]
+
+b=849 k=16
+period=2
+cover=[5,17]
+
+b=850 k=369
+period=2
+cover=[23,37]
+
+b=851 k=70
+period=2
+cover=[3,71]
+
+b=852 k=34974
+period=4
+cover=[5,41,853]
+
+b=853 k=204
+period=4
+cover=[5,7,29]
+
+b=854 k=4
+period=2
+cover=[3,5]
+
+b=855 k=7954937545864
+period=6
+cover=[13,107,56167,731881]
+
+b=856 k=39457
+period=3
+cover=[7,181,193]
+
+b=857 k=10
+period=2
+cover=[3,11]
+
+b=858 k=35218
+period=4
+cover=[5,29,859]
+
+b=859 k=474
+period=2
+cover=[5,43]
+
+b=860 k=8
+period=2
+cover=[3,7]
+
+b=861 k=813160
+period=3
+cover=[13,37,1543]
+
+b=862 k=6757
+period=3
+cover=[19,31,421]
+
+b=863 k=8
+period=4
+cover=[3,5,13]
+
+b=864 k=174
+period=2
+cover=[5,173]
+
+b=865 k=15460266
+period=12
+cover=[7,13,37,61,433]
+
+b=866 k=16
+period=2
+cover=[3,17]
+
+b=867 k=92
+period=2
+cover=[7,31]
+
+b=868 k=78
+period=2
+cover=[11,79]
+
+b=869 k=4
+period=2
+cover=[3,5]
+
+b=870 k=66
+period=2
+cover=[13,67]
+
+b=871 k=21676
+period=12
+cover=[7,17,53,103,409]
+
+b=872 k=98
+period=2
+cover=[3,97]
+
+b=873 k=208
+period=2
+cover=[19,23]
+
+b=874 k=6
+period=2
+cover=[5,7]
+
+b=875 k=74
+period=2
+cover=[3,73]
+
+b=876 k=258073912
+period=4
+cover=[13,877,59029]
+
+b=877 k=2182
+period=12
+cover=[5,7,13,37,139]
+
+b=878 k=23
+period=4
+cover=[3,5,53]
+
+b=879 k=34
+period=2
+cover=[5,11]
+
+b=880 k=25282
+period=3
+cover=[13,103,193]
+
+b=881 k=8
+period=2
+cover=[3,7]
+
+b=882 k=5297
+period=4
+cover=[5,37,883]
+
+b=883 k=324
+period=2
+cover=[13,17]
+
+b=884 k=4
+period=2
+cover=[3,5]
+
+b=885 k=588746
+period=6
+cover=[7,19,73,443]
+
+b=886 k=8170158
+period=12
+cover=[7,13,61,181,887]
+
+b=887 k=38
+period=2
+cover=[3,37]
+
+b=888 k=13
+period=4
+cover=[5,7,17]
+
+b=889 k=624
+period=2
+cover=[5,89]
+
+b=890 k=10
+period=2
+cover=[3,11]
+
+b=891 k=80364072
+period=4
+cover=[223,277,1433]
+
+b=892 k=187
+period=4
+cover=[5,13,47]
+
+b=893 k=32
+period=4
+cover=[3,5,41]
+
+b=894 k=359
+period=2
+cover=[5,179]
+
+b=895 k=953800
+period=4
+cover=[7,97,4129]
+
+b=896 k=22
+period=2
+cover=[3,23]
+
+b=897 k=7634
+period=4
+cover=[5,17,449]
+
+b=898 k=30
+period=2
+cover=[29,31]
+
+b=899 k=4
+period=2
+cover=[3,5]
+
+b=900 k=12
+period=3
+cover=[7,13,19]
+
+b=901 k=12
+period=6
+cover=[7,11,13,19]
+
+b=902 k=8
+period=2
+cover=[3,7]
+
+b=903 k=338
+period=4
+cover=[5,73,113]
+
+b=904 k=361
+period=2
+cover=[5,181]
+
+b=905 k=118
+period=4
+cover=[3,13,17]
+
+b=906 k=161291811
+period=10
+cover=[11,41,61,71,191,907]
+
+b=907 k=1350424
+period=12
+cover=[5,7,13,227,661]
+
+b=908 k=100
+period=2
+cover=[3,101]
+
+b=909 k=6
+period=2
+cover=[5,7]
+
+b=910 k=4989054506113
+period=30
+cover=[11,31,43,61,151,331,911,19237]
+
+b=911 k=208
+period=2
+cover=[3,19]
+
+b=912 k=331
+period=2
+cover=[11,83]
+
+b=913 k=2540464
+period=12
+cover=[5,7,13,109,457]
+
+b=914 k=4
+period=2
+cover=[3,5]
+
+b=915 k=4266956
+period=4
+cover=[13,229,2477]
+
+b=916 k=132
+period=2
+cover=[7,131]
+
+b=917 k=16
+period=2
+cover=[3,17]
+
+b=918 k=24812
+period=4
+cover=[5,13,919]
+
+b=919 k=24
+period=2
+cover=[5,23]
+
+b=920 k=103
+period=6
+cover=[3,7,13,19]
+
+b=921 k=10596584690
+period=9
+cover=[7,19,37,991,121309]
+
+b=922 k=285
+period=2
+cover=[13,71]
+
+b=923 k=8
+period=2
+cover=[3,7]
+
+b=924 k=36
+period=2
+cover=[5,37]
+
+b=925 k=59162602
+period=6
+cover=[31,79,349,463]
+
+b=926 k=205
+period=2
+cover=[3,103]
+
+b=927 k=28624
+period=8
+cover=[5,17,29,89]
+
+b=928 k=27871
+period=4
+cover=[5,13,929]
+
+b=929 k=4
+period=2
+cover=[3,5]
+
+b=930 k=20
+period=2
+cover=[7,19]
+
+b=931 k=37978
+period=4
+cover=[13,53,233]
+
+b=932 k=310
+period=2
+cover=[3,311]
+
+b=933 k=3343252
+period=12
+cover=[5,7,13,37,467]
+
+b=934 k=16
+period=2
+cover=[5,17]
+
+b=935 k=14
+period=2
+cover=[3,13]
+
+b=936 k=100260
+period=6
+cover=[7,31,37,937]
+
+b=937 k=202
+period=2
+cover=[7,67]
+
+b=938 k=314
+period=2
+cover=[3,313]
+
+b=939 k=46
+period=2
+cover=[5,47]
+
+b=940 k=5557
+period=3
+cover=[7,73,577]
+
+b=941 k=158
+period=2
+cover=[3,157]
+
+b=942 k=206
+period=2
+cover=[23,41]
+
+b=943 k=15636
+period=12
+cover=[5,7,13,19,59]
+
+b=944 k=4
+period=2
+cover=[3,5]
+
+b=945 k=386
+period=2
+cover=[11,43]
+
+b=946 k=1524340829428
+period=12
+cover=[13,73,373,947,68767]
+
+b=947 k=80
+period=2
+cover=[3,79]
+
+b=948 k=38
+period=4
+cover=[5,13,17]
+
+b=949 k=246
+period=2
+cover=[5,19]
+
+b=950 k=316
+period=2
+cover=[3,317]
+
+b=951 k=50
+period=2
+cover=[7,17]
+
+b=952 k=5503
+period=12
+cover=[5,13,37,41,43]
+
+b=953 k=52
+period=2
+cover=[3,53]
+
+b=954 k=381
+period=2
+cover=[5,191]
+
+b=955 k=981094
+period=6
+cover=[7,31,157,239]
+
+b=956 k=10
+period=2
+cover=[3,11]
+
+b=957 k=19638
+period=4
+cover=[5,13,479]
+
+b=958 k=412
+period=2
+cover=[7,137]
+
+b=959 k=4
+period=2
+cover=[3,5]
+
+b=960 k=197938246042
+period=24
+cover=[13,17,31,241,1993,2053]
+
+b=961 k=1000
+period=2
+cover=[13,37]
+
+b=962 k=106
+period=2
+cover=[3,107]
+
+b=963 k=23276986
+period=4
+cover=[5,241,92737]
+
+b=964 k=771
+period=2
+cover=[5,193]
+
+b=965 k=8
+period=2
+cover=[3,7]
+
+b=966 k=924230558
+period=6
+cover=[13,31,967,71707]
+
+b=967 k=144
+period=4
+cover=[5,11,13]
+
+b=968 k=16
+period=2
+cover=[3,17]
+
+b=969 k=96
+period=2
+cover=[5,97]
+
+b=970 k=430152
+period=4
+cover=[13,157,971]
+
+b=971 k=14876
+period=6
+cover=[3,7,13,79]
+
+b=972 k=279
+period=2
+cover=[7,139]
+
+b=973 k=9252
+period=4
+cover=[5,17,487]
+
+b=974 k=4
+period=2
+cover=[3,5]
+
+b=975 k=375364
+period=3
+cover=[7,67,2029]
+
+b=976 k=4492245
+period=6
+cover=[7,19,67,977]
+
+b=977 k=160
+period=12
+cover=[3,7,13,19,53]
+
+b=978 k=177
+period=2
+cover=[11,89]
+
+b=979 k=6
+period=2
+cover=[5,7]
+
+b=980 k=110
+period=2
+cover=[3,109]
+
+b=981 k=50234474650
+period=48
+cover=[13,17,19,41,337,433,491]
+
+b=982 k=39640
+period=3
+cover=[7,43,1069]
+
+b=983 k=40
+period=2
+cover=[3,41]
+
+b=984 k=196
+period=2
+cover=[5,197]
+
+b=985 k=900
+period=2
+cover=[17,29]
+
+b=986 k=8
+period=2
+cover=[3,7]
+
+b=987 k=170
+period=2
+cover=[13,19]
+
+b=988 k=1678
+period=2
+cover=[23,43]
+
+b=989 k=4
+period=2
+cover=[3,5]
+
+b=990 k=838385
+period=12
+cover=[7,13,17,61,991]
+
+b=991 k=5262
+period=3
+cover=[7,13,277]
+
+b=992 k=332
+period=2
+cover=[3,331]
+
+b=993 k=36
+period=4
+cover=[5,7,37]
+
+b=994 k=399
+period=2
+cover=[5,199]
+
+b=995 k=82
+period=2
+cover=[3,83]
+
+b=996 k=5841
+period=6
+cover=[7,19,43,127]
+
+b=997 k=36048
+period=6
+cover=[7,13,31,127]
+
+b=998 k=38
+period=2
+cover=[3,37]
+
+b=999 k=3234
+period=4
+cover=[5,17,149]
+
+b=1000 k=12
+period=2
+cover=[11,13]
+
+b=1001 k=166
+period=2
+cover=[3,167]
+
+b=1002 k=1240
+period=2
+cover=[17,59]
+
+b=1003 k=4768
+period=4
+cover=[5,29,251]
+
+b=1004 k=4
+period=2
+cover=[3,5]
+
+b=1005 k=54610
+period=3
+cover=[7,97,1489]
+
+b=1006 k=531
+period=2
+cover=[19,53]
+
+b=1007 k=8
+period=2
+cover=[3,7]
+
+b=1008 k=12730554
+period=16
+cover=[5,17,193,241,1009]
+
+b=1009 k=304
+period=2
+cover=[5,101]
+
+b=1010 k=338
+period=2
+cover=[3,337]
+
+b=1011 k=208
+period=2
+cover=[11,23]
+
+b=1012 k=16207
+period=4
+cover=[5,257,1013]
+
+b=1013 k=14
+period=2
+cover=[3,13]
+
+b=1014 k=6
+period=2
+cover=[5,7]
+
+b=1015 k=12079606
+period=4
+cover=[127,373,1381]
+
+b=1016 k=112
+period=2
+cover=[3,113]
+
+b=1017 k=1494
+period=3
+cover=[7,13,31]
+
+b=1018 k=77443
+period=6
+cover=[7,19,31,1019]
+
+b=1019 k=4
+period=2
+cover=[3,5]
+
+b=1020 k=95696289
+period=4
+cover=[101,1021,10301]
+
+b=1021 k=2262
+period=2
+cover=[7,73]
+
+b=1022 k=8
+period=4
+cover=[3,5,13]
+
+b=1023 k=632462
+period=3
+cover=[13,61,1321]
+
+b=1024 k=81
+period=2
+cover=[5,41]
+
