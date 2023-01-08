@@ -70,10 +70,12 @@ File "ecm704dev-svn2990-win64" (for Windows)
 
 File "ecm704dev-svn2990-linux64" (for Linux)
 
-11. *YAFU* (http://sites.google.com/site/bbuhrow/, https://download.mersenne.ca/YAFU)
+11. *Nash* (https://www.mersenneforum.org/showpost.php?p=421186&postcount=19)
 
-12. *MSIEVE* (https://sourceforge.net/projects/msieve)
+12. *YAFU* (http://sites.google.com/site/bbuhrow/, https://download.mersenne.ca/YAFU)
+
+13. *MSIEVE* (https://sourceforge.net/projects/msieve)
 
 File "msieve153_win64" (for Windows)
 
-13. *CADO-NFS* (http://cado-nfs.gforge.inria.fr/index.html)
+14. *CADO-NFS* (http://cado-nfs.gforge.inria.fr/index.html)
