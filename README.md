@@ -64,7 +64,7 @@ File "riesel.txt" (list of the Riesel CK for bases *b* ≤ 1024 with correspondi
 
 9. *CHG* (https://primes.utm.edu/bios/page.php?id=797, https://mersenneforum.org/showpost.php?p=528149&postcount=3)
 
-10. *GMP-ECM* (http://www.loria.fr/~zimmerma/records/ecmnet.html, http://www.fermatsearch.org/download.php)
+10. *GMP-ECM* (http://www.loria.fr/~zimmerma/records/ecmnet.html, https://web.archive.org/web/20210803045418/https://gforge.inria.fr/projects/ecm, http://www.fermatsearch.org/download.php)
 
 File "ecm704dev-svn2990-win64" (for Windows)
 
