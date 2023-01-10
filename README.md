@@ -80,4 +80,4 @@ File "msieve153_win64" (for Windows)
 
 14. *GGNFS* (http://sourceforge.net/projects/ggnfs)
 
-15. *CADO-NFS* (https://web.archive.org/web/20210506173015/http://cado-nfs.gforge.inria.fr/index.html)
+15. *CADO-NFS* (https://web.archive.org/web/20210506173015/http://cado-nfs.gforge.inria.fr/index.html, https://www.rieselprime.de/ziki/CADO-NFS)
