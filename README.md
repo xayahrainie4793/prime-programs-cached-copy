@@ -78,4 +78,4 @@ File "ecm704dev-svn2990-linux64" (for Linux)
 
 File "msieve153_win64" (for Windows)
 
-14. *CADO-NFS* (http://cado-nfs.gforge.inria.fr/index.html)
+14. *CADO-NFS* (https://web.archive.org/web/20210506173015/http://cado-nfs.gforge.inria.fr/index.html)
