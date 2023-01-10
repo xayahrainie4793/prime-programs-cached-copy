@@ -1,4 +1,4 @@
-These are the cached copy version of these prime programs:
+These are the cached copy version of these prime programs: (some of these programs can also be downloaded in http://www.fermatsearch.org/download.php or https://www.mersenne.org/download/freeware.php)
 
 1. *SRSIEVE* (including srsieve, sr1sieve, sr2sieve, srbsieve) (https://www.bc-team.org/app.php/dlext/?cat=3, http://web.archive.org/web/20160922072340/https://sites.google.com/site/geoffreywalterreynolds/programs/, https://primes.utm.edu/bios/page.php?id=905, https://www.rieselprime.de/ziki/Srsieve):
 
@@ -60,11 +60,11 @@ File "sierpinski.txt" (list of the Sierpinski CK for bases *b* ≤ 1024 with cor
 
 File "riesel.txt" (list of the Riesel CK for bases *b* ≤ 1024 with corresponding covering sets)
 
-8. *GeneFer* (http://www.fermatsearch.org/download.php, https://primes.utm.edu/bios/page.php?id=2740)
+8. *GeneFer* (https://primes.utm.edu/bios/page.php?id=2740)
 
 9. *CHG* (https://primes.utm.edu/bios/page.php?id=797, https://mersenneforum.org/showpost.php?p=528149&postcount=3)
 
-10. *GMP-ECM* (http://www.loria.fr/~zimmerma/records/ecmnet.html, https://web.archive.org/web/20210803045418/https://gforge.inria.fr/projects/ecm, http://www.fermatsearch.org/download.php)
+10. *GMP-ECM* (http://www.loria.fr/~zimmerma/records/ecmnet.html, https://web.archive.org/web/20210803045418/https://gforge.inria.fr/projects/ecm)
 
 File "ecm704dev-svn2990-win64" (for Windows)
 
