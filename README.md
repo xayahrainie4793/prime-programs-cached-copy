@@ -72,7 +72,7 @@ File "ecm704dev-svn2990-linux64" (for Linux)
 
 11. *Nash* (https://www.mersenneforum.org/showpost.php?p=421186&postcount=19)
 
-12. *YAFU* (http://sites.google.com/site/bbuhrow/, https://download.mersenne.ca/YAFU)
+12. *YAFU* (http://bbuhrow.googlepages.com/home, https://download.mersenne.ca/YAFU)
 
 13. *MSIEVE* (https://sourceforge.net/projects/msieve)
 
