@@ -72,7 +72,7 @@ File "ecm704dev-svn2990-linux64" (for Linux)
 
 11. *Nash* (https://www.mersenneforum.org/showpost.php?p=421186&postcount=19)
 
-12. *YAFU* (http://bbuhrow.googlepages.com/home) (for *YAFU*, *YTOOLS*, *YSIEVE*, see the page by *bbuhrow*: https://github.com/bbuhrow/yafu, https://github.com/bbuhrow/ytools, https://github.com/bbuhrow/ysieve)
+12. *YAFU* (http://bbuhrow.googlepages.com/home) (I have deleted the programs for *YAFU*, *YTOOLS*, *YSIEVE*, for the programs for *YAFU*, *YTOOLS*, *YSIEVE* see the page by *bbuhrow*: https://github.com/bbuhrow/yafu, https://github.com/bbuhrow/ytools, https://github.com/bbuhrow/ysieve)
 
 13. *MSIEVE* (https://sourceforge.net/projects/msieve)
 
