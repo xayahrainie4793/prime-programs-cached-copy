@@ -46,15 +46,15 @@ File "newpgenlinux" (for Linux, dynamically linked)
 
 File "snewpgenlinux" (for Linux, statically linked)
 
-6. *Proth* (https://primes.utm.edu/programs/gallot/, https://primes.utm.edu/bios/page.php?id=411, https://www.rieselprime.de/ziki/Proth.exe)
+6. *Proth* (https://primes.utm.edu/programs/gallot/, https://primes.utm.edu/bios/page.php?id=411, https://www.rieselprime.de/ziki/Proth.exe):
 
 File "proth.exe"
 
-7. *MTSieve* (https://sourceforge.net/projects/mtsieve/, https://primes.utm.edu/bios/page.php?id=449, https://www.rieselprime.de/ziki/Mtsieve)
+7. *MTSieve* (https://sourceforge.net/projects/mtsieve/, https://primes.utm.edu/bios/page.php?id=449, https://www.rieselprime.de/ziki/Mtsieve):
 
 File "mtsieve_2.4.1" (for Windows)
 
-8. *coveringsets* (https://sites.google.com/site/robertgerbicz/coveringsets)
+8. *coveringsets* (https://sites.google.com/site/robertgerbicz/coveringsets):
 
 Files "covering.c" and "covering.exe" (for small CK (say *k* < 2<sup>32</sup>))
 
@@ -68,7 +68,7 @@ File "riesel.txt" (list of the Riesel CK for bases *b* ≤ 1024 with correspondi
 
 10. *CHG* (https://primes.utm.edu/bios/page.php?id=797, https://mersenneforum.org/showpost.php?p=528149&postcount=3)
 
-11. *GMP-ECM* (http://www.loria.fr/~zimmerma/records/ecmnet.html, https://web.archive.org/web/20210803045418/https://gforge.inria.fr/projects/ecm)
+11. *GMP-ECM* (http://www.loria.fr/~zimmerma/records/ecmnet.html, https://web.archive.org/web/20210803045418/https://gforge.inria.fr/projects/ecm):
 
 File "ecm704dev-svn2990-win64" (for Windows)
 
@@ -78,7 +78,7 @@ File "ecm704dev-svn2990-linux64" (for Linux)
 
 13. *YAFU* (http://bbuhrow.googlepages.com/home) (I have deleted the programs for *YAFU*, *YTOOLS*, *YSIEVE*, for the programs for *YAFU*, *YTOOLS*, *YSIEVE* see the page by *bbuhrow*: https://github.com/bbuhrow/yafu, https://github.com/bbuhrow/ytools, https://github.com/bbuhrow/ysieve)
 
-14. *MSieve* (https://sourceforge.net/projects/msieve)
+14. *MSieve* (https://sourceforge.net/projects/msieve):
 
 File "msieve153_win64" (for Windows)
 
