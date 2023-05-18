@@ -1,0 +1,81 @@
+Changes in version 0.4.2 ("Fitzebohnen"), released in May 2023:
+  - If the environment variable CM_ECPP_TMPDIR is set, write checkpoint
+    files during the second phase of ECPP while factoring class
+    polynomials. This makes it possible to interrupt and restart the
+    computation.
+
+Changes in version 0.4.1 ("Fitzebohnen"), released in January 2023:
+  - By choosing ECPP parameters differently, difficult prime numbers should
+    be handled more gracefully. At least a reported difficult step now works
+    reasonably fast. On the downside, certificates become a bit longer (by
+    about 5% in the example), but I think this is set off by the smoother
+    behaviour of the steps.
+  - The preliminary ECPP step of computing primorials takes a bit less
+    memory in the MPI version.
+  - When ECPP certificates are output to a file, a second file in Primo
+    format is created automatically.
+  - ECPP certificate creation uses class field towers unconditionally.
+  - An optional primality test is carried out before starting ECPP.
+  - Fix the ECPP code on 32 bit platforms.
+  - For larger numbers, the BPSW primality test of GMP is replaced by
+    a Miller-Rabin test to base 2.
+  - If the environment variable CM_ECPP_TMPDIR is set, files that do not
+    change between different invocations of ecpp or ecpp-mpi are stored
+    in and read back from that directory.
+  - New command line options make it possible to compute only the first
+    or only the second phase.
+  - Phase 2 results are stored in any order as they come in, which
+    requires the file format to change. Checkpoint files ending in .cert2
+    from previous releases are not compatible.
+  - Add an optional dependency on FLINT to speed up root finding in the
+    second ECPP phase.
+  - Decrease the trial division bound in ecpp-mpi, instead also distribute
+    the numbers to be trial divided.
+  - Backport an improvement to the half gcd from pari git, which
+    considerably speeds up the Cornacchia steps.
+
+Changes in version 0.4 ("Fitzebohnen"), released in May 2022:
+  - increase minimal version number for mpfrcx to 0.6.3 and for
+    pari to 2.11.
+  - add decomposition of the class field into a tower of prime degree
+    extensions
+  - add a fastECPP implementation, including a version for MPI
+
+Changes in version 0.3.1 ("Wurstebrei"), released in September 2020:
+  - increase minimal version number for mpfrcx to 0.5 and for pari to 2.9.
+  - many internal rewrites
+  - bug fixes
+
+Changes in version 0.3 ("Wurstebrei"), released in March 2016:
+  - Features
+    - use the baby-step giant-step algorithm of Enge-Hart-Johansson 2018 to
+      compute the eta series
+    - use a 2-system for j and a 6-system for gamma2, which increases the
+      chances of staying in the same order for the numerator of the Weber
+      function
+  - Miscellanea
+    - switch to GPL3+ license
+
+Changes in version 0.2.1 ("Blindhühnchen"), released in March 2015:
+  - Features
+    - enable precision beyond 300000 bits
+  - Dependencies
+    - increase minimal version number for mpfr to 3.0.0, for mpc to 1.0.0
+      and for pari to 2.7.0
+
+Changes in version 0.2 ("Blindhühnchen"), released in February 2012:
+  - Features
+    - new class invariants: multiple eta quotients with '-imultieta'
+    - double eta quotients with both primes >100
+    - new parameter choice for double eta quotients yielding smaller class
+      polynomials
+    - slightly lower height bounds for double eta quotients
+  - Bug fixes
+    - printing of field and curve cardinality even without parameter "-v"
+    - Weber polynomials work again (activated by "-iweber")
+    - class polynomials for D=-4 and D=-16 work (no curve is constructed)
+  - Dependencies
+    - factorisation of class polynomials is done by pari instead of ntl
+     
+Version 0.1 ("Apfelkraut"), released in November 2009:
+  - initial release
