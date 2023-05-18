@@ -74,7 +74,7 @@ File "ecm704dev-svn2990-win64" (for Windows)
 
 File "ecm704dev-svn2990-linux64" (for Linux)
 
-12. *mpc* (https://www.multiprecision.org/mpc/home.html)
+12. *cm* (https://www.multiprecision.org/cm/home.html)
 
 13. *Nash* (https://www.mersenneforum.org/showpost.php?p=421186&postcount=19)
 
