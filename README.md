@@ -54,7 +54,7 @@ File "proth.exe"
 
 File "mtsieve_2.4.1" (for Windows)
 
-8. *coveringsets* (https://sites.google.com/site/robertgerbicz/coveringsets):
+8. *coveringsets* (https://web.archive.org/web/20221230035324/https://sites.google.com/site/robertgerbicz/coveringsets):
 
 Files "covering.c" and "covering.exe" (for small CK (say *k* < 2<sup>32</sup>))
 
