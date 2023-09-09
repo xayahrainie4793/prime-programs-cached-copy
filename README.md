@@ -1,6 +1,6 @@
 These are the cached copy version of these prime programs, including primality testing (https://en.wikipedia.org/wiki/Primality_test, https://www.rieselprime.de/ziki/Primality_test, https://mathworld.wolfram.com/PrimalityTest.html, https://t5k.org/prove/index.html) programs (https://www.rieselprime.de/ziki/Primality_testing_program, https://www.rieselprime.de/ziki/Category:Primality_testing_program), sieving (https://www.rieselprime.de/ziki/Sieving, https://www.rieselprime.de/ziki/Sieving_a_range_of_sequences, https://mathworld.wolfram.com/Sieve.html) programs (https://www.rieselprime.de/ziki/Sieving_program, https://www.rieselprime.de/ziki/Category:Sieving_program), integer factoring (https://en.wikipedia.org/wiki/Integer_factorization, https://www.rieselprime.de/ziki/Factorization, https://mathworld.wolfram.com/PrimeFactorization.html, https://mathworld.wolfram.com/PrimeFactorizationAlgorithms.html, http://www.numericana.com/answer/factoring.htm) programs (https://www.rieselprime.de/ziki/Factoring_program, https://www.rieselprime.de/ziki/Category:Factoring_program), and the Nash weight (https://www.rieselprime.de/ziki/Nash_weight) computing program: (some of these programs can also be downloaded in http://www.fermatsearch.org/download.php or https://www.mersenne.org/download/freeware.php)
 
-1. *SRSieve* (including srsieve, sr1sieve, sr2sieve, srbsieve) (https://www.bc-team.org/app.php/dlext/?cat=3, http://web.archive.org/web/20160922072340/https://sites.google.com/site/geoffreywalterreynolds/programs/, https://mersenneforum.org/showpost.php?p=637933&postcount=403, https://t5k.org/bios/page.php?id=905, https://www.rieselprime.de/ziki/Srsieve):
+1. *SRSieve* (including srsieve, sr1sieve, sr2sieve, srbsieve) (https://www.bc-team.org/app.php/dlext/?cat=3, http://web.archive.org/web/20160922072340/https://sites.google.com/site/geoffreywalterreynolds/programs/, https://mersenneforum.org/attachment.php?attachmentid=28906&d=1694250146, https://t5k.org/bios/page.php?id=905, https://www.rieselprime.de/ziki/Srsieve):
 
 Files "srsieve_1.1.4", "sr1sieve_1.4.6", "sr2sieve_2.0.0", "srbsieve_1.8.1"
 
@@ -66,7 +66,7 @@ File "riesel.txt" (list of the Riesel CK for bases *b* ≤ 1024 with correspondi
 
 9. *GeneFer* (https://t5k.org/bios/page.php?id=2740)
 
-10. *CHG* (https://t5k.org/bios/page.php?id=797, https://mersenneforum.org/showpost.php?p=528149&postcount=3)
+10. *CHG* (https://t5k.org/bios/page.php?id=797, https://mersenneforum.org/attachment.php?attachmentid=21133&d=1571237465)
 
 11. *GMP-ECM* (http://www.loria.fr/~zimmerma/records/ecmnet.html, https://web.archive.org/web/20210803045418/https://gforge.inria.fr/projects/ecm):
 
@@ -76,7 +76,7 @@ File "ecm704dev-svn2990-linux64" (for Linux)
 
 12. *cm* (https://www.multiprecision.org/cm/index.html, https://t5k.org/bios/page.php?id=5485)
 
-13. *Nash* (https://www.mersenneforum.org/showpost.php?p=421186&postcount=19)
+13. *Nash* (https://www.mersenneforum.org/attachment.php?attachmentid=13663&d=1451910741)
 
 14. *YAFU* (http://bbuhrow.googlepages.com/home) (I have deleted the programs for *YAFU*, *YTOOLS*, *YSIEVE*, for the programs for *YAFU*, *YTOOLS*, *YSIEVE* see the page by *bbuhrow*: https://github.com/bbuhrow/yafu, https://github.com/bbuhrow/ytools, https://github.com/bbuhrow/ysieve)
 
