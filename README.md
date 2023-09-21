@@ -70,24 +70,26 @@ File "riesel.txt" (list of the Riesel CK for bases *b* ≤ 1024 with correspondi
 
 11. *CHG* (https://t5k.org/bios/page.php?id=797, https://mersenneforum.org/attachment.php?attachmentid=21133&d=1571237465)
 
-12. *GMP-ECM* (http://www.loria.fr/~zimmerma/records/ecmnet.html, https://web.archive.org/web/20210803045418/https://gforge.inria.fr/projects/ecm):
+12. *KP* (https://mersenneforum.org/attachment.php?attachmentid=21134&d=1571237574)
+
+13. *GMP-ECM* (http://www.loria.fr/~zimmerma/records/ecmnet.html, https://web.archive.org/web/20210803045418/https://gforge.inria.fr/projects/ecm):
 
 File "ecm704dev-svn2990-win64" (for Windows)
 
 File "ecm704dev-svn2990-linux64" (for Linux)
 
-13. *cm* (https://www.multiprecision.org/cm/index.html, https://t5k.org/bios/page.php?id=5485)
+14. *cm* (https://www.multiprecision.org/cm/index.html, https://t5k.org/bios/page.php?id=5485)
 
-14. *Nash* (https://www.mersenneforum.org/attachment.php?attachmentid=13663&d=1451910741)
+15. *Nash* (https://www.mersenneforum.org/attachment.php?attachmentid=13663&d=1451910741)
 
-15. *YAFU* (http://bbuhrow.googlepages.com/home) (I have deleted the programs for *YAFU*, *YTOOLS*, *YSIEVE*, for the programs for *YAFU*, *YTOOLS*, *YSIEVE* see the page by *bbuhrow*: https://github.com/bbuhrow/yafu, https://github.com/bbuhrow/ytools, https://github.com/bbuhrow/ysieve, you can click https://github.com/bbuhrow/yafu/archive/refs/heads/master.zip and https://github.com/bbuhrow/ytools/archive/refs/heads/main.zip and https://github.com/bbuhrow/ysieve/archive/refs/heads/main.zip to download these programs by one click)
+16. *YAFU* (http://bbuhrow.googlepages.com/home) (I have deleted the programs for *YAFU*, *YTOOLS*, *YSIEVE*, for the programs for *YAFU*, *YTOOLS*, *YSIEVE* see the page by *bbuhrow*: https://github.com/bbuhrow/yafu, https://github.com/bbuhrow/ytools, https://github.com/bbuhrow/ysieve, you can click https://github.com/bbuhrow/yafu/archive/refs/heads/master.zip and https://github.com/bbuhrow/ytools/archive/refs/heads/main.zip and https://github.com/bbuhrow/ysieve/archive/refs/heads/main.zip to download these programs by one click)
 
-16. *MSieve* (https://sourceforge.net/projects/msieve):
+17. *MSieve* (https://sourceforge.net/projects/msieve):
 
 File "msieve153_win64" (for Windows)
 
-17. *GGNFS* (http://sourceforge.net/projects/ggnfs)
+18. *GGNFS* (http://sourceforge.net/projects/ggnfs)
 
-18. *CADO-NFS* (https://web.archive.org/web/20210506173015/http://cado-nfs.gforge.inria.fr/index.html, https://www.rieselprime.de/ziki/CADO-NFS)
+19. *CADO-NFS* (https://web.archive.org/web/20210506173015/http://cado-nfs.gforge.inria.fr/index.html, https://www.rieselprime.de/ziki/CADO-NFS)
 
-19. *BOINC* (https://boinc.berkeley.edu/download.php)
+20. *BOINC* (https://boinc.berkeley.edu/download.php)
