@@ -2,7 +2,7 @@ These are the cached copy version of these prime programs, including primality t
 
 1. *SRSieve* (including srsieve, sr1sieve, sr2sieve, srbsieve, also "srbsieve-other-programs" (https://mersenneforum.org/attachment.php?attachmentid=28981&d=1694889685), which are the additional programs needed by srbsieve, also pfgw is also needed to run the program) (https://www.bc-team.org/app.php/dlext/?cat=3, http://web.archive.org/web/20160922072340/https://sites.google.com/site/geoffreywalterreynolds/programs/, https://mersenneforum.org/attachment.php?attachmentid=28980&d=1694889669, https://t5k.org/bios/page.php?id=905, https://www.rieselprime.de/ziki/Srsieve):
 
-Files "srsieve_1.1.4", "sr1sieve_1.4.6", "sr2sieve_2.0.0", "srbsieve_1.8.1"
+Files "srsieve_1.1.4", "sr1sieve_1.4.6", "sr2sieve_2.0.0", "srbsieve_1.8.2"
 
 Note: File "CRUS_pack" is a cached copy of the file http://www.rieselprime.de/dl/CRUS_pack.zip, which includes LLR, PFGW, srsieve, sr1sieve, sr2sieve, and the new base script http://www.noprimeleftbehind.net/crus/new-bases-5.1.txt, see post https://mersenneforum.org/showpost.php?p=120751&postcount=1
 
