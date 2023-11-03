@@ -80,16 +80,18 @@ File "ecm704dev-svn2990-linux64" (for Linux)
 
 14. *cm* (https://www.multiprecision.org/cm/index.html, https://t5k.org/bios/page.php?id=5485)
 
-15. *Nash* (https://www.mersenneforum.org/attachment.php?attachmentid=13663&d=1451910741, https://github.com/happy5214/nash)
+15. *Prime95* (https://www.mersenne.org/download/software/v30/30.18/)
 
-16. *YAFU* (http://bbuhrow.googlepages.com/home) (I have deleted the programs for *YAFU*, *YTOOLS*, *YSIEVE*, for the programs for *YAFU*, *YTOOLS*, *YSIEVE* see the page by *bbuhrow*: https://github.com/bbuhrow/yafu, https://github.com/bbuhrow/ytools, https://github.com/bbuhrow/ysieve, you can click https://github.com/bbuhrow/yafu/archive/refs/heads/master.zip and https://github.com/bbuhrow/ytools/archive/refs/heads/main.zip and https://github.com/bbuhrow/ysieve/archive/refs/heads/main.zip to download these programs by one click)
+16. *Nash* (https://www.mersenneforum.org/attachment.php?attachmentid=13663&d=1451910741, https://github.com/happy5214/nash)
 
-17. *MSieve* (https://sourceforge.net/projects/msieve):
+17. *YAFU* (http://bbuhrow.googlepages.com/home) (I have deleted the programs for *YAFU*, *YTOOLS*, *YSIEVE*, for the programs for *YAFU*, *YTOOLS*, *YSIEVE* see the page by *bbuhrow*: https://github.com/bbuhrow/yafu, https://github.com/bbuhrow/ytools, https://github.com/bbuhrow/ysieve, you can click https://github.com/bbuhrow/yafu/archive/refs/heads/master.zip and https://github.com/bbuhrow/ytools/archive/refs/heads/main.zip and https://github.com/bbuhrow/ysieve/archive/refs/heads/main.zip to download these programs by one click)
+
+18. *MSieve* (https://sourceforge.net/projects/msieve):
 
 File "msieve153_win64" (for Windows)
 
-18. *GGNFS* (http://sourceforge.net/projects/ggnfs)
+19. *GGNFS* (http://sourceforge.net/projects/ggnfs)
 
-19. *CADO-NFS* (https://web.archive.org/web/20210506173015/http://cado-nfs.gforge.inria.fr/index.html, https://www.rieselprime.de/ziki/CADO-NFS)
+20. *CADO-NFS* (https://web.archive.org/web/20210506173015/http://cado-nfs.gforge.inria.fr/index.html, https://www.rieselprime.de/ziki/CADO-NFS)
 
-20. *BOINC* (https://boinc.berkeley.edu/download.php)
+21. *BOINC* (https://boinc.berkeley.edu/download.php)
