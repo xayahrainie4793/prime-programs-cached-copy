@@ -104,6 +104,8 @@ Download links:
 
 *PFGW*: https://sourceforge.net/projects/openpfgw/files/latest/download
 
+*mtsieve*: https://sourceforge.net/projects/mtsieve/files/latest/download
+
 *NewPGen*: https://t5k.org/programs/NewPGen/newpgen.zip, https://t5k.org/programs/NewPGen/newpgenlinux.zip, https://t5k.org/programs/NewPGen/snewpgenlinux.zip
 
 *Proth*: https://t5k.org/programs/gallot/proth.exe, https://t5k.org/programs/gallot/proth.zip
@@ -111,3 +113,9 @@ Download links:
 *CM*: https://www.multiprecision.org/downloads/cm-0.4.2.tar.gz
 
 *GMP-ECM*: https://members.loria.fr/PZimmermann/records/ecm/ecm-7.0.4.tar.gz
+
+*Prime95*: https://www.mersenne.org/download/software/v30/30.18/p95v3018b2.win64.zip, https://www.mersenne.org/download/software/v30/30.18/p95v3018b2.source.zip, https://www.mersenne.org/download/software/v30/30.18/p95v3018b2.MacOSX.tar.gz, https://www.mersenne.org/download/software/v30/30.18/p95v3018b2.linux64.tar.gz
+
+*GMP*: https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz
+
+*Pari/GP*: https://pari.math.u-bordeaux.fr/pub/pari/unix/pari-2.15.4.tar.gz, https://pari.math.u-bordeaux.fr/pub/pari/unstable/pari-2.16.0.alpha.tar.gz, https://pari.math.u-bordeaux.fr/pub/pari/windows/Pari32-2-15-4.exe, https://pari.math.u-bordeaux.fr/pub/pari/windows/Pari64-2-15-4.exe, https://pari.math.u-bordeaux.fr/pub/pari/unstable/Pari32-2-16-0.exe, https://pari.math.u-bordeaux.fr/pub/pari/unstable/Pari64-2-16-0.exe
