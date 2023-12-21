@@ -120,6 +120,8 @@ Download links:
 
 *YAFU*: https://sourceforge.net/projects/yafu/files/latest/download
 
+*MSieve*: https://sourceforge.net/projects/msieve/files/latest/download
+
 *GMP*: https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz
 
 *Pari/GP*: https://pari.math.u-bordeaux.fr/pub/pari/unix/pari-2.15.4.tar.gz, https://pari.math.u-bordeaux.fr/pub/pari/unstable/pari-2.16.0.alpha.tar.gz, https://pari.math.u-bordeaux.fr/pub/pari/windows/Pari32-2-15-4.exe, https://pari.math.u-bordeaux.fr/pub/pari/windows/Pari64-2-15-4.exe, https://pari.math.u-bordeaux.fr/pub/pari/unstable/Pari32-2-16-0.exe, https://pari.math.u-bordeaux.fr/pub/pari/unstable/Pari64-2-16-0.exe, https://pari.math.u-bordeaux.fr/pub/pari/mac/PariGP-2.15.4.dmg, https://pari.math.u-bordeaux.fr/pub/pari/mac/PariGP-arm-2.15.4.dmg, https://pari.math.u-bordeaux.fr/pub/pari/mac/PariGP-arm-2.15.4-pthread.dmg, https://pari.math.u-bordeaux.fr/pub/pari/unstable/PariGP-2.16.0.dmg, https://pari.math.u-bordeaux.fr/pub/pari/unstable/PariGP-full-2.16.0.dmg, https://pari.math.u-bordeaux.fr/pub/pari/unstable/PariGP-arm-2.16.0-pthread.dmg, https://pari.math.u-bordeaux.fr/pub/pari/mac/PariGP-full-2.15.4.dmg, https://pari.math.u-bordeaux.fr/pub/pari/mac/PariGP-arm-full-2.15.4.dmg, https://pari.math.u-bordeaux.fr/pub/pari/mac/PariGP-arm-full-2.15.4-pthread.dmg, https://pari.math.u-bordeaux.fr/pub/pari/unstable/PariGP-full-2.16.0.dmg, https://pari.math.u-bordeaux.fr/pub/pari/unstable/PariGP-arm-full-2.16.0.dmg, https://pari.math.u-bordeaux.fr/pub/pari/unstable/PariGP-arm-full-2.16.0-pthread.dmg, https://pari.math.u-bordeaux.fr/pub/pari/paridroid/PariDroid-2.15.3.2.3.apk
