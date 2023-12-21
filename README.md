@@ -95,3 +95,19 @@ File "msieve153_win64" (for Windows)
 20. *CADO-NFS* (https://web.archive.org/web/20210506173015/http://cado-nfs.gforge.inria.fr/index.html, https://www.rieselprime.de/ziki/CADO-NFS)
 
 21. *BOINC* (https://boinc.berkeley.edu/download.php)
+
+Download links:
+
+*LLR*: http://jpenne.free.fr/llr3/llrcuda388linux64.zip, http://jpenne.free.fr/llr3/llrcuda388slinux64.zip, http://jpenne.free.fr/llr3/llrcuda388src.zip, http://jpenne.free.fr/llr4/llr405win64.zip, http://jpenne.free.fr/llr4/cllr405win64.zip, http://jpenne.free.fr/llr4/cllrd405win64.zip, http://jpenne.free.fr/Development/llr405devwin32.zip, http://jpenne.free.fr/Development/cllr405devwin32.zip, http://jpenne.free.fr/Development/cllrd405devwin32.zip, http://jpenne.free.fr/Development/llr405devlinux.zip, http://jpenne.free.fr/Development/llr405devslinux.zip, http://jpenne.free.fr/llr4/llr405linux64.zip, http://jpenne.free.fr/llr4/llr405slinux64.zip, http://jpenne.free.fr/llr4/llr405mac64.zip, http://jpenne.free.fr/llr4/llr405src.zip
+
+*Primo*: https://www.ellipsa.eu/public/primo/files/primo-433-lx64.7z
+
+*PFGW*: https://sourceforge.net/projects/openpfgw/files/latest/download
+
+*NewPGen*: https://t5k.org/programs/NewPGen/newpgen.zip, https://t5k.org/programs/NewPGen/newpgenlinux.zip, https://t5k.org/programs/NewPGen/snewpgenlinux.zip
+
+*Proth*: https://t5k.org/programs/gallot/proth.exe, https://t5k.org/programs/gallot/proth.zip
+
+*CM*: https://www.multiprecision.org/downloads/cm-0.4.2.tar.gz
+
+*GMP-ECM*: https://members.loria.fr/PZimmermann/records/ecm/ecm-7.0.4.tar.gz
