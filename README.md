@@ -104,7 +104,9 @@ Download links:
 
 *PFGW*: https://sourceforge.net/projects/openpfgw/files/latest/download
 
-*mtsieve*: https://sourceforge.net/projects/mtsieve/files/latest/download
+*SRSieve*: https://www.bc-team.org/app.php/dlext/?view=detail&df_id=24, https://www.bc-team.org/app.php/dlext/?view=detail&df_id=38, https://www.bc-team.org/app.php/dlext/?view=detail&df_id=23, https://www.bc-team.org/app.php/dlext/?view=detail&df_id=25, https://www.bc-team.org/app.php/dlext/?view=detail&df_id=43
+
+*MTSieve*: https://sourceforge.net/projects/mtsieve/files/latest/download
 
 *NewPGen*: https://t5k.org/programs/NewPGen/newpgen.zip, https://t5k.org/programs/NewPGen/newpgenlinux.zip, https://t5k.org/programs/NewPGen/snewpgenlinux.zip
 
