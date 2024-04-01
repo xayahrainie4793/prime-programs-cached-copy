@@ -64,7 +64,7 @@ File "sierpinski.txt" (list of the Sierpinski CK for bases *b* ≤ 1024 with cor
 
 File "riesel.txt" (list of the Riesel CK for bases *b* ≤ 1024 with corresponding covering sets)
 
-9. *covset* (https://mersenneforum.org/attachment.php?attachmentid=28932&d=1694591899), and the dynamic compile (https://mersenneforum.org/attachment.php?attachmentid=28951&d=1694694115)
+9. *covset*, and the dynamic compile (https://www.mersenneforum.org/showpost.php?p=638165&postcount=1)
 
 10. *GeneFer* (https://t5k.org/bios/page.php?id=2740)
 
