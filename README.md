@@ -50,7 +50,7 @@ File "snewpgenlinux" (for Linux, statically linked)
 
 File "proth.exe"
 
-7. *MTSieve* (https://sourceforge.net/projects/mtsieve/, http://mersenneforum.org/rogue/mtsieve.html, https://t5k.org/bios/page.php?id=449, https://www.rieselprime.de/ziki/Mtsieve, https://github.com/xayahrainie4793/prime-programs-cached-copy/tree/main/mtsieve_2.4.8):
+7. *MTSieve* (https://sourceforge.net/projects/mtsieve/, http://mersenneforum.org/rogue/mtsieve.html, https://download.mersenne.ca/mtsieve, https://t5k.org/bios/page.php?id=449, https://www.rieselprime.de/ziki/Mtsieve, https://github.com/xayahrainie4793/prime-programs-cached-copy/tree/main/mtsieve_2.4.8):
 
 File "mtsieve_2.4.8" (for Windows)
 
@@ -86,7 +86,7 @@ File "ecm704dev-svn2990-linux64" (for Linux)
 
 17. *YAFU* (http://bbuhrow.googlepages.com/home, https://sourceforge.net/projects/yafu/) (I have deleted the programs for *YAFU*, *YTOOLS*, *YSIEVE*, for the programs for *YAFU*, *YTOOLS*, *YSIEVE* see the page by *bbuhrow*: https://github.com/bbuhrow/yafu, https://github.com/bbuhrow/ytools, https://github.com/bbuhrow/ysieve, you can click https://github.com/bbuhrow/yafu/archive/refs/heads/master.zip and https://github.com/bbuhrow/ytools/archive/refs/heads/main.zip and https://github.com/bbuhrow/ysieve/archive/refs/heads/main.zip to download these programs by one click)
 
-18. *MSieve* (https://sourceforge.net/projects/msieve):
+18. *MSieve* (https://sourceforge.net/projects/msieve, https://download.mersenne.ca/msieve):
 
 File "msieve153_win64" (for Windows)
 
