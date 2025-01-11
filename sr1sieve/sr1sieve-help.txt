@@ -1,0 +1,28 @@
+sr1sieve 1.4.1 -- A sieve for one sequence k*b^n+/-1.
+Usage: sr1sieve -P P1 -i FILE <-o FILE | -f FILE> [OPTION ...]
+ -p --pmin P0
+ -P --pmax P1          Sieve for factors p in the range P0 <= p <= P1
+ -i --input FILE       Read sieve from NewPGen format file FILE.
+ -o --output FILE      Write sieve to NewPGen format file FILE.
+ -f --factors FILE     Append new factors to file FILE.
+ -C --cache-file FILE  Load (or save) Legendre symbol tables from (or to) FILE.
+ -s --save TIME        Update output file every TIME (default 60) minutes.
+    --amd              Use CMOV optimisations. (Default for AMDs if supported).
+    --intel            Don't use CMOV optimisations. (Default for Intels).
+    --sse2             Use SSE2 vector optimisations. (Default if supported).
+    --no-sse2          Don't use SSE2 vector optimisations.
+ -l --L1-cache SIZE    Assume L1 data cache is SIZE Kb.
+ -L --L2-cache SIZE    Assume L2 cache is SIZE Kb.
+ -B --baby METHOD      Use METHOD for baby step mulmods.
+ -G --giant METHOD     Use METHOD for giant step mulmods.
+ -H --hashtable SIZE   Force use of a SIZE Kb hashtable.
+ -Q --subseq Q         Force sieving k*b^n+c as subsequences (k*b^d)*(b^Q)^m+c.
+ -x --no-lookup        Don't pre-compute Legendre symbol lookup tables.
+ -z --lower-priority   Run at low priority. (-zz lower).
+ -Z --raise-priority   Run at high priority. (-ZZ higher).
+ -A --affinity N       Set affinity to CPU number N.
+ -d --duplicates       Report factors that don't eliminate any composite.
+ -q --quiet            Don't print found factors.
+ -v --verbose          Print some extra messages. -vv prints more.
+ -h --help             Print this help.
+
