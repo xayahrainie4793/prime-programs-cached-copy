@@ -1,0 +1,41 @@
+sr2sieve 1.8.11 -- A sieve for multiple sequences k*b^n+/-1 or b^n+/-k.
+Usage: sr2sieve [OPTION ...]
+ -s --sierpinski       Sieve sequences k*2^n+1 in dat format file 'SoB.dat'
+ -r --riesel           Sieve sequences k*2^n-1 in dat format file 'riesel.dat'
+ -i --input FILE       Read sieve from FILE instead of `sr2data.txt'.
+                         Instead of `SoB.dat',`riesel.dat' when used with -s,-r.
+ -p --pmin P0          Sieve for factors p in the range P0 <= p <= P1 instead
+ -P --pmax P1           of reading ranges from work file `sr2work.txt'.
+ -f --factors FILE     Append found factors to FILE instead of factors.txt.
+ -u --uid STRING       Append -STRING to base of per-process file names.
+ -c --cache            Save Legendre symbol tables to `sr2cache.bin'.
+ -C --cache-file FILE  Load (or save) Legendre symbol tables from (or to) FILE.
+    --amd              Use CMOV optimisations. (Default for AMDs if supported).
+    --intel            Don't use CMOV optimisations. (Default for Intels).
+    --sse2             Use SSE2 vector optimisations. (Default if supported).
+    --no-sse2          Don't use SSE2 vector optimisations.
+ -l --L1-cache SIZE    Assume L1 data cache is SIZE Kb.
+ -L --L2-cache SIZE    Assume L2 cache is SIZE Kb.
+ -B --baby METHOD      Use METHOD for baby step mulmods.
+ -G --giant METHOD     Use METHOD for giant step mulmods.
+    --ladder METHOD    Use METHOD for ladder mulmods.
+ -H --hashtable SIZE   Force use of a SIZE Kb hashtable.
+ -Q --subseq Q         Force sieving k*b^n+c as subsequences (k*b^d)*(b^Q)^m+c.
+    --scale-giant X    Scale the number of giant steps by X (default 1.10).
+    --min-giant NUM    Always perform at least NUM giant steps (default 1).
+ -D --duplicates FILE  Append duplicate factors to FILE.
+    --log-factors      Record each new factor (with date found) in the log file.
+ -S --save TIME        Write checkpoint every TIME seconds. (default 300).
+ -z --lower-priority   Run at low priority. (-zz lower).
+ -Z --raise-priority   Run at high priority. (-ZZ higher).
+ -A --affinity N       Set affinity to CPU number N.
+ -j --sobistrator      Run in Sobistrator compatibility mode.
+ -X --skip-cubic       Skip cubic and higher power residue tests.
+ -x --no-lookup        Don't pre-compute Legendre symbol lookup tables.
+ -d --dual             Sieve b^n+/-k instead of k*b^n+/-1.
+ -q --quiet            Don't print found factors.
+ -v --verbose          Print some extra messages. -vv prints more.
+ -h --help             Print this help.
+
+Without arguments (normal usage), read sieve from `sr2data.txt', read ranges
+A,B from `sr2work.txt', sieve for factors p in the range A*10^9 <= p <= B*10^9.
