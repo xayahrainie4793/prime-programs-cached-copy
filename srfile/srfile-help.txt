@@ -1,0 +1,17 @@
+srfile 0.6.16 -- A file utility for srsieve.
+Usage: srfile [OPTION ...] <INFILE ...>
+ -o --output FILE         Write sieve to FILE instead of srsieve.out.
+ -k --known-factors FILE  Remove factors in FILE from the sieve.
+ -d --delete SEQ          Delete sequence SEQ from the sieve e.g. -d "254*5^n-1"
+ -g --newpgen             Write sieve to NewPGen format files t*_b*_k*.npg.
+ -G --prp                 Write sieve to PRP (sorted by n) files t*_b*.prp.
+ -w --pfgw                Write sieve to pfgw (sorted by n) file sr_b.pfgw.
+ -a --abcd                Write sieve to abcd format file sr_b.abcd.
+ -Q --subseqs X           Print base b^Q subsequence stats for all Q dividing X.
+ -c --congruence X        Print congruence (mod X) information for sequences.
+ -p --pfactor X           Print Prime95 worktodo.ini entries for P-1 factoring.
+                          X is number of PRP tests saved by finding a factor.
+ -v --verbose             Be verbose.
+ -q --quiet               Be quiet.
+ -h --help                Print this help.
+ INFILE ...               Read sieve from INFILE.
