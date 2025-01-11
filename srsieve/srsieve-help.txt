@@ -1,0 +1,34 @@
+srsieve 0.6.16 -- A sieve for integer sequences in n of the form k*b^n+c.
+Usage: srsieve [OPTION ...] <SEQUENCE|FILE ...>
+ -p --pmin P0      Look for factors p in P0 <= p <= P1 ...
+ -P --pmax P1
+ -n --nmin N0      ... that divide k*b^n+c with N0 <= n <= N1.
+ -N --nmax N1
+ -o --output FILE  Write sieve to FILE instead of srsieve.out.
+ -r --report X     Make status reports every X seconds (default 60).
+ -s --save X       Save sieve or write checkpoint every X minutes (default 60).
+ -S --stop-rate X  Stop when it takes X seconds to eliminate a candidate.
+ -m --minimum X    Do not report factors smaller than X (default 100000).
+ -B --babystep X   Adjust the number of baby steps by a factor of X.
+ -H --hashtable X  Set maximum hashtable density to X (default 0.65).
+ -F --force-base X Use subsequence base b^X.
+ -L --limit-base X Limit subsequence base to divisors of b^X.
+ -M --mod M,a,b,.. Assume all factors p satisfy p=a(mod M) or p=b(mod M) or...
+ -f --factors      Append reported factors to the file srfactors.txt.
+ -g --newpgen      Write sieve to NewPGen format files t*_b*_k*.npg.
+ -G --prp          Write sieve to PRP/LLR (sorted by n) files t*_b*.prp.
+ -w --pfgw         Write sieve to pfgw (sorted by n) file sr_b.pfgw.
+ -a --abcd         Write sieve to abcd format file sr_b.abcd.
+ -c --check        Check that reported factors really do divide. (Default).
+    --no-check     Do NOT check that reported factors really do divide.
+ -C --checkpoint   Write (and resume from) checkpoint file `checkpoint.txt'.
+ -d --duplicates   Report duplicate factors (ones that don't eliminate any n).
+ -y --no-filter    Don't filter sieve primes for special sequences.
+ -z --idle         Run at idle priority. (Default)
+ -Z --no-idle      Don't adjust priority.
+ -A --affinity N   Set affinity to CPU number N.
+ -v --verbose      Be verbose.
+ -q --quiet        Be quiet.
+ -h --help         Print this help.
+ SEQUENCE ...      Sieve SEQUENCE of the form "k*b^n+c", e.g. "1396*5^n-1"
+ FILE ...          Read sequences or resume sieving from FILE.
