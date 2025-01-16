@@ -6,7 +6,7 @@ Files "srsieve_1.1.4", "sr1sieve_1.4.6", "sr2sieve_2.0.0", "srbsieve_1.8.2"
 
 Note: Files in the folders "sr1sieve", "sr2sieve", "srfile", "srsieve", "srsieve2" are a cached copy of the file http://www.noprimeleftbehind.net/crus/sieve-programs.zip
 
-Note: File "CRUS_pack" is a cached copy of the file http://www.rieselprime.de/dl/CRUS_pack.zip, which includes LLR, PFGW, srsieve, sr1sieve, sr2sieve, and the new base script http://www.noprimeleftbehind.net/crus/new-bases-5.1.txt, see post https://mersenneforum.org/showpost.php?p=120751&postcount=1
+Note: File "CRUS_pack" is a cached copy of the file http://www.rieselprime.de/dl/CRUS_pack.zip, which includes LLR, PFGW, srsieve, sr1sieve, sr2sieve, and the new base script http://www.noprimeleftbehind.net/crus/new-bases-5.1.txt, see post https://www.mersenneforum.org/showpost.php?p=120751&postcount=1
 
 Also file "srbsieve and newpgen instructions.pdf", which is a cached copy of the srbsieve Guide file in https://www.bc-team.org/app.php/dlext/?cat=3
 
