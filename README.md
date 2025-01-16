@@ -52,7 +52,7 @@ File "snewpgenlinux" (for Linux, statically linked)
 
 File "proth.exe"
 
-7. *MTSieve* (https://sourceforge.net/projects/mtsieve/, http://mersenneforum.org/rogue/mtsieve.html, https://download.mersenne.ca/mtsieve, https://t5k.org/bios/page.php?id=449, https://www.rieselprime.de/ziki/Mtsieve, https://github.com/xayahrainie4793/prime-programs-cached-copy/tree/main/mtsieve_2.4.8):
+7. *MTSieve* (https://sourceforge.net/projects/mtsieve/, http://www.mersenneforum.org/rogue/mtsieve.html, https://download.mersenne.ca/mtsieve, https://t5k.org/bios/page.php?id=449, https://www.rieselprime.de/ziki/Mtsieve, https://github.com/xayahrainie4793/prime-programs-cached-copy/tree/main/mtsieve_2.4.8):
 
 File "mtsieve_2.4.8" (for Windows)
 
@@ -70,9 +70,9 @@ File "riesel.txt" (list of the Riesel CK for bases *b* ≤ 1024 with correspondi
 
 10. *GeneFer* (https://t5k.org/bios/page.php?id=2740)
 
-11. *CHG* (https://t5k.org/bios/page.php?id=797, https://mersenneforum.org/attachment.php?attachmentid=21133&d=1571237465)
+11. *CHG* (https://t5k.org/bios/page.php?id=797, https://www.mersenneforum.org/attachment.php?attachmentid=21133&d=1571237465)
 
-12. *KP* (https://mersenneforum.org/attachment.php?attachmentid=21134&d=1571237574)
+12. *KP* (https://www.mersenneforum.org/attachment.php?attachmentid=21134&d=1571237574)
 
 13. *GMP-ECM* (http://www.loria.fr/~zimmerma/records/ecmnet.html, https://web.archive.org/web/20210803045418/https://gforge.inria.fr/projects/ecm):
 
