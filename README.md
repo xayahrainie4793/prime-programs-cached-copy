@@ -52,7 +52,7 @@ File "snewpgenlinux" (for Linux, statically linked)
 
 File "proth.exe"
 
-7. *MTSieve* (https://sourceforge.net/projects/mtsieve/, http://www.mersenneforum.org/rogue/mtsieve.html, https://download.mersenne.ca/mtsieve, https://t5k.org/bios/page.php?id=449, https://www.rieselprime.de/ziki/Mtsieve, https://github.com/xayahrainie4793/prime-programs-cached-copy/tree/main/mtsieve_2.4.8):
+7. *MTSieve* (https://sourceforge.net/projects/mtsieve/, https://www.mersenneforum.org/rogue/mtsieve.html, https://download.mersenne.ca/mtsieve, https://t5k.org/bios/page.php?id=449, https://www.rieselprime.de/ziki/Mtsieve, https://github.com/xayahrainie4793/prime-programs-cached-copy/tree/main/mtsieve_2.4.8):
 
 File "mtsieve_2.4.8" (for Windows)
 
